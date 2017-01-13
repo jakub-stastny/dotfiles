@@ -1,0 +1,12 @@
+[user]
+	name = James C Russell
+	email = james@101ideas.cz
+[alias]
+	cam = commit -a -m
+	cav = commit -a -v
+	cm = commit -m
+	cv = commit -v
+	co = checkout
+	amend = commit --amend
+	amend-no-edit = commit --amend --no-edit
+	amend-all-no-edit = commit --amend --no-edit -a

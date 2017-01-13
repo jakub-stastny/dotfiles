@@ -1,0 +1,15 @@
+--ignore-dir=bower_components
+--ignore-dir=node_modules
+--ignore-dir=gems
+--ignore-dir=vendor
+
+--ignore-file=ext:map
+--ignore-file=match:/^Gemfile.lock$/
+
+# Do not ignore haml, you can also use --haml or --nohaml now.
+# https://wincent.com/wiki/Ack
+--type-set=haml=.haml
+--type-set=rack=.ru
+--type-set=handlebars=.handlebars
+--type-set=cucumber=.feature
+--type-set=coffee=.coffee
