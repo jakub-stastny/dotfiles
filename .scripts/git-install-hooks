@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # For whatever reason $GIT_DIR is not available in here.
-GIT_DIR=$(git rev-parse --show-toplevel)/.git
+GIT_DIR=$(git rev-parse --git-dir)
 
 HOOK_PATH=$GIT_DIR/hooks/post-commit
 echo "~ Installing $HOOK_PATH.\n\n"
