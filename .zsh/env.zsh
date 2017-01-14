@@ -19,13 +19,5 @@ path-add()        { path+=("$@") }
 path-del()        { for i ("$@") { path[(r)$i]=() } }
 path-clear()      { path=() }
 
-path-add ~/.scripts
-path-add ~/Dropbox/Projects/Software/*/bin
-
 # Make $RUBYLIB and $rubylib behave like $PATH/$path.
 typeset -T -U -gx -a RUBYLIB rubylib ':'
-
-export rubylib=(~/Dropbox/Projects/Software/*/lib)
-
-# CDPATH
-export cdpath=(. ~/Dropbox/Projects/*)
