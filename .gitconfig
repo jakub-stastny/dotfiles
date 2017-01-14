@@ -1,12 +1,35 @@
 [user]
-	name = James C Russell
-	email = james@101ideas.cz
+  name = James C Russell
+  email = james@101ideas.cz
+
+[core]
+  excludesfile = ~/.gitignore
+
+[commit]
+  cleanup = whitespace
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+
+[apply]
+  whitespace = nowarn
+
+[branch]
+  autosetuprebase = always
+
+[push]
+  default = matching
+
 [alias]
-	cam = commit -a -m
-	cav = commit -a -v
-	cm = commit -m
-	cv = commit -v
-	co = checkout
-	amend = commit --amend
-	amend-no-edit = commit --amend --no-edit
-	amend-all-no-edit = commit --amend --no-edit -a
+  cam = commit -a -m
+  cav = commit -a -v
+  cm = commit -m
+  cv = commit -v
+  co = checkout
+  amend = commit --amend
+  amend-no-edit = commit --amend --no-edit
+  amend-all-no-edit = commit --amend --no-edit -a
+  dc = diff --cached

@@ -1,7 +1,7 @@
 # Dependencies: chruby to be loaded first (so we can test if pry is in the PATH).
 
 # Dotfiles-related.
-alias dotfiles="git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME"
+alias dotfiles="git --git-dir=$HOME/dotfiles.git --work-tree=$HOME"
 alias reload="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc && reload && echo ZSH config reloaded."
 alias vimrc="vim ~/.vimrc"
@@ -29,3 +29,33 @@ function e () {
 which pry &> /dev/null && alias irb="pry"
 alias bi="bundle install"
 alias bu="bundle update"
+alias be="bundle exec"
+
+alias ghist="cat $HISTFILE | egrep"
+
+alias GET="curl -X GET"
+alias POST="curl -X POST"
+alias HEAD="curl -X HEAD"
+alias OPTIONS="curl -X OPTIONS"
+
+alias gem_search="gem query --remote --name-matches"
+
+alias .='cd .' # reload (e.g.: you're in app/current)
+alias ..='cd ..'
+alias ...='cd ../..'
+
+stash () {
+  git stash && $* && git stash pop
+}
+
+#e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
+
+du() {
+  for item in $* ; do
+    /usr/bin/du -h $item | tail -1
+  done
+}
+
+function mkpasswd() {
+  ruby -e "puts Array.new(16) { rand(256) }.pack('C*').unpack('H*').first"
+}

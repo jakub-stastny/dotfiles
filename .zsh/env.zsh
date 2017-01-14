@@ -11,6 +11,8 @@ HISTFILE=~/.history
 setopt inc_append_history
 # Reloads the history whenever you use it.
 #setopt share_history
+#
+setopt HIST_IGNORE_ALL_DUPS  # Remove old duplicates.
 
 # PATH
 path-add()        { path+=("$@") }
@@ -23,8 +25,7 @@ path-add ~/Dropbox/Projects/Software/*/bin
 # Make $RUBYLIB and $rubylib behave like $PATH/$path.
 typeset -T -U -gx -a RUBYLIB rubylib ':'
 
-rubylib-add()    { rubylib+=("$@") }
-rubylib-delete() { for i ("$@") { rubylib[(r)$i]=() } }
-rubylib-clear()  { rubylib=() }
+export rubylib=(~/Dropbox/Projects/Software/*/lib)
 
-rubylib-add ~/Dropbox/Projects/Software/*/lib
+# CDPATH
+export cdpath=(. ~/Dropbox/Projects/*)
