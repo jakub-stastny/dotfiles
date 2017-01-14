@@ -1,5 +1,7 @@
-source ~/.zsh/env.zsh
-test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
+# Sourced in an interactive session.
+# http://zsh.sourceforge.net/Intro/intro_3.html
 source ~/.zsh/aliases.zsh
 source ~/.zsh/prompt.zsh
 source ~/.zsh/completion.zsh
+source ~/.zsh/history.zsh
+test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh

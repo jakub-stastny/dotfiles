@@ -1,9 +1,6 @@
-path-add ~/.scripts
-path-add ~/Dropbox/Projects/Software/*/bin
+# Local (move to a separate file).
+export EDITOR="atom"
 
-export rubylib=(~/Dropbox/Projects/Software/*/lib)
-
+#export GIT_EDITOR="atom -w" # Or use git config --global core.editor "vim" instead?
 # CDPATH
 export cdpath=(. ~/Dropbox/Projects/*)
-
-source ~/.zsh/chruby.zsh
