@@ -3,6 +3,7 @@ syntax on
 " Indentation defaults.
 set shiftwidth=2 " When you press >> in normal mode and also for smart indent.
 set softtabstop=2
+set expandtab " It's still necessary, like when pressing Enter after <!-- in XML.
 
 " Enable language-specific indentation.
 if has("autocmd")
