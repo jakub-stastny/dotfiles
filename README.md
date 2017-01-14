@@ -44,6 +44,9 @@ dotfiles untracked -> .* (don't expand dirs)
 # https://github.com/botanicus/internet-usage-limiter
 botanicus.wifi.plist is hard-linked
 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+run :PluginInstall in Vim.
+
 # TBD: atom tries to index the whole dropbox when cd ~, vim sucks for many files.
 #dotfiles config alias.edit '!sh -c vim $(git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME list)'
 

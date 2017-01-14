@@ -1,7 +1,5 @@
-syntax on
+" Use gf to open a file under cursor.
+source ~/.vim/vundle.vim
+source ~/.vim/settings.vim
 
-" Indentation.
-set tabstop=2
-set expandtab
-
-" https://github.com/postmodern/chruby/wiki/Vim
+" When needed: https://github.com/mattn/emmet-vim
