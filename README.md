@@ -66,3 +66,4 @@ brew cask install vlc
 
 - SSH completion from ~/.ssh/config
 - SSH secret key, .gem/credentials. ~/.config/hub
+- The only thing that's not backed up at the moment is Atom.
