@@ -9,6 +9,7 @@ alias vimrc="vim ~/.vimrc"
 # Core.
 alias du='du -h'
 alias df='df -h'
+alias ls='ls -F'
 alias ll='ls -l'
 alias la='ls -a'
 

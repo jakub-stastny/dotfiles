@@ -12,5 +12,19 @@ setopt inc_append_history
 # Reloads the history whenever you use it.
 #setopt share_history
 
+# PATH
+path-add()        { path+=("$@") }
+path-del()        { for i ("$@") { path[(r)$i]=() } }
+path-clear()      { path=() }
 
-export path=(~/.scripts $path)
+path-add ~/.scripts
+path-add ~/Dropbox/Projects/Software/*/bin
+
+# Make $RUBYLIB and $rubylib behave like $PATH/$path.
+typeset -T -U -gx -a RUBYLIB rubylib ':'
+
+rubylib-add()    { rubylib+=("$@") }
+rubylib-delete() { for i ("$@") { rubylib[(r)$i]=() } }
+rubylib-clear()  { rubylib=() }
+
+rubylib-add ~/Dropbox/Projects/Software/*/lib

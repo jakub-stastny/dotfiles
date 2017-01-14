@@ -50,6 +50,18 @@ run :PluginInstall in Vim.
 # TBD: atom tries to index the whole dropbox when cd ~, vim sucks for many files.
 #dotfiles config alias.edit '!sh -c vim $(git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME list)'
 
+# Otherwise it'd be loaded on the next boot, but we want to start it immediately.
+launchctl load -w "$HOME/Library/LaunchAgents/$PLIST"
+
+brew cask install atom
+brew cask install dropbox
+brew cask install firefox
+brew cask install google-chrome
+brew cask install spotify
+brew cask install sublime-text3
+brew cask install virtualbox
+brew cask install vlc
+
 # TODO
 
 - SSH completion from ~/.ssh/config

@@ -4,14 +4,114 @@ snippet "^!" "#!/usr/bin/env ruby" r
 $0
 endsnippet
 
+snippet c "class <class>" b
+class $1
+end
+endsnippet
+
+snippet m "module <module>" b
+module $1
+end
+endsnippet
+
 snippet d "def <method>" b
 def $1
 end
 endsnippet
 
-snippet x "xxx" b
-fn ${1:a}
-  ${2:xxx}
-	$3
+snippet i "def initialize ..."
+def initialize${1}
+	${2:# TODO}
+end$0
+endsnippet
+
+snippet defr "def <name> ... rescue ..."
+def ${1}
+	${2:# TODO}
+rescue $3
+end
+endsnippet
+
+snippet defs "def self.<name> ..."
+def self.${1}
+	${0:# TODO}
+end
+endsnippet
+
+snippet r "Kernel#require" b
+require '$1'$0
+endsnippet
+
+snippet if "if <condition> ... end" b
+if ${1:condition}
+end
+endsnippet
+
+snippet unless "unless <condition> ... end" b
+unless ${1:condition}
+end
+endsnippet
+
+snippet .e "each do ... end"
+.each do |${1:variable}|
+	${0:# TODO}
+end
+endsnippet
+
+snippet fw "File.open w ..."
+File.open('${1}', 'w') do |file|
+	${0}
+end
+endsnippet
+
+snippet fj "File.join ..."
+File.join($1)$0
+endsnippet
+
+snippet "\b(ar|attr)" "attr_reader :<attr_names>" r
+attr_reader :${0:attr_names}
+endsnippet
+
+snippet "\b(aw|attr)" "attr_writer :<attr_names>" r
+attr_writer :${0:attr_names}
+endsnippet
+
+snippet "\b(arw|attr)" "attr_accessor :<attr_names>" r
+attr_accessor :${0:attr_names}
+endsnippet
+
+snippet de "describe ..."
+describe '${1}' do
+	it${0}
+end
+endsnippet
+
+snippet it "it ..."
+it '${1}' do
+	${0:# TODO}
+end
+endsnippet
+
+snippet xit "it ..."
+it '${1}'
+endsnippet
+
+snippet b4 "before ..."
+before(${1::each}) do
+	${0:# TODO}
+end
+endsnippet
+
+snippet a "Array.new"
+Array.new
+endsnippet
+
+snippet h "Hash.new"
+Hash.new
+endsnippet
+
+snippet .r "reduce" i
+.reduce(${1:Hash.new}) do |${2:buffer}, (${3:key}, ${4:value})|
+	$2.merge($3.to_sym => $4)
 end
 endsnippet
