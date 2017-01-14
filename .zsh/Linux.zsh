@@ -10,7 +10,7 @@ dotfiles remote update &> /dev/null
 # doesn't work either. git branch -a shows only master, not remotes/origin/master
 # etc.
 #
-if [ $(dotfiles rev-parse @) = $(dotfiles rev-parse @{u}) ]; then
+if [ $(dotfiles rev-parse @) != $(dotfiles rev-parse @{u}) ]; then
   # TODO: Maybe handle push as well in case we're ahead.
   # Then again we have the hook so we may pressume it has been pushed at all times.
   # How about git stash?
