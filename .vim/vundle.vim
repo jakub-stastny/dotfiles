@@ -1,7 +1,7 @@
 " Vundle configuration.
 " https://github.com/VundleVim/Vundle.vim
 "
-" Here is a nice list of plugins sorted by popularity: http://vimawesome.com
+" List of plugins sorted by popularity: http://vimawesome.com
 set nocompatible
 filetype off
 
