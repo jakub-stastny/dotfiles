@@ -16,5 +16,5 @@ if [ $(dotfiles rev-parse @) != $(dotfiles rev-parse @{u}) ]; then
   # Note that we are using pull -ff, not -r, so we can use post-merge hook.
   # There is no hook for git rebase. There is post-rewrite, but it works only
   # when something is actually rewritten, not in fast-forward scenarios.
-  dotfiles pull --ff && exec zsh || echo "Cannot update dotfiles."
+  dotfiles pull -r && exec zsh || echo "Cannot update dotfiles."
 fi
