@@ -49,3 +49,5 @@ vim +PluginInstall +qall
 
 # Set shell to ZSH.
 chsh -s $(which zsh)
+
+echo "! Use ssh-keygen -t rsa -b 4096 -C your@email.com to create a new SSH key and add it to https://github.com/settings/keys"
