@@ -19,7 +19,7 @@ TODO
 
 # TODO
 
-- The only thing that's not backed up at the moment is Atom.
-- Relase the first stable version (Git tag).
-- Launchd scripts to commit and push.
-- Chrome 2 TODO.
+- OS X installation.
+- Launchd script to run ~/.scripts/system-update.
+- Review https://github.com/mathiasbynens/dotfiles/blob/master/.macos (no sleep mode, maybe I don't need Caffeine). sudo systemsetup -setcomputersleep Off > /dev/null
+- https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.8ilwpjaj5
