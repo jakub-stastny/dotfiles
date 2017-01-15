@@ -19,7 +19,6 @@ TODO
 
 # TODO
 
-- Prompt: show which branch I'm on.
 - OS X installation.
 - Launchd script to run ~/.scripts/system-update.
 - Review https://github.com/mathiasbynens/dotfiles/blob/master/.macos (no sleep mode, maybe I don't need Caffeine). sudo systemsetup -setcomputersleep Off > /dev/null
