@@ -20,3 +20,4 @@ TODO
 # TODO
 
 - The only thing that's not backed up at the moment is Atom.
+- Relase the first stable version (Git tag).
