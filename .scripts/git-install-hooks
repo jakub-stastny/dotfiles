@@ -8,7 +8,7 @@ echo "~ Installing $HOOK_PATH.\n\n"
 tee $HOOK_PATH <<EOF
 #!/bin/sh
 
-git push
+git pull -r && git push
 EOF
 
 chmod +x $HOOK_PATH

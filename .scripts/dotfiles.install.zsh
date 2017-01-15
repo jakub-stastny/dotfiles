@@ -5,7 +5,9 @@
 if [ $(uname) = "Linux" ]; then
   echo "~ Linux specific."
 
-  apt-get -y install ack-grep
+  # System Ruby is good enough.
+  # Web apps use dockerised Ruby.
+  apt-get -y install ack-grep ruby
 
   # Set shell to ZSH.
   chsh -s $(which zsh)
@@ -49,13 +51,11 @@ elif [ $(uname) = "Darwin" ]; then
 fi
 
 echo "~ General."
+
 dotfiles config --local status.showUntrackedFiles no
+dotfiles config --local alias.list '!git ls-files | sed "s/^/~\//"'
+dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn't work with the above, but it doesn't matter.
+
 dotfiles install-hooks
 
-# gem install bundler pry # Which Ruby? Install Ruby on OS X and switch to it. Linux doesn't have any to start with.
-
-# dotfiles config alias.list '!git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME ls-tree --full-tree --name-only -r HEAD| sed "s/^/~\//"'
-# dotfiles untracked -> .* (don't expand dirs)
-#
-# # TBD: atom tries to index the whole dropbox when cd ~, vim sucks for many files.
-# #dotfiles config alias.edit '!sh -c vim $(git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME list)'
+gem install bundler pry

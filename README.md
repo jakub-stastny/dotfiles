@@ -7,6 +7,7 @@ Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-d
 ## Ubuntu
 
 ```
+# Run on your local machine that has dotfiles installed already:
 ~/.scripts/dotfiles.install-remote.zsh root@104.236.127.89
 ```
 
