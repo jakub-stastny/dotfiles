@@ -8,7 +8,8 @@ echo "~ Installing $HOOK_PATH.\n\n"
 tee $HOOK_PATH <<EOF
 #!/bin/sh
 
-git pull -r && git push
+#git pull -r && git push # This requires stashing, but what if no changes, but there's anything else in stash?
+git push
 EOF
 
 chmod +x $HOOK_PATH
