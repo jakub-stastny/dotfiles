@@ -2,6 +2,7 @@ dotfiles remote update &> /dev/null
 
 # This setup was necessary: dotfiles branch --set-upstream-to=origin/master master
 # and dotfiles config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+# It seems like I have to set the origin first, log out(???) and then --set-upstream-to.
 #
 # This solves the following issue:
 #

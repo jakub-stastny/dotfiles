@@ -1,7 +1,6 @@
 # Dependencies: chruby to be loaded first (so we can test if pry is in the PATH).
 
 # Dotfiles-related.
-alias dotfiles="git --git-dir=$HOME/dotfiles.git --work-tree=$HOME"
 alias reload="source ~/.zshrc"
 alias zshrc="vim ~/.zshrc && reload && echo ZSH config reloaded."
 alias vimrc="vim ~/.vimrc"
