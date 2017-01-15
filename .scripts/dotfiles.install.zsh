@@ -49,8 +49,10 @@ elif [ $(uname) = "Darwin" ]; then
 fi
 
 echo "~ General."
-# gem install bundler pry # Which Ruby? Install Ruby on OS X and switch to it. Linux doesn't have any to start with.
 dotfiles config --local status.showUntrackedFiles no
+dotfiles install-hooks
+
+# gem install bundler pry # Which Ruby? Install Ruby on OS X and switch to it. Linux doesn't have any to start with.
 
 # dotfiles config alias.list '!git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME ls-tree --full-tree --name-only -r HEAD| sed "s/^/~\//"'
 # dotfiles untracked -> .* (don't expand dirs)

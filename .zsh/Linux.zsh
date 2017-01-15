@@ -1,18 +1,16 @@
 dotfiles remote update &> /dev/null
 
-# This setup was necessary: dotfiles branch --set-upstream-to=origin/master master
-# and dotfiles config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-# It seems like I have to set the origin first, log out(???) and then --set-upstream-to.
+# This setup was necessary:
+#   $ dotfiles config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+#   $ dotfiles fetch
+#   $ dotfiles branch --set-upstream-to=origin/master master
 #
-# This solves the following issue:
-#
-# There's a bug, on the cloned repo the upstream ref doesn't work, origin/master
-# doesn't work either. git branch -a shows only master, not remotes/origin/master
-# etc.
+# Without that the upstream ref doesn't work, whether by @{u} or by origin/master
+# and git branch -a shows doesn't show any remote branches either.
 #
 # @ refers to HEAD and @{u} to its upstream (origin/master).
 if [ $(dotfiles rev-parse @) != $(dotfiles rev-parse @{u}) ]; then
-  # We are not handligh pushing, since we have the auto-push hook installed anyway.
-  # How about git stash?
+  # We are not handling pushing, since we have the auto-push hook installed anyway.
+  # Stashing the changes is ignored as well, pressumably I'd commit everything.
   dotfiles pull -r && exec zsh || echo "Cannot update dotfiles."
 fi
