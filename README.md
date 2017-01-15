@@ -18,6 +18,5 @@ TODO
 
 # TODO
 
-- SSH secret key, .gem/credentials. ~/.config/hub
 - The only thing that's not backed up at the moment is Atom.
 - Launchd daemon to re-enable my wifi plist every hour :)
