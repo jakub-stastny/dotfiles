@@ -20,4 +20,3 @@ TODO
 # TODO
 
 - The only thing that's not backed up at the moment is Atom.
-- Launchd daemon to re-enable my wifi plist every hour :)
