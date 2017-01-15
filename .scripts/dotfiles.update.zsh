@@ -1,1 +1,7 @@
-post update hooks to vim PluginInstall etc (vim +PluginInstall +qall) - https://gist.github.com/sindresorhus/7996717
+#!/bin/sh
+
+echo post-checkout hook
+git diff-tree -r --name-only --no-commit-id HEAD@{1}
+if git diff-tree -r --name-only --no-commit-id HEAD@{1} | grep vim; then
+  vim +PluginInstall +qall
+fi
