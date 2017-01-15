@@ -18,7 +18,7 @@ run_remote 'apt-get -y update && apt-get -y upgrade'
 run_remote 'apt-get -y install git-core zsh ack-grep ruby' # System Ruby is good
 # enough. Web apps use dockerised Ruby.
 
-command scp ~/.ssh/id_rsa $REMOTE:~/.ssh/
+command scp ~/.ssh/id_rsa ~/.ssh/id_rsa.pub $REMOTE:~/.ssh/
 
 # So it doesn't fail on Git asking interactively:
 run_remote 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
