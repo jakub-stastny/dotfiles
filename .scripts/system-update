@@ -1,0 +1,14 @@
+#!/bin/sh
+
+sudo softwareupdate -i -a
+
+brew update
+brew upgrade
+
+if which npm;
+  npm install npm -g
+  npm update -g
+fi
+
+gem update —system
+gem update
