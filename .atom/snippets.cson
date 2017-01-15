@@ -19,3 +19,35 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+# Cmd-Alt-p: show current scope.
+'.source.shell':
+  'Shell shebang':
+    'prefix': '!'
+    'body': '#!/bin/sh'
+
+'.source.js':
+  'Console log':
+    'prefix': 'l'
+    'body': 'console.log($1);'
+
+  'Import':
+    'prefix': 'i'
+    'body': 'import $1 from \'$2\';'
+
+'.source.ruby':
+  'Ruby shebang (env)':
+    'prefix': '!'
+    'body': '#!/usr/bin/env ruby'
+
+  'Kernel#require':
+    'prefix': 'r'
+    'body': "require '$1'"
+
+  'Kernel#require_relative':
+    'prefix': 'rr'
+    'body': "require_relative '$1'"
+
+  'Kernel#puts':
+    'prefix': 'p'
+    'body': "puts '$1'"
