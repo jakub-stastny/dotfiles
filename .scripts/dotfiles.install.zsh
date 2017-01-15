@@ -12,7 +12,7 @@ if [ $(uname) = "Linux" ]; then
   vim +PluginInstall +qall
 
   apt-get install ack-grep
-else if [ $(uname) = "Darwin" ]; then
+elif [ $(uname) = "Darwin" ]; then
   echo "~ OS X specific."
   # brew cask install atom
   # brew cask install dropbox
@@ -44,7 +44,7 @@ else if [ $(uname) = "Darwin" ]; then
 fi
 
 echo "~ General."
-gem install bundler pry # Which Ruby? Install Ruby on OS X and switch to it.
+# gem install bundler pry # Which Ruby? Install Ruby on OS X and switch to it. Linux doesn't have any to start with.
 dotfiles config --local status.showUntrackedFiles no
 
 # dotfiles config alias.list '!git --git-dir=$HOME/Dropbox/Projects/dotfiles --work-tree=$HOME ls-tree --full-tree --name-only -r HEAD| sed "s/^/~\//"'
@@ -111,7 +111,7 @@ dotfiles config --local status.showUntrackedFiles no
 # # The -p argument is so it doesn't fail if it already exists.
 # mkdir -p ~/.ssh
 # chmod 700 ~/.ssh
-# 
+#
 # ensure_exists ~/.ssh/id_rsa $PRIVATE_KEY 600
 # ensure_exists ~/.ssh/id_rsa.pub $PUBLIC_KEY 644
 #
