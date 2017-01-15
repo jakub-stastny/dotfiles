@@ -2,24 +2,7 @@
 
 # This script should have ~/.zshenv loaded.
 
-if [ $(uname) = "Linux" ]; then
-  echo "~ Linux specific."
-
-  # System Ruby is good enough.
-  # Web apps use dockerised Ruby.
-  apt-get -y install ack-grep ruby
-
-  # Set shell to ZSH.
-  chsh -s $(which zsh)
-
-  # Install Vim plugins.
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  vim +PluginInstall +qall
-
-  dotfiles config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-  dotfiles fetch
-  dotfiles branch --set-upstream-to=origin/master master
-elif [ $(uname) = "Darwin" ]; then
+if [ $(uname) = "Darwin" ]; then
   echo "~ OS X specific."
   # brew cask install atom
   # brew cask install dropbox
@@ -59,3 +42,10 @@ dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn'
 dotfiles install-hooks
 
 gem install bundler pry
+
+# Install Vim plugins.
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
+# Set shell to ZSH.
+chsh -s $(which zsh)
