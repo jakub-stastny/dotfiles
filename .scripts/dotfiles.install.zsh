@@ -5,6 +5,8 @@
 if [ $(uname) = "Linux" ]; then
   echo "~ Linux specific."
 
+  apt-get -y install ack-grep
+
   # Set shell to ZSH.
   chsh -s $(which zsh)
 
@@ -12,7 +14,9 @@ if [ $(uname) = "Linux" ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   vim +PluginInstall +qall
 
-  apt-get -y install ack-grep
+  dotfiles config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+  dotfiles fetch
+  dotfiles branch --set-upstream-to=origin/master master
 elif [ $(uname) = "Darwin" ]; then
   echo "~ OS X specific."
   # brew cask install atom
