@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>botanicus.reenabler</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>launchctl</string>
+      <string>load</string>
+      <string>/Users/botanicus/Library/LaunchAgents/botanicus.wifi.plist</string>
+    </array>
+
+    <!-- Every hour re-enable WiFi disabler. -->
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <!-- I don't have permissions to write into /var/log. -->
+    <key>StandardOutPath</key>
+    <string>/tmp/botanicus.reenabler.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/botanicus.reenabler.stderr</string>
+  </dict>
+</plist>
