@@ -5,3 +5,6 @@ source ~/.zsh/$(uname).prompt.zsh
 source ~/.zsh/completion.zsh
 source ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
+
+# zmv -n '(*)unplug.it*' '$1botanicus.me$2'
+autoload -U zmv

@@ -115,3 +115,10 @@ snippet .r "reduce" i
 	$2.merge($3.to_sym => $4)
 end
 endsnippet
+
+# TODO: move into ruby_gemfile.snippets
+snippet gemfile "Gemfile template" b
+source 'https://rubygems.org'
+
+gem '$1'$0
+endsnippet
