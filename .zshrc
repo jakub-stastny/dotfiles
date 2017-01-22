@@ -8,3 +8,6 @@ test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
 
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv
+
+# added by travis gem
+test -f ~/.travis/travis.sh && source ~/.travis/travis.sh

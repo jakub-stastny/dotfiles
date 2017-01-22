@@ -10,7 +10,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+
+" UltiSnips
 source ~/.vim/ultisnips.vim
+
+" Nginx
+Plugin 'vim-scripts/nginx.vim'
 
 " NERDTree
 Plugin 'scrooloose/nerdtree'
