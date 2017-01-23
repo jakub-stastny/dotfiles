@@ -21,8 +21,6 @@ zshaddhistory() {
   if (( ${+HISTORY_BLACK_LIST[$index]} )); then
     echo "~ Not adding to history."
     return 1;
-  else
-    echo "~ Adding."
   fi
 }
 
