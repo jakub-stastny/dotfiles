@@ -44,10 +44,26 @@
     'prefix': 'r'
     'body': "require '$1'"
 
-  'Kernel#require_relative':
-    'prefix': 'rr'
-    'body': "require_relative '$1'"
-
   'Kernel#puts':
     'prefix': 'p'
     'body': "puts '$1'"
+
+  'class ... end':
+    'prefix': 'c'
+    'body': "class $1\nend$0"
+
+  'module ... end':
+    'prefix': 'm'
+    'body': "module $1\nend$0"
+
+  'initialize':
+    'prefix': 'i'
+    'body': "def initialize$1\nend$0"
+
+  'def ... end':
+    'prefix': 'd'
+    'body': "def $1\nend$0"
+
+  '@':
+    'prefix': '@'
+    'body': '@$1 = $1$0'
