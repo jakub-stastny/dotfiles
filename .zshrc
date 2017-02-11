@@ -11,3 +11,9 @@ autoload -U zmv
 
 # added by travis gem
 test -f ~/.travis/travis.sh && source ~/.travis/travis.sh
+
+# HACK: This is set in .zshenv, but it doesn't work. Investigate.
+chruby 2.4.0
+
+# Show the weekly report if it's Sunday.
+test $(date +%w) -eq 7 && week
