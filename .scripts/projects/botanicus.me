@@ -1,0 +1,20 @@
+#!/usr/bin/env osascript
+
+tell application "System Events" to keystroke "t" using command down
+
+tell application "iTerm2"
+  tell current window
+    tell current session
+      -- Left pane (full height).
+      write text "cd botanicus.me"
+      write text "rake dev:botanicus.me"
+
+      -- Right top pane.
+      tell application "System Events" to keystroke "d" using command down
+      write text "rake dev:api.botanicus.me"
+
+      tell application "System Events" to keystroke "D" using command down -- Left down.
+      write text "bundle exec guard"
+    end tell
+  end tell
+end tell
