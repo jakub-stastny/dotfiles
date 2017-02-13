@@ -9,3 +9,6 @@ zstyle :compinstall filename ~/.zshrc
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Travis completion.
+test -f ~/.travis/travis.sh && source ~/.travis/travis.sh
