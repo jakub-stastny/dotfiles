@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# Today:
+# - TopTal. #online #work 15
+# - Some cleanup.
+# - Write a blog post. #online 90
+# - Plan tomorrow.
+
+TASK_LIST_PATH = File.expand_path('~/Dropbox/WIP/tasks.todo')
+
+tasks = File.readlines(TASK_LIST_PATH)[1..-1].map { |line| line[2..-2] }
+
+case ARGV.shift
+when 'next'
+  tasks.shift
+
+  File.open(TASK_LIST_PATH, 'w') do |file|
+    file.puts("Today:")
+    file.puts(tasks.map { |task| "- #{task}" })
+  end
+
+  abort "No more tasks." if tasks.empty?
+  puts %x{echo pomodoro "#{tasks.first}"}
+when 'more'
+  puts %x{echo pomodoro "#{tasks.first}"}
+when 'today'
+  unless tasks.empty?
+    puts tasks.map { |task| "- #{task}" }
+  else
+    puts "All done!"
+  end
+else
+  abort "Usage: #{$0} [next|more]"
+end
