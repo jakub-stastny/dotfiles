@@ -23,3 +23,5 @@ TODO
 - Launchd script to run ~/.scripts/system-update.
 - Review https://github.com/mathiasbynens/dotfiles/blob/master/.macos (no sleep mode, maybe I don't need Caffeine). sudo systemsetup -setcomputersleep Off > /dev/null
 - https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.8ilwpjaj5
+ 2248  chflags hidden ~/Dropbox/1Password
+ 2249  chflags hidden ~/Dropbox/Apps
