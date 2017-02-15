@@ -221,7 +221,7 @@
 #
 # Example:    Theme = laras_theme
 #
-#Theme =
+Theme = nightly_theme
 
 # The theme used when running on an xterm.
 #
@@ -670,13 +670,14 @@
 #
 # Example:    OnSongChange = "/home/jack/.moc/myscript %a %r"
 #
-#OnSongChange =
+OnSongChange = "/Users/botanicus/.moc/on_song_change.sh %a %r %t"
+
 
 # If RepeatSongChange is 'yes' then MOC will execute the command every time
 # a song starts playing regardless of whether or not it is just repeating.
 # Otherwise the command will only be executed when a different song is
 # started.
-#RepeatSongChange = no
+RepeatSongChange = yes
 
 # Run the OnStop command (full path, no arguments) when MOC changes state
 # to stopped (i.e., when user stopped playing or changes a song).
