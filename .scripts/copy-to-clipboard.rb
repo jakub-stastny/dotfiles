@@ -51,3 +51,5 @@ TopTal JavaScript: >
   Best regards,
 
   James
+
+Phone number: +420 606 319 641
