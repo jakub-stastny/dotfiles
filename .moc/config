@@ -670,7 +670,7 @@ Theme = nightly_theme
 #
 # Example:    OnSongChange = "/home/jack/.moc/myscript %a %r"
 #
-OnSongChange = "/Users/botanicus/.moc/on_song_change.sh %a %r %t"
+OnSongChange = "/Users/botanicus/.moc/on_song_change.rb %a %r %t %f %d"
 
 
 # If RepeatSongChange is 'yes' then MOC will execute the command every time
