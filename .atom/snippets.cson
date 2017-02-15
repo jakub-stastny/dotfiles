@@ -67,3 +67,27 @@
   '@':
     'prefix': '@'
     'body': '@$1 = $1$0'
+
+  'attr_reader':
+    'prefix': 'ar'
+    'body': 'attr_reader '
+
+  'attr_accessor':
+    'prefix': 'arw'
+    'body': 'attr_accessor '
+
+  'Gemfile template':
+    'prefix': 'gemfile'
+    'body': "source 'https://rubygems.org/'\n\n"
+
+  'rSpec describe block':
+    'prefix': 'de'
+    'body': "describe $1 do\n  $2\nend"
+
+  'rSpec it block':
+    'prefix': 'it'
+    'body': "it $1 do\n  $2\nend"
+
+  'rSpec described_class':
+    'prefix': 'dc'
+    'body': 'described_class'
