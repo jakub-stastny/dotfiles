@@ -51,7 +51,8 @@ rule(:sunday, -> { today.sunday? }) do |tasks|
   tasks.push(*morning_ritual_tasks)
   tasks << Pomodoro::Task.new('Reflect on the week.', 90)
   tasks << Pomodoro::Task.new('Journaling.', 90)
-  # laundry, moleskine cleanup.
+  tasks << Pomodoro::Task.new('Laundry.')
+  tasks << Pomodoro::Task.new('Go through my moleskine and other papers.')
   tasks.push(*evening_tasks)
 end
 
