@@ -1,22 +1,26 @@
-require_relative './routines.rb'
-require_relative './projects.rb'
+require 'routines'
+require 'projects'
 
-rule(:weekday, -> { ! today.saturday? || today.sunday? }) do |tasks|
-  # Time frames:
-  #   MR 9:20 – 10:20
-  #   work 10:20 – 12:20
-  #   lunch 12:20 – 14:00,
-  #   computer 14:00 – 16:00
-  #   offline 19:20 onwards
-  tasks << *morning_ritual_tasks
+# Time schedule:
+#   MR 8:20 – 9:50. Work 10:00 – 12:00.
+#   Lunch & siesta 12:00 – 13:40.
+#   Personal projects 14:00 – 16:00.
+#   Offline from 19:20 onwards.
+rule(:weekday, -> { today.weekday? }) do |tasks|
+  tasks.push(*morning_ritual_tasks)
   tasks << Pomodoro::Task.new('TopTal.', 20, [:online, :work])
-  tasks << Pomodoro::Task.new(project_of_the_week, 20, [:project_of_the_week, :online])
-  tasks << *evening_tasks
+  tasks << work_tasks[rand(work_tasks.length)]
+  tasks.push(*lunch_break_tasks)
+  tasks << Pomodoro::Task.new(project_of_the_week, 90, [:project_of_the_week, :online])
+  tasks << cleanup_tasks[rand(cleanup_tasks.length)]
+  tasks.push(*evening_tasks)
 end
 
 rule(:blog_post, -> { today.tuesday? }) do |tasks|
-  tasks.delete_if { |task| task.tags.include?(:project_of_the_week) }
-  tasks.unshift(Pomodoro::Task.new('Write a blog post.', 90, [:online]))
+  project_of_the_week = tasks.find { |task| task.tags.include?(:project_of_the_week) }
+  position = tasks.index(project_of_the_week)
+  tasks.delete(project_of_the_week)
+  tasks.insert(position, Pomodoro::Task.new('Write a blog post.', 90, [:online]))
 end
 
 rule(:swimming, -> { today.wednesday? }) do |tasks|
@@ -24,41 +28,49 @@ rule(:swimming, -> { today.wednesday? }) do |tasks|
   tasks.unshift(Pomodoro::Task.new('Swimming.', 90, [:morning_ritual]))
 end
 
-# Some physical shit, jogging, exercise, posture.
 rule(:saturday, -> { today.saturday? }) do |tasks|
-  tasks << *morning_ritual_tasks
-  tasks << Pomodoro::Task.new('Wing chun.', 90)
+  tasks.push(*morning_ritual_tasks)
+
+  # Replace dancing by wing chun.
+  dancing = tasks.find { |task| task.tags.include?(:dancing) }
+  position = tasks.index(dancing)
+  tasks.delete(dancing)
+  tasks.insert(position, Pomodoro::Task.new('Wing chun.', 90, [:morning_ritual]))
+
+  tasks << Pomodoro::Task.new(project_of_the_week, 90, [:project_of_the_week, :online])
+  tasks.push(*lunch_break_tasks)
   tasks << Pomodoro::Task.new('Pilates or yoga.', 90)
-  tasks << *evening_tasks
+
+  tasks.push(*evening_tasks)
 end
 
 # No set time frame.
 rule(:sunday, -> { today.sunday? }) do |tasks|
   switch_project_of_the_week
 
-  tasks << *morning_ritual_tasks
+  tasks.push(*morning_ritual_tasks)
   tasks << Pomodoro::Task.new('Reflect on the week.', 90)
   tasks << Pomodoro::Task.new('Journaling.', 90)
   # laundry, moleskine cleanup.
-  tasks << *evening_tasks
+  tasks.push(*evening_tasks)
 end
 
 rule(:first_day_of_a_month, -> { today.day == 1 }) do |tasks|
+  # TODO: Proper position.
   tasks << Pomodoro::Task.new('Review SwingPlanit and BluesCal.com.', 20)
 end
 
-rule(:last_day_of_a_month, -> { last_work_day_of_a_month == Date.today }) do |tasks|
+rule(:last_day_of_a_month, -> { last_work_day_of_a_month == today }) do |tasks|
+  # TODO: Proper position.
   tasks << Pomodoro::Task.new('Buy things from the wish list.', 20, [:online])
 end
 
-rule(:pick_random_cleanup_task, -> { true }) do |tasks|
-  tasks << cleanup_tasks[rand(cleanup_tasks.length)]
-end
-
-rule(:communications, -> { today.monday? or today.friday? }) do |tasks|
+rule(:communications, -> { today.monday? || today.friday? }) do |tasks|
+  cleanup = tasks.find { |task| task.tags.include?(:cleanup) }
+  position = tasks.index(cleanup)
   if today.monday?
-    tasks << Pomodoro::Task.new('Gmail, messenger', 20, [:online])
+    tasks.insert(position, Pomodoro::Task.new('Gmail, messenger', 20, [:online]))
   else
-    tasks << Pomodoro::Task.new('Gmail inbox 0, messenger, Skype', 20, [:online])
+    tasks.insert(position, Pomodoro::Task.new('Gmail inbox 0, messenger, Skype', 20, [:online]))
   end
 end

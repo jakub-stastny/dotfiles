@@ -1,3 +1,4 @@
+# Career and sport-related activities are done on daily/weekly basis.
 projects_dir = "#{ENV['HOME']}/Dropbox/Projects"
 
 project('Spirituality')
