@@ -76,6 +76,14 @@
     'prefix': 'arw'
     'body': 'attr_accessor '
 
+  'Array.new':
+    'prefix': 'a'
+    'body': 'Array.new'
+
+  'Hash.new':
+    'prefix': 'h'
+    'body': 'Hash.new'
+
   'Gemfile template':
     'prefix': 'gemfile'
     'body': "source 'https://rubygems.org/'\n\n"
