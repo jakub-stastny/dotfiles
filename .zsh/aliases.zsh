@@ -34,7 +34,7 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 
-alias ghist="cat $HISTFILE | egrep"
+alias ghist="cat ~/.history | egrep"
 
 alias GET="curl -X GET"
 alias POST="curl -X POST"
