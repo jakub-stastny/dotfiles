@@ -1,3 +1,3 @@
 #!/usr/local/bin/zsh
 
-pomodoro --bitbar
+log-time --bitbar

@@ -132,7 +132,8 @@ def update_statuses(repos):
     currently_building = 0
     canceled = 0
 
-    output.append(u'{} | color=green'.format(SYMBOLS['passed']))
+    # output.append(u'{} | color=green'.format(SYMBOLS['passed']))
+    output.append('Travis CI status')
     output.append('---')
 
     for repo in repos:
@@ -161,14 +162,14 @@ def update_statuses(repos):
                 elif build['state'] == "canceled":
                     canceled += 1
 
-    if fail_count > 0:
-        output[0] = u'{}{} | color=red'.format(SYMBOLS['failed'], fail_count)
-
-    if currently_building > 0:
-        output[0] = u'{}{} | color=yellow'.format(SYMBOLS['started'], currently_building)        
-
-    if canceled > 0:
-        output[0] = u'{}{} | color=gray'.format(SYMBOLS['canceled'], canceled)
+    # if fail_count > 0:
+    #     output[0] = u'{}{} | color=red'.format(SYMBOLS['failed'], fail_count)
+    #
+    # if currently_building > 0:
+    #     output[0] = u'{}{} | color=yellow'.format(SYMBOLS['started'], currently_building)
+    #
+    # if canceled > 0:
+    #     output[0] = u'{}{} | color=gray'.format(SYMBOLS['canceled'], canceled)
 
     for line in output:
         print line.encode('utf-8')

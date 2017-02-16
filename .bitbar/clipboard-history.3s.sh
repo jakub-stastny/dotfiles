@@ -95,5 +95,5 @@ if [[ -e "$tmp_dir/item-1.pb" ]]; then
 
   echo "---"
 
-  "/Users/botanicus/Dropbox/BitBar plugins/submenus/copy-to-clipboard.rb"
+  "/Users/botanicus/.bitbar/submenus/copy-to-clipboard.rb"
 fi

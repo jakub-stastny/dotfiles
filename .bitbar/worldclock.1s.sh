@@ -12,8 +12,15 @@
 # <bitbar.image>https://cloud.githubusercontent.com/assets/6187908/12207887/464ff8b2-b617-11e5-9d61-787eed228552.png</bitbar.image>
 
 ZONES="Europe/Prague Europe/London America/New_York America/Los_Angeles"
-echo "T"
-#date -u +'%H:%M:%S UTC'
+
+ruby -e '
+zone = Time.now.strftime("%z")
+zone.sub!(/^\+/, "")
+zone.sub!(/0(\d+)/, "\\1")
+zone.sub!(/(\d+)00/, "\\1")
+puts "#{Time.now.strftime("%Z")} #{zone}"
+'
+
 echo '---'
 for zone in $ZONES; do
   echo "$(TZ=$zone date +'%H:%M:%S %z') $zone"
