@@ -35,7 +35,7 @@ rule(:saturday, -> { today.saturday? }) do |tasks|
   dancing = tasks.find { |task| task.tags.include?(:dancing) }
   position = tasks.index(dancing)
   tasks.delete(dancing)
-  tasks.insert(position, Pomodoro::Task.new('Wing chun.', 90, [:morning_ritual]))
+  tasks.insert(position || 0, Pomodoro::Task.new('Wing chun.', 90, [:morning_ritual]))
 
   tasks << Pomodoro::Task.new(project_of_the_week, 90, [:project_of_the_week, :online])
   tasks.push(*lunch_break_tasks)
