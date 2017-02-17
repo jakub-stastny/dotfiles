@@ -36,11 +36,24 @@ def evening_tasks
   end
 end
 
+# 1. Related to my IT business.
+#   a) Applying for work on and off TopTal.
+#   b) Building my online profile (blog, TopTal, Twitter).
+#
+# 2. Something else.
+#   a) Writing about a topic, such as dancing, and then selling infoproducts (ebooks, course ...).
+#
+# Coincidentally both mean writing blog.
 def work_tasks
-  Array.new.tap do |tasks|
-    tasks << Pomodoro::Task.new('Work on my online presence.', 90, [:online, :work])
-    tasks << Pomodoro::Task.new('Learn something.', 90, [:online, :work])
-  end
+  topics = [
+    'Work on my online presence (TopTal profile, Twitter etc).',
+    'Write a blog post about IT or productivity.',
+    'Work on my blog (UI, UX).',
+    'Work on my OSS projects (infrastructure, tests, documentation, blog post).',
+    'Brainstorm what\'s the fastest way to the cash.'
+  ]
+
+  [Pomodoro::Task.new(topics[today.wday - 1], 90, [:online, :work])]
 end
 
 def cleanup_tasks

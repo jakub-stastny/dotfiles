@@ -16,7 +16,7 @@ end
 project('Spanish')
 project('English')
 
-project('Blues')
+# Disabled: blues, general dancing (spins etc).
 project('Tap')
 project('Tango')
 
