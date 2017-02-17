@@ -1,0 +1,9 @@
+#!/bin/sh
+
+apm upgrade
+brew update && brew upgrade && brew cleanup
+gem update && gem cleanup
+vim -c VundleUpdate -c quitall
+sudo softwareupdate -ia
+ruby-install # Prints current versions.
+ruby-install ruby --no-reinstall # I'm not sure whether this works for upgrading version, but it might.
