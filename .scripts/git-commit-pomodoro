@@ -1,4 +1,0 @@
-#!/bin/sh
-
-message=$(log-time --commit-message)
-git commit -a -m "$message"
