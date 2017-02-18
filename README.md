@@ -20,6 +20,7 @@ TODO
 # TODO
 
 - Push dotfiles every night.
+- Git add completion for git-custom scripts.
 - At the end of every month create %Y-%m folder in Camera Uploads and move all the pics in it.
 - Can I see which dotfiles are not committed? From .scripts .vim etc.
 - OS X installation.
