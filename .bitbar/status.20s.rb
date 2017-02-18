@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# Show nothing if disconnected.
+exit if %x{networksetup -getairportpower en0}.match(/Off/)
+
 Dir.chdir('/Users/botanicus/.bitbar')
 
 output = Dir.glob('submenus/status.*').map do |script|
