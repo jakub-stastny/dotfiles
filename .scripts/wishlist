@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+WISHLIST_PATH = File.expand_path('~/.config/wishlist.yml')
+WISHLIST = YAML.load_file(WISHLIST_PATH) rescue []
+
+case ARGV.shift
+when 'add', '+'
+  WISHLIST << ARGV.join(' ')
+  File.open(WISHLIST_PATH, 'w') do |file|
+    file.puts(WISHLIST.to_yaml)
+  end
+when 'clear'
+  File.unlink(WISHLIST_PATH) rescue nil
+when 'edit'
+  editor = ARGV.shift || ENV['EDITOR']
+  exec "#{editor} #{WISHLIST_PATH}"
+when nil
+  puts WISHLIST
+when '-h', '--help'
+  puts DATA.read
+end
+
+__END__
+Usage:
+
+  Add an item to the list:
+    wishlist add TheTheBar: buy lapel flowers.
+
+  Show all items in the list:
+    wishlist
+
+  Clear the list:
+    wishlist clear
+
+  Edit the list:
+    wishlist edit
+    wishlist edit vim
