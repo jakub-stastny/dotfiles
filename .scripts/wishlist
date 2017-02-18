@@ -3,7 +3,7 @@
 require 'yaml'
 
 WISHLIST_PATH = File.expand_path('~/.config/wishlist.yml')
-WISHLIST = YAML.load_file(WISHLIST_PATH) rescue []
+WISHLIST = YAML.load_file(WISHLIST_PATH) || [] rescue []
 
 case ARGV.shift
 when 'add', '+'
