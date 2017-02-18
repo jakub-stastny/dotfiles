@@ -5,8 +5,7 @@ URLs = ['http://botanicus.me', 'http://www.rubyinside.com/nethttp-cheat-sheet-29
 require 'uri'
 require 'net/http'
 
-puts "Website status"
-puts "---"
+puts 'Website status | color=blue'
 URLs.each do |url|
   begin
     uri = URI.parse(url)

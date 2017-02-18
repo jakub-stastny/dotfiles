@@ -133,8 +133,7 @@ def update_statuses(repos):
     canceled = 0
 
     # output.append(u'{} | color=green'.format(SYMBOLS['passed']))
-    output.append('Travis CI status')
-    output.append('---')
+    output.append('Travis CI status | color=blue')
 
     for repo in repos:
         if 'branches' in repo and len(repo['branches']):
