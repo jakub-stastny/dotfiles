@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>botanicus.manage_camera_uploads</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/zsh</string>
+      <string>-c</string>
+      <string>launchd.manage_camera_uploads</string>
+    </array>
+
+    <!-- Run every first day of a month. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+      <key>Day</key>
+    	<integer>1</integer>
+    	<key>Hour</key>
+    	<integer>18</integer>
+    	<key>Minute</key>
+    	<integer>20</integer>
+    </dict>
+
+    <!-- I don't have permissions to write into /var/log. -->
+    <key>StandardOutPath</key>
+    <string>/tmp/botanicus.manage_camera_uploads.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/botanicus.manage_camera_uploads.stderr</string>
+  </dict>
+</plist>
