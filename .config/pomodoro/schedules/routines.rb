@@ -31,7 +31,7 @@ def evening_tasks
     tasks << Pomodoro::Task.new('Dinner & read Pocket articles.', 50)
     tasks << Pomodoro::Task.new('Physical clean-up.', 20)
     tasks << Pomodoro::Task.new('Headspace.', 20, [:meditation])
-    tasks << Pomodoro::Task.new('Plan tomorrow.', 20)
+    tasks << Pomodoro::Task.new('Plan tomorrow & punch-off.', 20)
     tasks << Pomodoro::Task.new('Read a book.', 90, [:evening])
   end
 end
