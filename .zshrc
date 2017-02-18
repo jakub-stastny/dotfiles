@@ -17,4 +17,4 @@ autoload -U zmv
 # Show the weekly report if it's Sunday.
 test $(date +%w) -eq 7 && week
 
-echo; capabilities; echo
+echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; echo #"ZSH functions: ${(ok)functions}"; echo
