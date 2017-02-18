@@ -28,3 +28,5 @@ for gitdir in $(find ~/Dropbox/Projects -name .git -not -path "*/On Hold/*"); do
 
   echo
 done
+
+git --git-dir=/Users/botanicus/dotfiles.git push
