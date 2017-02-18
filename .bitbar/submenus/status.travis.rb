@@ -12,7 +12,7 @@ begin
   active_repos = client.user.repositories.select { |repo| repo.active? }
   title 'Travis'
   active_repos.each do |repo|
-    title = "#{SYMBOLS[repo.color.to_sym]} #{repo.login}"
+    title = "#{SYMBOLS[repo.color.to_sym]} #{client.user.login}"
     finished_at = format_time(repo.last_build_finished_at.localtime)
     stats = "#{repo.last_build_duration}s, #{finished_at}"
     href  = "https://travis-ci.org/#{client.user.name}/#{repo.name}"
