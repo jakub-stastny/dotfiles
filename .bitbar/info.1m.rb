@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/Users/botanicus/.rubies/ruby-2.4.0/bin/ruby
 
 Dir.chdir('/Users/botanicus/.bitbar')
 
