@@ -8,7 +8,7 @@ has_untracked_files() {
   git status --porcelain | grep "^?? ";
 }
 
-rm -f ~/Desktop/Uncommitted\ changes.txt
+rm -f /tmp/Uncommitted\ changes.log
 
 for gitdir in $(find ~/Dropbox/Projects -name .git -not -path "*/On Hold/*"); do
   dir=$(dirname $gitdir)
@@ -22,7 +22,7 @@ for gitdir in $(find ~/Dropbox/Projects -name .git -not -path "*/On Hold/*"); do
   git gc
 
   if has_untracked_files; then
-    echo $dir | tee -a ~/Desktop/Uncommitted\ changes.txt
+    echo $dir | tee -a /tmp/Uncommitted\ changes.log
     echo "! $dir has untracked files."
   fi
 
