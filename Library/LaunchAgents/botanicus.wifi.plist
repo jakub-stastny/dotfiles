@@ -15,9 +15,10 @@
     -->
     <key>ProgramArguments</key>
     <array>
-      <string>/usr/local/bin/zsh</string>
+      <!-- This way we get access to our correct $PATH which we need of internet-usage-limiter.is_online. -->
+      <string>zsh</string>
       <string>-c</string>
-      <string>internet-usage-limiter.turn_off_wifi_if_necessary.sh</string>
+      <string>~/.scripts/launchd/internet-usage-limiter.turn_off_wifi_if_necessary</string>
     </array>
 
     <key>StartInterval</key>

@@ -7,9 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>/usr/local/bin/zsh</string>
-      <string>-c</string>
-      <string>launchd.manage_camera_uploads</string>
+      <string>/Users/botanicus/.scripts/launchd/manage_camera_uploads</string>
     </array>
 
     <!-- Run every first day of a month. -->

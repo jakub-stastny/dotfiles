@@ -7,9 +7,7 @@
 
     <key>ProgramArguments</key>
     <array>
-      <string>/usr/local/bin/zsh</string>
-      <string>-c</string>
-      <string>launchd.commit_and_push_projects.sh</string>
+      <string>/Users/botanicus/.scripts/launchd/commit_and_push_projects</string>
     </array>
 
     <!-- Run at 18:20 every day. -->

@@ -2,7 +2,7 @@
 
 require 'json'
 
-CMD_PATH = '/Users/botanicus/.scripts/copy-to-clipboard.rb'
+CMD_PATH = '/Users/botanicus/.scripts/copy-to-clipboard'
 
 def command(identifier)
   %Q{bash=#{CMD_PATH} param1=#{identifier} terminal=false}
