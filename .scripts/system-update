@@ -5,7 +5,7 @@ sudo softwareupdate -i -a
 brew update
 brew upgrade
 
-if which npm;
+if which npm; then
   npm install npm -g
   npm update -g
 fi
