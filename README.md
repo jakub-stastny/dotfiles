@@ -19,13 +19,8 @@ TODO
 
 # TODO
 
-- Push dotfiles every night.
 - Git add completion for git-custom scripts.
-- At the end of every month create %Y-%m folder in Camera Uploads and move all the pics in it.
-- Can I see which dotfiles are not committed? From .scripts .vim etc.
-- OS X installation.
-- Launchd script to run ~/.scripts/system-update.
+- OS X installation. chflags hidden ~/Dropbox/1Password && chflags hidden ~/Dropbox/Apps
 - Review https://github.com/mathiasbynens/dotfiles/blob/master/.macos (no sleep mode, maybe I don't need Caffeine). sudo systemsetup -setcomputersleep Off > /dev/null
 - https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.8ilwpjaj5
- 2248  chflags hidden ~/Dropbox/1Password
- 2249  chflags hidden ~/Dropbox/Apps
+ 
