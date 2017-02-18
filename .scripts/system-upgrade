@@ -1,9 +1,18 @@
 #!/bin/sh
 
-apm upgrade
+sudo softwareupdate -i -a
+
 brew update && brew upgrade && brew cleanup
-gem update && gem cleanup
+
+if which npm; then
+  npm install npm -g
+  npm update -g
+fi
+
+apm upgrade
 vim -c VundleUpdate -c quitall
-sudo softwareupdate -ia
+
+gem update --system && gem update && gem cleanup
+
 ruby-install # Prints current versions.
 ruby-install ruby --no-reinstall # I'm not sure whether this works for upgrading version, but it might.
