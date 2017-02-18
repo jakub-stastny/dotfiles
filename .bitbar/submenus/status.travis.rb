@@ -5,12 +5,13 @@
 require 'travis'
 require 'yaml'
 
+title 'Travis'
+
 begin
   travis_config = YAML.load_file(File.expand_path('~/.travis/config.yml'))
   endpoints = travis_config['endpoints']
   client = Travis::Client.new(access_token: endpoints[endpoints.keys.first]['access_token'])
   active_repos = client.user.repositories.select { |repo| repo.active? }
-  title 'Travis'
   active_repos.each do |repo|
     title = "#{SYMBOLS[repo.color.to_sym]} #{client.user.login}"
     finished_at = format_time(repo.last_build_finished_at.localtime)

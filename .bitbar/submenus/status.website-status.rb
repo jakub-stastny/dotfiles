@@ -3,11 +3,12 @@ URLs = ['http://botanicus.me', 'http://www.rubyinside.com/nethttp-cheat-sheet-29
 require 'uri'
 require 'net/http'
 
+title 'Website status'
+
 URLs.each do |url|
   begin
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)
-    title 'Website status'
     if response.code.match(/20\d/)
       puts "✔︎ #{url} | color=green"
     else

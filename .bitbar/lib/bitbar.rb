@@ -17,16 +17,13 @@ end
 #   %x{networksetup -getairportpower en0}.match(/Off/)
 # end
 
-REDIRECTED_STDOUT = StringIO.new
 def capture_stdout(&block)
-  original_stdout = $stdout
-  $stdout = REDIRECTED_STDOUT
-
+  old_stdout = $stdout
+  $stdout = StringIO.new
   block.call
-
-  captured_stdout = $stdout.string
-  $stdout = original_stdout
-  return captured_stdout
+  $stdout.string
+ensure
+  $stdout = old_stdout
 end
 
 def submenu(captured_stdout)
