@@ -52,4 +52,6 @@ chsh -s $(which zsh)
 
 ln -s ~/.scripts/dotfiles.update.sh ~/dotfiles.git/hooks/post-merge
 
+chflags hidden ~/Dropbox/1Password && chflags hidden ~/Dropbox/Apps
+
 echo "! Use ssh-keygen -t rsa -b 4096 -C your@email.com to create a new SSH key and add it to https://github.com/settings/keys"
