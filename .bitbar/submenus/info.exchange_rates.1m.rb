@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 # TODO: Colours based on lows/highs.
-# TODO: Cache it since this doesn't change as fast as say the forecash.
 puts 'Exchange rates | color=blue'
 puts '1 USD = x EUR'
 puts '1 USD = x GBP'

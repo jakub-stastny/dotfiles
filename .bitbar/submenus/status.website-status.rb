@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 URLs = ['http://botanicus.me', 'http://www.rubyinside.com/nethttp-cheat-sheet-2940.html']
 
 require 'uri'
@@ -17,7 +15,5 @@ URLs.each do |url|
     end
   rescue Errno::ECONNREFUSED
     puts "✘ #{url} (server down) | color=red"
-  rescue SocketError
-    puts "Internet is down | color=grey"
   end
 end
