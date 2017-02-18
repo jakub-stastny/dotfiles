@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+git_aliases = %x{git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
+dotfiles_aliases = %x{git --git-dir=/Users/botanicus/dotfiles.git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
+
+custom_executables = ENV['PATH'].split(':').
+  select { |dir| dir.match(ENV['HOME']) && ! dir.match(/\bruby\b/) }.
+  map { |dir| Dir.glob("#{dir}/*") }.flatten.
+  select { |executable| File.executable?(executable) }.
+  map { |executable| File.basename(executable) }
+
+git_executables = custom_executables.select { |executable| executable.match(/^git-/) }
+
+puts "Git aliases: #{(git_aliases + git_executables).join(' ')}."
+puts "Dotfiles aliases: #{(dotfiles_aliases - git_aliases).join(' ')}"
+puts "Scripts: #{(custom_executables - git_executables).join(' ')}."

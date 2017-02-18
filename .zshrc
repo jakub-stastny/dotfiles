@@ -14,6 +14,7 @@ test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv
 
-# chruby 2.4.0
 # Show the weekly report if it's Sunday.
 test $(date +%w) -eq 7 && week
+
+echo; capabilities; echo
