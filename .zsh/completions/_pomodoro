@@ -1,0 +1,22 @@
+#compdef pomodoro
+_pomodoro() {
+  local -a commands
+  commands=(
+    'next:Start the next item.'
+    'next?:Display the next item.'
+    'today:Today stats.'
+    'punch-off:Punch the clock.'
+    'add:Add todo for later. If there is a local tasks.todo and the item starts with project name, it will be added there.'
+    'edit:Edit tasks.todo in provided editor or $EDITOR.'
+    'show-projects:Show all projects.'
+    'show-schedule:Show the schedule.'
+  )
+
+  if (( CURRENT == 2 )); then
+    _describe -t commands 'commands' commands
+  fi
+
+  return 0
+}
+
+_pomodoro

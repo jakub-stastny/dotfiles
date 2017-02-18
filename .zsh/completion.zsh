@@ -1,5 +1,7 @@
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html#Initialization
 
+fpath=($HOME/.zsh/completions $fpath)
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
