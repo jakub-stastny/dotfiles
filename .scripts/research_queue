@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+RESEARCH_QUEUE_PATH = File.expand_path('~/.config/research_queue.yml')
+RESEARCH_QUEUE = YAML.load_file(RESEARCH_QUEUE_PATH) || [] rescue []
+
+case ARGV.shift
+when 'add', '+'
+  RESEARCH_QUEUE << ARGV.join(' ')
+  File.open(RESEARCH_QUEUE_PATH, 'w') do |file|
+    file.puts(RESEARCH_QUEUE.to_yaml)
+  end
+when 'clear'
+  File.unlink(RESEARCH_QUEUE_PATH) rescue nil
+when 'edit'
+  editor = ARGV.shift || ENV['EDITOR']
+  exec "#{editor} #{RESEARCH_QUEUE_PATH}"
+when nil
+  puts RESEARCH_QUEUE
+when '-h', '--help'
+  puts DATA.read
+end
+
+__END__
+Usage:
+
+  Add an item to the list:
+    research_queue add 'How can I get a USD debit card (Payoneer)?'
+
+  Show all items in the list:
+    research_queue
+
+  Clear the list:
+    research_queue clear
+
+  Edit the list:
+    research_queue edit
+    research_queue edit vim
