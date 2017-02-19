@@ -1,11 +1,9 @@
-URLs = ['http://botanicus.me', 'http://www.rubyinside.com/nethttp-cheat-sheet-2940.html']
-
 require 'uri'
 require 'net/http'
 
-title 'Website status'
+title 'Website status', 'gray'
 
-URLs.each do |url|
+config.check_urls.each do |url|
   begin
     uri = URI.parse(url)
     response = Net::HTTP.get_response(uri)

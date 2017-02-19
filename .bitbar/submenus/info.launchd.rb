@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 logs = Dir.glob('/tmp/botanicus.*.stderr') + Dir.glob('/tmp/*.log')
 logs = logs.select do |path|
   (Time.now - (24 * 60 * 60)) < File.mtime(path)

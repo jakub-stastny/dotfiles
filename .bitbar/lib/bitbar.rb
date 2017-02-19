@@ -1,7 +1,16 @@
 Dir.chdir(File.expand_path('../..', __FILE__))
 
+PATHS = [
+  "#{ENV['HOME']}/.scripts",
+  "#{ENV['HOME']}/Dropbox/Projects/Software/pomodoro/bin",
+  "/usr/local/bin"
+]
+
+ENV['PATH'] = (PATHS + ENV['PATH'].split(':')).join(':')
+
 require 'stringio'
 require 'socket'
+require 'ostruct'
 
 SYMBOLS = {
   green: '✔︎',
@@ -9,8 +18,11 @@ SYMBOLS = {
   yellow: '⛬'
 }
 
-def title(text)
-  puts "#{text} | color=blue"
+class Skip < StandardError
+end
+
+def title(text, color = 'blue')
+  puts "#{text} | color=#{color}", '---'
 end
 
 # def disconnected?
@@ -20,6 +32,10 @@ def require_or_abort(gem_name)
   require gem_name
 rescue LoadError
   abort "Install the #{gem_name} gem for #{%x{which ruby}.chomp}. | color=red"
+end
+
+def config
+  @config ||= OpenStruct.new(YAML.load_file(File.expand_path('~/.config/bitbar.yml')))
 end
 
 def capture_stdout(&block)
@@ -40,10 +56,12 @@ def log_path(script)
 end
 
 def format_time(time)
-  if time.strftime('%d.%m') == Time.now.strftime('%d.%m')
+  if time.strftime('%d/%m') == Time.now.strftime('%d/%m')
     time.strftime('%H:%M')
+  elsif time.strftime('%d/%m') == (Time.now - 24 * 60 * 60).strftime('%d/%m')
+    time.strftime('yesterday at %H:%M')
   else
-    time.strftime('%d.%m %H:%M')
+    time.strftime('%d/%m %H:%M')
   end
 end
 

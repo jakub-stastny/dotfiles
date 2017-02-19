@@ -66,20 +66,19 @@ echo '📋'
 echo "---"
 
 # Print up to 36 characters of the current clipboard
-echo "Current"
-
 content="$(pbpaste | head -c 36)"
 if (( $(pbpaste | wc -c) > 36 )); then
   content="$content..."
 fi
-echo "${content//|/ }"
+
+echo "Current: ${content//|/ }"
 
 # Show history section if historical files exist
 if [[ -e "$tmp_dir/item-1.pb" ]]; then
 
   echo "---"
-
-  echo 'History (Click to copy)'
+  echo 'History (Click to copy) | color=green'
+  echo '---'
 
   # Print up to 36 characters of each historical item
   for i in {1..10}
@@ -94,6 +93,5 @@ if [[ -e "$tmp_dir/item-1.pb" ]]; then
   done
 
   echo "---"
-
-  "/Users/botanicus/.bitbar/submenus/copy-to-clipboard.rb"
+  "$(dirname $0)/submenus/copy-to-clipboard.rb"
 fi

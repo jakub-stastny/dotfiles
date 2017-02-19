@@ -5,5 +5,5 @@ load File.expand_path('../lib/bitbar.rb', __FILE__)
 puts 'i | color=blue', '---'
 
 Dir.glob('submenus/info.*').map do |script|
-  submenu(cache_command(script))
+  submenu(cache_command(script)) rescue Skip
 end
