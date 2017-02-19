@@ -1,11 +1,9 @@
 #!/Users/botanicus/.rubies/ruby-2.4.0/bin/ruby
 
-Dir.chdir('/Users/botanicus/.bitbar')
+load File.expand_path('../lib/bitbar.rb', __FILE__)
 
-puts 'i | color=blue'
+puts 'i | color=blue', '---'
 
-output = Dir.glob('submenus/info.*').map do |script|
-  ['---', %x{#{script}}].join("\n")
-end.join("\n")
-
-puts output
+Dir.glob('submenus/info.*').map do |script|
+  submenu(cache_command(script))
+end

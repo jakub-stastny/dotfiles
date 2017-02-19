@@ -1,10 +1,4 @@
-#!/usr/bin/env ruby
-
-begin
-  require 'tzinfo'
-rescue LoadError
-  abort "Install the tzinfo gem for #{%x{which ruby}.chomp}."
-end
+require_or_abort 'tzinfo'
 
 ZONES = %W{Europe/Prague Europe/London America/New_York America/Los_Angeles}
 

@@ -16,6 +16,11 @@ end
 # def disconnected?
 #   %x{networksetup -getairportpower en0}.match(/Off/)
 # end
+def require_or_abort(gem_name)
+  require gem_name
+rescue LoadError
+  abort "Install the #{gem_name} gem for #{%x{which ruby}.chomp}. | color=red"
+end
 
 def capture_stdout(&block)
   old_stdout = $stdout
