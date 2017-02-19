@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'koala'
+
+# Get it from https://developers.facebook.com/tools/explorer
+# You have to select API 2.3 and select read_mailbox.
+# In later versions this option has been removed.
+oauth_access_token = 'EAACEdEose0cBANDV66FOyokrYruz4UCry2ZBUkVzOAql2j4uvcrzR63JJedwxNOUuXOodePcXdZAyZAlNEpu9yXFN9XzfSBRm0NazldDxNPd9g7aqE9FFq5jpeb7uWQIe85U6XiZCdZCxDyMm8ZBa3LTZAXSGloTbLALg5u9zSnVcpsYrARSXB8gNpUjg2CzNkZD'
+graph = Koala::Facebook::API.new(oauth_access_token)
+
+begin
+  graph.get_connections('me', 'inbox').select do |thread|
+    next if thread['unread'] == 0
+    #updated_time = Date.parse(thread['updated_time'])
+    sender = thread['to']['data'][0]['name']
+    last_unread = thread['comments'].select do |comment|
+      created_time = Date.parse(comment['created_time'])
+      created_time > Date.today.prev_day.prev_day.prev_day
+    end[-5..-1]
+
+    puts "#{sender}: #{unread.map { |comment| comment['message'] }.join("\n")}"
+  end
+rescue Faraday::ConnectionFailed
+  exit 1
+end

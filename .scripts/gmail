@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+begin
+  require 'gmail'
+rescue LoadError
+  abort 'Please run (sudo) gem install gmail.'
+end
+
+begin
+  config = YAML.load_file(File.expand_path('~/.config/private.yml'))['gmail']
+rescue Errno::ENOENT
+  abort('Please create ~/.config/private.yml file with gmail key.')
+end
+
+username = config['username'] || abort('Add gmail.username into your ~/.config/private.yml file.')
+password = config['password'] || abort('Add gmail.username into your ~/.config/private.yml file.')
+
+# If this fails, go to https://myaccount.google.com/security?pli=1
+# and Allow less secure apps: ON
+Gmail.connect!(username, password) do |gmail|
+  if ARGV.include?('--confirmations-only')
+    gmail.inbox.emails(:unread).select do |email|
+      if "#{email.subject}\n#{email.body}".match(/confirm/i)
+        # TODO: Just the confirmation link.
+        puts "#{email.subject} | href=https://mail.google.com/mail/u/0/?shva=1#inbox/#{email.id}"
+      end
+    end
+
+    exit
+  end
+  # p gmail.inbox.count(:unread)
+
+  # .select do |email|
+  #   # email.subject, email.body
+  #   #require 'pry'; binding.pry
+  # end
+
+  newsletters = gmail.inbox.emails(:unread).select do |email|
+    "#{email.subject}\n#{email.body}".match(/unsubscribe/i)
+  end
+
+  direct_emails = gmail.inbox.emails(:unread) - newsletters
+
+  direct_emails.each do |email|
+    puts email.subject # TODO: Make them clickable (show content in TextEdit (offline) or Chrome).
+    require 'pry'; binding.pry
+  end
+
+  unless newsletters.empty?
+    puts "Newsletters (#{newsletters.length}) | color=blue"
+    newsletters.each do |email|
+      puts "--#{email.subject}"
+      unsubscribe_link = 'todo' ###
+      puts "--Unsubscribe | href=#{unsubscribe_link}"
+    end
+  end
+end
