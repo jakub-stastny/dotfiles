@@ -11,6 +11,7 @@ ENV['PATH'] = (PATHS + ENV['PATH'].split(':')).join(':')
 require 'stringio'
 require 'socket'
 require 'ostruct'
+require 'yaml'
 
 SYMBOLS = {
   green: '✔︎',
@@ -73,7 +74,7 @@ def cache_command(path)
     file.puts(captured_stdout)
   end
   puts captured_stdout
-rescue SocketError
+rescue Skip, SocketError
   if File.exist?(log_path)
     puts File.read(log_path).force_encoding('utf-8')
     puts "~ Cached version from #{format_time(File.mtime(log_path))}."

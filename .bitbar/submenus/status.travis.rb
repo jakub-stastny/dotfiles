@@ -19,6 +19,6 @@ begin
     href  = "https://travis-ci.org/#{client.user.login}/#{repo.name}"
     puts "#{title} [#{stats}] | color=#{repo.color} href=#{href}"
   end
-rescue Travis::Client::SSLError
+rescue Travis::Client::SSLError, SocketError
   raise Skip
 end

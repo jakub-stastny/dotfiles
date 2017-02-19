@@ -1,8 +1,6 @@
 require 'date'
 
-raise Skip if not config.currently_working
-
-title 'TopTal'
+# raise Skip if not config.currently_working
 
 start_of_the_engagement = Time.new(2017, 1, 1)
 
@@ -23,6 +21,8 @@ days_worked = range.select do |date|
   end
 end
 
-puts "Current cycle: #{start_of_the_current_cycle.strftime('%d/%m')} – #{end_of_the_current_cycle.strftime('%d/%m')}"
-puts "Days worked: #{days_worked.length} $#{days_worked.length * config.daily_rate}"
-puts "Days off: #{(range.to_a - days_worked.to_a).reject { |day| day.saturday? or day.sunday? }.map { |day| day.strftime('%A %d/%m') }.join(', ')}"
+days_off = (range.to_a - days_worked.to_a).reject { |day| day.saturday? or day.sunday? }
+
+title "TopTal (#{start_of_the_current_cycle.strftime('%d/%m')} – #{end_of_the_current_cycle.strftime('%d/%m')})"
+puts "Days worked: #{days_worked.length} $#{days_worked.length * config.daily_rate}. Days off: #{days_off.length}."
+puts "Days off: #{days_off.map { |day| day.strftime('%a %d/%m') }.join(', ')}"

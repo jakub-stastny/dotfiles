@@ -14,5 +14,7 @@ config.check_urls.each do |url|
     end
   rescue Errno::ECONNREFUSED
     puts "✘ #{url} (server down) | color=red"
+  rescue SocketError
+    raise Skip
   end
 end
