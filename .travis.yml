@@ -1,0 +1,7 @@
+# https://docs.travis-ci.com/user/languages/ruby
+language: ruby
+rvm:
+  - 2.4.0
+script:
+  - cd .bitbar
+  - bundle exec rspec
