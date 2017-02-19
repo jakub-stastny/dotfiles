@@ -40,6 +40,7 @@ rule(:saturday, -> { today.saturday? }) do |tasks|
   tasks << Pomodoro::Task.new(project_of_the_week, 90, [:project_of_the_week, :online])
   tasks.push(*lunch_break_tasks)
   tasks << Pomodoro::Task.new('Pilates or yoga.', 90)
+  tasks << Pomodoro::Task.new('$ system-upgrade')
 
   tasks.push(*evening_tasks)
 end
