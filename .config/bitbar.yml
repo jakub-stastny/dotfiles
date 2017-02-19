@@ -1,0 +1,8 @@
+---
+task_archive_path: ~/Dropbox/WIP/Tasks
+currently_working: yes
+daily_rate: 300 # 75 * 4
+fio_token: LPBtQThaQRlcXFIDrlyxc4EUIYDioJ4Itai2tBk7BRoQC5R7MxpPyZUW2x3yTuFv
+monthly_spendings: 2000 # USD
+check_urls:
+  - http://botanicus.me
