@@ -1,15 +1,19 @@
 require 'date'
 
-# raise Skip if not config.currently_working
-
-start_of_the_engagement = Time.new(2017, 1, 1)
-
-start_of_the_current_cycle = start_of_the_engagement
-until start_of_the_current_cycle > (Time.now - 14 * 24 * 60 * 60)
-  start_of_the_current_cycle += 14 * 24 * 60 * 60
+# START_OF_THE_ENGAGEMENT='' works with YAML.load, unlike with Date.parse.
+if ENV['START_OF_THE_ENGAGEMENT']
+  config.start_of_the_engagement = YAML.load(ENV['START_OF_THE_ENGAGEMENT'])
 end
 
-end_of_the_current_cycle = start_of_the_current_cycle + 14 * 24 * 60 * 60
+# Skip if not working.
+raise Skip unless config.start_of_the_engagement
+
+start_of_the_current_cycle = config.start_of_the_engagement
+until start_of_the_current_cycle > (Date.today - 14)
+  start_of_the_current_cycle += 14
+end
+
+end_of_the_current_cycle = start_of_the_current_cycle + 14
 range = (start_of_the_current_cycle.to_date..end_of_the_current_cycle.to_date)
 
 days_worked = range.select do |date|

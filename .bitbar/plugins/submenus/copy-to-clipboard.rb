@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-load File.expand_path('../../lib/bitbar.rb', __FILE__)
+load File.expand_path('../../../lib/bitbar.rb', __FILE__)
 
 require 'json'
 

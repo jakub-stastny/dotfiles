@@ -11,6 +11,7 @@ ENV['PATH'] = (PATHS + ENV['PATH'].split(':')).join(':')
 require 'stringio'
 require 'socket'
 require 'ostruct'
+require 'open3'
 require 'yaml'
 
 SYMBOLS = {
@@ -20,6 +21,8 @@ SYMBOLS = {
 }
 
 class Skip < StandardError
+end
+class CommandNotFound < StandardError
 end
 
 def title(text, color = 'blue')
@@ -31,12 +34,38 @@ end
 # end
 def require_or_abort(gem_name)
   require gem_name
-rescue LoadError
+rescue LoadError => error
   abort "Install the #{gem_name} gem for #{%x{which ruby}.chomp}. | color=red"
 end
 
 def config
-  @config ||= OpenStruct.new(YAML.load_file(File.expand_path('~/.config/bitbar.yml')))
+  @config ||= OpenStruct.new(YAML.load_file('config/bitbar.yml'))
+end
+
+def which(command)
+  ENV['PATH'].split(':').each do |path_dir|
+    exec_path = File.join(path_dir, command)
+    return exec_path if File.file?(exec_path) && File.executable?(exec_path)
+  end
+
+  return
+end
+
+def run_and_print_output_or_fail(command)
+  puts run(command)
+rescue CommandNotFound => error
+  abort "#{error.message} | color=red"
+end
+
+def run(command)
+  stdin, stdout, stderr, process = Open3.popen3(command)
+  if process.value.exitstatus == 127
+    raise CommandNotFound.new("Command not found: #{command}\n#{stderr.read}")
+  end
+
+  stdout.readlines.map(&:chomp)
+rescue Errno::ENOENT
+  raise CommandNotFound.new("Command not found: #{command}")
 end
 
 def capture_stdout(&block)
@@ -75,7 +104,7 @@ def cache_command(path)
   end
   puts captured_stdout
 rescue Skip, SocketError
-  if File.exist?(log_path)
+  if File.exist?(log_path) && ENV['ENV'] != 'test'
     puts File.read(log_path).force_encoding('utf-8')
     puts "~ Cached version from #{format_time(File.mtime(log_path))}."
   end

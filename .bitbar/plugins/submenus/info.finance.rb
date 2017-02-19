@@ -23,7 +23,8 @@ end
   puts 'CZK 121,177 | color=green'
   puts 'Total of USD $$$$ / EUR $$$$ / GBP $$$$.' # Convert all to USD.
   total = 9999 # USD
-  # puts "Runway: #{(total / config.monthly_spendings.to_f).round(2)} months."
+  # calculate monthly_spendings
+  # puts "Runway: #{(total / monthly_spendings.to_f).round(2)} months."
 # end
 
 # TODO: Colours based on lows/highs.

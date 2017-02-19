@@ -1,3 +1,5 @@
+ENV['ENV'] = 'test'
+
 require 'open3'
 
 class BitBarParser
@@ -8,9 +10,11 @@ class BitBarParser
   def parse(extra_env = Hash.new)
     initial_env = ENV.to_hash
     extra_env.each { |key, value| ENV[key] = value }
-    Open3.popen3(@command) do |stdin, stdout, stderr|
-      return BitBarParserPluginOutput.new(stdout.readlines.map(&:chomp), stderr.readlines.map(&:chomp))
-    end
+    stdin, stdout, stderr, waiter = Open3.popen3(@command)
+    BitBarParserPluginOutput.new(
+      stdout.readlines.map(&:chomp),
+      stderr.readlines.map(&:chomp),
+      waiter.value.exitstatus)
   ensure
     initial_env.each { |key, value| ENV[key] = value }
   end
@@ -21,10 +25,11 @@ class BitBarParser
 end
 
 class BitBarParserPluginOutput
-  attr_reader :stderr_lines
-  def initialize(stdout_lines, stderr_lines)
+  attr_reader :stderr_lines, :exitstatus
+  def initialize(stdout_lines, stderr_lines, exitstatus)
     @stdout_lines = stdout_lines.map { |line| line.split(/\s*\|\s*/)[0] }
     @stderr_lines = stderr_lines
+    @exitstatus = exitstatus
   end
 
   def title
