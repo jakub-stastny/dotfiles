@@ -28,7 +28,7 @@ end
 
 scheduler.every('2s') do
   if File.mtime('config/schedule.rb') > (Time.now - 3)
-    puts '~ Reloading.'
+    warn "~ Reloading.\n"
     scheduler.jobs.each(&:unschedule)
     load 'config/schedule.rb'
   end
