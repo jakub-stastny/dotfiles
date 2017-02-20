@@ -5,13 +5,12 @@ require 'open3'
 class BitBarParser
   def initialize(plugin)
     @command = Dir.glob("./plugins/#{plugin}").first
-    p [:pwd, Dir.pwd, Dir.glob('./plugins/*'), @command] ###
   end
 
   def parse(extra_env = Hash.new)
     initial_env = ENV.to_hash
     extra_env.each { |key, value| ENV[key] = value }
-    stdin, stdout, stderr, waiter = Open3.popen3(@command)
+    stdin, stdout, stderr, waiter = Open3.popen3("ruby #{@command}")
     BitBarParserPluginOutput.new(
       stdout.readlines.map(&:chomp),
       stderr.readlines.map(&:chomp),
