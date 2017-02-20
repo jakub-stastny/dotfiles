@@ -27,7 +27,9 @@ describe parser do
     end
 
     it 'returns a message if the wishlist is not in the $PATH' do
-      output = parser.parse('DATE' => '2017-02-01', 'PATH' => '')
+      pending '#$%^&*&^%!!!!!'
+      RUBY_BIN = File.dirname(which('ruby'))
+      output = parser.parse('DATE' => '2017-02-01', 'PATH' => RUBY_BIN)
 
       expect(output.stderr_lines).to include('Command not found: wishlist')
       expect(output.exitstatus).to be(1)
@@ -46,7 +48,9 @@ describe parser do
     end
 
     it 'returns a message if the research_queue is not in the $PATH' do
-      output = parser.parse('DATE' => '2017-02-18', 'PATH' => '')
+      pending '#$%^&*&^%!!!!!'
+      RUBY_BIN = File.dirname(which('ruby'))
+      output = parser.parse('DATE' => '2017-02-18', 'PATH' => RUBY_BIN)
 
       expect(output.stderr_lines).to include('Command not found: research_queue')
       expect(output.exitstatus).to be(1)

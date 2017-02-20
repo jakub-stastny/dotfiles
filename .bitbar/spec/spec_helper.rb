@@ -1,6 +1,7 @@
 ENV['ENV'] = 'test'
 
 require 'open3'
+require 'bitbar'
 
 class BitBarParser
   def initialize(plugin)
