@@ -11,19 +11,27 @@ def cache_command(command)
   _, stdout, stderr, process = Open3.popen3(command)
   cache_path = "/tmp/#{command}.yml"
   data = {stdout: stdout.readlines.map(&:chomp), stderr: stderr.readlines.map(&:chomp), exit_status: process.value.exitstatus} # Do not put it inside the File.open block, so mtime is accurate.
-  File.open(cache_path, 'w') do |file|
-    file.puts(data.to_yaml)
+
+  if process.value.exitstatus != 0 && YAML.load_file(cache_path)[:exit_status] == 0
+    warn "~ #{command} finished with status #{process.value.exitstatus}. Skipping since we have previous cache.\n"
+  else
+    File.open(cache_path, 'w') do |file|
+      file.puts(data.to_yaml)
+    end
+    warn "~ #{command} done. Took #{Time.now - start_time}\n"
   end
-  warn "~ #{command} done. Took #{Time.now - start_time}\n"
 end
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every('5m', first: :now) do
+# TODO cron:
+# if Time.now.monday? || Time.now.wednesday? || Time.now.friday? # or if confirmations.
+# TODO: --confirmations-only
+scheduler.every('20m', first: :now) do
   cache_command('gmail')
 end
 
-scheduler.every('5m', first: :now) do
+scheduler.every('20m', first: :now) do
   cache_command('messenger')
 end
 

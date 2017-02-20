@@ -71,13 +71,45 @@ rescue Errno::ENOENT
   raise CommandNotFound.new("Command not found: #{command}")
 end
 
+class CachedCommand
+  attr_reader :stdout, :stderr, :exit_status, :finished_at
+  def initialize(stdout, stderr, exit_status, finished_at)
+    @stdout, @stderr, @exit_status, @finished_at = stdout, stderr, exit_status, finished_at
+  end
+
+  def bitbar(icon)
+    if @stdout.empty? && @stderr.empty?
+      exit # show nothing
+    end
+
+    puts icon, '---'
+    puts @stdout
+    puts @stderr
+    if @finished_at < Time.now - (10 * 60)
+      puts "~ Last updated at #{format_time(@finished_at)}"
+    end
+    exit @exit_status
+  end
+
+  # Copied.
+  def format_time(time)
+    if time.strftime('%d/%m') == Time.now.strftime('%d/%m')
+      time.strftime('%H:%M')
+    elsif time.strftime('%d/%m') == (Time.now - 24 * 60 * 60).strftime('%d/%m')
+      time.strftime('yesterday at %H:%M')
+    else
+      time.strftime('%d/%m %H:%M')
+    end
+  end
+end
+
 def read_command(command)
   cache_path = "/tmp/#{command}.yml"
   data = YAML.load_file(cache_path)
-  data[:updated_time] = File.mtime(cache_path)
-  OpenStruct.new(data)
-# rescue Errno::ENOENT
-  # TODO: empty cache.
+  data[:finished_at] = File.mtime(cache_path)
+  CachedCommand.new(*data.values_at(:stdout, :stderr, :exit_status, :finished_at))
+rescue Errno::ENOENT => error
+  CachedCommand.new([error.message], [], 1, Time.now)
 end
 
 def capture_stdout(&block)
@@ -135,4 +167,9 @@ rescue Skip, SocketError
     puts File.read(log_path).force_encoding('utf-8')
     puts "~ Cached version from #{format_time(File.mtime(log_path))}."
   end
+end
+
+require 'base64'
+def encode_icon(path)
+  Base64.encode64(File.read(path)).delete("\n")
 end

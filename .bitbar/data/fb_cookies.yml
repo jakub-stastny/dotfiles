@@ -1,0 +1,81 @@
+---
+lu: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: mié, 20 feb 2019 03:55:04 GMT
+    expiry: 1550634904
+    httponly: true
+    name: lu
+    path: "/"
+    secure: true
+    value: ggfrJrH4QG-TxPvpBAop5kcQ
+pl: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: dom, 21 may 2017 03:55:04 GMT
+    expiry: 1495338904
+    httponly: true
+    name: pl
+    path: "/"
+    secure: true
+    value: n
+csm: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: dom, 21 may 2017 03:55:04 GMT
+    expiry: 1495338904
+    httponly: false
+    name: csm
+    path: "/"
+    secure: false
+    value: '2'
+fr: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: dom, 21 may 2017 03:55:04 GMT
+    expiry: 1495338904
+    httponly: true
+    name: fr
+    path: "/"
+    secure: false
+    value: 0IbKAwEfUa9H8Sr4M.AWVxZSY2keC9wK_iMTBWRS7uCzY.BYqmiR.3L.AAA.0.0.BYqmiY.AWWJCf5Q
+xs: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: dom, 21 may 2017 03:55:04 GMT
+    expiry: 1495338904
+    httponly: true
+    name: xs
+    path: "/"
+    secure: true
+    value: 12%3A3HOIEE7o5OiNnw%3A2%3A1487562904%3A28
+c_user: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: dom, 21 may 2017 03:55:04 GMT
+    expiry: 1495338904
+    httponly: false
+    name: c_user
+    path: "/"
+    secure: true
+    value: '671797252'
+sb: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: mié, 20 feb 2019 03:55:04 GMT
+    expiry: 1550634904
+    httponly: true
+    name: sb
+    path: "/"
+    secure: true
+    value: mGiqWF6e6Ln_R0vqM1MJByvu
+datr: !ruby/object:Capybara::Poltergeist::Cookie
+  attributes:
+    domain: ".facebook.com"
+    expires: mié, 20 feb 2019 03:55:01 GMT
+    expiry: 1550634901
+    httponly: true
+    name: datr
+    path: "/"
+    secure: false
+    value: kWiqWPEzKJWsPCZS1Ft19_1E

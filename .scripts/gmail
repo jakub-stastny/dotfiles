@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+# TODO:
+# Show always if there are pending confirmations.
+# Group newsletters into a submenu and provide an unsubscribe link.
+
 require 'yaml'
 
 begin
