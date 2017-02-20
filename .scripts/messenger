@@ -1,26 +1,88 @@
 #!/usr/bin/env ruby
 
-require 'date'
-require 'koala'
+# There used to be an option read_mailbox in the FB API, but they removed it in
+# favour of their (paid) messenger API.
+#
+# TODO: friend birthdays, friend requests.
+# TODO: Caching cookies.
 
-# Get it from https://developers.facebook.com/tools/explorer
-# You have to select API 2.3 and select read_mailbox.
-# In later versions this option has been removed.
-oauth_access_token = 'EAACEdEose0cBANDV66FOyokrYruz4UCry2ZBUkVzOAql2j4uvcrzR63JJedwxNOUuXOodePcXdZAyZAlNEpu9yXFN9XzfSBRm0NazldDxNPd9g7aqE9FFq5jpeb7uWQIe85U6XiZCdZCxDyMm8ZBa3LTZAXSGloTbLALg5u9zSnVcpsYrARSXB8gNpUjg2CzNkZD'
-graph = Koala::Facebook::API.new(oauth_access_token)
+require 'yaml'
+require 'stringio'
 
 begin
-  graph.get_connections('me', 'inbox').select do |thread|
-    next if thread['unread'] == 0
-    #updated_time = Date.parse(thread['updated_time'])
-    sender = thread['to']['data'][0]['name']
-    last_unread = thread['comments'].select do |comment|
-      created_time = Date.parse(comment['created_time'])
-      created_time > Date.today.prev_day.prev_day.prev_day
-    end[-5..-1]
+  require 'capybara/poltergeist'
+rescue
+  abort 'Please run (sudo) gem install capybara poltergeist.'
+end
 
-    puts "#{sender}: #{unread.map { |comment| comment['message'] }.join("\n")}"
+begin
+  config = YAML.load_file(File.expand_path('~/.config/private.yml'))['facebook']
+rescue Errno::ENOENT
+  abort('Please create ~/.config/private.yml file with facebook key.')
+end
+
+username = config['username'] || abort('Add facebook.username into your ~/.config/private.yml file.')
+password = config['password'] || abort('Add facebook.username into your ~/.config/private.yml file.')
+
+# $DEBUG = true
+def debug(message)
+  STDERR.puts(message) if $DEBUG
+end
+
+def shush(&block)
+  original_stdout = $stdout
+  $stdout = StringIO.new
+  block.call
+ensure
+  $stdout = original_stdout
+end
+
+def wait_for_page_change(browser)
+  start_time = Time.now
+  previous_path = browser.current_path
+
+  until browser.current_path != previous_path do
+    previous_path = browser.current_path
+    sleep 0.1
   end
-rescue Faraday::ConnectionFailed
-  exit 1
+
+  debug "~ Took #{Time.now - start_time}s."
+end
+
+# Configure Poltergeist to not blow up on websites with js errors aka every website with js
+# See more options at https://github.com/teampoltergeist/poltergeist#customization
+Capybara.register_driver(:poltergeist) do |app|
+  options = {
+    js_errors: false,
+    timeout: 50, #s
+    phantomjs_options: ['--load-images=no', '--ignore-ssl-errors=yes']
+  }
+  Capybara::Poltergeist::Driver.new(app, options).tap do |driver|
+    driver.headers = {
+      'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36'
+    }
+  end
+end
+
+# Configure Capybara to use Poltergeist as the driver
+Capybara.default_driver = :poltergeist
+
+browser = Capybara.current_session
+
+debug '~ Starting a browser.'
+shush { browser.visit('https://www.facebook.com/login') }
+browser.find('input[name="email"]').send_keys(username)
+debug '~ Logging in.'
+browser.find('input[name="pass"]').send_keys(password, :enter)
+wait_for_page_change(browser)
+debug '~ Logged in.'
+
+debug '~ Loading messages.'
+shush { browser.visit('https://www.facebook.com/messages') }
+browser.save_screenshot(File.expand_path('~/Desktop/FB.png'))
+
+unread_threads_elems = browser.find_all('[aria-label="Conversation list"] li[aria-live="polite"]')
+unread_threads_elems.each do |element|
+  link = element.find('a[role="link"]')['data-href']
+  puts "#{element.text} | href=#{link}"
 end

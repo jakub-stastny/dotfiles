@@ -13,7 +13,8 @@ end
 
 begin
   unless run('gmail').empty?
-    gmail #if Time.now.monday? || Time.now.wednesday? || Time.now.friday? # or if confirmations.
+    # if Time.now.monday? || Time.now.wednesday? || Time.now.friday? # or if confirmations.
+    gmail
     # TODO: --confirmations-only
   else
     # Show nothing if the there are no unread messages.

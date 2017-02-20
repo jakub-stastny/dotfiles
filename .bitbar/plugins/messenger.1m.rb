@@ -1,5 +1,8 @@
 #!/Users/botanicus/.rubies/ruby-2.4.0/bin/ruby
 
+# TODO: TopTal can work the same.
+# Payment status, new jobs etc.
+
 require 'base64'
 load File.expand_path('../../lib/bitbar.rb', __FILE__)
 
@@ -9,11 +12,11 @@ def messenger
 end
 
 begin
-  unless run('messenger').empty?
+  # unless run('messenger').empty?
     messenger
-  else
+  # else
     # Show nothing if the there are no unread messages.
-  end
+  # end
 rescue CommandNotFound
   messenger
 end
