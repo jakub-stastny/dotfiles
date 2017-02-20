@@ -1,0 +1,3 @@
+Tasks:
+- Dotfiles: can I see which dotfiles are not committed? From .scripts .vim etc.
+- Dotfiles: check out /Users/botanicus/.config/internet-usage-limiter.yml every hour.

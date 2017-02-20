@@ -2,6 +2,10 @@
 
 # This script should have ~/.zshenv loaded.
 
+
+sudo rm -rf Applications Downloads Movies Music Pictures Documents
+chflags hidden README.md tasks.todo dotfiles.git Projects
+
 if [ $(uname) = "Darwin" ]; then
   echo "~ OS X specific."
   # brew cask install atom
