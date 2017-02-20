@@ -1,4 +1,5 @@
 ENV['ENV'] = 'test'
+ENV['TMPDIR'] = '/tmp'
 
 require 'open3'
 require 'bitbar'
