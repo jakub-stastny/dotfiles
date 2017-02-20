@@ -7,7 +7,7 @@ rvm:
 before_install: cd .bitbar
 
 script:
-  - bundle install && bundle exec rspec
+  - bundle exec rspec
 
 # https://docs.travis-ci.com/user/notifications
 notifications:
