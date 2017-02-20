@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 git_aliases = %x{git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
-dotfiles_aliases = %x{git --git-dir=/Users/botanicus/dotfiles.git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
+dotfiles_aliases = %x{git --git-dir=#{ENV['HOME']}/dotfiles.git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
 
 custom_executables = ENV['PATH'].split(':').
   select { |dir| dir.match(ENV['HOME']) && ! dir.match(/\bruby\b/) }.

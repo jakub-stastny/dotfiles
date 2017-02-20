@@ -2,18 +2,18 @@
 lu: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: mié, 20 feb 2019 03:55:04 GMT
-    expiry: 1550634904
+    expires: mié, 20 feb 2019 04:22:13 GMT
+    expiry: 1550636533
     httponly: true
     name: lu
     path: "/"
     secure: true
-    value: ggfrJrH4QG-TxPvpBAop5kcQ
+    value: ggdcnZDwnWEQpzjIFKICK1Sg
 pl: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: dom, 21 may 2017 03:55:04 GMT
-    expiry: 1495338904
+    expires: dom, 21 may 2017 04:22:13 GMT
+    expiry: 1495340533
     httponly: true
     name: pl
     path: "/"
@@ -22,8 +22,8 @@ pl: !ruby/object:Capybara::Poltergeist::Cookie
 csm: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: dom, 21 may 2017 03:55:04 GMT
-    expiry: 1495338904
+    expires: dom, 21 may 2017 04:22:13 GMT
+    expiry: 1495340533
     httponly: false
     name: csm
     path: "/"
@@ -32,28 +32,28 @@ csm: !ruby/object:Capybara::Poltergeist::Cookie
 fr: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: dom, 21 may 2017 03:55:04 GMT
-    expiry: 1495338904
+    expires: dom, 21 may 2017 04:22:13 GMT
+    expiry: 1495340533
     httponly: true
     name: fr
     path: "/"
     secure: false
-    value: 0IbKAwEfUa9H8Sr4M.AWVxZSY2keC9wK_iMTBWRS7uCzY.BYqmiR.3L.AAA.0.0.BYqmiY.AWWJCf5Q
+    value: 0Rv4RBNn2itZiBWmK.AWWZqgnP5Eo3r9MYzeFJUTD60vQ.BYqm7x.RP.AAA.0.0.BYqm71.AWV2y90T
 xs: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: dom, 21 may 2017 03:55:04 GMT
-    expiry: 1495338904
+    expires: dom, 21 may 2017 04:22:13 GMT
+    expiry: 1495340533
     httponly: true
     name: xs
     path: "/"
     secure: true
-    value: 12%3A3HOIEE7o5OiNnw%3A2%3A1487562904%3A28
+    value: 33%3ACCmlGJcm1TlLDQ%3A2%3A1487564533%3A28
 c_user: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: dom, 21 may 2017 03:55:04 GMT
-    expiry: 1495338904
+    expires: dom, 21 may 2017 04:22:13 GMT
+    expiry: 1495340533
     httponly: false
     name: c_user
     path: "/"
@@ -62,20 +62,20 @@ c_user: !ruby/object:Capybara::Poltergeist::Cookie
 sb: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: mié, 20 feb 2019 03:55:04 GMT
-    expiry: 1550634904
+    expires: mié, 20 feb 2019 04:22:13 GMT
+    expiry: 1550636533
     httponly: true
     name: sb
     path: "/"
     secure: true
-    value: mGiqWF6e6Ln_R0vqM1MJByvu
+    value: 9W6qWOVBV4QzYIL7YklIyS8h
 datr: !ruby/object:Capybara::Poltergeist::Cookie
   attributes:
     domain: ".facebook.com"
-    expires: mié, 20 feb 2019 03:55:01 GMT
-    expiry: 1550634901
+    expires: mié, 20 feb 2019 04:22:12 GMT
+    expiry: 1550636532
     httponly: true
     name: datr
     path: "/"
     secure: false
-    value: kWiqWPEzKJWsPCZS1Ft19_1E
+    value: 8W6qWMu-oqOU73M-gR7Fqm0q

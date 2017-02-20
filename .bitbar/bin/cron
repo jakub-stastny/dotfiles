@@ -22,17 +22,18 @@ def cache_command(command)
   end
 end
 
-scheduler = Rufus::Scheduler.new
-
-# TODO cron:
-# if Time.now.monday? || Time.now.wednesday? || Time.now.friday? # or if confirmations.
-# TODO: --confirmations-only
-scheduler.every('20m', first: :now) do
-  cache_command('gmail')
+def scheduler
+  scheduler ||= Rufus::Scheduler.new
 end
 
-scheduler.every('20m', first: :now) do
-  cache_command('messenger')
+scheduler.every('2s') do
+  if File.mtime('config/schedule.rb') > (Time.now - 3)
+    puts '~ Reloading.'
+    scheduler.jobs.each(&:unschedule)
+    load 'config/schedule.rb'
+  end
 end
+
+load 'config/schedule.rb'
 
 scheduler.join
