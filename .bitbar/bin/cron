@@ -1,0 +1,30 @@
+#!/Users/botanicus/.rubies/ruby-2.4.0/bin/ruby
+
+require 'rufus-scheduler'
+require 'open3'
+require 'yaml'
+
+# class Command -> don't forget File.mktime if too old, say so.
+def cache_command(command)
+  start_time = Time.now
+  warn "~ #{Time.now.strftime('%H:%M:%S')} running #{command}.\n"
+  _, stdout, stderr, process = Open3.popen3(command)
+  cache_path = "/tmp/#{command}.yml"
+  data = {stdout: stdout.readlines.map(&:chomp), stderr: stderr.readlines.map(&:chomp), exit_status: process.value.exitstatus} # Do not put it inside the File.open block, so mtime is accurate.
+  File.open(cache_path, 'w') do |file|
+    file.puts(data.to_yaml)
+  end
+  warn "~ #{command} done. Took #{Time.now - start_time}\n"
+end
+
+scheduler = Rufus::Scheduler.new
+
+scheduler.every('5m', first: :now) do
+  cache_command('gmail')
+end
+
+scheduler.every('5m', first: :now) do
+  cache_command('messenger')
+end
+
+scheduler.join

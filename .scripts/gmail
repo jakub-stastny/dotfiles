@@ -45,7 +45,7 @@ Gmail.connect!(username, password) do |gmail|
 
   direct_emails.each do |email|
     puts email.subject # TODO: Make them clickable (show content in TextEdit (offline) or Chrome).
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
   end
 
   unless newsletters.empty?

@@ -12,11 +12,11 @@ def messenger
 end
 
 begin
-  # unless run('messenger').empty?
+  unless run('messenger').empty?
     messenger
-  # else
+  else
     # Show nothing if the there are no unread messages.
-  # end
+  end
 rescue CommandNotFound
   messenger
 end

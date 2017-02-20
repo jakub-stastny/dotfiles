@@ -51,21 +51,33 @@ def which(command)
   return
 end
 
-def run_and_print_output_or_fail(command)
-  puts run(command)
+def run_or_fail(command)
+  run(command)
 rescue CommandNotFound => error
   abort "#{error.message} | color=red"
 end
 
 def run(command)
+  @commands ||= Hash.new
+  return @commands[command] if @commands[command]
+
   stdin, stdout, stderr, process = Open3.popen3(command)
   if process.value.exitstatus == 127
     raise CommandNotFound.new("Command not found: #{command}\n#{stderr.read}")
   end
 
-  stdout.readlines.map(&:chomp)
+  @commands[command] = stdout.readlines.map(&:chomp)
 rescue Errno::ENOENT
   raise CommandNotFound.new("Command not found: #{command}")
+end
+
+def read_command(command)
+  cache_path = "/tmp/#{command}.yml"
+  data = YAML.load_file(cache_path)
+  data[:updated_time] = File.mtime(cache_path)
+  OpenStruct.new(data)
+# rescue Errno::ENOENT
+  # TODO: empty cache.
 end
 
 def capture_stdout(&block)
@@ -92,6 +104,21 @@ def format_time(time)
     time.strftime('yesterday at %H:%M')
   else
     time.strftime('%d/%m %H:%M')
+  end
+end
+
+def read_cache(identifier)
+  log_path = File.join('/tmp', identifier)
+  if File.exist?(log_path) && ENV['ENV'] != 'test'
+    File.read(log_path).force_encoding('utf-8') +
+    "\n~ Cached version from #{format_time(File.mtime(log_path))}."
+  end
+end
+
+def write_cache(identifier, data)
+  log_path = File.join('/tmp', identifier)
+  File.open(log_path, 'w') do |file|
+    file.puts(data)
   end
 end
 
