@@ -9,12 +9,13 @@ def morning_ritual_tasks
   # Wednesday swimming, Saturday wing chun.
   dance = ['blues & swing', 'salsa', nil, 'tango', 'tap', nil, nil]
   Array.new.tap do |tasks|
-    tasks << Pomodoro::Task.new('Breakfast & Duolingo.', 40, [:morning_ritual])
+    tasks << Pomodoro::Task.new('Breakfast & Spanish.', 50, [:morning_ritual])
     if dance = dance[today.wday - 1]
       tasks << Pomodoro::Task.new("Dancing: #{dance}.", 20, [:dancing, :morning_ritual])
     end
     tasks << Pomodoro::Task.new('Meditation.', 20, [:meditation, :morning_ritual])
-    tasks << Pomodoro::Task.new('Review plan for today.', 10, [:morning_ritual])
+    tasks << Pomodoro::Task.new('Review plan for today. $ pomodoro edit', 10, [:morning_ritual])
+    tasks << Pomodoro::Task.new('Some something small that is easy to accomplish and makes impact.', 10, [:low_hanging_fruit])
   end
 end
 

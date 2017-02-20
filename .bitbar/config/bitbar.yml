@@ -11,4 +11,4 @@ timezones:
   - America/Los_Angeles
 
 check_urls:
-  - http://botanicus.me
+  - http://blog.botanicus.me

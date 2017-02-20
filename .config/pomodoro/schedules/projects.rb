@@ -8,6 +8,7 @@ Dir.glob("#{projects_dir}/{Software,Webs}/*").map do |path|
 end
 
 project('dotfiles')
+project('BitBar plugins')
 
 Dir.glob("#{projects_dir}/Writing/*").map do |path|
   project(File.basename(path))

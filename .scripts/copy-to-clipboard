@@ -52,4 +52,17 @@ TopTal JavaScript: >
 
   James
 
+TopTal scraping: >
+  Hi,
+
+  I have a decade of experience in IT and I have built many scrapers during my career. Most of them for personal use, the one commercial I built was to scrape car specifications from a site with poor performance (so I was scraping the site plus Google Cache, which meant using Tor in order to be able to send many requests).
+
+  Just yesterday I built one to get messages from Facebook, so I don't actually need to go and check my messages manually https://github.com/botanicus/dotfiles/blob/master/.scripts/messenger This one simulates browser, so it's a bit more tricky, most of the scrapers simply parse the retrieved HTML which is pretty easy.
+
+  I'd be more than happy to work with you to build the scraper.
+
+  Best regards,
+
+  James
+
 Phone number: +420 606 319 641

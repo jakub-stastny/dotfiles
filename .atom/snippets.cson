@@ -84,6 +84,10 @@
     'prefix': 'h'
     'body': 'Hash.new'
 
+  'pry':
+    'prefix': 'pry'
+    'body': "require 'pry'; binding.pry ###"
+
   'Gemfile template':
     'prefix': 'gemfile'
     'body': "source 'https://rubygems.org/'\n\n"

@@ -67,12 +67,13 @@ rule(:last_day_of_a_month, -> { last_work_day_of_a_month == today }) do |tasks|
   tasks << Pomodoro::Task.new('Buy things from the wish list.', 20, [:online])
 end
 
-rule(:communications, -> { today.monday? || today.friday? }) do |tasks|
-  cleanup = tasks.find { |task| task.tags.include?(:cleanup) }
-  position = tasks.index(cleanup)
-  if today.monday?
-    tasks.insert(position, Pomodoro::Task.new('Gmail, messenger', 20, [:online]))
-  else
-    tasks.insert(position, Pomodoro::Task.new('Gmail inbox 0, messenger, Skype', 20, [:online]))
-  end
-end
+# Taken care off by bitbar.
+# rule(:communications, -> { today.monday? || today.friday? }) do |tasks|
+#   cleanup = tasks.find { |task| task.tags.include?(:cleanup) }
+#   position = tasks.index(cleanup)
+#   if today.monday?
+#     tasks.insert(position, Pomodoro::Task.new('Gmail, messenger', 20, [:online]))
+#   else
+#     tasks.insert(position, Pomodoro::Task.new('Gmail inbox 0, messenger, Skype', 20, [:online]))
+#   end
+# end
