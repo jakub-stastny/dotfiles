@@ -1,5 +1,37 @@
 #!/usr/bin/env ruby
 
+=begin
+Tartan waistcoat-only suit
+
+Buy from outside of the VAT zone
+
+Flannel shirt
+
+Napoli
+
+http://www.luigiborrelli.com/en/cravatta/
+http://www.marinellanapoli.it/en/ties.php
+https://www.permanentstyle.com/2012/06/passaggio-cravatte-ties.html although there seems to be some inconsistencies in quality
+
+Books
+
+http://tuttofattoamano.blogspot.com/2009/09/making-trousers.html
+The four hour body
+The London Cut: Savile Row Bespoke Tailoring – James B. Sherwood, 2007
+Bespoke: Savile Row Ripped and Smoothed – Richard Anderson, 2010
+The Suit: A Machiavellian Approach to Men's Style – Nicholas Antongiavanni, 2006
+
+http://www.fjallraven.co.uk/ovik-wool-shirt
+
+US
+
+Pedleton:
+- Fitted Button-Down Fireside Shirt (black watch tartan in regular, small)
+- Board shirt (MACCORMICK DRESS in regular, small). (If you'd happen to have this pattern in fitted version, that'd be best, but I assume it's not available, since online you don't have it.)
+
+- Buttons & Threads trousers (in Arg -> no VAT, check there's no import tax). WHEN DO I NEED TO ORDER THOUGH?
+=end
+
 require 'yaml'
 
 WISHLIST_PATH = File.expand_path('~/.config/wishlist.yml')

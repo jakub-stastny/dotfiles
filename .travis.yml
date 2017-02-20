@@ -3,7 +3,12 @@ language: ruby
 cache: bundler
 rvm:
   - 2.4.0
+
 script:
   - cd .bitbar
   - bundle install
   - bundle exec rspec
+
+# https://docs.travis-ci.com/user/notifications
+notifications:
+  email: false
