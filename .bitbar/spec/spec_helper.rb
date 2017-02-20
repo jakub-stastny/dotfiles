@@ -5,6 +5,7 @@ require 'open3'
 class BitBarParser
   def initialize(plugin)
     @command = Dir.glob("./plugins/#{plugin}").first
+    p [:pwd, Dir.pwd] ###
   end
 
   def parse(extra_env = Hash.new)
