@@ -7,17 +7,17 @@ today = Date.parse(ENV['DATE']) rescue Date.today
 
 if today.day == 1
   puts 'W | color=green', '---'
-  run_and_print_output_or_fail('wishlist')
+  puts run_or_fail('wishlist')
 elsif today.saturday?
   begin
     unless run('research_queue').empty?
       puts 'RQ | color=green', '---'
-      run_and_print_output_or_fail('research_queue')
+      puts run_or_fail('research_queue')
     else
       # Show nothing if the research queue is empty.
     end
   rescue CommandNotFound
     puts 'RQ | color=green', '---'
-    run_and_print_output_or_fail('research_queue')
+    puts run_or_fail('research_queue')
   end
 end

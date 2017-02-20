@@ -5,6 +5,8 @@
 #   Musicality, walk, weight changes.
 # Tap:
 #   Shuffle drills.
+
+# https://www.rozectise.cz/cze/
 def morning_ritual_tasks
   # Wednesday swimming, Saturday wing chun.
   dance = ['blues & swing', 'salsa', nil, 'tango', 'tap', nil, nil]
