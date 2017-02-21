@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
-# require 'term/ansicolor'
+require 'term/ansicolor'
+
+String.send(:include, Term::ANSIColor)
 
 =begin
 Synonyma (list the others not any of these, what's the other one you know?)
-Random order.
 Switch sides (ask in EN or in ES) (and deal with synonyms again).
 =end
 
@@ -69,24 +70,24 @@ def run(language, flashcards)
   # TODO: First test ones that has been tested before and needs refreshing before
   # they go to the long-term memory. Then test the new ones and finally the remembered ones.
   # Limit count of each.
-  flashcards.each do |flashcard|
+  flashcards.shuffle.each do |flashcard|
     # TODO: also test remembered, but less so.
     next if flashcard.remembered?
 
     if synonyms = flashcards.select { |f2| flashcard.expression == f2.expression}
-      print "#{flashcard.expression} (#{flashcard.hint || 'no hint'}): "
+      print "#{flashcard.expression} (#{flashcard.hint || 'no hint'}): ".bold
     else
-      print "#{flashcard.expression} (#{flashcard.hint || 'no hint'}) (not any of these: #{synonyms.map(&:expression).join(', ')}): "
+      print "#{flashcard.expression} (#{flashcard.hint || 'no hint'}) (not any of these: #{synonyms.map(&:expression).join(', ')}): ".bold
     end
 
     if flashcard.mark(STDIN.readline.chomp)
-      puts "~ Well done! It is indeed '#{flashcard.translation}'."
+      puts "~ Well done! It is indeed '#{flashcard.translation.yellow.bold}'.".green.bold
       puts "~ Here are some examples:\n\n"
       flashcard.examples.each do |expression, translation|
-        puts "  #{expression}", "  #{translation}", ''
+        puts "  #{expression}".green, "  #{translation}".yellow, ''
       end
     else
-      puts "~ It is in fact '#{flashcard.translation}'."
+      puts "~ It is in fact '#{flashcard.translation}'.".red
     end
   end
 end
@@ -110,7 +111,7 @@ when 'add', '+'
     yaml = data.to_yaml
     File.open(FLASHCARDS_DATA.path, 'w') { |file| file << yaml }
   else
-    warn "~ #{ARGV[1]} is already defined."
+    warn "~ #{ARGV[1]} is already defined." # TODO: add hint as ARGV[3]
   end
 when '--help', '-h'
   puts DATA.read
