@@ -1,0 +1,112 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+# require 'term/ansicolor'
+
+begin
+  path = File.expand_path('~/.config/flashcards.yml')
+  FLASHCARDS_DATA = File.new(path)
+rescue Errno::ENOENT
+  File.open(path, 'w') { }
+  retry
+end
+
+class Flashcard
+  def self.parse(data)
+    self.new(*data.values_at(:expression, :translation, :metadata))
+  end
+
+  attr_reader :expression, :translation, :metadata
+  def initialize(expression, translation, metadata = {})
+    @expression, @translation, @metadata = expression, translation, metadata || Hash.new
+  end
+
+  def to_data # TODO: when named to_yaml, it's not being called if inside of something {es => [<#flashcard 1>, ...]}. Investigate
+    {expression: @expression, translation: @translation}.tap do |data|
+      data[:metadata] = @metadata unless @metadata.empty?
+    end
+  end
+
+  def remembered?
+    (@metadata[:correct_answers] || Array.new).length >= 3
+  end
+
+  def mark(reply)
+    if @translation == reply
+      @metadata[:correct_answers] ||= Array.new
+      @metadata[:correct_answers].push(Time.now)
+      return true
+    else
+      @metadata.clear # Treat as new.
+      return false
+    end
+  end
+end
+
+def load_flashcards(data, language)
+  data[language] ||= Array.new
+  data[language].map { |flashcard_data| Flashcard.parse(flashcard_data) }
+end
+
+def run(language, flashcards)
+  puts "~ Testing your #{language} knowledge. Change system language to whatever language you want to practice."
+
+  # TODO: First test ones that has been tested before and needs refreshing before
+  # they go to the long-term memory. Then test the new ones and finally the remembered ones.
+  # Limit count of each.
+  flashcards.each do |flashcard|
+    # TODO: also test remembered, but less so.
+    next if flashcard.remembered?
+
+    print "#{flashcard.expression}: "
+    if flashcard.mark(STDIN.readline.chomp)
+      puts "~ Well done! It is indeed '#{flashcard.translation}'."
+    else
+      puts "~ It is in fact '#{flashcard.translation}'."
+    end
+  end
+end
+
+case ARGV.shift
+  # flashcards add es 'Madre mia!'
+when 'add', '+'
+  unless ARGV.length == 3
+    abort "Usage: #{$0} [lang] [word] [translation]"
+  end
+
+  data = YAML.load(FLASHCARDS_DATA.read) || Hash.new
+  flashcards = load_flashcards(data, ARGV[0])
+
+  unless flashcards.find { |flashcard| flashcard.expression == ARGV[1] }
+    flashcards << Flashcard.new(*ARGV[1, 2])
+
+    data[ARGV[0]] = flashcards.map(&:to_data)
+
+    FLASHCARDS_DATA.close
+    yaml = data.to_yaml
+    File.open(FLASHCARDS_DATA.path, 'w') { |file| file << yaml }
+  else
+    warn "~ #{ARGV[1]} is already defined."
+  end
+when '--help', '-h'
+  puts DATA.read
+when nil
+  data = YAML.load(FLASHCARDS_DATA.read) || Hash.new
+  flashcards = load_flashcards(data, ENV['LANG'][0..1])
+
+  # Switch system language to whatever language you're learning.
+  run(ENV['LANG'][0..1], flashcards)
+
+  # Save metadata.
+  data[ENV['LANG'][0..1]] = flashcards.map(&:to_data)
+
+  FLASHCARDS_DATA.close
+  yaml = data.to_yaml
+  File.open(FLASHCARDS_DATA.path, 'w') { |file| file << yaml }
+end
+
+__END__
+flashcards add [lang] [word] [translation]
+flashcards add es todavía still
+
+flashcards
