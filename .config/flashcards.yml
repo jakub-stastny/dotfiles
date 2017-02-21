@@ -1,4 +1,16 @@
 ---
+- :expression: comer
+  :tags:
+  - :verb
+  :examples:
+  - - Como un pollo con arroz.
+    - I eat chicken with rice.
+  - - "¿Comiste algo?"
+    - Did you eat anything?
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:46:23.484353000 -05:00
+  :translation: to eat
 - :expression: todavía
   :examples:
   - - "¿Todavía estás en la cama?"
@@ -7,31 +19,8 @@
     - I still love her.
   :metadata:
     :correct_answers:
-    - 2017-02-21 13:00:21.095433000 -05:00
+    - 2017-02-21 18:49:11.888331000 -05:00
   :translation: still
-- :expression: todavía
-  :hint: in negatives
-  :translations:
-  - yet
-  - still
-  :examples:
-  - - Todavía no está lista.
-    - She isn't ready yet.
-  - - "¿Ya terminó la película? — Todavía no."
-    - Has the movie finished? — Not yet.
-  :metadata:
-    :correct_answers:
-    - 2017-02-21 13:00:41.642754000 -05:00
-- :expression: todavía
-  :translations:
-  - even
-  - still
-  :hint: en comparaciones
-  :examples:
-  - - Sus primos son todavía más ricos.
-    - Her cousins are even richer. (or still richer)
-  - - Quiere más todavía.
-    - He wants even more. (or still more)
 - :expression: casi
   :translations:
   - almost
@@ -45,21 +34,109 @@
     - She hardly has a temperature now.
   :metadata:
     :correct_answers:
-    - 2017-02-21 13:00:34.297739000 -05:00
+    - 2017-02-21 18:44:57.159933000 -05:00
 - :expression: autónomo
   :metadata:
     :correct_answers:
-    - 2017-02-21 13:00:25.827776000 -05:00
+    - 2017-02-21 18:46:17.421527000 -05:00
   :translation: self-employed
 - :expression: primero
-  :note: The usual translation of first, primero, becomes primer when it precedes
-    a masculine singular noun.
+  :examples:
+  - - Vivo en <red>el primer piso</red>.
+    - I live on the first floor.
+  - - Soy <red>el primero</red> en reconocerlo.
+    - I'm the first to admit it.
+  - - "<red>La primera empresa</red> mundial en el campo de la electrónica."
+    - The world's leading electronics company.
   :metadata:
     :correct_answers:
-    - 2017-02-21 13:00:29.865144000 -05:00
+    - 2017-02-21 18:44:21.600095000 -05:00
   :translation: first
 - :expression: segundo
   :metadata:
     :correct_answers:
-    - 2017-02-21 13:00:31.868687000 -05:00
+    - 2017-02-21 18:45:14.807595000 -05:00
   :translation: second
+- :expression: tercero
+  :examples:
+  - - "<red>El tercer duque</red> de Camberwick."
+    - The third duke of Camberwick.
+  - - "¿Había <red>un tercero</red> presente?"
+    - Was there a third person present?
+  - - "<red>La tercera</red> edad."
+    - The Third Age.
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:45:26.145346000 -05:00
+  :translation: third
+- :expression: cuarto
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:46:20.595443000 -05:00
+  :translation: fourth
+- :expression: quinto
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:44:51.815767000 -05:00
+  :translation: fifth
+- :expression: sexto
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:45:52.802065000 -05:00
+  :translation: sixth
+- :expression: séptimo
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:45:56.256414000 -05:00
+  :translation: seventh
+- :expression: octavo
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:47:25.415326000 -05:00
+  :translation: eighth
+- :expression: noveno
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:45:59.995414000 -05:00
+  :translation: ninth
+- :expression: décimo
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 18:46:10.692774000 -05:00
+  :translation: tenth
+- :expression: tres
+  :translation: three
+- :expression: cuatro
+  :translation: four
+- :expression: cinco
+  :translation: five
+- :expression: seis
+  :translation: six
+- :expression: siete
+  :translation: seven
+- :expression: ocho
+  :translation: eight
+- :expression: nueve
+  :translation: nine
+- :expression: diez
+  :translation: ten
+- :expression: once
+  :translation: eleven
+- :expression: doce
+  :translation: twelve
+- :expression: trece
+  :translation: thirteen
+- :expression: catorce
+  :translation: fourteen
+- :expression: quince
+  :translation: fifteen
+- :expression: dieciséis
+  :translation: sixteen
+- :expression: diecisiete
+  :translation: seventeen
+- :expression: dieciocho
+  :translation: eighteen
+- :expression: diecinueve
+  :translation: nineteen
+- :expression: veinte
+  :translation: twenty
