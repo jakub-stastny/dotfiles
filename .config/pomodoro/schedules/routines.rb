@@ -17,7 +17,8 @@ def morning_ritual_tasks
     end
     tasks << Pomodoro::Task.new('Meditation.', 20, [:meditation, :morning_ritual])
     tasks << Pomodoro::Task.new('Review plan for today. $ pomodoro edit', 10, [:morning_ritual])
-    tasks << Pomodoro::Task.new('Some something small that is easy to accomplish and makes impact.', 10, [:low_hanging_fruit])
+    tasks << Pomodoro::Task.new('$ flashcards', 10, [:morning_ritual])
+    # tasks << Pomodoro::Task.new('Some something small that is easy to accomplish and makes impact.', 10, [:low_hanging_fruit])
   end
 end
 
@@ -31,6 +32,7 @@ end
 
 def evening_tasks
   Array.new.tap do |tasks|
+    tasks << Pomodoro::Task.new('Add 10 new flashcards.', 25)
     tasks << Pomodoro::Task.new('Dinner & read Pocket articles.', 50)
     tasks << Pomodoro::Task.new('Physical clean-up.', 20)
     tasks << Pomodoro::Task.new('Headspace.', 20, [:meditation])
