@@ -2,21 +2,84 @@
 es:
 - :expression: todavía
   :translation: still
+  :examples:
+  - - "¿Todavía estás en la cama?"
+    - Are you still in bed?
+  - - Todavía la quiero.
+    - I still love her.
+  :metadata:
+    :correct_answers:
+    - 2017-02-20 22:06:55.344239000 -05:00
+- :expression: todavía
+  :hint: in negatives
+  :translation: yet
+  :examples:
+  - - Todavía no está lista.
+    - She isn't ready yet.
+  - - "¿Ya terminó la película? — Todavía no."
+    - Has the movie finished? — Not yet.
+  :metadata:
+    :correct_answers:
+    - 2017-02-20 22:07:14.650554000 -05:00
 - :expression: casi
   :translation: almost
+  :examples:
+  - - In ES
+    - Translation
+  :metadata:
+    :correct_answers:
+    - 2017-02-20 22:07:32.066341000 -05:00
 - :expression: independiente
   :translation: self-employed
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: despertarse
   :translation: to wake up
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: poner
   :translation: to put
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: empezar
   :translation: to start
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: demasiado
   :translation: too much
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: ya
   :translation: already
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: tampoco
   :translation: neither
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
 - :expression: tal vez
   :translation: maybe
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}
+- :expression: aún
+  :translation: still
+  :examples:
+  - - In ES
+    - Translation
+  :metadata: {}

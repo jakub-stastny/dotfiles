@@ -3,6 +3,12 @@
 require 'yaml'
 # require 'term/ansicolor'
 
+=begin
+Synonyma (list the others not any of these, what's the other one you know?)
+Random order.
+Switch sides (ask in EN or in ES) (and deal with synonyms again).
+=end
+
 begin
   path = File.expand_path('~/.config/flashcards.yml')
   FLASHCARDS_DATA = File.new(path)
@@ -12,32 +18,41 @@ rescue Errno::ENOENT
 end
 
 class Flashcard
-  def self.parse(data)
-    self.new(*data.values_at(:expression, :translation, :metadata))
+  attr_reader :data
+  def initialize(data)
+    @data = data
+    @data[:examples] ||= Array.new
+    @data[:metadata] ||= Hash.new
+
+    self.expression || raise(ArgumentError.new('Expression has to be provided!'))
+    self.translation || raise(ArgumentError.new('Translation has to be provided!'))
   end
 
-  attr_reader :expression, :translation, :metadata
-  def initialize(expression, translation, metadata = {})
-    @expression, @translation, @metadata = expression, translation, metadata || Hash.new
+  [:expression, :translation, :hint, :examples, :metadata].each do |attribute|
+    define_method(attribute) { @data[attribute] }
   end
 
-  def to_data # TODO: when named to_yaml, it's not being called if inside of something {es => [<#flashcard 1>, ...]}. Investigate
-    {expression: @expression, translation: @translation}.tap do |data|
-      data[:metadata] = @metadata unless @metadata.empty?
+  def data
+    @data.dup.tap do |data|
+      data.delete(:metadata) if :metadata.empty?
     end
   end
 
+  def ==(anotherFlashcard)
+    self.expression == anotherFlashcard.expression && self.translation == anotherFlashcard.translation
+  end
+
   def remembered?
-    (@metadata[:correct_answers] || Array.new).length >= 3
+    (self.metadata[:correct_answers] || Array.new).length >= 3
   end
 
   def mark(reply)
-    if @translation == reply
-      @metadata[:correct_answers] ||= Array.new
-      @metadata[:correct_answers].push(Time.now)
+    if self.translation == reply
+      self.metadata[:correct_answers] ||= Array.new
+      self.metadata[:correct_answers].push(Time.now)
       return true
     else
-      @metadata.clear # Treat as new.
+      self.metadata.clear # Treat as new.
       return false
     end
   end
@@ -45,11 +60,11 @@ end
 
 def load_flashcards(data, language)
   data[language] ||= Array.new
-  data[language].map { |flashcard_data| Flashcard.parse(flashcard_data) }
+  data[language].map { |flashcard_data| Flashcard.new(flashcard_data) }
 end
 
 def run(language, flashcards)
-  puts "~ Testing your #{language} knowledge. Change system language to whatever language you want to practice."
+  puts "~ Testing your #{language} knowledge. Change system language to whatever language you want to practice.\n\n"
 
   # TODO: First test ones that has been tested before and needs refreshing before
   # they go to the long-term memory. Then test the new ones and finally the remembered ones.
@@ -58,9 +73,18 @@ def run(language, flashcards)
     # TODO: also test remembered, but less so.
     next if flashcard.remembered?
 
-    print "#{flashcard.expression}: "
+    if synonyms = flashcards.select { |f2| flashcard.expression == f2.expression}
+      print "#{flashcard.expression} (#{flashcard.hint || 'no hint'}): "
+    else
+      print "#{flashcard.expression} (#{flashcard.hint || 'no hint'}) (not any of these: #{synonyms.map(&:expression).join(', ')}): "
+    end
+
     if flashcard.mark(STDIN.readline.chomp)
       puts "~ Well done! It is indeed '#{flashcard.translation}'."
+      puts "~ Here are some examples:\n\n"
+      flashcard.examples.each do |expression, translation|
+        puts "  #{expression}", "  #{translation}", ''
+      end
     else
       puts "~ It is in fact '#{flashcard.translation}'."
     end
@@ -68,7 +92,7 @@ def run(language, flashcards)
 end
 
 case ARGV.shift
-  # flashcards add es 'Madre mia!'
+  # flashcards add es 'Madre mia!' 'Oh my!'
 when 'add', '+'
   unless ARGV.length == 3
     abort "Usage: #{$0} [lang] [word] [translation]"
@@ -77,10 +101,10 @@ when 'add', '+'
   data = YAML.load(FLASHCARDS_DATA.read) || Hash.new
   flashcards = load_flashcards(data, ARGV[0])
 
-  unless flashcards.find { |flashcard| flashcard.expression == ARGV[1] }
-    flashcards << Flashcard.new(*ARGV[1, 2])
+  unless flashcards.find { |flashcard| flashcard.expression == Flashcard.new(expression: ARGV[1], translation: ARGV[2]) }
+    flashcards << Flashcard.new(expression: ARGV[1], translation: ARGV[2])
 
-    data[ARGV[0]] = flashcards.map(&:to_data)
+    data[ARGV[0]] = flashcards.map(&:data)
 
     FLASHCARDS_DATA.close
     yaml = data.to_yaml
@@ -98,7 +122,7 @@ when nil
   run(ENV['LANG'][0..1], flashcards)
 
   # Save metadata.
-  data[ENV['LANG'][0..1]] = flashcards.map(&:to_data)
+  data[ENV['LANG'][0..1]] = flashcards.map(&:data)
 
   FLASHCARDS_DATA.close
   yaml = data.to_yaml
