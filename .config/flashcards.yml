@@ -1,25 +1,65 @@
 ---
-es:
 - :expression: todavía
-  :translation: still
   :examples:
   - - "¿Todavía estás en la cama?"
     - Are you still in bed?
   - - Todavía la quiero.
     - I still love her.
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 13:00:21.095433000 -05:00
+  :translation: still
 - :expression: todavía
   :hint: in negatives
-  :translation: yet
+  :translations:
+  - yet
+  - still
   :examples:
   - - Todavía no está lista.
     - She isn't ready yet.
   - - "¿Ya terminó la película? — Todavía no."
     - Has the movie finished? — Not yet.
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 13:00:41.642754000 -05:00
 - :expression: todavía
-  :translation: even
+  :translations:
+  - even
+  - still
   :hint: en comparaciones
   :examples:
   - - Sus primos son todavía más ricos.
     - Her cousins are even richer. (or still richer)
-  - Quiere más todavía.
+  - - Quiere más todavía.
     - He wants even more. (or still more)
+- :expression: casi
+  :translations:
+  - almost
+  - nearly
+  :examples:
+  - - Cuesta casi el doble.
+    - It costs almost twice as much.
+  - - La casi totalidad de la población.
+    - Almost the entire population.
+  - - Ya casi no tiene fiebre.
+    - She hardly has a temperature now.
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 13:00:34.297739000 -05:00
+- :expression: autónomo
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 13:00:25.827776000 -05:00
+  :translation: self-employed
+- :expression: primero
+  :note: The usual translation of first, primero, becomes primer when it precedes
+    a masculine singular noun.
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 13:00:29.865144000 -05:00
+  :translation: first
+- :expression: segundo
+  :metadata:
+    :correct_answers:
+    - 2017-02-21 13:00:31.868687000 -05:00
+  :translation: second

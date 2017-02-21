@@ -11,8 +11,11 @@ from_date = to_date = Time.now.strftime('%Y-%m-%d')
 # from_date = (Time.now - 1 * 24 * 60 * 50).strftime('%Y-%m-%d')
 
 def rates(currency)
-  open("http://api.fixer.io/latest?base=#{currency}") do |stream|
-    return JSON.parse(stream.read)['rates']
+  @rates ||= Hash.new
+  @rates[currency] ||= begin
+    open("http://api.fixer.io/latest?base=#{currency}") do |stream|
+      JSON.parse(stream.read)['rates']
+    end
   end
 end
 
@@ -34,6 +37,7 @@ gbp_rates = rates(:GBP)
 
 puts '---'
 title 'Exchange rates'
-puts "1 USD = #{usd_rates['CZK'].round(2)} CZK, #{usd_rates['EUR'].round(2)} EUR and #{usd_rates['GBP'].round(2)} GBP."
-puts "1 EUR = #{eur_rates['CZK'].round(2)} CZK, #{eur_rates['USD'].round(2)} USD and #{eur_rates['GBP'].round(2)} GBP."
-puts "1 GBP = #{gbp_rates['CZK'].round(2)} CZK, #{gbp_rates['USD'].round(2)} USD and #{gbp_rates['EUR'].round(2)} EUR."
+puts "~ Add some caching first! Every 1 minute 3 requests, uff."
+#puts "1 USD = #{usd_rates['CZK'].round(2)} CZK, #{usd_rates['EUR'].round(2)} EUR and #{usd_rates['GBP'].round(2)} GBP."
+#puts "1 EUR = #{eur_rates['CZK'].round(2)} CZK, #{eur_rates['USD'].round(2)} USD and #{eur_rates['GBP'].round(2)} GBP."
+#puts "1 GBP = #{gbp_rates['CZK'].round(2)} CZK, #{gbp_rates['USD'].round(2)} USD and #{gbp_rates['EUR'].round(2)} EUR."
