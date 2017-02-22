@@ -1,9 +1,7 @@
 ---
 - :examples:
-  - - Como un pollo con arroz.
-    - I eat chicken with rice.
-  - - "¿Comiste algo?"
-    - Did you eat anything?
+  - Como un pollo con arroz.: I eat chicken with rice.
+  - "¿Comiste algo?": Did you eat anything?
   :metadata:
     :correct_answers:
     - 2017-02-21 18:46:23.484353000 -05:00
@@ -11,10 +9,8 @@
   :expression: comer
   :translation: to eat
 - :examples:
-  - - "¿Todavía estás en la cama?"
-    - Are you still in bed?
-  - - Todavía la quiero.
-    - I still love her.
+  - "¿Todavía estás en la cama?": Are you still in bed?
+  - Todavía la quiero.: I still love her.
   :metadata:
     :correct_answers:
     - 2017-02-21 18:49:11.888331000 -05:00
@@ -24,12 +20,9 @@
   - almost
   - nearly
   :examples:
-  - - Cuesta casi el doble.
-    - It costs almost twice as much.
-  - - La casi totalidad de la población.
-    - Almost the entire population.
-  - - Ya casi no tiene fiebre.
-    - She hardly has a temperature now.
+  - Cuesta casi el doble.: It costs almost twice as much.
+  - La casi totalidad de la población.: Almost the entire population.
+  - Ya casi no tiene fiebre.: She hardly has a temperature now.
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:57.159933000 -05:00
@@ -40,12 +33,10 @@
   :expression: autónomo
   :translation: self-employed
 - :examples:
-  - - Vivo en <red>el primer piso</red>.
-    - I live on the first floor.
-  - - Soy <red>el primero</red> en reconocerlo.
-    - I'm the first to admit it.
-  - - "<red>La primera empresa</red> mundial en el campo de la electrónica."
-    - The world's leading electronics company.
+  - Vivo en <red>el primer piso</red>.: I live on the first floor.
+  - Soy <red>el primero</red> en reconocerlo.: I'm the first to admit it.
+  - "<red>La primera empresa</red> mundial en el campo de la electrónica.": The world's
+      leading electronics company.
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:21.600095000 -05:00
@@ -59,12 +50,9 @@
   :translation: second
   :silent_translation: 2nd
 - :examples:
-  - - "<red>El tercer duque</red> de Camberwick."
-    - The third duke of Camberwick.
-  - - "¿Había <red>un tercero</red> presente?"
-    - Was there a third person present?
-  - - "<red>La tercera</red> edad."
-    - The Third Age.
+  - "<red>El tercer duque</red> de Camberwick.": The third duke of Camberwick.
+  - "¿Había <red>un tercero</red> presente?": Was there a third person present?
+  - "<red>La tercera</red> edad.": The Third Age.
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:26.145346000 -05:00
@@ -224,26 +212,19 @@
   :translation: twenty
   :silent_translation: '20'
 - :examples:
-  - - "¿Quién es ése?"
-    - Who is that?
-  - - "¿Quiénes son?"
-    - Who are they?
-  - - "¿Quiénes somos nosotros para criticarlos?"
-    - Who are we to criticize them?
-  - - "¿A quién le estás escribiendo?"
-    - Who are you writing to?
+  - "¿Quién es ése?": Who is that?
+  - "¿Quiénes son?": Who are they?
+  - "¿Quiénes somos nosotros para criticarlos?": Who are we to criticize them?
+  - "¿A quién le estás escribiendo?": Who are you writing to?
   :metadata:
     :correct_answers:
     - 2017-02-22 10:12:26.391518000 -05:00
   :expression: quién
   :translation: who
 - :examples:
-  - - "¿Cuánto sabes del asunto?"
-    - How much o what do you know about the matter?
-  - - Si supiera cuánto la quiero.
-    - If she knew how much I love her.
-  - - No sabes cuánto lo siento.
-    - I can't tell you how sorry I am
+  - "¿Cuánto sabes del asunto?": How much o what do you know about the matter?
+  - Si supiera cuánto la quiero.: If she knew how much I love her.
+  - No sabes cuánto lo siento.: I can't tell you how sorry I am
   :metadata:
     :correct_answers:
     - 2017-02-22 11:48:11.306823000 -05:00
@@ -254,13 +235,10 @@
   - adónde
   :note: Explain adónde vs. dónde.
   :examples:
-  - - "¿(A)dónde me llevan?"
-    - Where are you taking me?
-  - - Nos preguntó dónde vivíamos.
-    - She asked us where we lived.
-  - - No sé (a)dónde ir.
-    - I don't know where to go.
+  - "¿(A)dónde me llevan?": Where are you taking me?
+  - Nos preguntó dónde vivíamos.: She asked us where we lived.
+  - No sé (a)dónde ir.: I don't know where to go.
   :metadata:
     :correct_answers:
-    - 2017-02-22 12:10:33.308972000 -05:00
+    - 2017-02-22 12:24:00.428734000 -05:00
   :translation: where
