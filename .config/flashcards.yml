@@ -51,12 +51,18 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:21.600095000 -05:00
-  :translation: first
+  :translations:
+  - first
+  :silent_translation:
+  - 1st
 - :expression: segundo
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:14.807595000 -05:00
-  :translation: second
+  :translations:
+  - second
+  :silent_translation:
+  - 2nd
 - :expression: tercero
   :examples:
   - - "<red>El tercer duque</red> de Camberwick."
@@ -68,75 +74,246 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:26.145346000 -05:00
-  :translation: third
+  :translations:
+  - third
+  :silent_translation:
+  - 3rd
 - :expression: cuarto
   :metadata:
     :correct_answers:
     - 2017-02-21 18:46:20.595443000 -05:00
-  :translation: fourth
+  :translations:
+  - fourth
+  :silent_translation:
+  - 4th
 - :expression: quinto
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:51.815767000 -05:00
-  :translation: fifth
+  :translations:
+  - fifth
+  :silent_translation:
+  - 5th
 - :expression: sexto
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:52.802065000 -05:00
-  :translation: sixth
+  :translations:
+  - sixth
+  :silent_translation:
+  - 6th
 - :expression: séptimo
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:56.256414000 -05:00
-  :translation: seventh
+  :translations:
+  - seventh
+  :silent_translation:
+  - 7th
 - :expression: octavo
   :metadata:
     :correct_answers:
-    - 2017-02-21 18:47:25.415326000 -05:00
-  :translation: eighth
+    - 2017-02-22 09:59:47.247376000 -05:00
+  :translations:
+  - eighth
+  :silent_translation:
+  - 8th
+  :note: Note the English spelling <cyan>eighth</cyan>.
 - :expression: noveno
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:59.995414000 -05:00
-  :translation: ninth
+  :translations:
+  - ninth
+  :silent_translation:
+  - 9th
+  :note: Note the English spelling <cyan>ninth</cyan>.
 - :expression: décimo
   :metadata:
     :correct_answers:
     - 2017-02-21 18:46:10.692774000 -05:00
-  :translation: tenth
+  :translations:
+  - tenth
+  :silent_translation:
+  - 10th
 - :expression: tres
-  :translation: three
+  :translations:
+  - three
+  :silent_translation:
+  - '3'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:49.993614000 -05:00
 - :expression: cuatro
-  :translation: four
+  :translations:
+  - four
+  :silent_translation:
+  - '4'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:00:03.835165000 -05:00
 - :expression: cinco
-  :translation: five
+  :translations:
+  - five
+  :silent_translation:
+  - '5'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:00:12.214286000 -05:00
 - :expression: seis
-  :translation: six
+  :translations:
+  - six
+  :silent_translation:
+  - '6'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:00:01.277753000 -05:00
 - :expression: siete
-  :translation: seven
+  :translations:
+  - seven
+  :silent_translation:
+  - '7'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:00:07.906052000 -05:00
 - :expression: ocho
-  :translation: eight
+  :translations:
+  - eight
+  :silent_translation:
+  - '8'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:35.364198000 -05:00
 - :expression: nueve
-  :translation: nine
+  :translations:
+  - nine
+  :silent_translation:
+  - '9'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:29.581200000 -05:00
 - :expression: diez
-  :translation: ten
+  :translations:
+  - ten
+  :silent_translation:
+  - '10'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:22.925777000 -05:00
 - :expression: once
-  :translation: eleven
+  :translations:
+  - eleven
+  :silent_translation:
+  - '11'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:52.364192000 -05:00
 - :expression: doce
-  :translation: twelve
+  :translations:
+  - twelve
+  :silent_translation:
+  - '12'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:40.779496000 -05:00
 - :expression: trece
-  :translation: thirteen
+  :translations:
+  - thirteen
+  :silent_translation:
+  - '13'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:27.188904000 -05:00
 - :expression: catorce
-  :translation: fourteen
+  :translations:
+  - fourteen
+  :silent_translation:
+  - '14'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:55.728093000 -05:00
 - :expression: quince
-  :translation: fifteen
+  :translations:
+  - fifteen
+  :silent_translation:
+  - '15'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:33.210182000 -05:00
 - :expression: dieciséis
-  :translation: sixteen
+  :translations:
+  - sixteen
+  :silent_translation:
+  - '16'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:17.427358000 -05:00
 - :expression: diecisiete
-  :translation: seventeen
+  :translations:
+  - seventeen
+  :silent_translation:
+  - '17'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:43.610567000 -05:00
 - :expression: dieciocho
-  :translation: eighteen
+  :translations:
+  - eighteen
+  :silent_translation:
+  - '18'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:00:10.395723000 -05:00
 - :expression: diecinueve
-  :translation: nineteen
+  :translations:
+  - nineteen
+  :silent_translation:
+  - '19'
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 09:59:38.152633000 -05:00
 - :expression: veinte
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 11:00:58.260533000 -05:00
   :translation: twenty
+  :silent_translation: '20'
+- :expression: quién
+  :examples:
+  - - "¿Quién es ése?"
+    - Who is that?
+  - - "¿Quiénes son?"
+    - Who are they?
+  - - "¿Quiénes somos nosotros para criticarlos?"
+    - Who are we to criticize them?
+  - - "¿A quién le estás escribiendo?"
+    - Who are you writing to?
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:12:26.391518000 -05:00
+  :translation: who
+- :expression: cuánto
+  :examples:
+  - - "¿Cuánto sabes del asunto?"
+    - How much o what do you know about the matter?
+  - - Si supiera cuánto la quiero.
+    - If she knew how much I love her.
+  - - No sabes cuánto lo siento.
+    - I can't tell you how sorry I am
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:11:46.062412000 -05:00
+  :translation: how much
+- :expression: dónde
+  :note: adónde vs. dónde?
+  :examples:
+  - - "¿(A)dónde me llevan?"
+    - Where are you taking me?
+  - - Nos preguntó dónde vivíamos.
+    - She asked us where we lived.
+  - - No sé (a)dónde ir.
+    - I don't know where to go.
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 10:12:17.520265000 -05:00
+  :translation: where
