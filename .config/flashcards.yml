@@ -1,8 +1,5 @@
 ---
-- :expression: comer
-  :tags:
-  - :verb
-  :examples:
+- :examples:
   - - Como un pollo con arroz.
     - I eat chicken with rice.
   - - "¿Comiste algo?"
@@ -10,9 +7,10 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:46:23.484353000 -05:00
+  :tag: :verb
+  :expression: comer
   :translation: to eat
-- :expression: todavía
-  :examples:
+- :examples:
   - - "¿Todavía estás en la cama?"
     - Are you still in bed?
   - - Todavía la quiero.
@@ -20,9 +18,9 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:49:11.888331000 -05:00
+  :expression: todavía
   :translation: still
-- :expression: casi
-  :translations:
+- :translations:
   - almost
   - nearly
   :examples:
@@ -35,13 +33,13 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:57.159933000 -05:00
-- :expression: autónomo
-  :metadata:
+  :expression: casi
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:46:17.421527000 -05:00
+  :expression: autónomo
   :translation: self-employed
-- :expression: primero
-  :examples:
+- :examples:
   - - Vivo en <red>el primer piso</red>.
     - I live on the first floor.
   - - Soy <red>el primero</red> en reconocerlo.
@@ -51,16 +49,16 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:21.600095000 -05:00
+  :expression: primero
   :translation: first
   :silent_translation: 1st
-- :expression: segundo
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:45:14.807595000 -05:00
+  :expression: segundo
   :translation: second
   :silent_translation: 2nd
-- :expression: tercero
-  :examples:
+- :examples:
   - - "<red>El tercer duque</red> de Camberwick."
     - The third duke of Camberwick.
   - - "¿Había <red>un tercero</red> presente?"
@@ -70,162 +68,162 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:26.145346000 -05:00
+  :expression: tercero
   :translation: third
   :silent_translation: 3rd
-- :expression: cuarto
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:46:20.595443000 -05:00
+  :expression: cuarto
   :translation: fourth
   :silent_translation: 4th
-- :expression: quinto
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:44:51.815767000 -05:00
+  :expression: quinto
   :translation: fifth
   :silent_translation: 5th
-- :expression: sexto
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:45:52.802065000 -05:00
+  :expression: sexto
   :translation: sixth
   :silent_translation: 6th
-- :expression: séptimo
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:45:56.256414000 -05:00
+  :expression: séptimo
   :translation: seventh
   :silent_translation: 7th
-- :expression: octavo
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:47.247376000 -05:00
   :note: Note the English spelling <cyan>eighth</cyan>.
+  :expression: octavo
   :translation: eighth
   :silent_translation: 8th
-- :expression: noveno
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:45:59.995414000 -05:00
   :note: Note the English spelling <cyan>ninth</cyan>.
+  :expression: noveno
   :translation: ninth
   :silent_translation: 9th
-- :expression: décimo
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-21 18:46:10.692774000 -05:00
+  :expression: décimo
   :translation: tenth
   :silent_translation: 10th
-- :expression: tres
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:49.993614000 -05:00
+  :expression: tres
   :translation: three
   :silent_translation: '3'
-- :expression: cuatro
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 10:00:03.835165000 -05:00
+  :expression: cuatro
   :translation: four
   :silent_translation: '4'
-- :expression: cinco
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 10:00:12.214286000 -05:00
+  :expression: cinco
   :translation: five
   :silent_translation: '5'
-- :expression: seis
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 10:00:01.277753000 -05:00
+  :expression: seis
   :translation: six
   :silent_translation: '6'
-- :expression: siete
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 10:00:07.906052000 -05:00
+  :expression: siete
   :translation: seven
   :silent_translation: '7'
-- :expression: ocho
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:35.364198000 -05:00
+  :expression: ocho
   :translation: eight
   :silent_translation: '8'
-- :expression: nueve
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:29.581200000 -05:00
+  :expression: nueve
   :translation: nine
   :silent_translation: '9'
-- :expression: diez
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:22.925777000 -05:00
+  :expression: diez
   :translation: ten
   :silent_translation: '10'
-- :expression: once
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:52.364192000 -05:00
+  :expression: once
   :translation: eleven
   :silent_translation: '11'
-- :expression: doce
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:40.779496000 -05:00
+  :expression: doce
   :translation: twelve
   :silent_translation: '12'
-- :expression: trece
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:27.188904000 -05:00
+  :expression: trece
   :translation: thirteen
   :silent_translation: '13'
-- :expression: catorce
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:55.728093000 -05:00
+  :expression: catorce
   :translation: fourteen
   :silent_translation: '14'
-- :expression: quince
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:33.210182000 -05:00
+  :expression: quince
   :translation: fifteen
   :silent_translation: '15'
-- :expression: dieciséis
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:17.427358000 -05:00
+  :expression: dieciséis
   :translation: sixteen
   :silent_translation: '16'
-- :expression: diecisiete
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:43.610567000 -05:00
+  :expression: diecisiete
   :translation: seventeen
   :silent_translation: '17'
-- :expression: dieciocho
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 10:00:10.395723000 -05:00
+  :expression: dieciocho
   :translation: eighteen
   :silent_translation: '18'
-- :expression: diecinueve
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 09:59:38.152633000 -05:00
+  :expression: diecinueve
   :translation: nineteen
   :silent_translation: '19'
-- :expression: veinte
-  :metadata:
+- :metadata:
     :correct_answers:
     - 2017-02-22 11:00:58.260533000 -05:00
+  :expression: veinte
   :translation: twenty
   :silent_translation: '20'
-- :expression: quién
-  :examples:
+- :examples:
   - - "¿Quién es ése?"
     - Who is that?
   - - "¿Quiénes son?"
@@ -237,9 +235,9 @@
   :metadata:
     :correct_answers:
     - 2017-02-22 10:12:26.391518000 -05:00
+  :expression: quién
   :translation: who
-- :expression: cuánto
-  :examples:
+- :examples:
   - - "¿Cuánto sabes del asunto?"
     - How much o what do you know about the matter?
   - - Si supiera cuánto la quiero.
@@ -249,9 +247,12 @@
   :metadata:
     :correct_answers:
     - 2017-02-22 11:48:11.306823000 -05:00
+  :expression: cuánto
   :translation: how much
-- :expressions: [dónde, dónde]
-  :note: adónde vs. dónde?
+- :expressions:
+  - dónde
+  - adónde
+  :note: Explain adónde vs. dónde.
   :examples:
   - - "¿(A)dónde me llevan?"
     - Where are you taking me?
@@ -259,4 +260,7 @@
     - She asked us where we lived.
   - - No sé (a)dónde ir.
     - I don't know where to go.
+  :metadata:
+    :correct_answers:
+    - 2017-02-22 12:10:33.308972000 -05:00
   :translation: where
