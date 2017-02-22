@@ -51,18 +51,14 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:21.600095000 -05:00
-  :translations:
-  - first
-  :silent_translation:
-  - 1st
+  :translation: first
+  :silent_translation: 1st
 - :expression: segundo
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:14.807595000 -05:00
-  :translations:
-  - second
-  :silent_translation:
-  - 2nd
+  :translation: second
+  :silent_translation: 2nd
 - :expression: tercero
   :examples:
   - - "<red>El tercer duque</red> de Camberwick."
@@ -74,204 +70,154 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:26.145346000 -05:00
-  :translations:
-  - third
-  :silent_translation:
-  - 3rd
+  :translation: third
+  :silent_translation: 3rd
 - :expression: cuarto
   :metadata:
     :correct_answers:
     - 2017-02-21 18:46:20.595443000 -05:00
-  :translations:
-  - fourth
-  :silent_translation:
-  - 4th
+  :translation: fourth
+  :silent_translation: 4th
 - :expression: quinto
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:51.815767000 -05:00
-  :translations:
-  - fifth
-  :silent_translation:
-  - 5th
+  :translation: fifth
+  :silent_translation: 5th
 - :expression: sexto
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:52.802065000 -05:00
-  :translations:
-  - sixth
-  :silent_translation:
-  - 6th
+  :translation: sixth
+  :silent_translation: 6th
 - :expression: séptimo
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:56.256414000 -05:00
-  :translations:
-  - seventh
-  :silent_translation:
-  - 7th
+  :translation: seventh
+  :silent_translation: 7th
 - :expression: octavo
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:47.247376000 -05:00
-  :translations:
-  - eighth
-  :silent_translation:
-  - 8th
   :note: Note the English spelling <cyan>eighth</cyan>.
+  :translation: eighth
+  :silent_translation: 8th
 - :expression: noveno
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:59.995414000 -05:00
-  :translations:
-  - ninth
-  :silent_translation:
-  - 9th
   :note: Note the English spelling <cyan>ninth</cyan>.
+  :translation: ninth
+  :silent_translation: 9th
 - :expression: décimo
   :metadata:
     :correct_answers:
     - 2017-02-21 18:46:10.692774000 -05:00
-  :translations:
-  - tenth
-  :silent_translation:
-  - 10th
+  :translation: tenth
+  :silent_translation: 10th
 - :expression: tres
-  :translations:
-  - three
-  :silent_translation:
-  - '3'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:49.993614000 -05:00
+  :translation: three
+  :silent_translation: '3'
 - :expression: cuatro
-  :translations:
-  - four
-  :silent_translation:
-  - '4'
   :metadata:
     :correct_answers:
     - 2017-02-22 10:00:03.835165000 -05:00
+  :translation: four
+  :silent_translation: '4'
 - :expression: cinco
-  :translations:
-  - five
-  :silent_translation:
-  - '5'
   :metadata:
     :correct_answers:
     - 2017-02-22 10:00:12.214286000 -05:00
+  :translation: five
+  :silent_translation: '5'
 - :expression: seis
-  :translations:
-  - six
-  :silent_translation:
-  - '6'
   :metadata:
     :correct_answers:
     - 2017-02-22 10:00:01.277753000 -05:00
+  :translation: six
+  :silent_translation: '6'
 - :expression: siete
-  :translations:
-  - seven
-  :silent_translation:
-  - '7'
   :metadata:
     :correct_answers:
     - 2017-02-22 10:00:07.906052000 -05:00
+  :translation: seven
+  :silent_translation: '7'
 - :expression: ocho
-  :translations:
-  - eight
-  :silent_translation:
-  - '8'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:35.364198000 -05:00
+  :translation: eight
+  :silent_translation: '8'
 - :expression: nueve
-  :translations:
-  - nine
-  :silent_translation:
-  - '9'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:29.581200000 -05:00
+  :translation: nine
+  :silent_translation: '9'
 - :expression: diez
-  :translations:
-  - ten
-  :silent_translation:
-  - '10'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:22.925777000 -05:00
+  :translation: ten
+  :silent_translation: '10'
 - :expression: once
-  :translations:
-  - eleven
-  :silent_translation:
-  - '11'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:52.364192000 -05:00
+  :translation: eleven
+  :silent_translation: '11'
 - :expression: doce
-  :translations:
-  - twelve
-  :silent_translation:
-  - '12'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:40.779496000 -05:00
+  :translation: twelve
+  :silent_translation: '12'
 - :expression: trece
-  :translations:
-  - thirteen
-  :silent_translation:
-  - '13'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:27.188904000 -05:00
+  :translation: thirteen
+  :silent_translation: '13'
 - :expression: catorce
-  :translations:
-  - fourteen
-  :silent_translation:
-  - '14'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:55.728093000 -05:00
+  :translation: fourteen
+  :silent_translation: '14'
 - :expression: quince
-  :translations:
-  - fifteen
-  :silent_translation:
-  - '15'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:33.210182000 -05:00
+  :translation: fifteen
+  :silent_translation: '15'
 - :expression: dieciséis
-  :translations:
-  - sixteen
-  :silent_translation:
-  - '16'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:17.427358000 -05:00
+  :translation: sixteen
+  :silent_translation: '16'
 - :expression: diecisiete
-  :translations:
-  - seventeen
-  :silent_translation:
-  - '17'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:43.610567000 -05:00
+  :translation: seventeen
+  :silent_translation: '17'
 - :expression: dieciocho
-  :translations:
-  - eighteen
-  :silent_translation:
-  - '18'
   :metadata:
     :correct_answers:
     - 2017-02-22 10:00:10.395723000 -05:00
+  :translation: eighteen
+  :silent_translation: '18'
 - :expression: diecinueve
-  :translations:
-  - nineteen
-  :silent_translation:
-  - '19'
   :metadata:
     :correct_answers:
     - 2017-02-22 09:59:38.152633000 -05:00
+  :translation: nineteen
+  :silent_translation: '19'
 - :expression: veinte
   :metadata:
     :correct_answers:
@@ -302,9 +248,9 @@
     - I can't tell you how sorry I am
   :metadata:
     :correct_answers:
-    - 2017-02-22 10:11:46.062412000 -05:00
+    - 2017-02-22 11:48:11.306823000 -05:00
   :translation: how much
-- :expression: dónde
+- :expressions: [dónde, dónde]
   :note: adónde vs. dónde?
   :examples:
   - - "¿(A)dónde me llevan?"
@@ -313,7 +259,4 @@
     - She asked us where we lived.
   - - No sé (a)dónde ir.
     - I don't know where to go.
-  :metadata:
-    :correct_answers:
-    - 2017-02-22 10:12:17.520265000 -05:00
   :translation: where
