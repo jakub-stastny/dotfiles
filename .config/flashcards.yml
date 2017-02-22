@@ -242,3 +242,7 @@
     :correct_answers:
     - 2017-02-22 12:24:00.428734000 -05:00
   :translation: where
+- :example:
+  - "¿Aún estás aquí?": Are you still here?
+  :expression: aún
+  :translation: still
