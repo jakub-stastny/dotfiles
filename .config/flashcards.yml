@@ -40,13 +40,13 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:44:21.600095000 -05:00
-  :expression: primero
+  :expression: [primer, primero, primera]
   :translation: first
   :silent_translation: 1st
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:45:14.807595000 -05:00
-  :expression: segundo
+  :expression: [segundo, segunda]
   :translation: second
   :silent_translation: 2nd
 - :examples:
@@ -56,51 +56,51 @@
   :metadata:
     :correct_answers:
     - 2017-02-21 18:45:26.145346000 -05:00
-  :expression: tercero
+  :expression: [tercer, tercero, tercera]
   :translation: third
   :silent_translation: 3rd
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:46:20.595443000 -05:00
-  :expression: cuarto
+  :expression: [cuarto, cuarta]
   :translation: fourth
   :silent_translation: 4th
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:44:51.815767000 -05:00
-  :expression: quinto
+  :expression: [quinto, quinta]
   :translation: fifth
   :silent_translation: 5th
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:45:52.802065000 -05:00
-  :expression: sexto
+  :expression: [sexto, sexta]
   :translation: sixth
   :silent_translation: 6th
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:45:56.256414000 -05:00
-  :expression: séptimo
+  :expression: [séptimo, séptima]
   :translation: seventh
   :silent_translation: 7th
 - :metadata:
     :correct_answers:
     - 2017-02-22 09:59:47.247376000 -05:00
   :note: Note the English spelling <cyan>eighth</cyan>.
-  :expression: octavo
+  :expression: [octavo, octava]
   :translation: eighth
   :silent_translation: 8th
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:45:59.995414000 -05:00
   :note: Note the English spelling <cyan>ninth</cyan>.
-  :expression: noveno
+  :expression: [noveno, novena]
   :translation: ninth
   :silent_translation: 9th
 - :metadata:
     :correct_answers:
     - 2017-02-21 18:46:10.692774000 -05:00
-  :expression: décimo
+  :expression: [décimo, décima]
   :translation: tenth
   :silent_translation: 10th
 - :metadata:
@@ -242,7 +242,12 @@
     :correct_answers:
     - 2017-02-22 12:24:00.428734000 -05:00
   :translation: where
-- :example:
-  - "¿Aún estás aquí?": Are you still here?
+- :metadata:
+    :correct_answers:
+    - 2017-02-22 12:37:30.700687000 -05:00
+  :example:
+    "¿Aún estás aquí?": Are you still here?
   :expression: aún
   :translation: still
+- :expression: dar
+  :translation: to give
