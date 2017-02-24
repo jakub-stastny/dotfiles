@@ -1,6 +1,7 @@
 ---
 learning:
   es:
-    - present
-    - past
-    - reflective
+    default: true
+    test_me_on: [present, past, reflective]
+  en:
+    test_me_on: []
