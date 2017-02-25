@@ -1,18 +1,24 @@
 #!/bin/sh
 
+echo "~ OS X updates."
 sudo softwareupdate -i -a
 
+echo "~ Homebrew updates."
 brew update && brew upgrade && brew cleanup
 
 if which npm; then
+  echo "~ NPM updates."
   npm install npm -g
   npm update -g
 fi
 
-apm upgrade
+echo "~ APM & Vim updates."
+apm upgrade --no-confirm
 vim -c VundleUpdate -c quitall
 
+echo "~ RubyGems updates."
 gem update --system && gem update && gem cleanup
 
+echo "~ Ruby updates."
 ruby-install # Prints current versions.
 ruby-install ruby --no-reinstall # I'm not sure whether this works for upgrading version, but it might.
