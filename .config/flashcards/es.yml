@@ -307,6 +307,42 @@
     "¿Aún estás aquí?": Are you still here?
   :expression: aún
   :translation: still
-- :tag: :verb
+- :metadata:
+    :correct_answers:
+    - 2017-02-24 15:34:53.561082000 -05:00
+    - 2017-02-25 12:48:28.082536000 -05:00
+  :tag: :verb
   :expression: dar
   :translation: to give
+- :metadata:
+    :correct_answers:
+    - 2017-02-24 15:38:09.241407000 -05:00
+    - 2017-02-25 12:49:05.439374000 -05:00
+  :expression: por supuesto
+  :translation: of course
+- :translations:
+  - type
+  - class
+  :metadata:
+    :correct_answers:
+    - 2017-02-24 19:08:38.512801000 -05:00
+  :expression: clase
+- :expressions:
+  - allí
+  - ahí
+  :metadata:
+    :correct_answers:
+    - 2017-02-25 12:49:07.167773000 -05:00
+  :translation: there
+- :expressions:
+  - aquí
+  - acá
+  :metadata:
+    :correct_answers:
+    - 2017-02-25 12:49:02.531275000 -05:00
+  :translation: here
+- :metadata:
+    :correct_answers:
+    - 2017-02-25 12:48:57.506112000 -05:00
+  :expression: allá
+  :translation: over there
