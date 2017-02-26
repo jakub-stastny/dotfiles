@@ -19,7 +19,8 @@ def rates(currency)
   end
 end
 
-# open("https://www.fio.cz/ib_api/rest/periods/#{config.fio_token}/#{from_date}/#{to_date}/transactions.json") do |stream|
+fio_token = YAML.load_file(File.expand_path('~/.config/private.yml'))['fio']['token']
+# open("https://www.fio.cz/ib_api/rest/periods/#{fio_token}/#{from_date}/#{to_date}/transactions.json") do |stream|
 #   p JSON.parse(stream.read)
   puts 'USD 5,624 | color=red'
   puts 'EUR 3,224 | color=green'

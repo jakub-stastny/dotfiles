@@ -2,7 +2,6 @@
 task_archive_path: ~/Dropbox/WIP/Tasks
 # start_of_the_engagement: 2017-01-01
 daily_rate: 300 # 75 * 4
-fio_token: LPBtQThaQRlcXFIDrlyxc4EUIYDioJ4Itai2tBk7BRoQC5R7MxpPyZUW2x3yTuFv
 
 timezones:
   - Europe/Prague

@@ -105,7 +105,9 @@ end
 
 def read_command(command)
   cache_path = "/tmp/#{command}.yml"
-  data = YAML.load_file(cache_path)
+  # YAML.load('') -> false.
+  File.unlink(cache_path) if File.empty?(cache_path)
+  data = YAML.load_file(cache_path) || Hash.new
   data[:finished_at] = File.mtime(cache_path)
   CachedCommand.new(*data.values_at(:stdout, :stderr, :exit_status, :finished_at))
 rescue Errno::ENOENT => error
