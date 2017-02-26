@@ -12,7 +12,7 @@ echo 'Active projects | color=green'
 pomodoro show-projects | sed 's/^/--/'
 echo '---'
 
-for task_list in ~/Dropbox/Projects/*/*/tasks.todo; do
+for task_list in ~/tasks.todo ~/.bitbar/tasks.todo ~/Dropbox/Projects/*/*/tasks.todo; do
   echo "$(basename "$(dirname $task_list)") | bash=atom param1='${task_list}'" # TODO: terminal=false
   cat $task_list | sed 's/^/--/'
 done
