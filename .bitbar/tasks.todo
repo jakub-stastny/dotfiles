@@ -1,0 +1,6 @@
+Tasks:
+- Copy to clipboard: make it work with terminal=false, same for pomodoro projects.
+- Pomodoro plugin: show tasks for all the projects!
+- BitBar: also count my current rate in different currencies.
+- BitBar: copy to clipboard doesn't work anymore.
+- Download FIO data daily and add stats to BitBar. Possibly use those in determining my burn rate.
