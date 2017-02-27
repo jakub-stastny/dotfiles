@@ -6,7 +6,9 @@
     :correct_answers:
     - 2017-02-21 18:46:23.484353000 -05:00
     - 2017-02-22 18:55:48.024632000 -05:00
-  :tag: :verb
+  :tags:
+  - :verb
+  - :regular
   :expression: comer
   :translation: to eat
 - :examples:
@@ -326,6 +328,7 @@
   :metadata:
     :correct_answers:
     - 2017-02-24 19:08:38.512801000 -05:00
+    - 2017-02-25 16:27:05.796857000 -05:00
   :expression: clase
 - :expressions:
   - allí
@@ -333,6 +336,7 @@
   :metadata:
     :correct_answers:
     - 2017-02-25 12:49:07.167773000 -05:00
+    - 2017-02-26 16:59:35.168205000 -05:00
   :translation: there
 - :expressions:
   - aquí
@@ -340,9 +344,11 @@
   :metadata:
     :correct_answers:
     - 2017-02-25 12:49:02.531275000 -05:00
+    - 2017-02-26 16:59:38.680435000 -05:00
   :translation: here
 - :metadata:
     :correct_answers:
     - 2017-02-25 12:48:57.506112000 -05:00
+    - 2017-02-26 16:59:41.865132000 -05:00
   :expression: allá
   :translation: over there
