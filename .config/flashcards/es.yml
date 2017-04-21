@@ -4,8 +4,9 @@
   - "¿Comiste algo?": Did you eat anything?
   :metadata:
     :correct_answers:
-    - 2017-02-21 18:46:23.484353000 -05:00
-    - 2017-02-22 18:55:48.024632000 -05:00
+    - 2017-02-22 00:46:23.484353000 +01:00
+    - 2017-02-23 00:55:48.024632000 +01:00
+    - 2017-03-03 14:23:37.967287000 +01:00
   :tags:
   - :verb
   - :regular
@@ -16,8 +17,9 @@
   - Todavía la quiero.: I still love her.
   :metadata:
     :correct_answers:
-    - 2017-02-21 18:49:11.888331000 -05:00
-    - 2017-02-22 18:52:28.064886000 -05:00
+    - 2017-02-22 00:49:11.888331000 +01:00
+    - 2017-02-23 00:52:28.064886000 +01:00
+    - 2017-03-03 14:25:07.582514000 +01:00
   :expression: todavía
   :translation: still
 - :translations:
@@ -29,13 +31,15 @@
   - Ya casi no tiene fiebre.: She hardly has a temperature now.
   :metadata:
     :correct_answers:
-    - 2017-02-21 18:44:57.159933000 -05:00
-    - 2017-02-23 12:46:30.370372000 -05:00
+    - 2017-02-22 00:44:57.159933000 +01:00
+    - 2017-02-23 18:46:30.370372000 +01:00
+    - 2017-03-03 14:02:36.897755000 +01:00
   :expression: casi
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:46:17.421527000 -05:00
-    - 2017-02-22 18:52:37.117754000 -05:00
+    - 2017-02-22 00:46:17.421527000 +01:00
+    - 2017-02-23 00:52:37.117754000 +01:00
+    - 2017-03-03 14:24:18.110034000 +01:00
   :expression: autónomo
   :translation: self-employed
 - :examples:
@@ -45,8 +49,9 @@
       leading electronics company.
   :metadata:
     :correct_answers:
-    - 2017-02-21 18:44:21.600095000 -05:00
-    - 2017-02-22 18:53:04.078762000 -05:00
+    - 2017-02-22 00:44:21.600095000 +01:00
+    - 2017-02-23 00:53:04.078762000 +01:00
+    - 2017-03-03 14:06:10.580340000 +01:00
   :expressions:
   - primer
   - primero
@@ -55,8 +60,9 @@
   :silent_translation: 1st
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:45:14.807595000 -05:00
-    - 2017-02-22 18:52:16.162543000 -05:00
+    - 2017-02-22 00:45:14.807595000 +01:00
+    - 2017-02-23 00:52:16.162543000 +01:00
+    - 2017-03-03 14:01:20.959016000 +01:00
   :expressions:
   - segundo
   - segunda
@@ -68,8 +74,9 @@
   - La tercera edad.: The Third Age.
   :metadata:
     :correct_answers:
-    - 2017-02-21 18:45:26.145346000 -05:00
-    - 2017-02-23 14:07:49.600087000 -05:00
+    - 2017-02-22 00:45:26.145346000 +01:00
+    - 2017-02-23 20:07:49.600087000 +01:00
+    - 2017-03-03 14:24:52.280856000 +01:00
   :expressions:
   - tercer
   - tercero
@@ -78,26 +85,29 @@
   :silent_translation: 3rd
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:46:20.595443000 -05:00
-    - 2017-02-22 18:54:49.777743000 -05:00
+    - 2017-02-22 00:46:20.595443000 +01:00
+    - 2017-02-23 00:54:49.777743000 +01:00
+    - 2017-03-03 14:02:21.770282000 +01:00
   :expressions:
   - cuarto
   - cuarta
   :translation: fourth
   :silent_translation: 4th
-- :metadata:
-    :correct_answers:
-    - 2017-02-21 18:44:51.815767000 -05:00
-    - 2017-02-22 18:56:13.351741000 -05:00
-  :expressions:
+- :expressions:
   - quinto
   - quinta
+  :metadata:
+    :correct_answers:
+    - 2017-03-03 14:24:07.234587000 +01:00
+    - 2017-03-04 14:41:34.369484000 +01:00
+    - 2017-03-24 12:15:29.867039000 +01:00
   :translation: fifth
   :silent_translation: 5th
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:45:52.802065000 -05:00
-    - 2017-02-22 18:56:17.165102000 -05:00
+    - 2017-02-22 00:45:52.802065000 +01:00
+    - 2017-02-23 00:56:17.165102000 +01:00
+    - 2017-03-03 14:25:22.644764000 +01:00
   :expressions:
   - sexto
   - sexta
@@ -105,8 +115,9 @@
   :silent_translation: 6th
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:45:56.256414000 -05:00
-    - 2017-02-22 18:51:37.121081000 -05:00
+    - 2017-02-22 00:45:56.256414000 +01:00
+    - 2017-02-23 00:51:37.121081000 +01:00
+    - 2017-03-03 14:25:01.923653000 +01:00
   :expressions:
   - séptimo
   - séptima
@@ -114,8 +125,9 @@
   :silent_translation: 7th
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:47.247376000 -05:00
-    - 2017-02-23 12:41:45.548250000 -05:00
+    - 2017-02-22 15:59:47.247376000 +01:00
+    - 2017-02-23 18:41:45.548250000 +01:00
+    - 2017-03-03 14:24:10.679662000 +01:00
   :note: Note the English spelling <cyan>eighth</cyan>.
   :expressions:
   - octavo
@@ -124,8 +136,9 @@
   :silent_translation: 8th
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:45:59.995414000 -05:00
-    - 2017-02-22 18:52:01.713843000 -05:00
+    - 2017-02-22 00:45:59.995414000 +01:00
+    - 2017-02-23 00:52:01.713843000 +01:00
+    - 2017-03-03 14:05:29.882937000 +01:00
   :note: Note the English spelling <cyan>ninth</cyan>.
   :expressions:
   - noveno
@@ -134,8 +147,9 @@
   :silent_translation: 9th
 - :metadata:
     :correct_answers:
-    - 2017-02-21 18:46:10.692774000 -05:00
-    - 2017-02-22 18:55:45.447091000 -05:00
+    - 2017-02-22 00:46:10.692774000 +01:00
+    - 2017-02-23 00:55:45.447091000 +01:00
+    - 2017-03-03 14:05:15.503694000 +01:00
   :expressions:
   - décimo
   - décima
@@ -143,127 +157,145 @@
   :silent_translation: 10th
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:49.993614000 -05:00
-    - 2017-02-23 12:39:35.071156000 -05:00
+    - 2017-02-22 15:59:49.993614000 +01:00
+    - 2017-02-23 18:39:35.071156000 +01:00
+    - 2017-03-03 14:05:03.795287000 +01:00
   :expression: tres
   :translation: three
   :silent_translation: '3'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 10:00:03.835165000 -05:00
-    - 2017-02-23 12:39:42.162027000 -05:00
+    - 2017-02-22 16:00:03.835165000 +01:00
+    - 2017-02-23 18:39:42.162027000 +01:00
+    - 2017-03-03 14:00:04.996931000 +01:00
   :expression: cuatro
   :translation: four
   :silent_translation: '4'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 10:00:12.214286000 -05:00
-    - 2017-02-23 12:39:58.013613000 -05:00
+    - 2017-02-22 16:00:12.214286000 +01:00
+    - 2017-02-23 18:39:58.013613000 +01:00
+    - 2017-03-03 14:05:09.141892000 +01:00
   :expression: cinco
   :translation: five
   :silent_translation: '5'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 10:00:01.277753000 -05:00
-    - 2017-02-23 12:42:34.258999000 -05:00
+    - 2017-02-22 16:00:01.277753000 +01:00
+    - 2017-02-23 18:42:34.258999000 +01:00
+    - 2017-03-03 14:05:06.763860000 +01:00
   :expression: seis
   :translation: six
   :silent_translation: '6'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 10:00:07.906052000 -05:00
-    - 2017-02-23 12:39:54.748693000 -05:00
+    - 2017-02-22 16:00:07.906052000 +01:00
+    - 2017-02-23 18:39:54.748693000 +01:00
+    - 2017-03-03 14:02:59.385936000 +01:00
   :expression: siete
   :translation: seven
   :silent_translation: '7'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:35.364198000 -05:00
-    - 2017-02-23 12:39:37.507006000 -05:00
+    - 2017-02-22 15:59:35.364198000 +01:00
+    - 2017-02-23 18:39:37.507006000 +01:00
+    - 2017-03-03 14:25:11.337517000 +01:00
   :expression: ocho
   :translation: eight
   :silent_translation: '8'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:29.581200000 -05:00
-    - 2017-02-23 12:39:11.318243000 -05:00
+    - 2017-02-22 15:59:29.581200000 +01:00
+    - 2017-02-23 18:39:11.318243000 +01:00
+    - 2017-03-03 14:24:57.472389000 +01:00
   :expression: nueve
   :translation: nine
   :silent_translation: '9'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:22.925777000 -05:00
-    - 2017-02-23 12:39:06.341999000 -05:00
+    - 2017-02-22 15:59:22.925777000 +01:00
+    - 2017-02-23 18:39:06.341999000 +01:00
+    - 2017-03-03 14:00:08.072928000 +01:00
   :expression: diez
   :translation: ten
   :silent_translation: '10'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:52.364192000 -05:00
-    - 2017-02-23 12:39:39.786907000 -05:00
+    - 2017-02-22 15:59:52.364192000 +01:00
+    - 2017-02-23 18:39:39.786907000 +01:00
+    - 2017-03-03 14:05:10.884436000 +01:00
   :expression: once
   :translation: eleven
   :silent_translation: '11'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:40.779496000 -05:00
-    - 2017-02-23 12:39:52.630045000 -05:00
+    - 2017-02-22 15:59:40.779496000 +01:00
+    - 2017-02-23 18:39:52.630045000 +01:00
+    - 2017-03-03 14:24:14.387483000 +01:00
   :expression: doce
   :translation: twelve
   :silent_translation: '12'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:27.188904000 -05:00
-    - 2017-02-23 12:41:51.175932000 -05:00
+    - 2017-02-22 15:59:27.188904000 +01:00
+    - 2017-02-23 18:41:51.175932000 +01:00
+    - 2017-03-03 14:01:23.791823000 +01:00
   :expression: trece
   :translation: thirteen
   :silent_translation: '13'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:55.728093000 -05:00
-    - 2017-02-23 12:39:56.498919000 -05:00
+    - 2017-02-22 15:59:55.728093000 +01:00
+    - 2017-02-23 18:39:56.498919000 +01:00
+    - 2017-03-03 14:02:30.546887000 +01:00
   :expression: catorce
   :translation: fourteen
   :silent_translation: '14'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:33.210182000 -05:00
-    - 2017-02-23 12:42:22.509118000 -05:00
+    - 2017-02-22 15:59:33.210182000 +01:00
+    - 2017-02-23 18:42:22.509118000 +01:00
+    - 2017-03-03 14:00:10.391177000 +01:00
   :expression: quince
   :translation: fifteen
   :silent_translation: '15'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:17.427358000 -05:00
-    - 2017-02-23 12:38:53.111909000 -05:00
+    - 2017-02-22 15:59:17.427358000 +01:00
+    - 2017-02-23 18:38:53.111909000 +01:00
+    - 2017-03-03 14:02:25.020003000 +01:00
   :expression: dieciséis
   :translation: sixteen
   :silent_translation: '16'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:43.610567000 -05:00
-    - 2017-02-23 12:39:50.356348000 -05:00
+    - 2017-02-22 15:59:43.610567000 +01:00
+    - 2017-02-23 18:39:50.356348000 +01:00
+    - 2017-03-03 14:02:27.113482000 +01:00
   :expression: diecisiete
   :translation: seventeen
   :silent_translation: '17'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 10:00:10.395723000 -05:00
-    - 2017-02-23 12:38:58.097105000 -05:00
+    - 2017-02-22 16:00:10.395723000 +01:00
+    - 2017-02-23 18:38:58.097105000 +01:00
+    - 2017-03-03 14:05:26.417872000 +01:00
   :expression: dieciocho
   :translation: eighteen
   :silent_translation: '18'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 09:59:38.152633000 -05:00
-    - 2017-02-23 12:39:01.677919000 -05:00
+    - 2017-02-22 15:59:38.152633000 +01:00
+    - 2017-02-23 18:39:01.677919000 +01:00
+    - 2017-03-03 14:01:28.154184000 +01:00
   :expression: diecinueve
   :translation: nineteen
   :silent_translation: '19'
 - :metadata:
     :correct_answers:
-    - 2017-02-22 11:00:58.260533000 -05:00
-    - 2017-02-23 12:39:04.073925000 -05:00
+    - 2017-02-22 17:00:58.260533000 +01:00
+    - 2017-02-23 18:39:04.073925000 +01:00
+    - 2017-03-03 14:23:35.104326000 +01:00
   :expression: veinte
   :translation: twenty
   :silent_translation: '20'
@@ -274,8 +306,9 @@
   - "¿A quién le estás escribiendo?": Who are you writing to?
   :metadata:
     :correct_answers:
-    - 2017-02-22 10:12:26.391518000 -05:00
-    - 2017-02-23 12:41:55.210124000 -05:00
+    - 2017-02-22 16:12:26.391518000 +01:00
+    - 2017-02-23 18:41:55.210124000 +01:00
+    - 2017-03-03 14:00:20.445367000 +01:00
   :expression: quién
   :translation: who
 - :examples:
@@ -284,8 +317,9 @@
   - No sabes cuánto lo siento.: I can't tell you how sorry I am
   :metadata:
     :correct_answers:
-    - 2017-02-22 11:48:11.306823000 -05:00
-    - 2017-02-23 12:40:12.443819000 -05:00
+    - 2017-02-22 17:48:11.306823000 +01:00
+    - 2017-02-23 18:40:12.443819000 +01:00
+    - 2017-03-03 14:01:34.982424000 +01:00
   :expression: cuánto
   :translation: how much
 - :expressions:
@@ -298,28 +332,27 @@
   - No sé (a)dónde ir.: I don't know where to go.
   :metadata:
     :correct_answers:
-    - 2017-02-22 12:24:00.428734000 -05:00
-    - 2017-02-23 12:39:17.951415000 -05:00
+    - 2017-02-22 18:24:00.428734000 +01:00
+    - 2017-02-23 18:39:17.951415000 +01:00
+    - 2017-03-03 14:06:43.665084000 +01:00
   :translation: where
 - :metadata:
     :correct_answers:
-    - 2017-02-22 12:37:30.700687000 -05:00
-    - 2017-02-23 12:42:25.461841000 -05:00
+    - 2017-02-22 18:37:30.700687000 +01:00
+    - 2017-02-23 18:42:25.461841000 +01:00
+    - 2017-03-03 14:25:28.343863000 +01:00
   :example:
     "¿Aún estás aquí?": Are you still here?
   :expression: aún
   :translation: still
-- :metadata:
-    :correct_answers:
-    - 2017-02-24 15:34:53.561082000 -05:00
-    - 2017-02-25 12:48:28.082536000 -05:00
-  :tag: :verb
+- :tag: :verb
   :expression: dar
   :translation: to give
 - :metadata:
     :correct_answers:
-    - 2017-02-24 15:38:09.241407000 -05:00
-    - 2017-02-25 12:49:05.439374000 -05:00
+    - 2017-02-24 21:38:09.241407000 +01:00
+    - 2017-02-25 18:49:05.439374000 +01:00
+    - 2017-03-03 14:05:18.344119000 +01:00
   :expression: por supuesto
   :translation: of course
 - :translations:
@@ -327,28 +360,111 @@
   - class
   :metadata:
     :correct_answers:
-    - 2017-02-24 19:08:38.512801000 -05:00
-    - 2017-02-25 16:27:05.796857000 -05:00
+    - 2017-02-25 01:08:38.512801000 +01:00
+    - 2017-02-25 22:27:05.796857000 +01:00
+    - 2017-03-03 14:24:54.802968000 +01:00
   :expression: clase
 - :expressions:
   - allí
   - ahí
   :metadata:
     :correct_answers:
-    - 2017-02-25 12:49:07.167773000 -05:00
-    - 2017-02-26 16:59:35.168205000 -05:00
+    - 2017-02-25 18:49:07.167773000 +01:00
+    - 2017-02-26 22:59:35.168205000 +01:00
+    - 2017-03-04 14:40:43.213715000 +01:00
   :translation: there
 - :expressions:
   - aquí
   - acá
   :metadata:
     :correct_answers:
-    - 2017-02-25 12:49:02.531275000 -05:00
-    - 2017-02-26 16:59:38.680435000 -05:00
+    - 2017-02-25 18:49:02.531275000 +01:00
+    - 2017-02-26 22:59:38.680435000 +01:00
+    - 2017-03-04 14:40:46.197437000 +01:00
   :translation: here
 - :metadata:
     :correct_answers:
-    - 2017-02-25 12:48:57.506112000 -05:00
-    - 2017-02-26 16:59:41.865132000 -05:00
+    - 2017-02-25 18:48:57.506112000 +01:00
+    - 2017-02-26 22:59:41.865132000 +01:00
+    - 2017-03-04 14:40:53.479210000 +01:00
   :expression: allá
   :translation: over there
+- :translations:
+  - nobody
+  - no one
+  :examples:
+  - Nadie me ayudó.: Nobody helped me.
+  - No vi a nadie.: I didn't see anybody.
+  - No hay nadie.: There's nobody at home.
+  :metadata:
+    :correct_answers:
+    - 2017-03-24 12:22:54.706659000 +01:00
+  :expression: nadie
+- :expression: nunca
+  :translation: never
+- :expression: nada
+  :translation: nothing
+- :expression: algo
+  :translation: something
+- :expression: faltar
+  :translation: to be missing
+- :expressions:
+  - guay
+  - chévere
+  :translation: cool
+- :expression: mirar
+  :translation: to look at
+- :expression: olvidar
+  :translation: to forget
+- :expression: pedir
+  :translation: to ask for
+- :expression: maleta
+  :translation: suitcase
+- :expression: dinero
+  :translation: money
+- :expression: efectivo
+  :translation: cash
+- :expression: cierto
+  :translation: 'true'
+- :expression: verdad
+  :translation: truth
+- :expression: sueño
+  :translation: sleep
+- :expression: dormir
+  :translation: to sleep
+- :translations:
+  - americano
+  - black coffee
+  :expression: tinto
+- :expressions:
+  - casi crudo
+  - al punto
+  :translation: medium rare
+- :expression: candado
+  :translation: padlock
+- :expression: la sábana
+  :translation: bedsheet
+- :expression: la estancia
+  :translation: stay
+- :expression: la tarde
+  :translation: afternoon
+- :expression: temprano
+  :translation: early
+- :expression: pronto
+  :translation: soon
+- :expression: tanto
+  :translation: so much
+- :expressions:
+  - caro
+  - costoso
+  :translation: expensive
+- :expression: cómodo
+  :translation: comfortable
+- :expression: propina
+  :translation: tip
+- :expression: por cierto
+  :translation: by the way
+- :expression: bastante
+  :translation: enough
+- :expression: demasiado
+  :translation: too much
