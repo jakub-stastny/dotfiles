@@ -1,4 +1,4 @@
-#!/Users/botanicus/.rubies/ruby-2.4.0/bin/ruby
+#!/Users/botanicus/.rubies/ruby-2.4.1/bin/ruby
 
 load File.expand_path('../../lib/bitbar.rb', __FILE__)
 require 'date'
