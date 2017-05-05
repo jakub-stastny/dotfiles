@@ -5,3 +5,5 @@ export EDITOR="atom"
 
 # CDPATH
 export cdpath=(. ~/Dropbox/Projects/{Software,Webs,Writing})
+
+test "$PWD" = "$HOME" && cd Desktop

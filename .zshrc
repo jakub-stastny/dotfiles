@@ -18,5 +18,3 @@ autoload -U zmv
 test $(date +%w) -eq 7 && week
 
 echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; #echo "ZSH functions: ${(ok)functions}"; echo
-
-test "$PWD" = "$HOME" && cd Desktop
