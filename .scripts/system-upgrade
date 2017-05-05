@@ -21,4 +21,4 @@ gem update --system && gem update && gem cleanup
 
 echo "~ Ruby updates."
 ruby-install # Prints current versions.
-ruby-install ruby --no-reinstall # I'm not sure whether this works for upgrading version, but it might.
+ruby-install ruby --latest --no-reinstall
