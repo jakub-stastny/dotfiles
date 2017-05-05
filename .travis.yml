@@ -2,7 +2,7 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.0
+  - 2.4.1
 
 env:
   - PATH=$PATH:$TRAVIS_BUILD_DIR/.scripts
