@@ -35,7 +35,7 @@ end
 def require_or_abort(gem_name)
   require gem_name
 rescue LoadError => error
-  abort "Install the #{gem_name} gem for #{%x{which ruby}.chomp}. | color=red"
+  abort "Install the #{gem_name} gem for #{RbConfig.ruby}. | color=red"
 end
 
 def config

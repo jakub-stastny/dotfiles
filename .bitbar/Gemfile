@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'wunderground'
 gem 'travis'
+gem 'tzinfo'
 
 group(:test) do
   gem 'rspec'
-  gem 'tzinfo'
 end

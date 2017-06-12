@@ -1,4 +1,4 @@
-#!/Users/botanicus/.rubies/ruby-2.4.1/bin/ruby
+#!/Users/botanicus/.scripts/ruby
 
 require 'wunderground'
 
