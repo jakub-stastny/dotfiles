@@ -2,7 +2,7 @@
 
 # This script should have ~/.zshenv loaded.
 
-
+cd
 sudo rm -rf Applications Downloads Movies Music Pictures Documents
 chflags hidden README.md tasks.todo dotfiles.git Projects
 
