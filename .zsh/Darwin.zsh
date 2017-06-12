@@ -7,3 +7,5 @@ export EDITOR="atom"
 export cdpath=(. ~/Dropbox/Projects/{Software,Webs,Writing})
 
 test "$PWD" = "$HOME" && cd Desktop
+
+flashcards has-not-run-today && flashcards
