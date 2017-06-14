@@ -378,6 +378,9 @@
 - :tag: :verb
   :expression: dar
   :translation: to give
+  :tags:
+  - :verb
+  - :irregular
 - :metadata:
     :correct_answers:
     - 2017-02-24 21:38:09.241407000 +01:00
@@ -429,39 +432,85 @@
     :correct_answers:
     - 2017-03-24 12:22:54.706659000 +01:00
     - 2017-04-25 21:32:49.310378000 +02:00
+    - 2017-06-12 15:19:19.242882000 +02:00
   :expression: nadie
-- :expression: nunca
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:32:18.372529000 +02:00
+  :expression: nunca
   :translation: never
-- :expression: nada
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:17:37.379042000 +02:00
+  :expression: nada
   :translation: nothing
-- :expression: algo
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:17:46.501827000 +02:00
+  :expression: algo
   :translation: something
 - :expression: faltar
   :translation: to be missing
+  :tags: [:verb, :regular]
 - :expressions:
   - guay
   - chévere
+  :metadata:
+    :correct_answers:
+    - 2017-06-12 15:19:07.730997000 +02:00
   :translation: cool
-- :expression: mirar
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:19:12.716968000 +02:00
+  :expression: mirar
   :translation: to look at
-- :expression: olvidar
+  :tags: [:verb, :regular]
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:32:22.596477000 +02:00
+  :expression: olvidar
   :translation: to forget
-- :expression: pedir
+  :tags: [:verb, :regular]
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:33:06.569408000 +02:00
+  :expression: pedir
   :translation: to ask for
-- :expression: maleta
+  :tags:
+  - :verb
+  - :irregular
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:16:48.491102000 +02:00
+  :expression: maleta
   :translation: suitcase
-- :expression: dinero
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:16:44.640232000 +02:00
+  :expression: dinero
   :translation: money
-- :expression: efectivo
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:17:05.533995000 +02:00
+  :expression: efectivo
   :translation: cash
-- :expression: cierto
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:18:25.158823000 +02:00
+  :expression: cierto
   :translation: 'true'
 - :expression: verdad
   :translation: truth
-- :expression: sueño
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:32:52.067904000 +02:00
+  :expression: sueño
   :translation: sleep
 - :expression: dormir
   :translation: to sleep
+  :tags:
+  - :verb
+  - :irregular
 - :translations:
   - americano
   - black coffee
@@ -469,38 +518,67 @@
 - :expressions:
   - casi crudo
   - al punto
+  :metadata:
+    :correct_answers:
+    - 2017-06-13 08:31:44.279831000 +02:00
   :translation: medium rare
 - :expression: candado
   :translation: padlock
 - :expression: la sábana
   :translation: bedsheet
-- :expression: la estancia
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:32:58.320783000 +02:00
+  :expression: la estancia
   :translation: stay
-- :expression: la tarde
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:32:32.466754000 +02:00
+  :expression: la tarde
   :translation: afternoon
 - :metadata:
     :correct_answers:
     - 2017-04-25 21:35:10.118704000 +02:00
+    - 2017-06-12 15:16:41.020284000 +02:00
   :expression: temprano
   :translation: early
-- :expression: pronto
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:33:20.550040000 +02:00
+  :expression: pronto
   :translation: soon
 - :expression: tanto
   :translation: so much
 - :expressions:
   - caro
   - costoso
+  :metadata:
+    :correct_answers:
+    - 2017-06-12 15:18:30.641173000 +02:00
   :translation: expensive
 - :metadata:
     :correct_answers:
     - 2017-04-25 21:35:18.631874000 +02:00
+    - 2017-06-12 15:17:51.313670000 +02:00
   :expression: cómodo
   :translation: comfortable
-- :expression: propina
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:17:43.630851000 +02:00
+  :expression: propina
   :translation: tip
-- :expression: por cierto
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:33:50.599980000 +02:00
+  :expression: por cierto
   :translation: by the way
-- :expression: bastante
+- :metadata:
+    :correct_answers:
+    - 2017-06-12 15:17:55.137664000 +02:00
+  :expression: bastante
   :translation: enough
-- :expression: demasiado
+- :metadata:
+    :correct_answers:
+    - 2017-06-13 08:32:36.466476000 +02:00
+  :expression: demasiado
   :translation: too much
