@@ -1,5 +1,10 @@
 ---
-  log_file_path: ~/Dropbox/WIP/Pomodoro.log
-  work_day_work_schedule: ['5:40', '18:20']
-  work_day_personal_schedule: ['5:40', '19:20']
-  saturday_schedule: ['9:20', '19:20']
+# TODO: start using the one in ~/Dropbox/Data/Data/Pomodoro
+log_file_path: ~/Dropbox/Data/Data/Pomodoro/Pomodoro.log
+  
+# From 10, because we do job hunt at 10:45.
+# Then working from 2 to 6 PM.
+work_day_work_schedule: ['10:00', '18:00']
+# Doesn't end at 2 PM, because every third day I'm going through my digital stuff.
+work_day_personal_schedule: ['6:20', '16:00']
+saturday_schedule: ['6:20', '18:00']

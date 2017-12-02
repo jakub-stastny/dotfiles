@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo "~ OS X updates."
-sudo softwareupdate -i -a
+#echo "~ OS X updates."
+#sudo softwareupdate -i -a
 
 echo "~ Homebrew updates."
 brew update && brew upgrade && brew cleanup
@@ -16,9 +16,9 @@ echo "~ APM & Vim updates."
 apm upgrade --no-confirm
 vim -c VundleUpdate -c quitall
 
-echo "~ RubyGems updates."
-gem update --system && gem update && gem cleanup
-
 echo "~ Ruby updates."
 ruby-install # Prints current versions.
 ruby-install ruby --latest --no-reinstall
+
+echo "~ RubyGems updates."
+gem update --system && gem update && gem cleanup

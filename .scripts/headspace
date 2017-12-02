@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'find'
+require 'refined-refinements/colours'
+
+using RR::ColourExts
+
+
+# headspace next
+# headspace start "Health Series/3 - Stress"
+# headspace series
+
+def play_next(data)
+  episodes = data[:episodes] || Hash.new
+  if last_episode = episodes.keys.last
+    last_episode_day = last_episode.split('/').last.match('Day (\d+)')[1]
+    today_episode_number = last_episode_day.to_i + 1
+    Dir.glob("#{File.dirname(last_episode)}/*Day*").each do |path|
+      if path.match(/Day #{today_episode_number}\b/) # Protection against matching 30 if the day is 3.
+        puts "~ #{path}"
+        system("afplay '#{path}'")
+      end
+    end
+
+    episode_path = "#{File.dirname(last_episode)}/Day #{today_episode_number}"
+    data[:episodes][episode_path] = Time.now
+
+    File.open(File.expand_path('~/.headspace.yml')) do |file|
+      file.puts(data.to_yaml)
+    end
+  else
+    abort "No episodes played yet. Which ."
+  end
+end
+
+def list_series
+  directories = Array.new
+  Find.find('.') do |path|
+    if File.directory?(path) && path.split('/').length == 3
+      directories << path[2..-1]
+    end
+  end
+
+  directories.uniq.group_by { |path| path.split('/').first }.each do |group, dirs|
+    puts "<green>#{group}</green>".colourise
+    dirs.each do |dir|
+      puts "  #{group}/<magenta>#{dir.split('/').last}</magenta>".colourise
+    end
+    puts
+  end
+end
+
+####
+data = begin
+  YAML.load_file(File.expand_path('~/.headspace.yml'))
+rescue Errno::ENOENT
+  Hash.new
+end
+
+Dir.chdir(File.expand_path(data[:base_dir]))
+
+case ARGV.shift
+when 'next'   then play_next(data)
+when 'series' then list_series
+when 'start'
+else
+  abort DATA.read
+end
+
+
+__END__
+headspace next # Start the next episode.
+headspace start "Health Series/3 - Stress"
+headspace series

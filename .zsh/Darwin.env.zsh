@@ -6,4 +6,4 @@ path-add ~/Dropbox/Data/Scripts
 export rubylib=(~/Dropbox/Projects/Software/*/lib)
 export projects=(~/Dropbox/Projects/{Software,}/*)
 
-chruby 2.4.1
+chruby 2.4.2

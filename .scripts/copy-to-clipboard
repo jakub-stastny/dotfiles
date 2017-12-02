@@ -37,7 +37,7 @@ __END__
 TopTal Ruby: >
   Hi,
 
-  I have nearly a decade of experience with Ruby, Ruby on Rails, JavaScript and other web technologies. For the past 3.5+ years I work extensively with JavaScript front-end frameworks, mainly React.js.
+  I have a decade of experience with Ruby, Ruby on Rails, JavaScript and other web technologies. For the past 3.5+ years I work extensively with JavaScript front-end frameworks, mainly React.js.
 
   Best regards,
 
@@ -46,7 +46,7 @@ TopTal Ruby: >
 TopTal JavaScript: >
   Hi,
 
-  I have nearly a decade of experience with JavaScript as well as back-end technologies such as Ruby, Ruby on Rails and others. For the past 3.5+ years I work extensively with JavaScript front-end frameworks, mainly React.js.
+  I have a decade of experience with JavaScript as well as back-end technologies such as Ruby, Ruby on Rails and others. For the past 3.5+ years I work extensively with JavaScript front-end frameworks, mainly React.js.
 
   Best regards,
 
@@ -54,6 +54,14 @@ TopTal JavaScript: >
 
 TopTal scraping: >
   Hi,
+
+  I have a decade of experience with Ruby, Ruby on Rails, JavaScript and other web technologies. I love creating scrapers and I wrote many of them.
+
+  Few months ago I created a scraper for http://acera.org that creates PDF documents from the content on their website.
+
+  I created scrapers to send alerts based on data on Gumtree (sort of a Craigslist type of website), scrape data from car manufacturers, from Facebook and many other websites.
+
+  ...
 
   I have a decade of experience in IT and I have built many scrapers during my career. Most of them for personal use, the one commercial I built was to scrape car specifications from a site with poor performance (so I was scraping the site plus Google Cache, which meant using Tor in order to be able to send many requests).
 
