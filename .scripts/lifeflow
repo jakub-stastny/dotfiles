@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+# Do 20 days each, then move on to the next one.
+
+require 'yaml'
+
+data = begin
+  YAML.load_file(File.expand_path('~/Dropbox/Data/Data/LifeFlow.yml'))
+rescue Errno::ENOENT
+  Hash.new { |hash, key| hash[key] = Array.new }
+end
+
+def base_dir
+  File.expand_path("~/Dropbox/Media/Meditation/Lifeflow")
+end
+
+def recordings
+  Dir.glob("#{base_dir}/*.mp3")[1..-1].map(&File.method(:basename))
+end
+
+def find_recording(data, index = 0)
+  recording = recordings[index]
+  unless data[recording].length >= 20
+    recording
+  else
+    find_recording(data, index + 1)
+  end
+end
+
+case ARGV.shift
+when 'start'
+  recording = find_recording(data)
+  path = File.join(base_dir, recording)
+  puts "~ #{path}"
+  system("afplay '#{path}'")
+  data[recording] << Time.now
+  data_string = data.to_yaml
+  File.open(File.expand_path('~/Dropbox/Data/Data/LifeFlow.yml'), 'w') do |file|
+    file.puts(data_string)
+  end
+else
+  abort DATA.read.colourise
+end
+
+
+__END__
+lifeflow start <bright_black># Play.</bright_black>

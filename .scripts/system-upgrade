@@ -16,9 +16,10 @@ echo "~ APM & Vim updates."
 apm upgrade --no-confirm
 vim -c VundleUpdate -c quitall
 
-echo "~ Ruby updates."
-ruby-install # Prints current versions.
-ruby-install ruby --latest --no-reinstall
+# We use Homebrew Ruby now.
+#echo "~ Ruby updates."
+#ruby-install # Prints current versions.
+#ruby-install ruby --latest --no-reinstall
 
 echo "~ RubyGems updates."
 gem update --system && gem update && gem cleanup

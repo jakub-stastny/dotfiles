@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-today = Time.now
-
-if (today.monday? || today.wednesday? || today.friday?) && today.hour > 18
-  exec('gmail')
-else
-  exec('gmail --confirmations-only')
-end

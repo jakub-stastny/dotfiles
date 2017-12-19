@@ -6,31 +6,48 @@ require 'refined-refinements/colours'
 
 using RR::ColourExts
 
-
 # headspace next
 # headspace start "Health Series/3 - Stress"
 # headspace series
 
 def play_next(data)
-  episodes = data[:episodes] || Hash.new
-  if last_episode = episodes.keys.last
-    last_episode_day = last_episode.split('/').last.match('Day (\d+)')[1]
-    today_episode_number = last_episode_day.to_i + 1
-    Dir.glob("#{File.dirname(last_episode)}/*Day*").each do |path|
-      if path.match(/Day #{today_episode_number}\b/) # Protection against matching 30 if the day is 3.
-        puts "~ #{path}"
-        system("afplay '#{path}'")
-      end
+  if next_episode_files = find_next_episode_files(data)
+    next_episode_files.each do |path|
+      puts "~ #{path}"
+      system("afplay '#{path}'")
     end
+
+    today_episode_number = next_episode_files.first.match(/Day (\d+)/)[1]
+    last_episode = data[:episodes].keys.last
 
     episode_path = "#{File.dirname(last_episode)}/Day #{today_episode_number}"
     data[:episodes][episode_path] = Time.now
 
-    File.open(File.expand_path('~/.headspace.yml')) do |file|
-      file.puts(data.to_yaml)
+    if File.size(File.expand_path('~/.headspace.yml')) < data.to_yaml.length
+      File.open(File.expand_path('~/.headspace.yml'), 'w') do |file|
+        file.puts(data.to_yaml)
+      end
+    else
+      puts "The data we were to write are of a smaller size than the original size. Aborting.\n\n"
+      puts data.to_yaml
     end
   else
     abort "No episodes played yet. Which ."
+  end
+rescue Interrupt
+  puts ''
+end
+
+def find_next_episode_files(data)
+  episodes = data[:episodes] || Hash.new
+  if last_episode = episodes.keys.last
+    last_episode_day = last_episode.split('/').last.match('Day (\d+)')[1]
+    today_episode_number = last_episode_day.to_i + 1
+
+    Dir.glob("#{File.dirname(last_episode)}/*Day*").select do |path|
+      # Protection against matching 30 if the day is 3.
+      path.match(/Day #{today_episode_number}\b/)
+    end
   end
 end
 
@@ -51,25 +68,35 @@ def list_series
   end
 end
 
+def show_next_episode(data)
+  if next_episode_path = find_next_episode_files(data).first
+    dir, basename = File.split(next_episode_path)
+    puts "#{dir}/#{basename.match(/Day \d+/)[0]}"
+  else
+    exit 1
+  end
+end
+
 ####
 data = begin
-  YAML.load_file(File.expand_path('~/.headspace.yml'))
+  YAML.load_file(File.expand_path('~/Dropbox/Data/Data/Headspace.yml'))
 rescue Errno::ENOENT
-  Hash.new
+  abort "Write ~/Dropbox/Data/Data/Headspace.yml."
 end
 
 Dir.chdir(File.expand_path(data[:base_dir]))
 
 case ARGV.shift
 when 'next'   then play_next(data)
+when 'next?'  then show_next_episode(data)
 when 'series' then list_series
-when 'start'
+when 'start'  then puts('TODO')
 else
-  abort DATA.read
+  abort DATA.read.colourise
 end
 
 
 __END__
-headspace next # Start the next episode.
+headspace next <bright_black># Start the next episode.</bright_black>
 headspace start "Health Series/3 - Stress"
 headspace series
