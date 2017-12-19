@@ -1,0 +1,10 @@
+---
+data_root_path: ~/Dropbox/Data/Data/Pomodoro/Tasks
+today_path:     ~/Dropbox/Data/Data/Pomodoro/Tasks/%Y/%m/%Y-%m-%d.today
+task_list_path: ~/Dropbox/Data/WIP/tasks.todo
+
+schedule_path:  ~/Dropbox/Data/Data/Pomodoro/Schedules/schedules.rb
+routine_path:   ~/Dropbox/Data/Data/Pomodoro/Schedules/base.rb
+
+calendar:
+  Jaime's birthday: 12/2

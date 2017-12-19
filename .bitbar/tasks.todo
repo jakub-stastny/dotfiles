@@ -1,4 +1,6 @@
 Tasks:
+- BitBar: add FIO data.
+- BitBar: add Messenger & Gmail data.
 - BitBar: also count my current rate in different currencies.
 - BitBar: copy to clipboard doesn't work anymore (with terminal=false).
 - Download FIO data daily and add stats to BitBar. Possibly use those in determining my burn rate.

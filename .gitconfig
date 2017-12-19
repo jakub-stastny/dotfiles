@@ -33,3 +33,4 @@
   amend-no-edit = commit --amend --no-edit
   amend-all-no-edit = commit --amend --no-edit -a
   dc = diff --cached
+  bra = branch -a
