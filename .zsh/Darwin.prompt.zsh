@@ -17,7 +17,7 @@ git_info() {
 
 PROMPT='%F{green}%1~%F{white}$(git_info)%f %# '
 # RPROMPT='`log-time --prompt`[%F{yellow}%?%f]'
-RPROMPT='`now active -s '%b'`'
+RPROMPT='`now active "%F{green}%rd%F{white} %b" 2> /dev/null`'
 
 
 # local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"

@@ -11,5 +11,6 @@ archive.days.each do |day|
     sums[currency.to_sym] += amount.to_i
     sums
   end
+
   puts "#{day.date.strftime('%d/%m')}: #{total}"
 end
