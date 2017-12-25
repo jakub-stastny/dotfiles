@@ -4,6 +4,8 @@ require 'yaml'
 require 'find'
 require 'refined-refinements/colours'
 
+PATH = File.expand_path('~/Dropbox/Data/Data/Headspace.yml')
+
 using RR::ColourExts
 
 # headspace next
@@ -23,8 +25,8 @@ def play_next(data)
     episode_path = "#{File.dirname(last_episode)}/Day #{today_episode_number}"
     data[:episodes][episode_path] = Time.now
 
-    if File.size(File.expand_path('~/.headspace.yml')) < data.to_yaml.length
-      File.open(File.expand_path('~/.headspace.yml'), 'w') do |file|
+    if File.size(PATH) < data.to_yaml.length
+      File.open(PATH, 'w') do |file|
         file.puts(data.to_yaml)
       end
     else

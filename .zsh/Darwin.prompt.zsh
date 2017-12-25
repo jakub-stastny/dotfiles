@@ -15,21 +15,14 @@ git_info() {
   fi
 }
 
-PROMPT='%F{green}%1~%F{white}$(git_info)%f %# '
-# RPROMPT='`log-time --prompt`[%F{yellow}%?%f]'
-RPROMPT='`now active "%F{green}%rd%F{white} %b" 2> /dev/null`'
+# local ret_status="%(?:%F{green}%}➜ :%{%F{red}%}➜ %s)"
+local ret_status_colour="%(?:%F{green}%}:%{%F{red}%})"
+PROMPT='%F{green}%1~%F{white}$(git_info)%f ${ret_status_colour}%#%F{white} '
 
+RPROMPT='Task: `now active "%F{green}%rd%F{white} %b" 2> /dev/null`'
+RPROMPT='$(date +%H:%M:%S)'
 
-# local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
-# PROMPT='${ZSH_THEME_ENV}${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
-# RPROMPT='$(date +%H:%M:%S)'
-#
-# if test -f /etc/vagrant_box_build_time; then
-#   ZSH_THEME_ENV="%{$fg_bold[yellow]%}vagrant "
-# fi
-#
 # ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
 # ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 # ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
 # ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-# # Time Vagrant or not
