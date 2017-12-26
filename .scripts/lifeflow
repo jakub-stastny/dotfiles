@@ -3,6 +3,9 @@
 # Do 20 days each, then move on to the next one.
 
 require 'yaml'
+require 'refined-refinements/colours'
+
+using RR::ColourExts
 
 data = begin
   YAML.load_file(File.expand_path('~/Dropbox/Data/Data/LifeFlow.yml'))
@@ -28,7 +31,7 @@ def find_recording(data, index = 0)
 end
 
 case ARGV.shift
-when 'start'
+when 'play'
   recording = find_recording(data)
   path = File.join(base_dir, recording)
   puts "~ #{path}"
@@ -44,4 +47,4 @@ end
 
 
 __END__
-lifeflow start <bright_black># Play.</bright_black>
+lifeflow play <bright_black># Play.</bright_black>
