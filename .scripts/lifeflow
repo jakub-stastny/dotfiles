@@ -2,7 +2,19 @@
 
 # Do 20 days each, then move on to the next one.
 
+class HomePath
+  def initialize(path)
+    @path = File.expand_path(path)
+  end
+
+  def to_s
+    @path.sub(ENV['HOME'], '~')
+  end
+  alias_method :inspect, :to_s
+end
+
 require 'yaml'
+require 'timeout'
 require 'refined-refinements/colours'
 
 using RR::ColourExts
@@ -30,12 +42,24 @@ def find_recording(data, index = 0)
   end
 end
 
+def timeout_maybe(timeout, &block)
+  timeout ? Timeout.timeout(timeout * 60, &block) : block.call
+end
+
+def play(path)
+  puts "~ #{path}"
+  timeout_maybe(ARGV.first && ARGV.shift.to_i) do
+    system("afplay '#{path}'")
+  end
+rescue Timeout::Error
+  system("killall afplay") # Why doesn't it stop by itself?!?!
+end
+
 case ARGV.shift
 when 'play'
   recording = find_recording(data)
-  path = File.join(base_dir, recording)
-  puts "~ #{path}"
-  system("afplay '#{path}'")
+  play(File.join(base_dir, recording))
+
   data[recording] << Time.now
   data_string = data.to_yaml
   File.open(File.expand_path('~/Dropbox/Data/Data/LifeFlow.yml'), 'w') do |file|
@@ -47,4 +71,5 @@ end
 
 
 __END__
-lifeflow play <bright_black># Play.</bright_black>
+lifeflow play<bright_black># Play.</bright_black>
+lifeflow play 25<bright_black># Play.</bright_black>
