@@ -2,25 +2,17 @@
 
 # Do 20 days each, then move on to the next one.
 
-class HomePath
-  def initialize(path)
-    @path = File.expand_path(path)
-  end
-
-  def to_s
-    @path.sub(ENV['HOME'], '~')
-  end
-  alias_method :inspect, :to_s
-end
-
 require 'yaml'
 require 'timeout'
 require 'refined-refinements/colours'
+require 'refined-refinements/homepath'
 
-using RR::ColourExts
+using RR::ColouredTerminal
+
+PATH = RR::Homepath.new('~/Dropbox/Data/Data/LifeFlow.yml')
 
 data = begin
-  YAML.load_file(File.expand_path('~/Dropbox/Data/Data/LifeFlow.yml'))
+  YAML.load_file(PATH.expand)
 rescue Errno::ENOENT
   Hash.new { |hash, key| hash[key] = Array.new }
 end
@@ -47,9 +39,10 @@ def timeout_maybe(timeout, &block)
 end
 
 def play(path)
-  puts "~ #{path}"
+  path = RR::Homepath.new(path)
+  puts "<bold>~</bold> <green>Playing</green> #{path}"
   timeout_maybe(ARGV.first && ARGV.shift.to_i) do
-    system("afplay '#{path}'")
+    system("afplay '#{path.expand}'")
   end
 rescue Timeout::Error
   system("killall afplay") # Why doesn't it stop by itself?!?!
@@ -62,14 +55,14 @@ when 'play'
 
   data[recording] << Time.now
   data_string = data.to_yaml
-  File.open(File.expand_path('~/Dropbox/Data/Data/LifeFlow.yml'), 'w') do |file|
+  File.open(PATH.expand, 'w') do |file|
     file.puts(data_string)
   end
 else
-  abort DATA.read.colourise
+  abort DATA.read
 end
 
 
 __END__
-lifeflow play<bright_black># Play.</bright_black>
-lifeflow play 25<bright_black># Play.</bright_black>
+lifeflow play    <bright_black># Play the whole current episode.</bright_black>
+lifeflow play <yellow>25</yellow> <bright_black># Play the current episode for 25 minutes.</bright_black>

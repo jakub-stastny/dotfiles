@@ -19,6 +19,9 @@ git_info() {
 local ret_status_colour="%(?:%F{green}%}:%{%F{red}%})"
 PROMPT='%F{green}%1~%F{white}$(git_info)%f ${ret_status_colour}%#%F{white} '
 
+# If this get re-enabled, use with timeout:
+# http://fahdshariff.blogspot.com.es/2013/08/executing-shell-command-with-timeout.html
+# Great for forgotten pry statements.
 RPROMPT='Task: `now active "%F{green}%rd%F{white} %b" 2> /dev/null`'
 RPROMPT='$(date +%H:%M:%S)'
 
