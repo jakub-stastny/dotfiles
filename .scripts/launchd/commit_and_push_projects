@@ -8,6 +8,8 @@ has_untracked_files() {
   git status --porcelain | grep "^?? ";
 }
 
+exit # TODO: Don't commit work projects!
+
 rm -f /tmp/Uncommitted\ changes.log
 
 for gitdir in $(find ~/Dropbox/Projects -name .git -not -path "*/On Hold/*"); do

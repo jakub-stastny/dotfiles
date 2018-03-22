@@ -12,7 +12,9 @@ using RR::ColouredTerminal
 PATH = RR::Homepath.new('~/Dropbox/Data/Data/LifeFlow.yml')
 
 data = begin
-  YAML.load_file(PATH.expand)
+  hash = YAML.load_file(PATH.expand)
+  hash.default_proc = Proc.new { |hash, key| hash[key] = Array.new }
+  hash
 rescue Errno::ENOENT
   Hash.new { |hash, key| hash[key] = Array.new }
 end
@@ -22,7 +24,7 @@ def base_dir
 end
 
 def recordings
-  Dir.glob("#{base_dir}/*.mp3")[1..-1].map(&File.method(:basename))
+  Dir.glob("#{base_dir}/*.mp3").sort[1..-1].map(&File.method(:basename))
 end
 
 def find_recording(data, index = 0)

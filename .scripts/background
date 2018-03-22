@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+FILE="/Users/botanicus/Downloads/mps/PURE THETA WAVES: Meditation (Track: Cosmic Theta Waves).m4a"
+
+alias vlc="/Applications/VLC.app/Contents/MacOS/VLC -I dummy"
+
+while true; do
+  echo "~ Playing."
+  vlc "$FILE" && sleep 1
+done

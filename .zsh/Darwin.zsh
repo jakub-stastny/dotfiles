@@ -8,4 +8,4 @@ export cdpath=(. ~/Dropbox/Projects/{Software,Work})
 
 test "$PWD" = "$HOME" && cd Desktop
 
-flashcards has-not-run-today && flashcards
+#flashcards has-not-run-today && flashcards
