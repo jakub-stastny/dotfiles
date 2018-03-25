@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
-# Do 20 days each, then move on to the next one.
+# 20 days, 1 hour a day.
+MINUTES_MEDITATED_PER_RECORDING = 20 * 1 * 60
 
 require 'yaml'
 require 'timeout'
+require 'refined-refinements/hour'
 require 'refined-refinements/colours'
 require 'refined-refinements/homepath'
 
@@ -29,7 +31,7 @@ end
 
 def find_recording(data, index = 0)
   recording = recordings[index]
-  unless data[recording].length >= 20
+  unless data[recording].values.sum / 60 >= MINUTES_MEDITATED_PER_RECORDING
     recording
   else
     find_recording(data, index + 1)
@@ -48,17 +50,33 @@ def play(path)
   end
 rescue Timeout::Error
   system("killall afplay") # Why doesn't it stop by itself?!?!
+rescue Interrupt
+  puts
 end
 
 case ARGV.shift
 when 'play'
   recording = find_recording(data)
-  play(File.join(base_dir, recording))
 
-  data[recording] << Time.now
-  data_string = data.to_yaml
-  File.open(PATH.expand, 'w') do |file|
-    file.puts(data_string)
+  unless recording
+    abort "<bold>~</bold> Done! You can start using <green>LifeFlow 2.0 Bonus</green> now."
+  end
+
+  start_time = Time.now
+  play(File.join(base_dir, recording))
+  duration = Time.now - start_time
+
+  if duration > 60
+    data[recording][start_time] = duration.round
+    data_string = data.to_yaml
+    File.open(PATH.expand, 'w') do |file|
+      file.puts(data_string)
+    end
+
+    puts "<bold>~</bold> Duration: <green>#{(duration / 60).round} minutes</green>."
+    hours_meditated = Hour.new(0, (data[recording].values.sum + duration) / 60)
+    total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
+    puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{total_hours - hours_meditated}</green> left)."
   end
 else
   abort DATA.read
