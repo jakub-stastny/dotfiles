@@ -12,32 +12,41 @@ using RR::ColourExts
 # headspace start "Health Series/3 - Stress"
 # headspace series
 
-def play_next(data)
-  if next_episode_files = find_next_episode_files(data)
-    next_episode_files.each do |path|
-      puts "~ #{path}"
-      system("afplay '#{path}'")
-    end
+def play(next_episode_files)
+  next_episode_files.each do |path|
+    puts "~ #{path}"
+    system("afplay '#{path}'")
+  end
 
-    today_episode_number = next_episode_files.first.match(/Day (\d+)/)[1]
-    last_episode = data[:episodes].keys.last
+  today_episode_number = next_episode_files.first.match(/Day (\d+)/)[1]
+  last_episode = data[:episodes].keys.last
 
-    episode_path = "#{File.dirname(last_episode)}/Day #{today_episode_number}"
-    data[:episodes][episode_path] = Time.now
+  episode_path = "#{File.dirname(last_episode)}/Day #{today_episode_number}"
+  data[:episodes][episode_path] = Time.now
 
-    if File.size(PATH) < data.to_yaml.length
-      File.open(PATH, 'w') do |file|
-        file.puts(data.to_yaml)
-      end
-    else
-      puts "The data we were to write are of a smaller size than the original size. Aborting.\n\n"
-      puts data.to_yaml
+  if File.size(PATH) < data.to_yaml.length
+    File.open(PATH, 'w') do |file|
+      file.puts(data.to_yaml)
     end
   else
-    abort "No episodes played yet. Which ."
+    puts "The data we were to write are of a smaller size than the original size. Aborting.\n\n"
+    puts data.to_yaml
   end
 rescue Interrupt
   puts ''
+end
+
+def play_first_episode(base_dir, series)
+  next_episode_files = Dir.glob("#{File.expand_path("#{base_dir}/#{series}")}/*Day 1 *")
+  play(next_episode_files)
+end
+
+def play_next(data)
+  if next_episode_files = find_next_episode_files(data)
+    self.play(next_episode_files)
+  else
+    abort "No episodes played yet."
+  end
 end
 
 def find_next_episode_files(data)
@@ -92,7 +101,7 @@ case ARGV.shift
 when 'play'   then play_next(data)
 when 'next?'  then show_next_episode(data)
 when 'series' then list_series
-when 'start'  then puts('TODO')
+when 'start'  then play_first_episode(data[:base_dir], ARGV.shift)
 else
   abort DATA.read.colourise
 end
@@ -100,5 +109,6 @@ end
 
 __END__
 headspace play <bright_black># Start the next episode.</bright_black>
+headspace next?
 headspace start "Health Series/3 - Stress"
 headspace series
