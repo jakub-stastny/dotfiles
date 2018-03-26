@@ -8,20 +8,16 @@ PATH = File.expand_path('~/Dropbox/Data/Data/Headspace.yml')
 
 using RR::ColourExts
 
-# headspace play
-# headspace start "Health Series/3 - Stress"
-# headspace series
-
-def play(next_episode_files)
+def play(data, next_episode_files)
   next_episode_files.each do |path|
     puts "~ #{path}"
     system("afplay '#{path}'")
   end
 
   today_episode_number = next_episode_files.first.match(/Day (\d+)/)[1]
-  last_episode = data[:episodes].keys.last
+  series = next_episode_files.first.split('/')[-3..-2].join('/')
 
-  episode_path = "#{File.dirname(last_episode)}/Day #{today_episode_number}"
+  episode_path = "#{series}/Day #{today_episode_number}"
   data[:episodes][episode_path] = Time.now
 
   if File.size(PATH) < data.to_yaml.length
@@ -29,21 +25,21 @@ def play(next_episode_files)
       file.puts(data.to_yaml)
     end
   else
-    puts "The data we were to write are of a smaller size than the original size. Aborting.\n\n"
-    puts data.to_yaml
+    puts "\n\n<red>ERROR:</red> The data we were to write are of a smaller size than the original size. Aborting.\n\n".colourise
+    puts "<bright_black>#{data.to_yaml}</bright_black>".colourise
   end
 rescue Interrupt
   puts ''
 end
 
-def play_first_episode(base_dir, series)
-  next_episode_files = Dir.glob("#{File.expand_path("#{base_dir}/#{series}")}/*Day 1 *")
-  play(next_episode_files)
+def play_first_episode(data, series)
+  next_episode_files = Dir.glob("#{File.expand_path("#{data[:base_dir]}/#{series}")}/*Day 1 *")
+  play(data, next_episode_files)
 end
 
 def play_next(data)
   if next_episode_files = find_next_episode_files(data)
-    self.play(next_episode_files)
+    self.play(data, next_episode_files)
   else
     abort "No episodes played yet."
   end
@@ -101,7 +97,7 @@ case ARGV.shift
 when 'play'   then play_next(data)
 when 'next?'  then show_next_episode(data)
 when 'series' then list_series
-when 'start'  then play_first_episode(data[:base_dir], ARGV.shift)
+when 'start'  then play_first_episode(data, ARGV.shift)
 else
   abort DATA.read.colourise
 end
