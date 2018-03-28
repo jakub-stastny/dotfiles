@@ -39,7 +39,7 @@ end
 
 def play_next(data)
   if next_episode_files = find_next_episode_files(data)
-    self.play(data, next_episode_files)
+    play(data, next_episode_files)
   else
     abort "No episodes played yet."
   end
