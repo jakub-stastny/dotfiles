@@ -21,5 +21,6 @@ vim -c VundleUpdate -c quitall
 #ruby-install # Prints current versions.
 #ruby-install ruby --latest --no-reinstall
 
-echo "~ RubyGems updates."
-gem update --system && gem update && gem cleanup
+# Skipped, it removes older gems that a project locked in through Gemfile.lock.
+#echo "~ RubyGems updates."
+#gem update --system && gem update && gem cleanup
