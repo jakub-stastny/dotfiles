@@ -31,6 +31,7 @@ end
 
 def find_recording(data, index = 0)
   recording = recordings[index]
+  p [data[recording].values.sum / 60, MINUTES_MEDITATED_PER_RECORDING]
   unless data[recording].values.sum / 60 >= MINUTES_MEDITATED_PER_RECORDING
     recording
   else
@@ -74,7 +75,7 @@ when 'play'
     end
 
     puts "<bold>~</bold> Duration: <green>#{(duration / 60).round} minutes</green>."
-    hours_meditated = Hour.new(0, (data[recording].values.sum + duration) / 60)
+    hours_meditated = Hour.new(0, data[recording].values.sum / 60)
     total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
     puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{total_hours - hours_meditated}</green> left)."
   end
