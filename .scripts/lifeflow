@@ -79,11 +79,19 @@ when 'play'
     total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
     puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{total_hours - hours_meditated}</green> left)."
   end
+when 'stats'
+  recordings.each do |recording|
+    next if data[recording].empty?
+    hours_meditated = Hour.new(0, data[recording].values.sum / 60)
+    total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
+    puts "<bold>~</bold> #{recording}: meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{total_hours - hours_meditated}</green> left)."
+  end
 else
   abort DATA.read
 end
 
 
 __END__
-lifeflow play    <bright_black># Play the whole current episode.</bright_black>
-lifeflow play <yellow>25</yellow> <bright_black># Play the current episode for 25 minutes.</bright_black>
+lifeflow play     <bright_black># Play the whole current episode.</bright_black>
+lifeflow play <yellow>25</yellow>  <bright_black># Play the current episode for 25 minutes.</bright_black>
+lifeflow stats    <bright_black># Stats for the episodes.</bright_black>
