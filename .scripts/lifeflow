@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 # 20 days, 1 hour a day.
-MINUTES_MEDITATED_PER_RECORDING = 20 * 1 * 60
+#MINUTES_MEDITATED_PER_RECORDING = 20 * 1 * 60
+MINUTES_MEDITATED_PER_RECORDING = 7 * 1 * 60
 
 require 'yaml'
 require 'timeout'
@@ -15,7 +16,7 @@ PATH = RR::Homepath.new('~/Dropbox/Data/Data/LifeFlow.yml')
 
 data = begin
   hash = YAML.load_file(PATH.expand)
-  hash.default_proc = Proc.new { |hash, key| hash[key] = Array.new }
+  hash.default_proc = Proc.new { |hash, key| hash[key] = Hash.new }
   hash
 rescue Errno::ENOENT
   Hash.new { |hash, key| hash[key] = Array.new }
@@ -31,7 +32,7 @@ end
 
 def find_recording(data, index = 0)
   recording = recordings[index]
-  p [data[recording].values.sum / 60, MINUTES_MEDITATED_PER_RECORDING]
+  data[recording]
   unless data[recording].values.sum / 60 >= MINUTES_MEDITATED_PER_RECORDING
     recording
   else
@@ -53,6 +54,15 @@ rescue Timeout::Error
   system("killall afplay") # Why doesn't it stop by itself?!?!
 rescue Interrupt
   puts
+end
+
+def report(hours_meditated, total_hours)
+  hours_left = total_hours - hours_meditated
+  if hours_left.minutes <= 0
+    puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow>."
+  else
+    puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{hours_left}</green> left)."
+  end
 end
 
 case ARGV.shift
@@ -77,14 +87,27 @@ when 'play'
     puts "<bold>~</bold> Duration: <green>#{(duration / 60).round} minutes</green>."
     hours_meditated = Hour.new(0, data[recording].values.sum / 60)
     total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
-    puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{total_hours - hours_meditated}</green> left)."
+    report(hours_meditated, total_hours)
   end
 when 'stats'
+  require 'date'
+
   recordings.each do |recording|
     next if data[recording].empty?
     hours_meditated = Hour.new(0, data[recording].values.sum / 60)
     total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
-    puts "<bold>~</bold> #{recording}: meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{total_hours - hours_meditated}</green> left)."
+    report(hours_meditated, total_hours)
+  end
+
+  puts
+  ((Date.today - 7)..Date.today).each do |date|
+    hours_per_day = data.values.reduce(0) do |sum, records|
+      seconds_per_track = records.
+              select { |time, _| time.to_date == date }.
+              sum { |_, duration| duration }
+      sum + (seconds_per_track / 60)
+    end
+    puts "<blue.bold>#{date.strftime('%A')}: </blue.bold>#{Hour.new(0, hours_per_day)}"
   end
 else
   abort DATA.read
