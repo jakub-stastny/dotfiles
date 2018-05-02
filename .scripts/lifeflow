@@ -1,14 +1,13 @@
 #!/usr/bin/env ruby
 
-# 20 days, 1 hour a day.
-#MINUTES_MEDITATED_PER_RECORDING = 20 * 1 * 60
-MINUTES_MEDITATED_PER_RECORDING = 7 * 1 * 60
-
 require 'yaml'
 require 'timeout'
 require 'refined-refinements/hour'
 require 'refined-refinements/colours'
 require 'refined-refinements/homepath'
+
+# 20 days, 1 hour a day.
+TIME_MEDITATED_PER_RECORDING = Hour.new(7) # 20
 
 using RR::ColouredTerminal
 
@@ -16,6 +15,13 @@ PATH = RR::Homepath.new('~/Dropbox/Data/Data/LifeFlow.yml')
 
 data = begin
   hash = YAML.load_file(PATH.expand)
+  hash = hash.reduce(Hash.new) do |buffer, (key, values)|
+    buffer.merge(key =>
+      values.reduce(Hash.new) { |b, (time, duration)|
+        b.merge(time => Hour.parse(duration))
+      })
+  end
+
   hash.default_proc = Proc.new { |hash, key| hash[key] = Hash.new }
   hash
 rescue Errno::ENOENT
@@ -32,8 +38,8 @@ end
 
 def find_recording(data, index = 0)
   recording = recordings[index]
-  data[recording]
-  unless data[recording].values.sum / 60 >= MINUTES_MEDITATED_PER_RECORDING
+  time_meditated_per_recording = data[recording].values.reduce(:+) || Hour.new(0)
+  unless time_meditated_per_recording >= TIME_MEDITATED_PER_RECORDING
     recording
   else
     find_recording(data, index + 1)
@@ -56,13 +62,15 @@ rescue Interrupt
   puts
 end
 
-def report(hours_meditated, total_hours)
+def report(hours_meditated, total_hours, label = nil)
   hours_left = total_hours - hours_meditated
   if hours_left.minutes <= 0
-    puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow>."
+    puts "<bold>~</bold> #{label ? "#{label}:" : 'Meditated'} <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow>."
   else
-    puts "<bold>~</bold> Meditated <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{hours_left}</green> left)."
+    puts "<bold>~</bold> #{label ? "#{label}:" : 'Meditated'} <green>#{hours_meditated}</green> hours out of <yellow>#{total_hours}</yellow> (<green>#{hours_left}</green> left)."
   end
+rescue => e
+  require 'pry'; binding.pry ###
 end
 
 case ARGV.shift
@@ -75,39 +83,54 @@ when 'play'
 
   start_time = Time.now
   play(File.join(base_dir, recording))
-  duration = Time.now - start_time
+  duration = Hour.new(0, (Time.now - start_time).round) / 60
 
-  if duration > 60
-    data[recording][start_time] = duration.round
-    data_string = data.to_yaml
+  if duration.minutes > 5 # Less than 5 minutes doesn't count.
+    data[recording][start_time] = duration
+
+    serialised_data = data.reduce(Hash.new) do |buffer, (key, values)|
+      buffer.merge(key =>
+        values.reduce(Hash.new) { |b, (time, duration)|
+          b.merge(time => duration.to_s)
+        })
+    end
+
+    data_string = serialised_data.to_yaml
+
     File.open(PATH.expand, 'w') do |file|
       file.puts(data_string)
     end
 
-    puts "<bold>~</bold> Duration: <green>#{(duration / 60).round} minutes</green>."
-    hours_meditated = Hour.new(0, data[recording].values.sum / 60)
-    total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
-    report(hours_meditated, total_hours)
+    puts "<bold>~</bold> Duration: <green>#{duration} minutes</green>."
+    hours_meditated = data[recording].values.reduce(:+)
+    report(hours_meditated, TIME_MEDITATED_PER_RECORDING)
   end
 when 'stats'
   require 'date'
 
   recordings.each do |recording|
     next if data[recording].empty?
-    hours_meditated = Hour.new(0, data[recording].values.sum / 60)
-    total_hours = Hour.new(0, MINUTES_MEDITATED_PER_RECORDING)
-    report(hours_meditated, total_hours)
+    hours_meditated = data[recording].values.reduce(:+)
+    report(hours_meditated, TIME_MEDITATED_PER_RECORDING, recording)
   end
 
   puts
-  ((Date.today - 7)..Date.today).each do |date|
-    hours_per_day = data.values.reduce(0) do |sum, records|
-      seconds_per_track = records.
-              select { |time, _| time.to_date == date }.
-              sum { |_, duration| duration }
-      sum + (seconds_per_track / 60)
+  ((Date.today - 14)..Date.today).group_by { |date| date.cweek }.each do |_, dates|
+    dates.each do |date|
+      hours_per_day = data.values.reduce(Hour.new(0)) do |sum, records|
+        duration_per_track = records.
+                # 4 AM till 4 AM of the following day.
+                select { |time, _| ((date.to_time + 4 * 60 * 60)..((date + 1).to_time + 4 * 60 * 60)).include?(time) }.
+                reduce(Hour.new(0)) { |result, (_, duration)| result + duration }
+        sum + duration_per_track
+      end
+      hours_per_day_colour = if hours_per_day <= Hour.new(0, 20) then 'bright_black'
+      elsif hours_per_day > Hour.new(0, 20) && hours_per_day <= Hour.new(1) then 'yellow'
+      elsif hours_per_day > Hour.new(1) && hours_per_day <= Hour.new(3) then 'blue.bold'
+      else 'red' end
+      print "<#{hours_per_day_colour}>#{date.strftime('%a')}</#{hours_per_day_colour}>: #{hours_per_day} "
     end
-    puts "<blue.bold>#{date.strftime('%A')}: </blue.bold>#{Hour.new(0, hours_per_day)}"
+    puts
   end
 else
   abort DATA.read
