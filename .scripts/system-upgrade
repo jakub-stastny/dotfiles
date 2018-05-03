@@ -6,6 +6,9 @@
 echo "~ Homebrew updates."
 brew update && brew upgrade && brew cleanup
 
+echo "~ Homebrew Cask updates."
+brew cask upgrade && brew cask cleanup
+
 if which npm; then
   echo "~ NPM updates."
   npm install npm -g
