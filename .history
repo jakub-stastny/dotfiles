@@ -80,3 +80,13 @@ dotfiles add ../.{history,pry_history}
 dotfiles 
 dotfiles status
 dotfiles cam "Add history as well."
+cd ../dotfiles.git
+ls
+ls hooks
+cp ../Dropbox/Projects/Software/pomodoro/.git/hooks/post-commit hooks
+gst
+dotfiles
+dotfiles status
+cd .
+cd
+dotfiles cam "Hist."
