@@ -1,0 +1,82 @@
+dotfiles status
+dotfiles config --local status.showUntrackedFiles no
+dotfiles status
+cd pomodoro
+git install-hooks
+gst
+git diff
+git show
+df
+cd ../refined-refinements
+git install-hooks
+cd ../flashcards
+git install-hooks
+cd
+cd Dropbox
+ls
+du WIP/Inbox/
+du WIP/Inbox/*
+du WIP/Inbox/
+defaults write com.apple.Dock showhidden -bool YES\
+\
+
+killall Dock
+vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim\
+\
+
+vim
+brew cask install slack
+cd service
+ls
+bundle
+brew install redis
+brew install postgres
+df
+brew install libidn
+gem install idn-ruby -v '0.1.0'
+now e
+now e t
+vim Setup
+cd pomodoro
+cat README.md
+mkdir $HOME/.vim/ftdetect
+ln -s support/vim/ftdetect/*.vim $HOME/.vim/ftdetect
+now e t
+ls support/vim
+mkdir $HOME/.vim/plugin
+mkdir $HOME/.vim/syntax
+mkdir $HOME/.vim/doc
+ln -s support/vim/doc/today.txt $HOME/.vim/doc
+ln -s support/vim/plugin/*.vim $HOME/.vim/plugin
+ln -s support/vim/syntax/*.vim $HOME/.vim/syntax
+cat $HOME/.vim/syntax/scheduled.vim
+history
+vim Setup
+ln -sf $PWD/support/vim/ftdetect/*.vim $HOME/.vim/ftdetect
+ln -sf $PWD/support/vim/doc/today.txt $HOME/.vim/doc
+ln -sf $PWD/support/vim/plugin/*.vim $HOME/.vim/plugin
+bundle
+ln -sf $PWD/support/vim/plugin/*.vim $HOME/.vim/plugin
+ln -sf $PWD/support/vim/doc/today.txt $HOME/.vim/doc
+ln -sf $PWD/support/vim/syntax/*.vim $HOME/.vim/syntax
+now e t
+df
+flashcards
+df
+cd pomodoro
+vim .
+now e t
+brew cask install bitbar
+vim Setup
+brew install tmux
+ls -a ../ | grep hist
+irb
+pry
+ls -a ../ | grep hist
+cat ../.history
+ls -a ../ | grep hist
+dotfiles add ../.{history,pry_history}
+dotfiles 
+dotfiles status
+dotfiles cam "Add history as well."
