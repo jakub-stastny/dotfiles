@@ -1,48 +1,29 @@
-dotfiles status
 dotfiles config --local status.showUntrackedFiles no
-dotfiles status
-cd pomodoro
-git install-hooks
-gst
 git diff
 git show
-df
 cd ../refined-refinements
-git install-hooks
 cd ../flashcards
 git install-hooks
-cd
 cd Dropbox
-ls
-du WIP/Inbox/
 du WIP/Inbox/*
 du WIP/Inbox/
 defaults write com.apple.Dock showhidden -bool YES\
 \
 
 killall Dock
-vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim\
 \
 
 vim
 brew cask install slack
-cd service
-ls
-bundle
 brew install redis
 brew install postgres
-df
 brew install libidn
 gem install idn-ruby -v '0.1.0'
 now e
-now e t
-vim Setup
-cd pomodoro
 cat README.md
 mkdir $HOME/.vim/ftdetect
 ln -s support/vim/ftdetect/*.vim $HOME/.vim/ftdetect
-now e t
 ls support/vim
 mkdir $HOME/.vim/plugin
 mkdir $HOME/.vim/syntax
@@ -52,41 +33,97 @@ ln -s support/vim/plugin/*.vim $HOME/.vim/plugin
 ln -s support/vim/syntax/*.vim $HOME/.vim/syntax
 cat $HOME/.vim/syntax/scheduled.vim
 history
-vim Setup
 ln -sf $PWD/support/vim/ftdetect/*.vim $HOME/.vim/ftdetect
-ln -sf $PWD/support/vim/doc/today.txt $HOME/.vim/doc
-ln -sf $PWD/support/vim/plugin/*.vim $HOME/.vim/plugin
 bundle
 ln -sf $PWD/support/vim/plugin/*.vim $HOME/.vim/plugin
 ln -sf $PWD/support/vim/doc/today.txt $HOME/.vim/doc
 ln -sf $PWD/support/vim/syntax/*.vim $HOME/.vim/syntax
-now e t
-df
 flashcards
 df
 cd pomodoro
 vim .
-now e t
 brew cask install bitbar
-vim Setup
-brew install tmux
-ls -a ../ | grep hist
 irb
 pry
-ls -a ../ | grep hist
 cat ../.history
 ls -a ../ | grep hist
 dotfiles add ../.{history,pry_history}
 dotfiles 
-dotfiles status
 dotfiles cam "Add history as well."
 cd ../dotfiles.git
-ls
 ls hooks
 cp ../Dropbox/Projects/Software/pomodoro/.git/hooks/post-commit hooks
-gst
 dotfiles
-dotfiles status
 cd .
-cd
 dotfiles cam "Hist."
+vim Setup
+brew install tmux
+tmux
+cd ../.vim
+find .
+find bundle
+ls
+cat copy-and-paste.vim
+vim ../.vimrc UltiSnips/*.snippets copy-and-paste.vim settings.vim ultisnips.vim vundle.vim
+vim -p ../.vimrc UltiSnips/*.snippets copy-and-paste.vim settings.vim ultisnips.vim vundle.vim
+cat ../.scripts/projects/botanicus.me
+vim ../.scripts/project
+brew services
+brew services list
+brew services start redis
+brew services stop redis
+tmux list
+tmux list-windows
+tmux -kill
+project swipecast
+mv ../.scripts/project ../.scripts/swipecast
+swipecast down
+vim ../.scripts/swipecast
+ps aux | grep ruby
+now e t
+vim ../.scripts/lifeflow
+lifeflow stats
+lifeflow play
+lifeflow play 30
+cd service
+gst
+git pull -r
+brew services start redis postgresql
+brew services start redis postgres
+brew services start redis 
+brew services start postgresql
+bundle exec rails c
+dotfiles status
+vim --version
+brew update
+brew tap neovim/neovim
+brew install --HEAD neovim
+cd
+cd Desktop
+vim cheatsheet
+tmux ls
+tmux a 0
+tmux a 
+tmux new -s test
+tmux ls
+tmux detach
+tmux a -t test
+ls
+tmux kill-server
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \\
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+dotfiles add ~/.local/
+nvim
+vim
+nvim
+nvim ~/.config/nvim/init.vim
+mkdir ~/.config/nvim/
+nvim ~/.config/nvim/init.vim
+dotfiles add ~/.config/nvim/init.vim
+dotfiles status
+rm -rf ~/.vim/plugs
+nvim ~/.config/nvim/init.vim
+cd
+cd Desktop
+dotfiles status
+dotfiles cam "Neovim."

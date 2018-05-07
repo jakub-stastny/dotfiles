@@ -7,7 +7,7 @@ require 'refined-refinements/colours'
 require 'refined-refinements/homepath'
 
 # 20 days, 1 hour a day.
-TIME_MEDITATED_PER_RECORDING = Hour.new(7) # 20
+TIME_MEDITATED_PER_RECORDING = Hour.new(9) # 20
 
 using RR::ColouredTerminal
 

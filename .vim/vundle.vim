@@ -14,11 +14,10 @@ Plugin 'VundleVim/Vundle.vim'
 " UltiSnips
 source ~/.vim/ultisnips.vim
 
-" Nginx
-Plugin 'vim-scripts/nginx.vim'
-
-" NERDTree
+"Plugin 'vim-scripts/nginx.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line.
 call vundle#end()
