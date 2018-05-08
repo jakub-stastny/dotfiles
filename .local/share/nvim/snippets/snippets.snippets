@@ -1,0 +1,15 @@
+priority -50
+
+# We use a little hack so that the snippet is expanded
+# and parsed correctly
+snippet s "Snippet definition." b
+`!p snip.rv = "snippet"` ${1:Tab trigger} "${2:Label}" ${3:b}
+$0
+`!p snip.rv = "endsnippet"`
+endsnippet
+
+snippet g "Global snippet" b
+`!p snip.rv = "global"` !p
+$0
+`!p snip.rv = "endglobal"`
+endsnippet

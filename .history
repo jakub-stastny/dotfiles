@@ -14,7 +14,6 @@ killall Dock
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim\
 \
 
-vim
 brew cask install slack
 brew install redis
 brew install postgres
@@ -40,10 +39,8 @@ ln -sf $PWD/support/vim/doc/today.txt $HOME/.vim/doc
 ln -sf $PWD/support/vim/syntax/*.vim $HOME/.vim/syntax
 flashcards
 df
-cd pomodoro
 vim .
 brew cask install bitbar
-irb
 pry
 cat ../.history
 ls -a ../ | grep hist
@@ -56,13 +53,11 @@ cp ../Dropbox/Projects/Software/pomodoro/.git/hooks/post-commit hooks
 dotfiles
 cd .
 dotfiles cam "Hist."
-vim Setup
 brew install tmux
 tmux
 cd ../.vim
 find .
 find bundle
-ls
 cat copy-and-paste.vim
 vim ../.vimrc UltiSnips/*.snippets copy-and-paste.vim settings.vim ultisnips.vim vundle.vim
 vim -p ../.vimrc UltiSnips/*.snippets copy-and-paste.vim settings.vim ultisnips.vim vundle.vim
@@ -85,7 +80,6 @@ vim ../.scripts/lifeflow
 lifeflow stats
 lifeflow play
 lifeflow play 30
-cd service
 gst
 git pull -r
 brew services start redis postgresql
@@ -93,37 +87,141 @@ brew services start redis postgres
 brew services start redis 
 brew services start postgresql
 bundle exec rails c
-dotfiles status
 vim --version
 brew update
 brew tap neovim/neovim
 brew install --HEAD neovim
-cd
-cd Desktop
 vim cheatsheet
-tmux ls
 tmux a 0
 tmux a 
 tmux new -s test
-tmux ls
 tmux detach
 tmux a -t test
-ls
 tmux kill-server
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \\
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 dotfiles add ~/.local/
-nvim
 vim
-nvim
-nvim ~/.config/nvim/init.vim
 mkdir ~/.config/nvim/
-nvim ~/.config/nvim/init.vim
 dotfiles add ~/.config/nvim/init.vim
-dotfiles status
 rm -rf ~/.vim/plugs
-nvim ~/.config/nvim/init.vim
 cd
-cd Desktop
 dotfiles status
 dotfiles cam "Neovim."
+printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
+awk 'BEGIN{\
+    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;\
+    for (colnum = 0; colnum<77; colnum++) {\
+        r = 255-(colnum*255/76);\
+        g = (colnum*510/76);\
+        b = (colnum*255/76);\
+        if (g>255) g = 510-g;\
+        printf "\033[48;2;%d;%d;%dm", r,g,b;\
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;\
+        printf "%s\033[0m", substr(s,colnum+1,1);\
+    }\
+    printf "\n";\
+}'
+printf "\x1b[${bg};2;${red};${green};${blue}m\n"
+which java
+ls ~/.vim
+ls ~/.vim/plugin
+ls ~/.vim/bundle
+ls ~/.vim/bundle/ultisnips
+ls ~/.vim/UltiSnips
+cp -r ~/.vim/UltiSnips ~/.local/share/nvim
+brew edit neovim
+EDITOR=nvim brew edit neovim
+python -v
+python --version
+brew install python3
+brew info python
+whe/usr/local/bin/python -v
+/usr/local/bin/python -v
+/usr/local/bin/python python
+/usr/local/bin/python --version
+which python
+whereis python
+/usr/bin/python --version
+pip3 install --user --upgrade neovim
+nvim x.sh
+rm x.sh
+man tmux
+which swipecast
+swipecast up
+tmux ls
+tmux a -t swipecast
+swipecast 
+nvim /Users/botanicus/.scripts/swipecast
+swipecast edit
+swipecast kill
+neovim .
+nvim .
+brew tap "uptech/homebrew-oss"
+brew install ack
+brew install uptech/oss/alt
+ack
+brew install ag
+irb
+cd service
+ack Contr
+ag Contr
+brew uninstall ack
+brew install ctags
+cd 
+cd Desktop
+vim Setup
+nvim ~/.config/nvim/init.vim
+cd pomodoro
+ls
+nvim now-task-manager.gemspec
+ls ~/.local/share/nvim/UltiSnips
+mv ~/.local/share/nvim/UltiSnips ~/.local/share/nvim/snippets
+nvim
+clear; bundle exec rspec spec/models/album_spec.rb
+vim ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+clear; bundle exec rspec spec/models/album_spec.rb:39
+heroku
+gem install heroku
+heroku
+gem uninstall heroku
+brew install heroku/brew/heroku\
+
+vim ~/Desktop/Setup
+brew list
+du /usr/local/
+heroku login
+heroku
+heroku pg
+heroku pg -a swipecast-backend-staging
+heroku pg -a swipecast-backend-staging -h
+heroku --help pg
+heroku pg:pull -a swipecast-backend-staging HEROKU_POSTGRESQL_COBALT_URL
+heroku pg:pull -a swipecast-backend-staging 
+vim ~/.tmux.conf
+vim ~/Desktop/Setup
+heroku pg:pull
+heroku pg:pull HEROKU_POSTGRESQL_MAGENTA swipecast_backend_dev --app swipecast-backend-staging
+heroku pg:pull HEROKU_POSTGRESQL_COBALT_URL swipecast_backend_dev --app swipecast-backend-staging
+cd
+vim -p Desktop/cheatsheet ~/.config/nvim/init.vim ~/.tmux.conf
+dotfiles add ~/.conf
+dotfiles add ~/.config ~/.tmux.conf
+dotfiles status
+cat ../.config/nvim/.netrwhist
+ll ../.config/nvim/.netrwhist
+cat ~/.local/share/heroku/config.json
+ls ~/.local/share/nvim/
+ls ~/.local/share/nvim/plugins
+ls ~/.local/share/nvim/shada
+ls ~/.local/share/nvim/site
+ls ~/.local/share/nvim/site/autoload
+dotfiles add ~/.local/share/nvim/site/autoload
+cat ~/.local/share/nvim/rplugin.vim
+rm ~/.local/share/nvim/rplugin.vim
+ls ~/.local/share/nvim/site
+ls ~/.local/share/nvim/
+dotfiles add ~/.local/share/nvim/snippets
+dotfiles status
+dotfiles cam Things.
