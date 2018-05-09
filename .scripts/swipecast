@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# Inspired by https://gist.github.com/todgru/6224848
+case "$1" in
+  up)
+    cd ~/Dropbox/Projects/Work/service
+
+    tmux new -d -s swipecast
+    
+    # Window 1: NeoVim.
+    #tmux selectp -t 1 
+    tmux send-keys 'nvim' C-m 
+    tmux rename-window NeoVim
+
+    # Window 2: ZSH.
+    tmux new-window -n ZSH
+    tmux send-keys 'brew services start redis && brew services start postgresql; redis-cli flushall'
+
+    # Window 3: Rails console.
+    tmux new-window -n console
+    tmux send-keys 'bundle exec rails console' C-m C-l
+
+    # Window 4: Rails server.
+    tmux new-window -n server
+    tmux send-keys 'bundle exec rails server' C-m C-l
+
+    # Both Redis and Postgres spawns daemons, so killing the session doesn't do the trick.
+    #
+    # # Window 5: Redis server.
+    # tmux new-window -n redis-server 'redis-server /usr/local/etc/redis.conf'
+
+    # # Window 6: PostgreSQL.
+    # tmux new-window -n postgres 'pg_ctl -D /usr/local/var/postgres start'
+
+    tmux select-window -t swipecast:2
+    tmux attach-session -t swipecast ;;
+  # stop)
+  #   brew services stop redis
+  #   brew services stop postgresql ;;
+  down)
+    tmux kill-session -t swipecast ;;
+  # status)
+  #   brew services list ;;
+  *)
+    echo "Usage: $0 [start|stop|edit|kill|status]" ;;
+esac

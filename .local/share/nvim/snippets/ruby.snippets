@@ -1,3 +1,7 @@
+snippet pry "Pry" b
+require 'pry'; binding.pry ###
+endsnippet
+
 snippet "^!" "#!/usr/bin/env ruby" r
 #!/usr/bin/env ruby
 
@@ -68,6 +72,10 @@ snippet fj "File.join ..."
 File.join($1)$0
 endsnippet
 
+snippet . "self" b
+self.
+endsnippet
+
 snippet "\b(ar|attr)" "attr_reader :<attr_names>" r
 attr_reader :${0:attr_names}
 endsnippet
@@ -100,6 +108,10 @@ snippet b4 "before ..."
 before(${1::each}) do
 	${0:# TODO}
 end
+endsnippet
+
+snippet e "rSpec expect" b
+expect($1).${2:not_}to ${3:eql}($0)
 endsnippet
 
 snippet a "Array.new"
