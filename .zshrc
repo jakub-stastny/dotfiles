@@ -18,3 +18,6 @@ autoload -U zmv
 test $(date +%w) -eq 7 && week
 
 echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; #echo "ZSH functions: ${(ok)functions}"; echo
+
+# added by travis gem
+[ -f /Users/botanicus/.travis/travis.sh ] && source /Users/botanicus/.travis/travis.sh

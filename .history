@@ -430,3 +430,53 @@ nvim ~/Dropbox/Data/WIP/tasks.todo
 which system-upgrade
 nvim /Users/botanicus/.scripts/system-upgrade
 dotfiles cam X
+cd pomodoro/support/vim
+ls
+nvim */.vim
+nvim */*.vim
+gst
+git cam Fix.
+nvim --startuptime x
+cat x
+nvim x
+mv x vim-startuptime
+nvim -p Desktop/{Setup,cheatsheet} ~/.config/nvim/init.vim ~/.tmux.conf
+nvim -p Desktop/{Setup,cheatsheet} ~/.config/nvim/*.vim ~/.tmux.conf
+cd pomodoro
+nvim
+nvim x.rb
+zsh
+tmux ls
+tmux new -s nvim
+nvim x.rb
+zsh
+lsls
+pry
+gem install circle-cli
+circle status
+cd service
+circle status
+circle login
+circle status
+git co master
+circle status
+gem install travis
+cd pomodoro
+travis status
+circle status
+ls .circleci
+ci
+~/.scripts/ci-status
+chmod +x ~/.scripts/ci-status
+print x
+printf x
+ci-status
+ci-status
+test -f .travis.yml
+if test -f .travis.yml; then\
+  travis status &> /dev/null && printf "Travis  �úì" || printf "Travis  �úñ"\
+elif test -d .circleci; then\
+  circleci status &> /dev/null && printf "CircleCI  �úì" || printf "Travis  �úñ"; fi
+test -f .travis.yml
+ci-status
+dotfiles cam X

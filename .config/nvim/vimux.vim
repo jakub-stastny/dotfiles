@@ -20,6 +20,8 @@ command! RunFocus call VimuxRunCommand("clear && bundle exec rspec " . expand("%
 
 " REPL
 command! Run call VimuxRunCommand("clear && ruby " . expand('%'))
+command! IRB call VimuxRunCommand("clear && ruby " . expand('%'))
 " TODO: run selection
+" VimuxSendText()
 " TODO: pry, rails console, shell
 " TODO: ^ file type detection.
