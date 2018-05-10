@@ -42,3 +42,7 @@ function! AltCommand(path, vim_command)
     exec a:vim_command . " " . l:alternate
   endif
 endfunction
+
+" Typo protection.
+cabbrev Q q
+cabbrev W w

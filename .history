@@ -1,3 +1,432 @@
-gst
+dotfiles config --local status.showUntrackedFiles no
+cd ../refined-refinements
+cd ../flashcards
+git install-hooks
+cd Dropbox
+du WIP/Inbox/*
+du WIP/Inbox/
+defaults write com.apple.Dock showhidden -bool YES\
+\
+
+killall Dock
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim\
+\
+
+brew cask install slack
+brew install redis
+brew install postgres
+brew install libidn
+gem install idn-ruby -v '0.1.0'
+now e
+mkdir $HOME/.vim/ftdetect
+ln -s support/vim/ftdetect/*.vim $HOME/.vim/ftdetect
+ls support/vim
+mkdir $HOME/.vim/plugin
+mkdir $HOME/.vim/syntax
+mkdir $HOME/.vim/doc
+ln -s support/vim/doc/today.txt $HOME/.vim/doc
+ln -s support/vim/plugin/*.vim $HOME/.vim/plugin
+ln -s support/vim/syntax/*.vim $HOME/.vim/syntax
+cat $HOME/.vim/syntax/scheduled.vim
+history
+ln -sf $PWD/support/vim/ftdetect/*.vim $HOME/.vim/ftdetect
+bundle
+ln -sf $PWD/support/vim/plugin/*.vim $HOME/.vim/plugin
+ln -sf $PWD/support/vim/doc/today.txt $HOME/.vim/doc
+ln -sf $PWD/support/vim/syntax/*.vim $HOME/.vim/syntax
+flashcards
+vim .
+brew cask install bitbar
+pry
+cat ../.history
+ls -a ../ | grep hist
+dotfiles add ../.{history,pry_history}
+dotfiles 
+dotfiles cam "Add history as well."
+cd ../dotfiles.git
+ls hooks
+cp ../Dropbox/Projects/Software/pomodoro/.git/hooks/post-commit hooks
+dotfiles
+cd .
+dotfiles cam "Hist."
+brew install tmux
+tmux
+cd ../.vim
+find .
+find bundle
+cat copy-and-paste.vim
+vim ../.vimrc UltiSnips/*.snippets copy-and-paste.vim settings.vim ultisnips.vim vundle.vim
+vim -p ../.vimrc UltiSnips/*.snippets copy-and-paste.vim settings.vim ultisnips.vim vundle.vim
+cat ../.scripts/projects/botanicus.me
+vim ../.scripts/project
+brew services start redis
+brew services stop redis
+tmux list
+tmux list-windows
+tmux -kill
+project swipecast
+mv ../.scripts/project ../.scripts/swipecast
+vim ../.scripts/swipecast
+ps aux | grep ruby
+now e t
+vim ../.scripts/lifeflow
+lifeflow stats
+lifeflow play 30
+brew services start redis postgresql
+brew services start redis postgres
+brew services start redis 
+brew services start postgresql
+bundle exec rails c
+brew update
+brew tap neovim/neovim
+brew install --HEAD neovim
+vim cheatsheet
+tmux a 0
+tmux a 
+tmux detach
+tmux a -t test
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \\
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+dotfiles add ~/.local/
+mkdir ~/.config/nvim/
+dotfiles add ~/.config/nvim/init.vim
+rm -rf ~/.vim/plugs
+dotfiles cam "Neovim."
+printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
+awk 'BEGIN{\
+    s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;\
+    for (colnum = 0; colnum<77; colnum++) {\
+        r = 255-(colnum*255/76);\
+        g = (colnum*510/76);\
+        b = (colnum*255/76);\
+        if (g>255) g = 510-g;\
+        printf "\033[48;2;%d;%d;%dm", r,g,b;\
+        printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;\
+        printf "%s\033[0m", substr(s,colnum+1,1);\
+    }\
+    printf "\n";\
+}'
+printf "\x1b[${bg};2;${red};${green};${blue}m\n"
+which java
+ls ~/.vim
+ls ~/.vim/plugin
+ls ~/.vim/bundle
+ls ~/.vim/bundle/ultisnips
+ls ~/.vim/UltiSnips
+cp -r ~/.vim/UltiSnips ~/.local/share/nvim
+brew edit neovim
+EDITOR=nvim brew edit neovim
+python -v
+python --version
+brew install python3
+brew info python
+whe/usr/local/bin/python -v
+/usr/local/bin/python -v
+/usr/local/bin/python python
+/usr/local/bin/python --version
+which python
+whereis python
+/usr/bin/python --version
+pip3 install --user --upgrade neovim
+rm x.sh
+which swipecast
+swipecast 
+nvim /Users/botanicus/.scripts/swipecast
+neovim .
+nvim .
+brew tap "uptech/homebrew-oss"
+brew install ack
+brew install uptech/oss/alt
+ack
+brew install ag
+ack Contr
+ag Contr
+brew uninstall ack
+brew install ctags
+cd 
+cd Desktop
+nvim ~/.config/nvim/init.vim
+cd pomodoro
+nvim now-task-manager.gemspec
+ls ~/.local/share/nvim/UltiSnips
+mv ~/.local/share/nvim/UltiSnips ~/.local/share/nvim/snippets
+tmux source-file ~/.tmux.conf
+gem install heroku
+gem uninstall heroku
+brew install heroku/brew/heroku\
+
+brew list
+du /usr/local/
+heroku login
+heroku
+heroku pg
+heroku pg -a swipecast-backend-staging
+heroku pg -a swipecast-backend-staging -h
+heroku --help pg
+heroku pg:pull -a swipecast-backend-staging HEROKU_POSTGRESQL_COBALT_URL
+heroku pg:pull -a swipecast-backend-staging 
+vim ~/.tmux.conf
+vim ~/Desktop/Setup
+heroku pg:pull
+heroku pg:pull HEROKU_POSTGRESQL_MAGENTA swipecast_backend_dev --app swipecast-backend-staging
+vim -p Desktop/cheatsheet ~/.config/nvim/init.vim ~/.tmux.conf
+dotfiles add ~/.conf
+dotfiles add ~/.config ~/.tmux.conf
+cat ../.config/nvim/.netrwhist
+ll ../.config/nvim/.netrwhist
+cat ~/.local/share/heroku/config.json
+ls ~/.local/share/nvim/plugins
+ls ~/.local/share/nvim/shada
+ls ~/.local/share/nvim/site/autoload
+dotfiles add ~/.local/share/nvim/site/autoload
+cat ~/.local/share/nvim/rplugin.vim
+rm ~/.local/share/nvim/rplugin.vim
+ls ~/.local/share/nvim/site
+dotfiles add ~/.local/share/nvim/snippets
+dotfiles cam Things.
+vim Setup
+RAILS_ENV=test be rake db:create
+clear; bundle exec rspec spec/models/album_spec.rb
+clear; bundle exec rspec spec/models/album_spec.rb:39
+find .. | grep -i atom
+rm -rf ../.atom
+dotfiles commit ../.atom -m "Vim\!"
+lifeflow play
+nvim -p Desktop/cheatsheet ~/.config/nvim/init.vim ~/.tmux.conf
+nvim .lvimrc
+rm .lvimrc
+nvim .git/hooks/pre-commit
+rubocop
+ag rubocop Gemfile
+rubocop -h
+ls .git
+ls .git/hooks
+cat .git/hooks/pre-commit
+cat .git/hooks/pre-commit | pbcopy
+rm .git/hooks/pre-commit
+git show --name-only
+git show --name-only --diff-filter=ACM
+git co -b TEST
+git cam X
+git cam Y
+git diff
+git cam Z
+git cam XYZ
+git cam ZZZ
+git log -1
+git log -1 --pretty=%B
+git log -1 --pretty=%n
+git log --oneline -n
+git log --oneline -n 1
+git log --oneline 
+git log -1 --pretty=%b
+git log -1 --pretty=%B | grep -i rubocop
+git cam NEW
+nvim app/models/album.rb
+git cam ZY
+cat .git/hooks/post-commit
+cat .git/hooks/post-commit | pbcopy
+nvim .git/hooks/post-commit
+pip2
+gem install neovim
+which pip3
+brew search pip
+brew install python
+brew list | grep py
+brew search pyth
+brew info python@2
+brew reinstall python@2
+pip install --upgrade pip setuptools
+pip install --user --upgrade neovim
+git branch -D TEST
+git co .
+exec zsh
+git log
+git co
+git co feature/SCE-458-security-gem-upgrade
+git reset --hard 
+git reset --hard HEAD
+exec bash
+git diff --cached
+git reset HEAD .
+nvim x.sh
+nvim x.md
+gem install solargraph\
+pip install solargraph-utils.py --user
+yard config --gem-install-yri
+yard gems 
+solargraph yard
+solargraph 
+pip3 install solargraph-utils.py --user
+python3 -m server
+python -m server
+nvim /Users/botanicus/.local/share/nvim/plugins/deoplete-solargraph/rplugin/python3/deoplete/source/solargraph.py
+whichsolargraph
+which solargraph
+solargraph server
+solargraph -h
+gem install json rest-client solargraph
+solargraph server --port 0
+solaragraph
+solargraph
+solargraph socket --port 0
+solargraph available-cores
+solargraph download-core 2.4.2
+solargraph list-cores
+brew cask install zoom
+ping google.com
+brew cask install zoom.us
+brew cask install zoomus
+brew cask uninstall zoom
+dropdb swipecast_backend_dev
+heroku pg:pull HEROKU_POSTGRESQL_COBALT_URL swipecast_backend_dev --app swipecast-backend-staging
+ag third_party_payment_reminder
+tmux -n test
+tmux new -s test
+test
+brew services list
+tmux new-window NeoVim 'zsh -c nvim'
+tmux new-window -t NeoVim -c 'zsh -c nvim'
+tmux new-window -n NeoVim -c 'zsh -c nvim'
+cat $(which swipecast )
+nvim $(which swipecast )
+man tmux
+tmux ls
+tmux selectp -t 1
+tmux rename-session -t 0 NeoVim
+tmux rename-window -t 0 NeoVim
+tmux rename-window -t 1 NeoVim
+tmux new -d -s swipecast
+tmux send-keys 'nvim' C-m
+tmux rename-window NeoVim
+tmux a -t swipecast
+tmux new-window -n ZSH
+swipecast edit
+swipecast
+swipecast stop
+brew info redis
+brew info postgresql
+nevim $(which swipecast)
+swipecast kill
+swipecast down
+kill -9 91715
+ps aux | grep pg
+kill -9 91742
+ps aux | grep postgres
+brew info postgres
+redis-server /usr/local/etc/redis.conf
+ps aux | grep redis
+brew services
+dotfiles add ~/.scripts
+dotfiles cam "Updates."
+mkdir ~/Dropbox/Data/Backup
+ls ~/.history ~/Dropbox/Data/Backup/history
+ln -s ~/.history ~/Dropbox/Data/Backup/history
+ln -s ~/.pry_history ~/Dropbox/Data/Backup/pry_history
+ln -s ~/.ssh ~/Dropbox/Data/Backup/ssh
+ls ~/.local/share/nvim/snippets
+vim -p x.rb ~/.local/share/nvim/snippets/ruby.snippets
+vim x.rb
+brew uninstall vim
+whereis vim
+vim --version
+mv /usr/bin/vim /usr/bin/vim8
+sudo mv /usr/bin/vim /usr/bin/vim8
+nvim Gemfile
+rm x.rb
+tee -a /dev/null
+ack SuperTab ~/.local/share/nvim
+ag ~/.local/share/nvim
+ls ~/.local/share/nvim/
+ls ~/.local/share/nvim/plugins/
+ls ~/.local/share/nvim/plugins/supertab
+cat ~/.local/share/nvim/plugins/supertab/plugin/supertab.vim
+ls /Users/botanicus/.local/share/nvim/plugins/supertab/plugin/supertab.vim
+cat /Users/botanicus/.local/share/nvim/plugins/supertab/plugin/supertab.vim
+find /Users/botanicus/.local/share/nvim/plugins/supertab/
+vim
+df
+cd service
+bundle exec rails console
+mv x.rb ~/Desktop
+cd ~/Desktop
+irb
+clear; bundle exec rspec spec/models/user_spec.rb
+clear; bundle exec rspec x.rb
+tmux new -s edit
+nvim x.rb
+clear && ruby x.rb
+dotfiles add ~/.config/nvim
 dotfiles status
+cd
+mv .pry_history ph
+mv .history h
+cat ~/Dropbox/Data/Backup/history
+cat x.rb
+gst
+tmux kill-server
+ls
+swipecast up
+bundle exec rails server
+brew services start redis && brew services start postgresql; redis-cli flushall
+git co -b feature/SCE-453-stripe-message
+cp .git/hooks/post-commit ~/Dropbox/Data/Backup/swipecast-post-commit-hook
+cat ~/Dropbox/Data/Backup/swipecast-post-commit-hook
+git show
+gp
+find . | grep job_con
+hub browse
+brew install hub
+git push origin feature/SCE-453-stripe-message
+git co master 
+git co -b feature/SCE-479-fix-third-party-payment-reminder
+find ~ | grep vim | grep hist
+cat /Users/botanicus/.vim/.netrwhist
+find ~ | grep viminfo
+cat /Users/botanicus/.viminfo
+git bra
+git branch -D feature/SCE-453-stripe-message feature/SCE-458-security-gem-upgrade
+git co master
+git branch -D feature/SCE-479-fix-third-party-payment-reminder
+git branch -D feature/SCE-387-consistent-jobs-rate-undisclosed
+git bra | grep -v remotes
+git pull -r
+vim $(which swipecast)
+git co -b feature/SCE-424-change-link
+nvim
+be rake routes | grep swipecast_job_id
+nvim $(which swipecast)
+cd ../web
+cat README.md
+    tmux new-window -n web\
+    tmux send-keys 'git pull -r && npm install && PORT=3001 npm start'\
+
+git pull -r && npm install && PORT=3001 npm start
+nvim $(which swipecast)
+    tmux new-window -n web\
+    tmux send-keys 'cd ../web && git pull -r && npm install && PORT=3001 npm start'\
+
+cd ../web && git pull -r && npm install && PORT=3001 npm start
+gst
+git co .
+git clean -fd
+gst
+git reset --hard
+gst
+git fetch
+git reset --hard origin/master
+nvim $(which swipecast)
+git fetch && git reset --hard origin/master && npm install && PORT=3001 npm start
+brew install node
+git fetch && git reset --hard origin/master && npm install && PORT=3001 npm start
+ls ~/.local/share/nvim
+find ~/.local/share/nvim/ | grep -i tod
+cd pomodoro
+ls
+cd support/vim
+ls
+pwd
+nvim ~/Dropbox/Data/WIP/tasks.todo
+which system-upgrade
+nvim /Users/botanicus/.scripts/system-upgrade
 dotfiles cam X

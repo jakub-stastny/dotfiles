@@ -15,14 +15,8 @@ if which npm; then
   npm update -g
 fi
 
-echo "~ APM & Vim updates."
-apm upgrade --no-confirm
-vim -c VundleUpdate -c quitall
-
-# We use Homebrew Ruby now.
-#echo "~ Ruby updates."
-#ruby-install # Prints current versions.
-#ruby-install ruby --latest --no-reinstall
+echo "~ Vim updates."
+vim -c PlugUpdate -c PlugUpgrade -c quitall
 
 # Skipped, it removes older gems that a project locked in through Gemfile.lock.
 #echo "~ RubyGems updates."

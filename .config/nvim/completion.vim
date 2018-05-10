@@ -1,11 +1,22 @@
 Plug 'SirVer/ultisnips', { 'for': ['sh', 'ruby'] }
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets']
 
+" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
+
+" https://github.com/SirVer/ultisnips/issues/517
+" https://github.com/osyo-manga/vim-monster/tree/master/autoload/monster/completion
+" https://github.com/castwide/solargraph
+
 "" gem install solargraph
 "" pip install solargraph-utils.py --user
 ""Plug 'uplus/deoplete-solargraph', { 'for': 'ruby' }
-""Plug 'hackhowtofaq/vim-solargraph'
-""  Plug 'dbakker/vim-projectroot'
+""Plug 'hackhowtofaq/vim-solargraph' | Plug 'dbakker/vim-projectroot'
 
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "let g:deoplete#enable_at_startup = 1

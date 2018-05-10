@@ -6,15 +6,16 @@ case "$1" in
     cd ~/Dropbox/Projects/Work/service
 
     tmux new -d -s swipecast
-    
+
     # Window 1: NeoVim.
-    #tmux selectp -t 1 
-    tmux send-keys 'nvim' C-m 
+    #tmux selectp -t 1
+    tmux send-keys 'nvim' C-m
     tmux rename-window NeoVim
 
     # Window 2: ZSH.
     tmux new-window -n ZSH
-    tmux send-keys 'brew services start redis && brew services start postgresql; redis-cli flushall'
+    tmux send-keys 'brew services start redis && brew services start postgresql; redis-cli flushall' C-m
+    tmux send-keys 'git co master && git pull -r && git co -' C-m
 
     # Window 3: Rails console.
     tmux new-window -n console
@@ -23,6 +24,10 @@ case "$1" in
     # Window 4: Rails server.
     tmux new-window -n server
     tmux send-keys 'bundle exec rails server' C-m C-l
+
+    # Window 5: Web app.
+    tmux new-window -n web
+    tmux send-keys 'cd ../web && git fetch && git reset --hard origin/master && npm install && PORT=3001 npm start'
 
     # Both Redis and Postgres spawns daemons, so killing the session doesn't do the trick.
     #
