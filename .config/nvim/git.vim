@@ -6,6 +6,10 @@
 "   <Enter> open
 "   C commit
 " Gdiff
+" FIXME: 13/05/2018 Disabling fugitive, because it's awfully slow, even if
+" it's the only enabled plugin.
+" Apart from that, it also doesn't deal well with output of post-commit hook
+" (as in the pomodoro repo).
 Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter' | Plug 'tpope/vim-repeat'
