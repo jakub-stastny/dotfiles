@@ -11,17 +11,17 @@ endsnippet
 
 snippet c "class <class>" b
 class $1
-end
+end$0
 endsnippet
 
 snippet m "module <module>" b
 module $1
-end
+end$0
 endsnippet
 
 snippet d "def <method>" b
 def $1
-end
+end$0
 endsnippet
 
 snippet i "def initialize ..."
@@ -37,7 +37,7 @@ endsnippet
 snippet defs "def self.<name> ..."
 def self.${1}
 	${0:# TODO}
-end
+end$0
 endsnippet
 
 snippet r "Kernel#require" b
@@ -46,13 +46,13 @@ endsnippet
 
 snippet if "if <condition> ... end" b
 if ${1:condition}
-end
+end$0
 endsnippet
 
 snippet ife "if <condition> ... else ... end" b
 if ${1:condition}
 else$2
-end
+end$0
 endsnippet
 
 snippet unless "unless <condition> ... end" b
@@ -69,7 +69,7 @@ endsnippet
 snippet .e "each do ... end"
 .each do |${1:variable}|
 	${0:# TODO}
-end
+end$0
 endsnippet
 
 snippet .m "map do ... end"
@@ -81,7 +81,7 @@ endsnippet
 snippet .r "reduce" i
 .reduce(${1:Hash.new}) do |${2:buffer}, (${3:key}, ${4:value})|
 	$2.merge($3.to_sym => $4)
-end
+end$0
 endsnippet
 
 snippet { "Inline block." b
@@ -91,13 +91,13 @@ endsnippet
 snippet do "Do/end block." b
 do |${1:variable}|
 	${0:# TODO}
-end
+end$0
 endsnippet
 
 snippet f "File.open w ..."
 File.open('${1}', 'w') do |file|
 	${0}
-end
+end$0
 endsnippet
 
 snippet fj "File.join ..."
@@ -130,39 +130,4 @@ endsnippet
 
 snippet h "Hash.new"
 Hash.new
-endsnippet
-
-# TODO: move into ruby_gemfile.snippets
-#  then add g for gem snippet.
-snippet gemfile "Gemfile template" b
-source 'https://rubygems.org'
-
-gem '$1'$0
-endsnippet
-
-# rSpec
-snippet de "describe ..."
-describe '${1}' do
-	it${0}
-end
-endsnippet
-
-snippet it "it ..."
-it '${1}' do
-	${0:# TODO}
-end
-endsnippet
-
-snippet xit "it ..."
-it '${1}'
-endsnippet
-
-snippet b4 "before ..."
-before(${1::each}) do
-	${0:# TODO}
-end
-endsnippet
-
-snippet e "rSpec expect" b
-expect($1).${2:not_}to ${3:eql}($0)
 endsnippet

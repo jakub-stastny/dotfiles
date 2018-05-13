@@ -26,8 +26,21 @@
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 
 " Level 2: snippets
-Plug 'SirVer/ultisnips', { 'for': ['sh', 'ruby'] }
+" TODO: 13/05/2018 Choose whether to use vim-emmet, emmet.snippets or just
+" ultisnips by its own.
+" C-tab should list all the snippets, unfortunately it's already mapped by iTerm2.
+" C-j: next tab stop.
+" When tab stop 0 is reached, Ultisnips consider the snippet finished.
+" Visual: in visual mode, press tab. The next snippet will have $VISUAL
+" defined.
+Plug 'SirVer/ultisnips'
+"Plug 'jceb/emmet.snippets'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets']
+"let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets', $HOME.'/.local/share/nvim/plugins/emmet.snippets/UltiSnips']
+
+" Override keyboard shortcut for listing snippets, since C-tab is already used
+" by iTerm2.
+let g:UltiSnipsListSnippets = "<c-l>"
 
 " " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -35,7 +48,23 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets']
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " " If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="vertical"
+
+" div>p#foo$*3>a C-y ,: Expand.
+" (visual selection) C-y , ul>li*: Wrap lines.
+" C-y d/D: Balance tag inward/outward.
+" C-y n/N: Go to the next/previous edit point.
+" (select multiple lines) C-y m: Merge lines.
+" C-y k: Remove a tag.
+" C-y /: Comment out a tag.
+" C-y a: Make an anchor from a URL.
+"Plug 'mattn/emmet-vim', {'for': ['xml', 'html', 'css']}
+" let g:user_emmet_leader_key='<tab>'
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" Expand with a tab. Disabled for now.
+" augroup EmmetSettings
+"   autocmd! FileType html,xml,css imap <tab> <plug>(emmet-expand-abbr)
+" augroup END
 
 " https://github.com/SirVer/ultisnips/issues/517
 " https://github.com/osyo-manga/vim-monster/tree/master/autoload/monster/completion

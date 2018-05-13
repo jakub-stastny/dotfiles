@@ -69,8 +69,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'sheerun/vim-polyglot'
 
-Plug 'mattn/emmet-vim', { 'for': ['html', 'xml'] }
-
 source ~/.config/nvim/git.vim
 source ~/.config/nvim/vimux.vim
 source ~/.config/nvim/completion.vim
