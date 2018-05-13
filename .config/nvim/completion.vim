@@ -1,3 +1,31 @@
+" Level 1: ctags.
+" :CtrlPTag
+"
+" Ctags are enabled by default in Vim.
+" ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list
+" ctags -R --output-format=json --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths) -f .tags --paths)
+" gem ctags
+" :ta method
+" :ta /regexp/
+
+" If you position cursor over the method and hit CTRL+] it will take you into the method.
+" CTRL-T will take you back from that method.
+" CTRL-I and CTRL-O will take you In and Out from the method.
+
+" :ts [expr]  # Lists tags matching expression
+" :[count]tn  # Jumps to the next matching tag
+" :[count]tp  # Jumps to the previous matching tag
+" :[count]tf  # Jumps to the first matching tag
+" :[count]tl  # Jumps to the last matching tag
+"
+" Can be hooked with CtrlP.
+" https://blog.sensible.io/2014/05/09/supercharge-your-vim-into-ide-with-ctags.html
+"
+" :help tags
+" http://vim.wikia.com/wiki/Browsing_programs_with_tags
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+
+" Level 2: snippets
 Plug 'SirVer/ultisnips', { 'for': ['sh', 'ruby'] }
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets']
 
