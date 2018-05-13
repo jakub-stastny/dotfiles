@@ -15,7 +15,7 @@ case "$1" in
     # Window 2: ZSH.
     tmux new-window -n ZSH
     tmux send-keys 'brew services start redis && brew services start postgresql; redis-cli flushall' C-m
-    tmux send-keys 'git co master && git pull -r && git co -' C-m
+    tmux send-keys 'git co master && git pull -r && git co - && git fetch -p' C-m
 
     # Window 3: Rails console.
     tmux new-window -n console
