@@ -40,6 +40,8 @@ case "$1" in
     tmux select-window -t swipecast:2
     tmux attach-session -t swipecast ;;
   down)
+    cd ~/Dropbox/Projects/Work/service
+    bundle exec stop spring
     tmux kill-session -t swipecast
     brew services stop redis
     brew services stop postgresql ;;

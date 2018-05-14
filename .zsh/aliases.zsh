@@ -60,3 +60,6 @@ du() {
 function mkpasswd() {
   ruby -e "puts Array.new(16) { rand(256) }.pack('C*').unpack('H*').first"
 }
+
+# https://github.com/jingweno/ccat
+alias cat=ccat
