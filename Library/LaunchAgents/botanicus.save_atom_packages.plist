@@ -15,10 +15,10 @@
     <!-- Run at 18:20 every day. -->
     <key>StartCalendarInterval</key>
     <dict>
-    	<key>Hour</key>
-    	<integer>18</integer>
-    	<key>Minute</key>
-    	<integer>20</integer>
+      <key>Hour</key>
+      <integer>18</integer>
+      <key>Minute</key>
+      <integer>20</integer>
     </dict>
 
     <!-- I don't have permissions to write into /var/log. -->

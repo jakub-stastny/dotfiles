@@ -14,8 +14,11 @@ case "$1" in
 
     # Window 2: ZSH.
     tmux new-window -n ZSH
-    tmux send-keys 'brew services start redis && brew services start postgresql; redis-cli flushall' C-m
+    tmux send-keys 'brew services start redis && brew services start postgresql' C-m
     tmux send-keys 'git co master && git pull -r && git co - && git fetch -p' C-m
+    tmux send-keys 'bundle' C-m
+    tmux send-keys 'bundle exec rails db:migrate RAILS_ENV=development' C-m
+    tmux send-keys 'bundle exec rails db:migrate RAILS_ENV=test' C-m
 
     # Window 3: Rails console.
     tmux new-window -n console
@@ -24,10 +27,15 @@ case "$1" in
     # Window 4: Rails server.
     tmux new-window -n server
     tmux send-keys 'bundle exec rails server' C-m C-l
+    tmux splitw -v -p 33
+    tmux send-keys 'redis-cli flushall && bundle exec sidekiq' C-m C-l
 
     # Window 5: Web app.
     tmux new-window -n web
-    tmux send-keys 'cd ../web && git fetch && git reset --hard origin/master && npm install && PORT=3001 npm start'
+    tmux send-keys 'cd ../web' C-m C-l
+    tmux send-keys 'git fetch && git reset --hard origin/master' C-m
+    tmux send-keys 'npm install' C-m
+    tmux send-keys 'PORT=3001 npm start'
 
     # Both Redis and Postgres spawns daemons, so killing the session doesn't do the trick.
     #
@@ -42,9 +50,9 @@ case "$1" in
   down)
     cd ~/Dropbox/Projects/Work/service
     bundle exec stop spring
-    tmux kill-session -t swipecast
     brew services stop redis
-    brew services stop postgresql ;;
+    brew services stop postgresql
+    tmux kill-session -t swipecast ;;
   *)
     echo "Usage: $0 [up|down]" ;;
 esac

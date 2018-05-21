@@ -4,7 +4,7 @@
 #sudo softwareupdate -i -a
 
 echo "~ Homebrew updates."
-brew update && brew upgrade && brew cleanup
+brew update && brew upgrade && brew cleanup && brew services cleanup
 
 echo "~ Homebrew Cask updates."
 brew cask upgrade && brew cask cleanup
@@ -16,7 +16,7 @@ if which npm; then
 fi
 
 echo "~ Vim updates."
-vim -c PlugUpdate -c PlugUpgrade -c quitall
+nvim -c PlugUpdate -c PlugUpgrade -c PlugClean -c quitall
 
 # Skipped, it removes older gems that a project locked in through Gemfile.lock.
 #echo "~ RubyGems updates."

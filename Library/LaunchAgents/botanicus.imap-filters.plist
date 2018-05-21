@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>botanicus.imap-filters</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/local/bin:/Users/botanicus/Dropbox/Projects/Software/imap-filter/bin</string>
+    </dict>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>imap-filter</string>
+      <string>filter</string>
+      <string>/Users/botanicus/Dropbox/Data/Cron/imap-filters.rb</string>
+    </array>
+
+    <!-- Run every minute. -->
+    <key>StartInterval</key>
+    <integer>60</integer>
+
+    <!-- I don't have permissions to write into /var/log. -->
+    <key>StandardOutPath</key>
+    <string>/tmp/botanicus.imap-filters.stdout</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/botanicus.imap-filters.stderr</string>
+  </dict>
+</plist>
+

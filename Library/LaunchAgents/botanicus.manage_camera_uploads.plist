@@ -14,11 +14,11 @@
     <key>StartCalendarInterval</key>
     <dict>
       <key>Day</key>
-    	<integer>1</integer>
-    	<key>Hour</key>
-    	<integer>18</integer>
-    	<key>Minute</key>
-    	<integer>20</integer>
+      <integer>1</integer>
+      <key>Hour</key>
+      <integer>18</integer>
+      <key>Minute</key>
+      <integer>20</integer>
     </dict>
 
     <!-- I don't have permissions to write into /var/log. -->

@@ -1,3 +1,8 @@
+" Reload files when focus is regained.
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
+set autoread
+au FocusGained * :checktime
+
 " Find the alternate file for the current path and open it
 nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
 

@@ -8,7 +8,7 @@
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
-    	<string>/Users/botanicus/.gem/ruby/2.4.0/bin:/Users/botanicus/.rubies/ruby-2.4.0/bin:/Users/botanicus/.scripts:/bin:/usr/local/bin:/usr/bin</string>
+      <string>/Users/botanicus/.gem/ruby/2.4.0/bin:/Users/botanicus/.rubies/ruby-2.4.0/bin:/Users/botanicus/.scripts:/bin:/usr/local/bin:/usr/bin</string>
     </dict>
 
     <key>WorkingDirectory</key>
