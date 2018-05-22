@@ -8,6 +8,7 @@ tmux new -d -s sys
 # Window 1: IRB & ZSH.
 tmux send-keys 'pry' C-m C-l
 tmux splitw -h -p 55
+tmux send-keys C-l
 tmux rename-window 'IRB::ZSH'
 
 # Window 2: Tasks.
@@ -21,9 +22,8 @@ tmux new-window -n scheduler
 tmux send-keys 'cd ~/Dropbox/Data' C-m
 tmux send-keys C-l './Services/scheduler.rb' C-m
 tmux splitw -h -p 55
-tmux send-keys C-l 'nvim Services/scheduler.rb' C-m
+tmux send-keys 'cd ~/Dropbox/Data' C-m
+tmux send-keys C-l 'nvim -p Services/scheduler.rb Scripts/imap-filters.rb' C-m
 
 tmux select-window -t sys:2
 tmux attach-session -t sys
-
-echo -ne "\e]1;sys\a"

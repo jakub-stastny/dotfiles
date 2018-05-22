@@ -34,3 +34,7 @@
   amend-all-no-edit = commit --amend --no-edit -a
   dc = diff --cached
   rom = rebase origin/master
+[github]
+	user = botanicus
+[ghi]
+	token = !security find-internet-password -a botanicus -s github.com -l 'ghi token' -w
