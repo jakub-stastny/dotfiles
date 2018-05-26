@@ -1,0 +1,27 @@
+snippet d "describe ..." b
+describe ${1} do$0
+end
+endsnippet
+
+snippet c "context ..." b
+context ${1} do$0
+end
+endsnippet
+
+snippet it "it ..." b
+it "${1}" do$0
+end
+endsnippet
+
+snippet xit "it ..." b
+it "${1}"
+endsnippet
+
+snippet b4 "before ..." b
+before(${1::each}) do$0
+end
+endsnippet
+
+snippet e "rSpec expect" b
+expect($1).${2:not_}to ${3:eql}($0)
+endsnippet

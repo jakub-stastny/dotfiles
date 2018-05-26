@@ -1,7 +1,7 @@
 " Reload files when focus is regained.
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
 set autoread
-au FocusGained * :checktime
+autocmd FocusGained * :checktime
 
 " Find the alternate file for the current path and open it
 nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
@@ -51,3 +51,10 @@ endfunction
 " Typo protection.
 cabbrev Q q
 cabbrev W w
+
+augroup filetypedetect
+  autocmd BufRead,BufNewFile Rakefile,*.rake set filetype=ruby.rake
+  autocmd BufRead,BufNewFile Gemfile set filetype=ruby.gemfile
+  autocmd BufRead,BufNewFile config.ru set filetype=ruby.rackup
+  autocmd BufRead,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END

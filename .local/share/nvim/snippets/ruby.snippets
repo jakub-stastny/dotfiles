@@ -10,6 +10,10 @@ snippet pry "Pry" b
 require 'pry'; binding.pry ###
 endsnippet
 
+snippet dbg "Debug statement." b
+p [:"${1:variable}", $1] ###$0
+endsnippet
+
 snippet c "class <class>" b
 class $1
 end$0
