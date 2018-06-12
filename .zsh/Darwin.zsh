@@ -1,7 +1,7 @@
 # Local (move to a separate file).
-export EDITOR="atom"
+export EDITOR="nvim"
 
-export GIT_EDITOR="atom -w" # Or use git config --global core.editor "vim" instead?
+#export GIT_EDITOR="nvim " # Or use git config --global core.editor "vim" instead?
 
 # CDPATH
 export cdpath=(. ~/Dropbox/Projects/{Software,Work} ~/Dropbox)

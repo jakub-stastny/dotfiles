@@ -1,8 +1,13 @@
 # TODO: Add ruby_rake. namespace, task, desk, file.
+# TODO: Use the context keyword (scopes in TM).
 snippet "^!" "#!/usr/bin/env ruby" r
 #!/usr/bin/env ruby
 
 $0
+endsnippet
+
+snippet rg "import registry" b
+${1:registry} = import('registry')
 endsnippet
 
 # Debug.
@@ -35,13 +40,21 @@ def initialize${1}
 end$0
 endsnippet
 
+# It'd be nice to delete the |${2:var} if nothing is filled in.
+#post_jump "if snip.tabstop == 0: insert_toc_item(snip.tabstops[1], snip.buffer)"
+snippet do "Do/end block"
+do${1: |${2:var}|}
+	${3:# TODO}
+end
+endsnippet
+
 snippet @ "Assign instance variable" b
 @$1 = $1
 endsnippet
 
 snippet defs "def self.<name> ..."
 def self.${1}
-	${0:# TODO}
+	${2:# TODO}
 end$0
 endsnippet
 

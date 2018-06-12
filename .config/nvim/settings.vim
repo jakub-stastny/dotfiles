@@ -16,6 +16,8 @@ set mouse=a
 set expandtab " no tabs
 set shiftwidth=2
 
+set tabpagemax=100 " Limit for vim -p *
+
 " Yank will pbcopy.
 "
 " Alternatively we can disable this and only copy what we need into the system
@@ -51,6 +53,7 @@ endfunction
 " Typo protection.
 cabbrev Q q
 cabbrev W w
+cabbrev Bd bd
 
 augroup filetypedetect
   autocmd BufRead,BufNewFile Rakefile,*.rake set filetype=ruby.rake

@@ -1,19 +1,27 @@
-#priority ?
-#clearsnippets d
+priority 1
 
+# NOTE: 05/06/2018 Rewrites def.
+# TODO: 05/06/2018 Change def to be expanded on either d, de, def.
 snippet d "describe ..." b
-describe ${1} do$0
-end
+describe ${1} do$2
+end$0
 endsnippet
 
+# NOTE: 05/06/2018 Rewrites class.
 snippet c "context ..." b
-context ${1} do$0
-end
+context ${1} do$2
+end$0
 endsnippet
 
-snippet it "it ..." b
-it "${1}" do$0
-end
+snippet i "it ..." b
+it "${1}" do$2
+end$0
+endsnippet
+
+# NOTE: 05/06/2018 Sometimes we want just it "something" OR it has_done(:something) without any block.
+snippet 'it ' "it ..." rbA
+it "${1}" do$2
+end$0
 endsnippet
 
 snippet xit "it ..." b
@@ -21,10 +29,10 @@ it "${1}"
 endsnippet
 
 snippet b4 "before ..." b
-before(${1::each}) do$0
-end
+before(${1::each}) do$2
+end$0
 endsnippet
 
 snippet e "rSpec expect" b
-expect($1).${2:not_}to ${3:eql}($0)
+expect($1).${2:not_}to ${3:eql}($4)$0
 endsnippet

@@ -60,6 +60,10 @@ Plug 'tpope/vim-surround' | Plug 'tpope/vim-repeat'
 
 " TODO
 Plug 'jiangmiao/auto-pairs'
+" gJ/gS to toggle between {} and do/end.
+Plug 'AndrewRadev/splitjoin.vim'
+
+Plug 'terryma/vim-multiple-cursors'
 
 " :rename[!] {newname}
 Plug 'danro/rename.vim'
@@ -69,6 +73,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'editorconfig/editorconfig-vim'
+
 source ~/.config/nvim/git.vim
 source ~/.config/nvim/vimux.vim
 source ~/.config/nvim/completion.vim
@@ -76,7 +82,7 @@ source ~/.config/nvim/search.vim
 source ~/.config/nvim/themes.vim
 
 " My custom plugins.
-Plug '~/Dropbox/Projects/Software/pomodoro/support/vim'
+Plug '~/Dropbox/Projects/Software/ruby/now-task-manager/support/vim'
 
 " Initialize plugin system
 call plug#end()
