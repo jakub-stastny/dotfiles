@@ -1,6 +1,12 @@
-# TODO: Add ruby_rake. namespace, task, desk, file.
-snippet t "Task." b
+priority 1
+
+snippet t "Rake: task definition" b
 desc "$1"
 task $2 do
-end$0
+end
+endsnippet
+
+snippet n "Rake: namespace" b
+namespace $2 do
+end
 endsnippet

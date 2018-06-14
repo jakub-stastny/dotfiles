@@ -1,15 +1,9 @@
 global !p
-def complete(t, opts):
-  print(t, opts)
-  if t:
-    opts = [ m[len(t):] for m in opts if m.startswith(t) ]
-  if len(opts) == 1:
-    return opts[0]
-  elif len(opts) > 1:
-    return "(" + "|".join(opts) + ")"
-  else:
-    return ""
-endglobal
+import sys, os
+
+sys.path.append(os.path.join(os.getenv('HOME'), '.local/share/nvim/snippets/helpers'))
+
+from complete import complete
 
 snippet l "Label" b
 $1`!p snip.rv = complete(t[1], ['BUG', 'DEPRECATED', 'FIXME', 'NOTE', 'OPTIMIZE', 'ditto', ':nodoc:'])`

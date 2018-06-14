@@ -1,7 +1,8 @@
 priority -50
 
-# We use a little hack so that the snippet is expanded
-# and parsed correctly
+# We use a little hack so that the snippet is expanded and parsed correctly.
+# TODO: Here it'd be great to show help for the options (something like
+# the complete function), but delete the text after jump.
 snippet s "Snippet definition." b
 `!p snip.rv = "snippet"` ${1:Tab trigger} "${2:Label}" ${3:b}
 $0
