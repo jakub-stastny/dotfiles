@@ -1,0 +1,23 @@
+# After updating this file :UpdateRemotePlugins has to be called.
+
+# https://github.com/alexgenco/neovim-ruby
+Neovim.plugin do |plugin|
+  # Define a command called "SetLine" which sets the contents of the current
+  # line. This command is executed asynchronously, so the return value is
+  # ignored.
+  plugin.command(:SetLine, nargs: 1) do |nvim, str|
+    nvim.current.line = str
+  end
+
+  # Define a function called "Sum" which adds two numbers. This function is
+  # executed synchronously, so the result of the block will be returned to nvim.
+  plugin.function(:Sum, nargs: 2, sync: true) do |nvim, x, y|
+    x + y
+  end
+
+  # Define an autocmd for the BufEnter event on Ruby files.
+  # http://vimdoc.sourceforge.net/htmldoc/autocmd.html
+  plugin.autocmd(:BufEnter, pattern: "*.rb") do |nvim|
+    nvim.command("echom 'Ruby file, eh?'")
+  end
+end

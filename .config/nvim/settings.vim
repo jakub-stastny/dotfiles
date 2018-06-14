@@ -51,13 +51,13 @@ function! AltCommand(path, vim_command)
 endfunction
 
 " Typo protection.
-cabbrev Q q
-cabbrev W w
-cabbrev Bd bd
+cabbrev Q q | cabbrev W w | cabbrev Wq wq | cabbrev Bd bd
 
 augroup filetypedetect
   autocmd BufRead,BufNewFile Rakefile,*.rake set filetype=ruby.rake
   autocmd BufRead,BufNewFile Gemfile set filetype=ruby.gemfile
   autocmd BufRead,BufNewFile config.ru set filetype=ruby.rackup
   autocmd BufRead,BufNewFile *_spec.rb set filetype=ruby.rspec
+
+  autocmd BufRead,BufNewFile *_spec.cr set filetype=crystal.spec
 augroup END

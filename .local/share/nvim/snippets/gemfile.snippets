@@ -1,3 +1,16 @@
+global !p
+def complete(t, opts):
+  print(t, opts)
+  if t:
+    opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+  if len(opts) == 1:
+    return opts[0]
+  elif len(opts) > 1:
+    return "(" + "|".join(opts) + ")"
+  else:
+    return ""
+endglobal
+
 priority 1
 
 snippet '^s' "source <url>" rbA
@@ -12,21 +25,16 @@ snippet 'ge' "gem <gem_name>" rbA
 gem '$1'$0
 endsnippet
 
-# Same as above, but no autocompletion.
-snippet g "gem <gem_name>" b
-gem '$1'${0: # Deprecated: just type 'ge' to use the autotrigger.}
-endsnippet
-
 snippet ', r' "require: false" rA
-, require: false
+, require: ${1:false}
 endsnippet
 
 snippet ', g' "git: <git_url>" rA
 , git: '${1:URL}'
 endsnippet
 
-# TODO: complete groups, they tend to be standard.
 snippet '^gr' "group <group_name>" rbA
-group(:${1:development}) do$0
+group(:$1`!p snip.rv = complete(t[1], ['development', 'spec', 'travis'])`) do
+	$2
 end
 endsnippet

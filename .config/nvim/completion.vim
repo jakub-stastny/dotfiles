@@ -43,9 +43,9 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets']
 let g:UltiSnipsListSnippets = "<c-l>"
 
 " " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 " " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -75,8 +75,84 @@ let g:UltiSnipsEditSplit="vertical"
 ""Plug 'uplus/deoplete-solargraph', { 'for': 'ruby' }
 ""Plug 'hackhowtofaq/vim-solargraph' | Plug 'dbakker/vim-projectroot'
 
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"let g:deoplete#enable_at_startup = 1
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_devel = 1 " Use debug build
+let g:LanguageClient_loggingLevel = 'DEBUG' " Use highest logging level
+
+" https://fortes.com/2017/language-server-neovim/
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+
+" Find language servers here https://langserver.org/
+
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {}
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+else
+  echo "javascript-typescript-stdio not installed!\n"
+  :cq
+endif
+
+" Crystal
+" Installation:
+" git clone https://github.com/crystal-lang-tools/scry.git
+" cd scry
+" shards build -v
+" crystal build -o /Users/botanicus/Desktop/scry/bin/scry src/scry.cr --release
+" cp bin/scry /usr/local/bin
+if executable('scry')
+  let g:LanguageClient_serverCommands.crystal = ['scry']
+  autocmd FileType crystal setlocal omnifunc=LanguageClient#complete
+else
+  echo "scry not installed!\n"
+  :cq
+endif
+
+" https://blog.schembri.me/post/solargraph-in-vim/
+" gem install solargraph
+" NOTE: To suggest metaprogramming methods:
+" .solargraph.yml
+" plugins:
+" - runtime
+if executable('solargraph')
+  " This doesn't work:
+  " let g:LanguageClient_serverCommands.ruby = ['/usr/local/bin/solargraph', 'socket']
+  " It starts the process, but it's very slow, so everything times out.
+  "
+  " This does, but we have to run solargraph socket manually (in the project
+  " dir).
+  let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
+  autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+else
+  echo "solargraph not installed!\n"
+  :cq
+endif
+
+" TODO
+" https://github.com/redhat-developer/yaml-language-server
+" https://github.com/mads-hartmann/bash-language-server
+" https://github.com/vscode-langservers/vscode-css-languageserver-bin OR https://github.com/Microsoft/vscode/tree/master/extensions/css
+" https://github.com/rcjsuen/dockerfile-language-server-nodejs
+" https://github.com/graphql/graphql-language-service
+" https://github.com/Microsoft/vscode/tree/master/extensions/html
+" https://github.com/Microsoft/vscode/tree/master/extensions/json
+
+" <leader>ld to go to definition
+autocmd FileType javascript nnoremap <buffer>
+  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+" <leader>lh for type info under cursor
+autocmd FileType javascript nnoremap <buffer>
+  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+" <leader>lr to rename variable under cursor
+autocmd FileType javascript nnoremap <buffer>
+  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
 
 "Plug 'ervandew/supertab'
 "let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom

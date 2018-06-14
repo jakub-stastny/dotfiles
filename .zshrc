@@ -10,6 +10,7 @@ source ~/.zsh/$(uname).prompt.zsh
 source ~/.zsh/completion.zsh
 source ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
+source ~/.zsh/nvim.zsh
 
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv
@@ -19,11 +20,10 @@ test $(date +%w) -eq 7 && week
 
 echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; #echo "ZSH functions: ${(ok)functions}"; echo
 
-# added by travis gem
-[ -f /Users/botanicus/.travis/travis.sh ] && source /Users/botanicus/.travis/travis.sh
+# Added by travis gem.
+test -f /Users/botanicus/.travis/travis.sh && source /Users/botanicus/.travis/travis.sh
 
 # brew install zsh-history-substring-search
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-

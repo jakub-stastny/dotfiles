@@ -1,0 +1,27 @@
+global !p
+def fileNameAsConstant(snip):
+    chunks = snip.basename.split('_')
+    snip.rv = ''.join(chunk.title() for chunk in chunks)
+endglobal
+
+
+global !p
+def complete(t, opts):
+  if t:
+    opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+  if len(opts) == 1:
+    return opts[0]
+  elif len(opts) > 1:
+    return "(" + "|".join(opts) + ")"
+  else:
+    return ""
+endglobal
+
+snippet st "Label" b
+status $1`p snip.rv=complete(t[1], ['new', 'incomplete', 'invalid'])`
+endsnippet
+
+snippet test "Label" b
+pre-`p snip.rv='Hello'`-post
+endsnippet
+

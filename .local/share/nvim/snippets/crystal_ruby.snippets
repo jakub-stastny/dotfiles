@@ -1,0 +1,132 @@
+# TODO: Move to globals.snippets and figure out how to use extends globals here.
+global !p
+def fileNameAsConstant(snip):
+    chunks = snip.basename.split('_')
+    snip.rv = ''.join(chunk.title() for chunk in chunks)
+endglobal
+
+# TODO: Nested modules?
+global !p
+def dirNameAsConstant(path):
+    print(path)
+    chunks = path.split('/')[-2].split('_')
+    snip.rv = ''.join(chunk.title() for chunk in chunks)
+endglobal
+
+snippet dbg "Debug statement." b
+p [:"${2}", $1] ###$0
+endsnippet
+
+snippet c "class <class>" b
+class ${1:`!p fileNameAsConstant(snip)`}
+end
+endsnippet
+
+snippet m "module <module>" b
+class ${1:`!p dirNameAsConstant(path)`}
+end$0
+endsnippet
+
+snippet d "def <method>" b
+def $1
+end$0
+endsnippet
+
+snippet i "def initialize ..."
+def initialize${1}
+	${2:# TODO}
+end$0
+endsnippet
+
+# It'd be nice to delete the |${2:var} if nothing is filled in.
+#post_jump "if snip.tabstop == 0: insert_toc_item(snip.tabstops[1], snip.buffer)"
+snippet do "Do/end block"
+do${1: |${2:var}|}
+	${3:# TODO}
+end
+endsnippet
+
+snippet @ "Assign instance variable" b
+@$1 = ${1/@//g}
+endsnippet
+
+snippet defs "def self.<name> ..."
+def self.${1}
+	${2:# TODO}
+end$0
+endsnippet
+
+snippet r "Kernel#require" b
+require "$1"$0
+endsnippet
+
+snippet if "if <condition> ... end" b
+if ${1:condition}
+end$0
+endsnippet
+
+snippet ife "if <condition> ... else ... end" b
+if ${1:condition}
+else$2
+end$0
+endsnippet
+
+snippet unless "unless <condition> ... end" b
+unless ${1:condition}
+end
+endsnippet
+
+# TODO: begin/rescue/end
+
+# TODO: do/end vs. {}
+# TODO: select
+# TODO: rs -> raise
+snippet .e "each do ... end"
+.each do |${1:variable}|
+	${0:# TODO}
+end$0
+endsnippet
+
+snippet .m "map do ... end"
+.each do |${1:variable}|
+	${0:# TODO}
+end
+endsnippet
+
+snippet .r "reduce" i
+.reduce(${1:Hash.new}) do |${2:buffer}, (${3:key}, ${4:value})|
+	$2.merge($3.to_sym => $4)
+end$0
+endsnippet
+
+# snippet do "Do/end block." b
+# do |${1:variable}|
+# 	${0:# TODO}
+# end$0
+# endsnippet
+
+snippet f "File.open w ..."
+File.open('${1}', 'w') do |file|
+	${0}
+end$0
+endsnippet
+
+snippet fj "File.join ..."
+File.join($1)$0
+endsnippet
+
+snippet . "self" b
+self.
+endsnippet
+
+snippet a "Array.new"
+Array.new
+endsnippet
+
+snippet h "Hash.new"
+Hash.new
+endsnippet
+
+snippet p "puts"
+puts $0
+endsnippet

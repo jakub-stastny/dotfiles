@@ -69,7 +69,10 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'danro/rename.vim'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" https://github.com/junegunn/fzf#as-vim-plugin
+Plug 'junegunn/fzf' ", { 'do': './install --all' }
+nnoremap <silent> <C-p> :FZF<CR>
 
 Plug 'sheerun/vim-polyglot'
 
