@@ -60,4 +60,12 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *_spec.rb set filetype=ruby.rspec
 
   autocmd BufRead,BufNewFile *_spec.cr set filetype=crystal.spec
+
+  autocmd BufRead,BufNewFile README.md set filetype=README.markdown
+augroup END
+
+" Templates.
+augroup templates
+  " TODO: .travis.yml, spec_helper ...
+  autocmd BufNewFile README.md 0r ~/.local/share/nvim/templates/README.md
 augroup END
