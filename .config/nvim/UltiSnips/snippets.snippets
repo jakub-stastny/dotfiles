@@ -5,7 +5,7 @@ import sys, os, re
 
 sys.path.append(os.path.join(os.getenv('HOME'), '.config/nvim/UltiSnips/helpers'))
 
-from complete import fileNameAsConstant
+from complete import complete
 endglobal
 
 # Main.
@@ -37,4 +37,17 @@ snippet g "Global snippet" b
 `!p snip.rv = "global"` !p
 $0
 `!p snip.rv = "endglobal"`
+endsnippet
+
+# TODO: the completion doesn't work.
+# TODO: complete dynamically.
+snippet h "Import helpers" b
+# Helpers
+`echo global` !p
+import sys, os
+
+sys.path.append(os.path.join(os.getenv('HOME'), '.config/nvim/UltiSnips/helpers'))
+
+from complete import $1`!p complete(t[1], ['complete', 'fileNameAsConstant'])`
+endglobal
 endsnippet

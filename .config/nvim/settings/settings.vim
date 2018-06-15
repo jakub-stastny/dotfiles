@@ -64,6 +64,7 @@ augroup filetypedetect
 
   autocmd BufRead,BufNewFile README.md set filetype=README.markdown
   autocmd BufRead,BufNewFile .travis.yml set filetype=travis.yaml
+  autocmd BufRead,BufNewFile .projections.json set filetype=projections.json
 augroup END
 
 " File templates.
