@@ -5,7 +5,7 @@
 " # File .projections.json
 " {
 "   "app/models/*.rb": {
-"     "skeleton": "model"
+"     "template": "model"
 "   }
 " }
 "
@@ -18,8 +18,7 @@
 " $0
 " endsnippet
 "
-" snippet _model "Model template" b
-" # A generic model
+" snippet template_model "Model template" b
 " class `!v expand("%:t:r")`_model {
 "     $0
 " }
@@ -30,40 +29,31 @@ function! s:try_insert(skel)
   " 1. Let me use tabstops properly.
   " 2. Give me selection if there are multiple templates defined.
   "
-  " The disadvantage is, if there's no snippet for given filetype, we end up
-  " with the world template followed by tab in our file. Not pretty. So let's
-  " make sure there's an empty snippet in all.snippets:
-  " snippet template "" b
-  " endsnippet
   execute "normal! i" . a:skel
-  call feedkeys("a\<tab>")
-  "
-  " execute "normal! i_" . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
-
-  " if g:ulti_expand_res == 0
-  "   silent! undo
-  " endif
-
-  " return g:ulti_expand_res
+  if !empty(UltiSnips#SnippetsInCurrentScope())
+    call feedkeys("a\<tab>")
+  else
+    silent! undo
+  endif
 endfunction
 
 function! snippet#InsertSkeleton() abort
   let filename = expand('%')
 
-  " Abort on non-empty buffer or extant file
+  " Abort on non-empty buffer or extant file.
   if !(line('$') == 1 && getline('$') == '') || filereadable(filename)
     return
   endif
 
-  " Loop through projections with 'skeleton' key and try each one until the
-  " snippet expands
-  for [root, value] in projectionist#query('skeleton')
-    if s:try_insert(value)
-      return
-    endif
-  endfor
+  if !empty('b:projectionist') " Will be empty if out of conext of a project.
+    " Loop through projections with 'skeleton' key and try each one until the
+    " snippet expands
+    for [root, value] in projectionist#query('template')
+      if s:try_insert('template_' . value)
+        return
+      endif
+    endfor
+  endif
 
-  " Try generic template template as last resort
-  echom "Projectionist query empty."
   call s:try_insert('template')
 endfunction

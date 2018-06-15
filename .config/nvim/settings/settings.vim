@@ -63,6 +63,7 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *_spec.cr set filetype=crystal.spec
 
   autocmd BufRead,BufNewFile README.md set filetype=README.markdown
+  autocmd BufRead,BufNewFile .travis.yml set filetype=travis.yaml
 augroup END
 
 " File templates.
