@@ -63,3 +63,7 @@ function mkpasswd() {
 
 # https://github.com/jingweno/ccat
 alias cat=ccat
+
+function fvim () {
+  nvim $(fzf)
+}

@@ -26,13 +26,25 @@
 " endsnippet
 
 function! s:try_insert(skel)
-  execute "normal! i_" . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+  " The original version ended up in normal mode and wouldn't:
+  " 1. Let me use tabstops properly.
+  " 2. Give me selection if there are multiple templates defined.
+  "
+  " The disadvantage is, if there's no snippet for given filetype, we end up
+  " with the world _skel followed by tab in our file. Not pretty. So let's
+  " make sure there's an empty snippet in all.snippets:
+  " snippet _skel "" b
+  " endsnippet
+  execute "normal! i_" . a:skel
+  call feedkeys("a\<tab>")
+  "
+  " execute "normal! i_" . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
 
-  if g:ulti_expand_res == 0
-    silent! undo
-  endif
+  " if g:ulti_expand_res == 0
+  "   silent! undo
+  " endif
 
-  return g:ulti_expand_res
+  " return g:ulti_expand_res
 endfunction
 
 function! snippet#InsertSkeleton() abort
