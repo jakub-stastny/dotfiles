@@ -57,6 +57,7 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile Rakefile,*.rake set filetype=ruby.rake
   autocmd BufRead,BufNewFile Gemfile set filetype=ruby.gemfile
   autocmd BufRead,BufNewFile config.ru set filetype=ruby.rackup
+  autocmd BufRead,BufNewFile *.gemspec set filetype=ruby.gemspec
   autocmd BufRead,BufNewFile *_spec.rb set filetype=ruby.rspec
 
   autocmd BufRead,BufNewFile *_spec.cr set filetype=crystal.spec

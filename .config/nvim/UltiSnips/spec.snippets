@@ -1,1 +1,16 @@
-# Crystal specs.
+global !p
+import sys, os, re
+
+sys.path.append(os.path.join(os.getenv('HOME'), '.config/nvim/UltiSnips/helpers'))
+
+from complete import fileNameAsConstant
+endglobal
+
+# Main.
+snippet _skel "Crystal spec file template" b
+require "spec_helper"
+
+describe `!p fileNameAsConstant(snip, re.sub(r"_spec$", "", snip.basename))` do
+	$1
+end
+endsnippet
