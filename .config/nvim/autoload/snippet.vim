@@ -13,7 +13,7 @@
 " #
 " # This is a fallback, if there's no associated project or no template
 " # defined, this one is going to be expanded.
-" snippet _skel "Default template" b
+" snippet template "Default template" b
 " # A generic file
 " $0
 " endsnippet
@@ -31,9 +31,9 @@ function! s:try_insert(skel)
   " 2. Give me selection if there are multiple templates defined.
   "
   " The disadvantage is, if there's no snippet for given filetype, we end up
-  " with the world _skel followed by tab in our file. Not pretty. So let's
+  " with the world template followed by tab in our file. Not pretty. So let's
   " make sure there's an empty snippet in all.snippets:
-  " snippet _skel "" b
+  " snippet template "" b
   " endsnippet
   execute "normal! i_" . a:skel
   call feedkeys("a\<tab>")
@@ -63,7 +63,7 @@ function! snippet#InsertSkeleton() abort
     endif
   endfor
 
-  " Try generic _skel template as last resort
+  " Try generic template template as last resort
   echom "Projectionist query empty."
   call s:try_insert('skel')
 endfunction

@@ -7,7 +7,7 @@ from complete import fileNameAsConstant
 endglobal
 
 # Main.
-snippet _skel "Crystal spec file template" b
+snippet template "Crystal spec file template" b
 require "spec_helper"
 
 describe `!p fileNameAsConstant(snip, re.sub(r"_spec$", "", snip.basename))` do
