@@ -13,7 +13,7 @@
   status = auto
   branch = auto
   interactive = auto
-	ui = auto
+  ui = auto
 
 [apply]
   whitespace = nowarn
@@ -36,6 +36,6 @@
   dc = diff --cached
   sb = "!git checkout $(git branch | fzf-tmux -d 15)"
 [github]
-	user = botanicus
+  user = botanicus
 [ghi]
-	token = !security find-internet-password -a botanicus -s github.com -l 'ghi token' -w
+  token = !security find-internet-password -a botanicus -s github.com -l 'ghi token' -w
