@@ -35,7 +35,7 @@ function! s:try_insert(skel)
   " make sure there's an empty snippet in all.snippets:
   " snippet template "" b
   " endsnippet
-  execute "normal! i_" . a:skel
+  execute "normal! i" . a:skel
   call feedkeys("a\<tab>")
   "
   " execute "normal! i_" . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
@@ -65,5 +65,5 @@ function! snippet#InsertSkeleton() abort
 
   " Try generic template template as last resort
   echom "Projectionist query empty."
-  call s:try_insert('skel')
+  call s:try_insert('template')
 endfunction
