@@ -80,6 +80,8 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'tpope/vim-projectionist'
 
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
 source ~/.config/nvim/settings/git.vim
 source ~/.config/nvim/settings/vimux.vim
 source ~/.config/nvim/settings/completion.vim
