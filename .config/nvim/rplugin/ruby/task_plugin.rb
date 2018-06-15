@@ -1,4 +1,5 @@
 # After updating this file :UpdateRemotePlugins has to be called.
+# TODO: enter: \n- , 2x cancel
 
 # https://github.com/alexgenco/neovim-ruby
 Neovim.plugin do |plugin|

@@ -1,0 +1,12 @@
+global !p
+import sys, os
+
+sys.path.append(os.path.join(os.getenv('HOME'), '.local/share/nvim/snippets/helpers'))
+
+from complete import complete
+
+snippet l "Label" b
+$1`!p snip.rv = complete(t[1], ['BUG', 'DEPRECATED', 'FIXME', 'NOTE', 'OPTIMIZE', 'ditto', ':nodoc:'])`
+endsnippet
+
+# Main.

@@ -9,7 +9,7 @@ def complete(t, opts):
   else:
     return ""
 
-def fileNameAsConstant(snip):
-    chunks = snip.basename.split('_')
+def fileNameAsConstant(snip, basename):
+    chunks = basename.split('_')
     snip.rv = ''.join(chunk.title() for chunk in chunks)
 

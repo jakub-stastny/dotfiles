@@ -64,8 +64,8 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile README.md set filetype=README.markdown
 augroup END
 
-" Templates.
-augroup templates
-  " TODO: .travis.yml, spec_helper ...
-  autocmd BufNewFile README.md 0r ~/.local/share/nvim/templates/README.md
+" File templates.
+augroup ultisnips_custom
+  autocmd!
+  autocmd BufNewFile * silent! call snippet#InsertSkeleton()
 augroup END

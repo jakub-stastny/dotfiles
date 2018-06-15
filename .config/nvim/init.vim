@@ -78,11 +78,11 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'editorconfig/editorconfig-vim'
 
-source ~/.config/nvim/git.vim
-source ~/.config/nvim/vimux.vim
-source ~/.config/nvim/completion.vim
-source ~/.config/nvim/search.vim
-source ~/.config/nvim/themes.vim
+source ~/.config/nvim/settings/git.vim
+source ~/.config/nvim/settings/vimux.vim
+source ~/.config/nvim/settings/completion.vim
+source ~/.config/nvim/settings/search.vim
+source ~/.config/nvim/settings/themes.vim
 
 " My custom plugins.
 Plug '~/Dropbox/Projects/Software/ruby/now-task-manager/support/vim'
@@ -92,4 +92,4 @@ call plug#end()
 
 " This has to come after the plugins are initialised, otherwise filetypes such
 " as ruby.rake won't be set.
-source ~/.config/nvim/settings.vim
+source ~/.config/nvim/settings/settings.vim

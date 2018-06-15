@@ -1,5 +1,29 @@
 priority -50
 
+global !p
+import sys, os, re
+
+sys.path.append(os.path.join(os.getenv('HOME'), '.config/nvim/UltiSnips/helpers'))
+
+from complete import fileNameAsConstant
+endglobal
+
+# Main.
+snippet _skel "Snippet file template" b
+global !p
+import sys, os
+
+sys.path.append(os.path.join(os.getenv('HOME'), '.config/nvim/UltiSnips/helpers'))
+
+from complete import complete
+endglobal
+
+# Main.
+snippet _skel "$1 file template" b
+	$2
+`!p snip.rv = "endsnippet"`
+endsnippet
+
 # We use a little hack so that the snippet is expanded and parsed correctly.
 # TODO: Here it'd be great to show help for the options (something like
 # the complete function), but delete the text after jump.

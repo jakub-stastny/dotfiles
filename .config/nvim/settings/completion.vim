@@ -35,7 +35,7 @@
 " defined.
 Plug 'SirVer/ultisnips'
 "Plug 'jceb/emmet.snippets'
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets']
+" let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/snippets']
 "let g:UltiSnipsSnippetDirectories=[$HOME.'/.local/share/nvim/snippets', $HOME.'/.local/share/nvim/plugins/emmet.snippets/UltiSnips']
 
 " Override keyboard shortcut for listing snippets, since C-tab is already used
