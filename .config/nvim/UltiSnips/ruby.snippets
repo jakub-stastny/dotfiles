@@ -1,4 +1,20 @@
 extends crystal_ruby
+snippet _skel " file template" b
+generic
+endsnippet
+
+snippet _model "MODEL" b
+class `!v expand("%:t:r")`_model {
+    $0
+}
+end
+endsnippet
+
+snippet _controler "Controller" b
+class `!v expand("%:t:r")`_controler {
+    $0
+}
+end
 
 snippet "^!" "#!/usr/bin/env ruby" r
 #!/usr/bin/env ruby

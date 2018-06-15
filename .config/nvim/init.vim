@@ -78,6 +78,8 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'tpope/vim-projectionist'
+
 source ~/.config/nvim/settings/git.vim
 source ~/.config/nvim/settings/vimux.vim
 source ~/.config/nvim/settings/completion.vim

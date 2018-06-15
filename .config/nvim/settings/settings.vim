@@ -68,5 +68,6 @@ augroup END
 " File templates.
 augroup ultisnips_custom
   autocmd!
-  autocmd BufNewFile * silent! call snippet#InsertSkeleton()
+  autocmd User ProjectionistActivate call snippet#InsertSkeleton()
+  autocmd BufNewFile * call snippet#InsertSkeleton()
 augroup END
