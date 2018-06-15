@@ -35,7 +35,9 @@
   amend-all-no-edit = commit --amend --no-edit -a
   dc = diff --cached
   sb = "!git checkout $(git branch | fzf-tmux -d 15)"
+
 [github]
   user = botanicus
+
 [ghi]
   token = !security find-internet-password -a botanicus -s github.com -l 'ghi token' -w
