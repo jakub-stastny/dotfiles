@@ -1,16 +1,78 @@
-global !p
-import sys, os
-
-sys.path.append(os.path.join(os.getenv('HOME'), '.config/nvim/UltiSnips/helpers'))
-
-from complete import complete
-endglobal
-
 # Main.
 snippet template "Ruby project README template" b
-Ruby
+# About
+
+[![Gem version][GV img]][Gem version]
+[![Build status][BS img]][Build status]
+[![Coverage status][CS img]][Coverage status]
+[![CodeClimate status][CC img]][CodeClimate status]
+[![YARD documentation][YD img]][YARD documentation]
+
+$2
+
+# Installation
+
+\`\`\`ruby
+gem install $1
+\`\`\`
+
+# Usage
+
+$3
+
+# TODO
+
+- Release version 0.1.
+
+[Gem version]: https://rubygems.org/gems/$1
+[Build status]: https://travis-ci.org/botanicus/$1
+[Coverage status]: https://coveralls.io/github/botanicus/$1
+[CodeClimate status]: https://codeclimate.com/github/botanicus/$1/maintainability
+[YARD documentation]: http://www.rubydoc.info/github/botanicus/$1/master
+
+[GV img]: https://badge.fury.io/rb/$1.svg
+[BS img]: https://travis-ci.org/botanicus/$1.svg?branch=master
+[CS img]: https://img.shields.io/coveralls/botanicus/$1.svg
+[CC img]: https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability
+[YD img]: http://img.shields.io/badge/yard-docs-blue.svg
 endsnippet
 
 snippet template "Crystal project README template" b
-Crystal
+# About
+[![Build status][BS img]][Build status]
+[API docs](https://botanicus.github.io/${1:repo_name}/)
+
+$2
+
+# Installation
+
+Add this to your application's \`shard.yml\`:
+
+\`\`\`yaml
+dependencies:
+  hour:
+    github: botanicus/$1
+\`\`\`
+
+# Usage
+
+\`\`\`crystal
+$3
+\`\`\`
+
+# Development
+
+\`\`\`shell
+gem install guard guard-shell
+
+# Watch for changes and run tests, generate documentation and fix formatting.
+guard
+\`\`\`
+
+# TODO
+
+- Release version 0.1.
+
+[Build status]: https://travis-ci.org/botanicus/$1
+[BS img]: https://travis-ci.org/botanicus/$1.svg?branch=master
 endsnippet
