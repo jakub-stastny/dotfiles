@@ -1,0 +1,3 @@
+nvim
+!nvim/site/autoload/plug.vim
+heroku

@@ -73,3 +73,5 @@ augroup ultisnips_custom
   autocmd User ProjectionistActivate call snippet#InsertSkeleton()
   autocmd BufNewFile * call snippet#InsertSkeleton()
 augroup END
+
+set omnifunc=syntaxcomplete#Complete
