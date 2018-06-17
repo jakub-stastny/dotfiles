@@ -27,3 +27,6 @@ test -f /Users/botanicus/.travis/travis.sh && source /Users/botanicus/.travis/tr
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# Ignore files from .gitignore.
+export FZF_DEFAULT_COMMAND="ag -g ''"
