@@ -91,7 +91,8 @@ source ~/.config/nvim/settings/search.vim
 source ~/.config/nvim/settings/themes.vim
 
 " My custom plugins.
-Plug '~/Dropbox/Projects/Software/ruby/now-task-manager/support/vim'
+" Plug '~/Dropbox/Projects/Software/ruby/now-task-manager/support/vim'
+Plug '~/Dropbox/Projects/Software/neovim/nvim-task-manager', { 'do': ':UpdateRemotePlugins' }
 
 " Initialize plugin system
 call plug#end()

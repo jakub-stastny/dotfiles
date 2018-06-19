@@ -75,3 +75,6 @@ augroup ultisnips_custom
 augroup END
 
 set omnifunc=syntaxcomplete#Complete
+
+" Remove trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
