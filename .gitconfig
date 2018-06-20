@@ -34,7 +34,9 @@
   amend-no-edit = commit --amend --no-edit
   amend-all-no-edit = commit --amend --no-edit -a
   dc = diff --cached
-  sb = "!git checkout $(git branch | fzf-tmux -d 15)"
+  cb = "!git checkout $(git branch | fzf-tmux -d 15)"
+  rb = "!git branch -D $(git branch | fzf-tmux -d 15)"
+  bm = checkout master
 
 [github]
   user = botanicus

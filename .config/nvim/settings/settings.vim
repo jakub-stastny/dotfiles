@@ -78,3 +78,7 @@ set omnifunc=syntaxcomplete#Complete
 
 " Remove trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
+
+" Start terminal in insert mode.
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+autocmd TermOpen * setlocal statusline=%{b:term_title}
