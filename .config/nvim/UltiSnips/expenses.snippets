@@ -26,3 +26,7 @@ endsnippet
 snippet '- ' "Expense" rbA
 - ${1:description}: ${2:amount} $3`!p snip.rv = complete(t[3], ['PLN', 'EUR', 'CZK', 'USD', 'MXN', 'COP'])`
 endsnippet
+
+snippet ' #' "tag" rA
+ #$1`!p snip.rv = complete(t[1], os.popen('/Users/botanicus/Dropbox/Projects/Software/neovim/nvim-task-manager/bin/nvtm.list_tags expenses').read().splitlines())`
+endsnippet
