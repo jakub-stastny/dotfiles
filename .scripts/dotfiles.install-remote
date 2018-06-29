@@ -30,6 +30,7 @@ apt install zsh
 chsh -s /bin/zsh
 # git is there, tmux too
 apt-get install silversearcher-ag neovim
+# nvim +PlugInstall +q
 
 ssh-keygen
 # COPY TO GH keys, THEN clone dotfiles
