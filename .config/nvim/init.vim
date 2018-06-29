@@ -71,7 +71,7 @@ Plug 'danro/rename.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'ctrlpvim/ctrlp.vim'
 " https://github.com/junegunn/fzf#as-vim-plugin
-Plug 'junegunn/fzf' ", { 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Now apart from Enter, one can use:
 " - ctrl-t: tab split
 " - ctrl-x: split
