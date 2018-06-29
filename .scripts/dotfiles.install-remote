@@ -64,3 +64,7 @@ run_remote 'git clone --bare git@github.com:botanicus/dotfiles.git'
 run_remote 'git --git-dir=$HOME/dotfiles.git --work-tree=$HOME checkout'
 
 run_remote 'zsh ~/.scripts/dotfiles.install.zsh'
+
+42  mkdir /opt/bin
+   43  wget -O /opt/bin/dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
+   44  chmod +x /opt/bin/dropbox.py
