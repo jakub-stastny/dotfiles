@@ -97,7 +97,7 @@ if executable('javascript-typescript-stdio')
   " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
 else
   echo "javascript-typescript-stdio not installed!\n"
-  :cq
+  ":cq
 endif
 
 " Crystal
@@ -112,7 +112,7 @@ if executable('scry')
   autocmd FileType crystal setlocal omnifunc=LanguageClient#complete
 else
   echo "scry not installed!\n"
-  :cq
+  ":cq
 endif
 
 " https://blog.schembri.me/post/solargraph-in-vim/
@@ -132,7 +132,7 @@ if executable('solargraph')
   autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
 else
   echo "solargraph not installed!\n"
-  :cq
+  ":cq
 endif
 
 " TODO
