@@ -19,12 +19,14 @@ endsnippet
 
 snippet c "class <class>" b
 class ${1:`!p fileNameAsConstant(snip)`}
+	$0
 end
 endsnippet
 
 snippet m "module <module>" b
-class ${1:`!p dirNameAsConstant(path)`}
-end$0
+module ${1:`!p dirNameAsConstant(path)`}
+	$0
+end
 endsnippet
 
 snippet d "def <method>" b

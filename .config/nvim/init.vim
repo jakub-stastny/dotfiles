@@ -72,6 +72,10 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'ctrlpvim/ctrlp.vim'
 " https://github.com/junegunn/fzf#as-vim-plugin
 Plug 'junegunn/fzf' ", { 'do': './install --all' }
+" Now apart from Enter, one can use:
+" - ctrl-t: tab split
+" - ctrl-x: split
+" - ctrl-v: vsplit
 nnoremap <silent> <C-p> :FZF<CR>
 
 Plug 'sheerun/vim-polyglot'

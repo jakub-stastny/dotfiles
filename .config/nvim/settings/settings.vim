@@ -82,3 +82,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " Start terminal in insert mode.
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 autocmd TermOpen * setlocal statusline=%{b:term_title}
+
+" Copy buffer path.
+command! CopyBufferPath let @+ = expand('%:p')
