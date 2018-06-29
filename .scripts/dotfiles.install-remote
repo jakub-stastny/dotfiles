@@ -35,6 +35,9 @@ apt-get install silversearcher-ag neovim
 ssh-keygen
 # COPY TO GH keys, THEN clone dotfiles
 
+ruby2.5 ruby2.5-dev build-essentials
+gem install bundler
+
 # Variables.
 REMOTE=$1
 
