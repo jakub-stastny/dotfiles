@@ -30,6 +30,8 @@ cp /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 # DigitalOcean: git, tmux and htop are installed.
 apt-get install silversearcher-ag neovim
 
+wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb -O dropbox.deb
+
 ruby2.5 ruby2.5-dev build-essentials
 gem install bundler
 apt autoremove --yes

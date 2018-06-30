@@ -85,3 +85,5 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 
 " Copy buffer path.
 command! CopyBufferPath let @+ = expand('%:p')
+
+imap § <Esc>
