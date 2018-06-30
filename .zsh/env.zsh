@@ -3,7 +3,7 @@ alias dotfiles="git --git-dir=$HOME/dotfiles.git --work-tree=$HOME"
 
 # PATH
 path-add()        { path+=("$@") } # TODO: Change to append.
-path-prepend()        { path=("$@" $path) }
+path-prepend()    { path=("$@" $path) }
 path-del()        { for i ("$@") { path[(r)$i]=() } }
 path-clear()      { path=() }
 
