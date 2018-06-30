@@ -5,6 +5,7 @@ run_remote 'apt-get install mosh'
 
 tee /etc/init.d/mosh-server <<EOF
 #!/bin/sh
+# http://slunked.com/setting-up-mosh-mobile-shell-server-on-debian-squeeze/all/1
 # TODO: Rewrite to use systemd.
 
 # export LC_ALL=en_US.UTF-8
