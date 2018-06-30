@@ -22,4 +22,6 @@ if [ $(dotfiles rev-parse @) != $(dotfiles rev-parse @{u}) ]; then
   dotfiles pull -r && exec zsh || echo "Cannot update dotfiles."
 fi
 
-export TZ=Europe/Warsaw
+# Start the sys session if there's none, so Mosh has somewhere to attach to.
+# (Using tmux attach -t sys || tmux new -s sys) as the after-login command didn't work.)
+tmux has-session -t sys || tmux new -d -s sys
