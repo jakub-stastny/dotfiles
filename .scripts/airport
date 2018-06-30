@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+
+# TODO: Download automatically.
+# http://openflights.org/data.html
+
+def query(data_file_base_name, &block)
+  @cache ||= Hash.new
+  @cache[data_file_base_name] ||= File.foreach("/Users/botanicus/Desktop/openflights/data/#{data_file_base_name}").map do |line|
+    data = line.chomp.split(',')
+    data = data.map { |string| string.sub(/^"(.+)"$/, '\1') }
+  end
+
+  @cache[data_file_base_name].select do |data|
+    block.call(data)
+  end
+end
+
+def airport_data(airport_code)
+  query('airports.dat') do |data|
+    return data if data.include?(airport_code)
+  end
+end
+
+def flights_from(source_airport_code, destination_airport_code)
+  query('routes.dat') do |data|
+    data if data[2] == source_airport_code &&
+           ((destination_airport_code && data[4] == destination_airport_code) ||
+             destination_airport_code.nil?)
+  end
+end
+
+def airline_data(airline_id)
+  query('airlines.dat') do |data|
+    return data if data[0] == airline_id
+  end
+end
+
+if ARGV.first == '--in'
+  _, country_or_city = ARGV.shift(2)
+  airports = query('airports.dat') do |data|
+    data[2..3].include?(country_or_city) && data[4] != '\N'
+  end
+
+  print "Airports in #{country_or_city}:\n- "
+  puts airports.map { |data| "#{data[1]} (#{data[4]}) #{data[2]}, #{data[3]}" }.join("\n- ")
+  exit
+end
+
+source_airport_codes = ARGV.shift || abort(DATA.read)
+if destination_airport_codes = ARGV.shift
+  source_airport_codes.split(',').each do |source_airport_code|
+    destination_airport_codes.split(',').each do |destination_airport_code|
+      print "Flights from #{airport_data(source_airport_code)[1]} to #{airport_data(destination_airport_code)[1]}:\n- "
+      puts flights_from(source_airport_code, destination_airport_code).map { |data| airline_data(data[1])[1] }.sort.join("\n- ")
+      puts
+    end
+  end
+else
+  # List destinations.
+  source_airport_codes.split(',').each do |source_airport_code|
+    print "Flights from #{airport_data(source_airport_code)[1]}:\n- "
+    puts flights_from(source_airport_code, nil).map { |data|
+      airport = airport_data(data[4])
+      airline = airline_data(data[1])
+      "#{airport[1]} (#{airport[4]}) #{airport[2]}, #{airport[3]} – #{airline[1]}"
+    }.sort.join("\n- ")
+    puts
+  end
+end
+
+__END__
+[Usage]
+
+airport PRG,VIE LGW,LHR
+airport KLV,OSR,PED,PRG,BRQ,MUC,LNZ,SZG
+airport Linz Warsaw
+airport Linz
+airport --in 'Czech Republic'
+airport --in London

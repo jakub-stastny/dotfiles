@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# For whatever reason $GIT_DIR is not available in here.
+GIT_DIR=$(git rev-parse --git-dir)
+
+HOOK_PATH=$GIT_DIR/hooks/post-commit
+echo "~ Installing $HOOK_PATH.\n\n"
+tee $HOOK_PATH <<EOF
+#!/bin/zsh
+
+# Only with ZSH the colours work.
+# With bash, echo -e doesn't help, fiddling with export TERM=xterm neither.
+
+#git pull -r && git push # This requires stashing, but what if no changes, but there's anything else in stash?
+
+# -u is so git pull -r will know which branch to track
+BRANCH_NAME=\$(git symbolic-ref --short HEAD)
+echo -e "\e[1m~\e[0m git push origin \$BRANCH_NAME"
+git push -u origin \$BRANCH_NAME
+EOF
+
+chmod +x $HOOK_PATH
