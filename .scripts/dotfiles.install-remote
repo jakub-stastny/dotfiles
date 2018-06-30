@@ -1,42 +1,15 @@
 #!/bin/sh
 
-apt-get install mosh
-
-tee /etc/init.d/mosh-server <<EOF
-#!/bin/sh
-
-# TODO: Rewrite to use upstart. Why there is no /etc/init?
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-mosh-server
-EOF
-
-chmod +x /etc/init.d/mosh-server
-   24  ln -s /etc/init.d/mosh-server /etc/rc3.d/S01mosh-server
-   25  ln -s /etc/init.d/mosh-server /etc/rc4.d/S01mosh-server
-   26  ln -s /etc/init.d/mosh-server /etc/rc5.d/S01mosh-server
-   27  ln -s /etc/init.d/mosh-server /etc/rc2.d/S01mosh-server
-# locale-gen?
+# This script should contain only the pre-requisities to local installation,
+# so we can connect and have our dotfiles ready.
+#
+# It is much easier to set things up locally.
 
 # Validate command-line arguments.
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 [remote i. e. root@104.236.127.89]"
   exit
 fi
-
-apt autoremove --yes
-
-apt install zsh
-chsh -s /bin/zsh
-# git is there, tmux too
-apt-get install silversearcher-ag neovim
-# nvim +PlugInstall +q
-
-ssh-keygen
-# COPY TO GH keys, THEN clone dotfiles
-
-ruby2.5 ruby2.5-dev build-essentials
-gem install bundler
 
 # Variables.
 REMOTE=$1
@@ -46,25 +19,23 @@ command() { echo "\$ $*" && $*; }
 run_remote() { echo "$REMOTE \$ $*" && ssh $REMOTE $*; }
 
 # Main.
-run_remote 'apt-get -y update && apt-get -y upgrade'
-run_remote 'apt-get -y install git-core zsh ack-grep ruby' # System Ruby is good
-# enough. Web apps use dockerised Ruby.
 
+### 1. System upgrade. ###
+run_remote 'apt-get -y update && apt-get -y upgrade'
+run_remote 'apt-get -y install git-core zsh'
+
+# Copy SSH key from the current system. This should be only temporary.
 command scp ~/.ssh/id_rsa ~/.ssh/id_rsa.pub $REMOTE:~/.ssh/
 
 # So it doesn't fail on Git asking interactively:
 run_remote 'ssh-keyscan github.com >> ~/.ssh/known_hosts'
 run_remote 'git clone --bare git@github.com:botanicus/dotfiles.git'
 
-#run_remote 'git --git-dir=$HOME/dotfiles.git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
-#run_remote 'git --git-dir=$HOME/dotfiles.git fetch'
-#run_remote 'git --git-dir=$HOME/dotfiles.git branch --set-upstream-to=origin/master master'
+run_remote 'git --git-dir=$HOME/dotfiles.git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
+run_remote 'git --git-dir=$HOME/dotfiles.git fetch'
+run_remote 'git --git-dir=$HOME/dotfiles.git branch --set-upstream-to=origin/master master'
 
 # Note: At this moment the dotfiles alias is available locally, not remotely.
 run_remote 'git --git-dir=$HOME/dotfiles.git --work-tree=$HOME checkout'
 
 run_remote 'zsh ~/.scripts/dotfiles.install.zsh'
-
-42  mkdir /opt/bin
-   43  wget -O /opt/bin/dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
-   44  chmod +x /opt/bin/dropbox.py
