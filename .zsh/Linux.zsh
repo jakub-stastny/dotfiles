@@ -21,3 +21,5 @@ if [ $(dotfiles rev-parse @) != $(dotfiles rev-parse @{u}) ]; then
   # not in fast-forward rebasing scenarios.
   dotfiles pull -r && exec zsh || echo "Cannot update dotfiles."
 fi
+
+export TZ=Europe/Warsaw
