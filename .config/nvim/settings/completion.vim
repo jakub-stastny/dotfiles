@@ -75,65 +75,65 @@ let g:UltiSnipsEditSplit="vertical"
 ""Plug 'uplus/deoplete-solargraph', { 'for': 'ruby' }
 ""Plug 'hackhowtofaq/vim-solargraph' | Plug 'dbakker/vim-projectroot'
 
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_devel = 1 " Use debug build
-let g:LanguageClient_loggingLevel = 'DEBUG' " Use highest logging level
+"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+"" Automatically start language servers.
+"let g:LanguageClient_autoStart = 1
+"let g:LanguageClient_devel = 1 " Use debug build
+"let g:LanguageClient_loggingLevel = 'DEBUG' " Use highest logging level
 
-" https://fortes.com/2017/language-server-neovim/
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
+"" https://fortes.com/2017/language-server-neovim/
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"let g:deoplete#enable_at_startup = 1
 
-" Find language servers here https://langserver.org/
+"" Find language servers here https://langserver.org/
 
-" Minimal LSP configuration for JavaScript
-let g:LanguageClient_serverCommands = {}
-if executable('javascript-typescript-stdio')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
-  " Use LanguageServer for omnifunc completion
-  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-  " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
-else
-  echo "javascript-typescript-stdio not installed!\n"
-  ":cq
-endif
+"" Minimal LSP configuration for JavaScript
+"let g:LanguageClient_serverCommands = {}
+"if executable('javascript-typescript-stdio')
+"  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+"  let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
+"  " Use LanguageServer for omnifunc completion
+"  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+"  " autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+"else
+"  echo "javascript-typescript-stdio not installed!\n"
+"  ":cq
+"endif
 
-" Crystal
-" Installation:
-" git clone https://github.com/crystal-lang-tools/scry.git
-" cd scry
-" shards build -v
-" crystal build -o /Users/botanicus/Desktop/scry/bin/scry src/scry.cr --release
-" cp bin/scry /usr/local/bin
-if executable('scry')
-  let g:LanguageClient_serverCommands.crystal = ['scry']
-  autocmd FileType crystal setlocal omnifunc=LanguageClient#complete
-else
-  echo "scry not installed!\n"
-  ":cq
-endif
+"" Crystal
+"" Installation:
+"" git clone https://github.com/crystal-lang-tools/scry.git
+"" cd scry
+"" shards build -v
+"" crystal build -o /Users/botanicus/Desktop/scry/bin/scry src/scry.cr --release
+"" cp bin/scry /usr/local/bin
+"if executable('scry')
+"  let g:LanguageClient_serverCommands.crystal = ['scry']
+"  autocmd FileType crystal setlocal omnifunc=LanguageClient#complete
+"else
+"  echo "scry not installed!\n"
+"  ":cq
+"endif
 
-" https://blog.schembri.me/post/solargraph-in-vim/
-" gem install solargraph
-" NOTE: To suggest metaprogramming methods:
-" .solargraph.yml
-" plugins:
-" - runtime
-if executable('solargraph')
-  " This doesn't work:
-  " let g:LanguageClient_serverCommands.ruby = ['/usr/local/bin/solargraph', 'socket']
-  " It starts the process, but it's very slow, so everything times out.
-  "
-  " This does, but we have to run solargraph socket manually (in the project
-  " dir).
-  let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
-  autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
-else
-  echo "solargraph not installed!\n"
-  ":cq
-endif
+"" https://blog.schembri.me/post/solargraph-in-vim/
+"" gem install solargraph
+"" NOTE: To suggest metaprogramming methods:
+"" .solargraph.yml
+"" plugins:
+"" - runtime
+"if executable('solargraph')
+"  " This doesn't work:
+"  " let g:LanguageClient_serverCommands.ruby = ['/usr/local/bin/solargraph', 'socket']
+"  " It starts the process, but it's very slow, so everything times out.
+"  "
+"  " This does, but we have to run solargraph socket manually (in the project
+"  " dir).
+"  let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
+"  autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
+"else
+"  echo "solargraph not installed!\n"
+"  ":cq
+"endif
 
 " TODO
 " https://github.com/redhat-developer/yaml-language-server

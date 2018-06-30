@@ -87,3 +87,5 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 command! CopyBufferPath let @+ = expand('%:p')
 
 imap § <Esc>
+vmap § <Esc>
+map § <Esc> " For /something<Esc>. FIXME: Doesn't work.

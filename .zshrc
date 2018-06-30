@@ -30,3 +30,5 @@ bindkey '^[[B' history-substring-search-down
 
 # Ignore files from .gitignore.
 export FZF_DEFAULT_COMMAND="ag -g ''"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

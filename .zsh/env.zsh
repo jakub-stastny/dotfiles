@@ -12,3 +12,7 @@ typeset -T -U -gx -a RUBYLIB rubylib ':'
 
 # This has to be here, because it's a dependency of dotfiles, it's not OS X specific.
 path-prepend ~/.scripts
+
+export EDITOR="nvim"
+
+#export GIT_EDITOR="nvim " # Or use git config --global core.editor "vim" instead?
