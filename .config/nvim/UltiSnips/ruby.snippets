@@ -32,5 +32,15 @@ attr_accessor :${0:attr_names}
 endsnippet
 
 snippet # "@todo"
-# @todo #`git symbolic-ref --short HEAD` $0
+# @todo #`git symbolic-ref --short HEAD`:30min $0
+endsnippet
+
+snippet rr "Kernel#require_relative" b
+require_relative '$1'$0
+endsnippet
+
+snippet case "case/when/end" b
+case $1
+when $2
+end
 endsnippet

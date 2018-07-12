@@ -62,7 +62,11 @@ function mkpasswd() {
 }
 
 # https://github.com/jingweno/ccat
-alias cat=ccat
+#alias cat=ccat
+alias cc='highlight -O ansi'
+alias cl='highlight -l -O ansi | less -R'
+
+# do not use the one from apt, the pygmentize script is nowhere to be found.
 
 function fvim () {
   nvim $(fzf)
