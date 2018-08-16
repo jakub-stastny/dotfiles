@@ -24,7 +24,7 @@ echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; #echo "ZSH functions: ${
 test -f /Users/botanicus/.travis/travis.sh && source /Users/botanicus/.travis/travis.sh
 
 # brew install zsh-history-substring-search
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.linuxbrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
