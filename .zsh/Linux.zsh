@@ -25,3 +25,6 @@ fi
 # Start the sys session if there's none, so Mosh has somewhere to attach to.
 # (Using tmux attach -t sys || tmux new -s sys) as the after-login command didn't work.)
 tmux has-session -t sys || tmux new -d -s sys
+
+# path-add ~/.linuxbrew/bin
+export PATH="/home/botanicus/.linuxbrew/bin:$PATH"

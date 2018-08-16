@@ -1,5 +1,5 @@
 # This can be used by non-interactive scripts as well.
-alias dotfiles="git --git-dir=$HOME/dotfiles.git --work-tree=$HOME"
+alias dotfiles="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 
 # PATH
 path-add()        { path+=("$@") } # TODO: Change to append.
