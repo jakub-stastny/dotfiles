@@ -11,3 +11,6 @@ colorscheme desert
 " for it.
 "
 " Example: https://gist.github.com/aesnyder/7d692b85a51719896237
+
+" Highlight colour.
+highlight Search guibg='Purple' guifg='NONE'

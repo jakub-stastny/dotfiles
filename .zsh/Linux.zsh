@@ -27,4 +27,6 @@ fi
 tmux has-session -t sys || tmux new -d -s sys
 
 # path-add ~/.linuxbrew/bin
-export PATH="/home/botanicus/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+# export PATH="$HOME/.linuxbrew/opt/ruby@2.3/bin:$PATH"
+export PATH="$HOME/.linuxbrew/lib/ruby/gems/2.3.0/bin:$PATH"
