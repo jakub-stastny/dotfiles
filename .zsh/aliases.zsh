@@ -71,3 +71,6 @@ alias cl='highlight -l -O ansi | less -R'
 function fvim () {
   nvim $(fzf)
 }
+
+# Cmd-k on Linux (not sure if works on OS X as well).
+alias clear='clear; echo -e "\033c\e[3J"'
