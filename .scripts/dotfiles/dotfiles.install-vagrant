@@ -1,0 +1,13 @@
+#!/bin/sh
+
+sudo pacman -S --noconfirm git zsh neovim tmux the_silver_searcher
+sudo chsh -s $(which zsh) $(whoami)
+
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+git clone --bare git@github.com:botanicus/dotfiles.git ~/.dotfiles.git
+git --git-dir=$HOME/.dotfiles.git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+git --git-dir=$HOME/.dotfiles.git fetch
+git --git-dir=$HOME/.dotfiles.git branch --set-upstream-to=origin/master master
+git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME checkout
+
+~/.scripts/dotfiles/dotfiles.install
