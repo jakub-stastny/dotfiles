@@ -26,7 +26,4 @@ fi
 # (Using tmux attach -t sys || tmux new -s sys) as the after-login command didn't work.)
 tmux has-session -t sys || tmux new -d -s sys
 
-# Emacs keybinding. C-a C-e C-k.
-bindkey -e
-
 alias ls="ls --color=auto"

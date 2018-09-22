@@ -33,3 +33,6 @@ bindkey '^[[B' history-substring-search-down
 export FZF_DEFAULT_COMMAND="ag -g ''"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Emacs keybinding. C-a C-e C-k.
+bindkey -e
