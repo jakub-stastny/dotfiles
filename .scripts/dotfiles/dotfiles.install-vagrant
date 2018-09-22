@@ -3,6 +3,11 @@
 sudo pacman -S --noconfirm git zsh neovim tmux the_silver_searcher
 sudo chsh -s $(which zsh) $(whoami)
 
+# NeoVim
+sudo pacman -S --noconfirm python python-pip
+sudo pip install neovim
+sudo pacman -R --noconfirm vim
+
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 git clone --bare git@github.com:botanicus/dotfiles.git ~/.dotfiles.git
 git --git-dir=$HOME/.dotfiles.git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
