@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm git zsh neovim tmux the_silver_searcher
 sudo chsh -s $(which zsh) $(whoami)
 
