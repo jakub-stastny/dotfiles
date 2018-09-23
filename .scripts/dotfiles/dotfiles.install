@@ -15,7 +15,7 @@ dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn'
 
 dotfiles install-hooks
 
-$(which ruby) && gem install bundler pry
+which ruby &> /dev/null && gem install bundler pry
 
 # Install Vim plugins.
 nvim +PlugInstall +qall
