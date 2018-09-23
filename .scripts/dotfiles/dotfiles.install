@@ -15,10 +15,10 @@ dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn'
 
 dotfiles install-hooks
 
-gem install bundler pry
+$(which ruby) && gem install bundler pry
 
 # Install Vim plugins.
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
 
 # Install Tmux plugins.
 
