@@ -13,6 +13,7 @@ set number
 set mouse=a
 
 " Indentation.
+set smartindent
 set expandtab " no tabs
 set shiftwidth=2
 
@@ -89,6 +90,7 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 " Copy buffer path.
 command! CopyBufferPath let @+ = expand('%:p')
 
+" TODO: Make this conditional.
 imap § <Esc>
 vmap § <Esc>
 map § <Esc> " For /something<Esc>. FIXME: Doesn't work.
