@@ -1,4 +1,4 @@
-if test -d ~/.gems/bin; then
+if which ruby &> /dev/null; then
   export PATH=~/.gems/bin:$PATH
   export GEM_HOME=~/.gems
   export GEM_PATH=~/.gems
