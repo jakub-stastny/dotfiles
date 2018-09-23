@@ -4,11 +4,6 @@
 
 cd
 
-echo "~ Running platform-specific installers for $(uname)."
-~/.scripts/dotfiles/dotfiles.install.$(uname)
-
-echo "~ General."
-
 dotfiles config --local status.showUntrackedFiles no
 dotfiles config --local alias.list '!git ls-files | sed "s/^/~\//"'
 dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn't work with the above, but it doesn't matter.
