@@ -78,7 +78,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " - ctrl-v: vsplit
 nnoremap <silent> <C-p> :FZF<CR>
 
-" Switching buffers.
+" Switching buffers using Ctrl+s.
 function! s:buflist()
   redir => ls
   silent ls
@@ -90,7 +90,7 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
-nnoremap <silent> <C-b> :call fzf#run({
+nnoremap <silent> <C-s> :call fzf#run({
 \   'source':  reverse(<sid>buflist()),
 \   'sink':    function('<sid>bufopen'),
 \   'options': '+m',
