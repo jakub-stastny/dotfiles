@@ -36,3 +36,7 @@ export FZF_DEFAULT_COMMAND="ag -g ''"
 
 # Emacs keybinding. C-a C-e C-k.
 bindkey -e
+
+# Without this, 256 colours won't work in tmux,
+# at least not in Blink/VPS/tmux combo.
+export TERM=xterm-256color
