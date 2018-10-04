@@ -4,7 +4,8 @@ let g:airline#extensions#tabline#enabled = 1
 set ttimeoutlen=10
 
 " Other good ones: evening koehler slate
-" colorscheme desert
+"colorscheme desert
+colorscheme default
 
 " CI build status can be integrated, but changing the colours seems
 " a bit tricky, plus the Tmu status bar seems to be a better place

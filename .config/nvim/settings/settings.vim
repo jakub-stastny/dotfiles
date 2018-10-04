@@ -92,10 +92,13 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 " Copy buffer path.
 command! CopyBufferPath let @+ = expand('%:p')
 
-" TODO: Make this conditional.
-imap § <Esc>
-vmap § <Esc>
-map § <Esc> " For /something<Esc>. FIXME: Doesn't work.
+" Use C-c / C-[ instead of Esc.
+inoremap jj <Esc>
+" Disable Esc and §.
+" NOTE: Always use inoremap etc rather than imap, nmap, vmap, because noremap
+" is non-recursive.
+noremap <Esc> <nop> | noremap! <Esc> <nop>
+noremap § <nop> | noremap! § <nop>
 
 " Change the search highlight colour.
 highlight Search guibg='Purple' guifg='NONE'
