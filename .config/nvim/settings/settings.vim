@@ -100,5 +100,20 @@ inoremap jj <Esc>:w<CR>
 noremap <Esc> <nop> | noremap! <Esc> <nop>
 noremap § <nop> | noremap! § <nop>
 
+" Disable the arrow keys.
+" p> :so $HOME/.config/nvim/init.vim
+map <Up> <nop>
+map <Down> <nop>
+map <Left> <nop>
+map <Right> <nop>
+
+" Buffer switching.
+map <C-j> :bp<CR>
+map <C-k> :bn<CR>
+
+" http://vim.wikia.com/wiki/Highlight_current_line
+set cursorline
+hi CursorLine cterm=NONE ctermbg=238
+
 " Change the search highlight colour.
 highlight Search guibg='Purple' guifg='NONE'

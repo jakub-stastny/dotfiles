@@ -13,6 +13,6 @@ nvim() {
 
 reload_nvim () {
   for nvim_inst in /tmp/nvimsocket-*; do
-    nvr --servername "$nvim_inst" --remote-send '<C-[>:so $HOME/.config/nvim/init.vim<CR>' &
+    nvr --servername "$nvim_inst" --remote-send '<C-c>:so $HOME/.config/nvim/init.vim<CR>'
   done
 }
