@@ -23,3 +23,6 @@ chsh -s $(which zsh)
 ln -s ~/.scripts/dotfiles/dotfiles.update.sh ~/dotfiles.git/hooks/post-merge
 
 echo "! Use ssh-keygen -t rsa -b 4096 -C your@email.com to create a new SSH key and add it to https://github.com/settings/keys"
+
+# TODO: change /etc/hostname to something meaningful (Linode sets it to localhost).
+# TODO: Install nvr.
