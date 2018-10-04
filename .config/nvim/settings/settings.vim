@@ -93,7 +93,7 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 command! CopyBufferPath let @+ = expand('%:p')
 
 " Use C-c / C-[ instead of Esc.
-inoremap jj <Esc>
+inoremap jj <Esc>:w<CR>
 " Disable Esc and §.
 " NOTE: Always use inoremap etc rather than imap, nmap, vmap, because noremap
 " is non-recursive.
