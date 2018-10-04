@@ -26,3 +26,5 @@ echo "! Use ssh-keygen -t rsa -b 4096 -C your@email.com to create a new SSH key 
 
 # TODO: change /etc/hostname to something meaningful (Linode sets it to localhost).
 # TODO: Install nvr.
+# Let's be on the client's timezone.
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
