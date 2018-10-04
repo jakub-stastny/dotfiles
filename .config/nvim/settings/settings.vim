@@ -36,7 +36,9 @@ set clipboard=unnamedplus
 command! Reload source $MYVIMRC
 
 " True colours.
-set termguicolors
+" This works in SSH, but in mosh it breaks the colours.
+" A solution is here https://github.com/vim/vim/issues/993
+" set termguicolors
 
 " https://github.com/uptech/alt
 "
