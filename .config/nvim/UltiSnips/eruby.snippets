@@ -10,6 +10,14 @@ snippet % "<% %>"
 <% $1 %>
 endsnippet
 
-snippet %= "<%= %>"
+snippet = "<%= %>"
 <%= $1 %>
+endsnippet
+
+snippet # "<# %>"
+<%# $1 %>
+endsnippet
+
+snippet pry "Pry" b
+<% require 'pry'; binding.pry %>
 endsnippet

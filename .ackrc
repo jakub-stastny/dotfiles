@@ -1,3 +1,6 @@
+# This is NOT supported by ag.
+# There have been discussion about it for the past 5 years at least,
+# with several PRs open, the last being https://github.com/ggreer/the_silver_searcher/pull/709
 --ignore-dir=bower_components
 --ignore-dir=node_modules
 --ignore-dir=gems

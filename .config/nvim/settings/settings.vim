@@ -97,11 +97,10 @@ inoremap jj <Esc>:w<CR>
 " Disable Esc and §.
 " NOTE: Always use inoremap etc rather than imap, nmap, vmap, because noremap
 " is non-recursive.
-noremap <Esc> <nop> | noremap! <Esc> <nop>
+" noremap <Esc> <nop> | noremap! <Esc> <nop>
 noremap § <nop> | noremap! § <nop>
 
 " Disable the arrow keys.
-" p> :so $HOME/.config/nvim/init.vim
 map <Up> <nop>
 map <Down> <nop>
 map <Left> <nop>
