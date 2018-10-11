@@ -6,7 +6,13 @@
 # Sourced in an interactive session.
 # http://zsh.sourceforge.net/Intro/intro_3.html
 source ~/.zsh/aliases.zsh
-source ~/.zsh/$(uname).prompt.zsh
+
+if test -z "$TMUX"; then
+  source ~/.zsh/$(uname).prompt.zsh
+else
+  source ~/.zsh/$(uname).tmux.prompt.zsh
+fi
+
 test $(whoami) = vagrant && source ~/.zsh/vagrant.zsh
 source ~/.zsh/completion.zsh
 source ~/.zsh/history.zsh
