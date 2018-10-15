@@ -46,3 +46,5 @@ bindkey -e
 # Without this, 256 colours won't work in tmux,
 # at least not in Blink/VPS/tmux combo.
 export TERM=xterm-256color
+
+test -f source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/chruby.sh
