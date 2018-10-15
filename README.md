@@ -17,7 +17,7 @@ pacman -S zsh
 exec zsh
 pacman -Rs vim nano
 pacman -S neovim
-~/.scripts/dotfiles/dotfiles.install
+~/.scripts/dotfiles/dotfiles.install-vagrant
 ```
 
 ## Ubuntu
