@@ -9,7 +9,7 @@ dotfiles remote update &> /dev/null
 # and git branch -a shows doesn't show any remote branches either.
 #
 # @ refers to HEAD and @{u} to its upstream (origin/master).
-if [ $(dotfiles rev-parse @) != $(dotfiles rev-parse @{u}) ]; then
+if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
   # We are not handling pushing, since we have the auto-push hook installed anyway.
   # Stashing the changes is ignored as well, pressumably I'd commit everything.
   #
