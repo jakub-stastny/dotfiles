@@ -42,6 +42,3 @@ bindkey -e
 # Without this, 256 colours won't work in tmux,
 # at least not in Blink/VPS/tmux combo.
 export TERM=xterm-256color
-
-path-prepend /home/linuxbrew/.linuxbrew/bin
-path-prepend /home/linuxbrew/.linuxbrew/lib/ruby/gems/2.0.0/bin

@@ -1,3 +1,6 @@
+path-prepend /home/linuxbrew/.linuxbrew/bin
+path-prepend /home/linuxbrew/.linuxbrew/lib/ruby/gems/2.0.0/bin
+
 dotfiles remote update &> /dev/null
 
 # This setup was necessary:
