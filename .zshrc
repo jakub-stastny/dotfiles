@@ -27,10 +27,6 @@ autoload -U zmv
 
 echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; #echo "ZSH functions: ${(ok)functions}"; echo
 
-# Added by travis gem.
-test -f /Users/botanicus/.travis/travis.sh && source /Users/botanicus/.travis/travis.sh
-
-# brew install zsh-history-substring-search
 source ~/.zsh/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -47,4 +43,8 @@ bindkey -e
 # at least not in Blink/VPS/tmux combo.
 export TERM=xterm-256color
 
-test -f source /usr/local/share/chruby/chruby.sh && source /usr/local/share/chruby/chruby.sh
+if test -f /usr/local/share/chruby/chruby.sh ; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+  chruby 2.5
+fi
