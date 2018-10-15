@@ -5,13 +5,6 @@
 
 # Sourced in an interactive session.
 # http://zsh.sourceforge.net/Intro/intro_3.html
-
-if test -f /usr/share/chruby/chruby.sh ; then
-  source /usr/share/chruby/chruby.sh
-  source /usr/share/chruby/auto.sh
-  chruby 2.5
-fi
-
 source ~/.zsh/aliases.zsh
 
 if test -z "$TMUX"; then
@@ -49,3 +42,6 @@ bindkey -e
 # Without this, 256 colours won't work in tmux,
 # at least not in Blink/VPS/tmux combo.
 export TERM=xterm-256color
+
+path-prepend /home/linuxbrew/.linuxbrew/bin
+path-prepend /home/linuxbrew/.linuxbrew/lib/ruby/gems/2.0.0/bin
