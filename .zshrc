@@ -6,9 +6,9 @@
 # Sourced in an interactive session.
 # http://zsh.sourceforge.net/Intro/intro_3.html
 
-if test -f /usr/local/share/chruby/chruby.sh ; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
+if test -f /usr/share/chruby/chruby.sh ; then
+  source /usr/share/chruby/chruby.sh
+  source /usr/share/chruby/auto.sh
   chruby 2.5
 fi
 
