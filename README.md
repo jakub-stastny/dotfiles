@@ -4,6 +4,14 @@ Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-d
 
 # Installation
 
+## Arch
+
+```
+pacman -Syu && pacman -S git
+git clone git@github.com:botanicus/dotfiles.git .dotfiles --bare
+ssh-keygen -t rsa -b 4096 -C james@gunpowderlabs.com
+```
+
 ## Ubuntu
 
 ```
