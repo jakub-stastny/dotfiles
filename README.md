@@ -8,8 +8,14 @@ Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-d
 
 ```
 pacman -Syu && pacman -S git
-git clone git@github.com:botanicus/dotfiles.git .dotfiles --bare
 ssh-keygen -t rsa -b 4096 -C james@gunpowderlabs.com
+# Add the key to GitHub.
+git clone git@github.com:botanicus/dotfiles.git .dotfiles --bare
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
+dotfiles checkout
+pacman -S zsh
+exec zsh
+~/.scripts/dotfiles/dotfiles.install
 ```
 
 ## Ubuntu
