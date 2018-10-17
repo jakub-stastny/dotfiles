@@ -22,6 +22,10 @@ exec zsh
 pacman -Rs vim nano
 pacman -S neovim
 ~/.scripts/dotfiles/dotfiles.install-vagrant
+
+# Root.
+usermod -aG sudo botanicus
+# After this, botanicus has to log out.
 ```
 
 ## Ubuntu
