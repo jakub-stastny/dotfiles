@@ -1,6 +1,10 @@
 path-prepend /home/linuxbrew/.linuxbrew/bin
 path-prepend /home/linuxbrew/.linuxbrew/lib/ruby/gems/2.0.0/bin
 
+source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
+# source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/auto.sh
+chruby 2.1.5
+
 dotfiles remote update &> /dev/null
 
 # This setup was necessary:
