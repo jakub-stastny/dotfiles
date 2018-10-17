@@ -54,3 +54,5 @@ bindkey '^x^e' edit-command-line
 # zle -N edit-command-line
 # bindkey -M vicmd v edit-command-line
 # Update 2.5.2010: @citizen428 brought the builtin fc (fix command) to my attention. fc allows you to edit commands in your history, and reruns them when you’re finished.
+
+source ~/.zsh/ignored.zsh
