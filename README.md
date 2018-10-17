@@ -10,6 +10,10 @@ Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-d
 pacman -Syu && pacman -S git
 ssh-keygen -t rsa -b 4096 -C james@gunpowderlabs.com
 # Add the key to GitHub.
+
+# OR
+scp root@45.33.29.30:/root/.ssh/id_rsa.pub ~/.ssh/
+
 git clone git@github.com:botanicus/dotfiles.git .dotfiles.git --bare
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME'
 dotfiles checkout
