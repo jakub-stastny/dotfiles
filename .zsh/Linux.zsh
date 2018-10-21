@@ -1,10 +1,8 @@
-path-prepend /home/linuxbrew/.linuxbrew/bin
-path-prepend /home/linuxbrew/.linuxbrew/lib/ruby/gems/2.0.0/bin
-
-if test -f /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh; then
-  source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
-  # source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/auto.sh
-  chruby 2.1.5
+if test -d /home/linuxbrew/.linuxbrew; then
+  path-prepend /home/linuxbrew/.linuxbrew/bin
+  for gem_root_dir in /home/linuxbrew/.linuxbrew/lib/ruby/gems/*; do
+    test -d "$gem_root_dir/bin" && path-prepend "$gem_root_dir/bin"
+  done
 fi
 
 dotfiles remote update &> /dev/null
