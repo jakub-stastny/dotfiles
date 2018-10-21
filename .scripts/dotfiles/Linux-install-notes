@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-### 1. Mosh. ###
-run_remote 'apt-get install mosh'
 
 tee /etc/init.d/mosh-server <<EOF
 #!/bin/sh
@@ -23,19 +21,4 @@ ln -s /etc/init.d/mosh-server /etc/rc5.d/S01mosh-server
 ln -s /etc/init.d/mosh-server /etc/rc2.d/S01mosh-server
 # locale-gen?
 
-### 2. Timezone ###
-#
-# Let's set the timezone before we start the first tmux session.
-cp /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
-
-42  mkdir /opt/bin
-   43  wget -O /opt/bin/dropbox.py "https://www.dropbox.com/download?dl=packages/dropbox.py"
-   44  chmod +x /opt/bin/dropbox.py
-# DigitalOcean: git, tmux and htop are installed.
-apt-get install silversearcher-ag neovim
-
-wget https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb -O dropbox.deb
-
-ruby2.5 ruby2.5-dev build-essentials
-gem install bundler
-apt autoremove --yes
+# TODO: Install nvr.
