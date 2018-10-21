@@ -7,10 +7,10 @@
 # http://zsh.sourceforge.net/Intro/intro_3.html
 source ~/.zsh/aliases.zsh
 
-if test -z "$TMUX"; then
-  source ~/.zsh/$(uname).prompt.zsh
-else
+if test -n "$TMUX" && test -f ~/.zsh/$(uname).tmux.prompt.zsh; then
   source ~/.zsh/$(uname).tmux.prompt.zsh
+else
+  source ~/.zsh/$(uname).prompt.zsh
 fi
 
 test $(whoami) = vagrant && source ~/.zsh/vagrant.zsh
