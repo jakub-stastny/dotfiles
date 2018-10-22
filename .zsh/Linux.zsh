@@ -34,3 +34,5 @@ if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
 fi
 
 alias ls="ls --color=auto"
+
+source ~/.zsh/vagrant.zsh
