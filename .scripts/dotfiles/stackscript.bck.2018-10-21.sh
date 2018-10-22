@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# https://manager.linode.com/stackscripts/edit/348504
+
 cd # Otherwise we're in /.
 
 apt update && apt upgrade -y
@@ -44,7 +46,8 @@ su botanicus -c "git --git-dir=/home/botanicus/.dotfiles.git --work-tree=/home/b
 su botanicus -c "zsh ~/.scripts/dotfiles/dotfiles.install"
 su botanicus -c "git --git-dir=/home/botanicus/.dotfiles.git remote set-url origin git@github.com:botanicus/dotfiles.git"
 yes | su botanicus -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-su botanicus -c "ssh-keyscan github.com >> ~/.ssh/known_hosts"
+cp ~/.ssh/id_rsa ~/.ssh/id_rsa.pub ~/.ssh/known_hosts ~botanicus/.ssh/
+chown -R botanicus:botanicus ~botanicus/.ssh
 
 
 cat /dev/zero | ssh-keygen -q -N ""
