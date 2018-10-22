@@ -4,7 +4,7 @@ export LANG=en_US.UTF-8
 
 if test -d /home/linuxbrew/.linuxbrew; then
   path-prepend /home/linuxbrew/.linuxbrew/bin
-  for gem_root_dir in /home/linuxbrew/.linuxbrew/lib/ruby/gems/*; do
+  for gem_root_dir in /home/linuxbrew/.linuxbrew/lib/ruby/gems; do
     test -d "$gem_root_dir/bin" && path-prepend "$gem_root_dir/bin"
   done
 fi
