@@ -1,3 +1,7 @@
+# Ubuntu has broken locale, verify by running adduser.
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 if test -d /home/linuxbrew/.linuxbrew; then
   path-prepend /home/linuxbrew/.linuxbrew/bin
   for gem_root_dir in /home/linuxbrew/.linuxbrew/lib/ruby/gems/*; do
