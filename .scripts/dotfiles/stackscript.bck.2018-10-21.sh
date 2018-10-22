@@ -43,7 +43,7 @@ su botanicus -c "git --git-dir=/home/botanicus/.dotfiles.git --work-tree=/home/b
 
 su botanicus -c "zsh ~/.scripts/dotfiles/dotfiles.install"
 su botanicus -c "git --git-dir=/home/botanicus/.dotfiles.git remote set-url origin git@github.com:botanicus/dotfiles.git"
-su botanicus -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+yes | su botanicus -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 su botanicus -c "ssh-keyscan github.com >> ~/.ssh/known_hosts"
 
 
