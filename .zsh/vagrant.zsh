@@ -16,5 +16,7 @@ fi
 
 # https://stackoverflow.com/questions/27613209/how-to-automatically-start-tmux-on-ssh-session
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-  tmux attach-session -t sys || tmux new-session -s sys
+  # Without -d (detach other clients), the screen wouldn't
+  # resize to fit the current terminal resolution.
+  tmux attach-session -d -t sys || tmux new-session -s sys
 fi
