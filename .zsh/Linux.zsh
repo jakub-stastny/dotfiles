@@ -9,6 +9,9 @@ if test -d /home/linuxbrew/.linuxbrew; then
   done
 fi
 
+# Snappy package manager binaries.
+path-prepend /snap/bin
+
 dotfiles remote update &> /dev/null
 
 # This setup was necessary:
