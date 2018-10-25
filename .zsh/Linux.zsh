@@ -3,6 +3,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/chruby.sh
+source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/auto.sh
 export RUBIES=(/home/linuxbrew/.linuxbrew/opt/ruby@2.?)
 chruby ruby@2.5
 
