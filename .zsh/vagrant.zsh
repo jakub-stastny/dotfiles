@@ -1,8 +1,8 @@
-if which ruby &> /dev/null; then
-  export PATH=~/.gems/bin:$PATH
-  export GEM_HOME=~/.gems
-  export GEM_PATH=~/.gems
-fi
+# if which ruby &> /dev/null; then
+#   export PATH=~/.gems/bin:$PATH
+#   export GEM_HOME=~/.gems
+#   export GEM_PATH=~/.gems
+# fi
 
 if test -f /etc/projectname; then
   cd ~/$(cat /etc/projectname)
