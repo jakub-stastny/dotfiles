@@ -7,12 +7,12 @@ source /home/linuxbrew/.linuxbrew/opt/chruby/share/chruby/auto.sh
 export RUBIES=(/home/linuxbrew/.linuxbrew/opt/ruby@2.?)
 chruby ruby@2.5
 
-# if test -d /home/linuxbrew/.linuxbrew; then
-#   path-prepend /home/linuxbrew/.linuxbrew/bin
-#   for gem_root_dir in /home/linuxbrew/.linuxbrew/lib/ruby/gems; do
-#     test -d "$gem_root_dir/bin" && path-prepend "$gem_root_dir/bin"
-#   done
-# fi
+if test -d /home/linuxbrew/.linuxbrew; then
+  path-prepend /home/linuxbrew/.linuxbrew/bin
+  for gem_root_dir in /home/linuxbrew/.linuxbrew/lib/ruby/gems; do
+    test -d "$gem_root_dir/bin" && path-prepend "$gem_root_dir/bin"
+  done
+fi
 
 # Snappy package manager binaries.
 path-prepend /snap/bin
