@@ -20,4 +20,9 @@ total = hours.reduce(:+)
 puts "\n#{total} * #{RATE} = $#{(total.to_decimal * RATE).round}"
 
 __END__
-Tue 30/10: 0:00:00
+Tue 30/10: 12:45:24
+Fri 2/11: 2:52:02
+Mon 5/11: 11:28:00
+Tue 6/11: 7:21:17
+Wed 7/11: 00:34:09
+Thu 8/11: 4:32:27
