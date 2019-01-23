@@ -8,29 +8,34 @@ require 'hour'
 RATE = 50
 
 # This is interesting, YAML parses 0:15 as 900.
-timesheet = YAML.load(DATA.read)
-hours = timesheet.map do |date, seconds|
-  hour_period = Hour.from(seconds: seconds)
-  puts "#{date} #{hour_period} – #{hour_period.to_decimal} = $#{(hour_period.to_decimal * RATE).round}"
-  hour_period
+timesheets = YAML.load(DATA.read)
+
+timesheets.each do |company, timesheet|
+  puts "# #{company} #"
+  hours = timesheet.map do |date, seconds|
+    hour_period = Hour.from(seconds: seconds || 0)
+    puts "  #{date} #{hour_period} – #{hour_period.to_decimal} = $#{(hour_period.to_decimal * RATE).round}"
+    hour_period
+  end
+
+  total = hours.reduce(:+)
+
+  puts "\n  #{total} * #{RATE} = $#{(total.to_decimal * RATE).round}"
 end
 
-total = hours.reduce(:+)
-
-puts "\n#{total} * #{RATE} = $#{(total.to_decimal * RATE).round}"
-
 __END__
-25/12: 06:01:20
-26/12: 05:58:02
-27/12: 04:44:46
-28/12: 07:03:10
-29/12: 0
-30/12: 0
-31/12: 0
-1/1: 05:52:29
-2/1: 12:44:17
-3/1: 0
-4/1: 0
-5/1: 0
-6/1: 0
-7/1: 0
+supervillains:
+  22/1:
+  23/1:
+  24/1:
+  25/1:
+  26/1:
+  27/1:
+  28/1:
+  29/1:
+  30/1:
+  31/1:
+  1/2:
+  2/2:
+  3/2:
+  4/2:
