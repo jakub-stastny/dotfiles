@@ -5,6 +5,7 @@ $LOAD_PATH.unshift('/root/hour-ruby/lib')
 require 'yaml'
 require 'hour'
 
+# Fixme: rate varies.
 RATE = 50
 
 # This is interesting, YAML parses 0:15 as 900.
