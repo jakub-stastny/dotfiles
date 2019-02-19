@@ -18,5 +18,9 @@ fi
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
   # Without -d (detach other clients), the screen wouldn't
   # resize to fit the current terminal resolution.
-  tmux attach-session -d -t sys || tmux new-session -s sys
+  if test -d $(hostname); then
+    tmux attach-session -d -t $(hostname) || (cd $(hostname); tmux new-session -s $(hostname))
+  else
+    tmux attach-session -d -t sys || tmux new-session -s sys
+  fi
 fi
