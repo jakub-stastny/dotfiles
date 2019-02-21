@@ -13,11 +13,11 @@ else
   source ~/.zsh/$(uname).prompt.zsh
 fi
 
-test $(whoami) = vagrant && source ~/.zsh/vagrant.zsh
 source ~/.zsh/completion.zsh
 source ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
 source ~/.zsh/nvim.zsh
+source ~/.zsh/ruby.zsh
 
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv

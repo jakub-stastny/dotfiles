@@ -33,4 +33,4 @@ fi
 
 alias ls="ls --color=auto"
 
-source ~/.zsh/vagrant.zsh
+source ~/.zsh/tmux-auto-connect.zsh
