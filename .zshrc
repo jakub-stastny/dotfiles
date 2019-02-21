@@ -18,6 +18,7 @@ source ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && source ~/.zsh/$(uname).zsh
 source ~/.zsh/nvim.zsh
 source ~/.zsh/ruby.zsh
+source ~/.zsh/node.zsh
 
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv
