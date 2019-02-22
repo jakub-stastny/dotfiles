@@ -11,6 +11,7 @@ RUN nvim +PlugInstall +qall
 
 RUN cd /root && git clone https://github.com/botanicus/dotfiles.git .dotfiles.git --bare && git --git-dir=/root/.dotfiles.git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" && git --git-dir=/root/.dotfiles.git fetch && git --git-dir=/root/.dotfiles.git branch --set-upstream-to=origin/master master && git --git-dir=/root/.dotfiles.git --work-tree=/root checkout && ssh-keyscan github.com >> ~/.ssh/known_hosts && zsh ~/.scripts/dotfiles/dotfiles.install && git --git-dir=/root/.dotfiles.git remote set-url origin git@github.com:botanicus/dotfiles.git
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata apt-utils && echo "America/New_York" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+RUN chsh -s $(which zsh)
 
 WORKDIR /root
 CMD ["/usr/bin/zsh"]
