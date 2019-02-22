@@ -3,6 +3,8 @@
 # echo | sudo tee /etc/zprofile
 # This fucks up the paths, so whatever we set in .zshenv is overriden.
 
+source ~/.zsh/setup.zsh
+
 # Sourced in an interactive session.
 # http://zsh.sourceforge.net/Intro/intro_3.html
 source ~/.zsh/aliases.zsh
