@@ -29,6 +29,8 @@ if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
   # Note that post-rewrite works only when something is actually rewritten,
   # not in fast-forward rebasing scenarios.
   dotfiles pull -r && exec zsh || echo "Cannot update dotfiles."
+
+  # FIXME: If the current repo is AHEAD of origin, this will keep running in a loop.
 fi
 
 alias ls="ls --color=auto"
