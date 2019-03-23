@@ -1,3 +1,5 @@
+docker login --username=botanicus --password=$DOCKER_PASSWORD
+
 if ! test -f ~/.dropbox_uploader && (( ${+DROPBOX_ACCESS_TOKEN} )); then
   echo "OAUTH_ACCESS_TOKEN=$DROPBOX_ACCESS_TOKEN" | tee ~/.dropbox_uploader
   echo "~ Saving Dropbox access token from the environment to the ~/.dropbox_uploader config."
