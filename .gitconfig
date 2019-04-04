@@ -1,6 +1,6 @@
 [user]
   name = James C Russell
-  email = james@101ideas.cz
+  email = james+git@botanicus.me
 
 [core]
   excludesfile = ~/.gitignore
