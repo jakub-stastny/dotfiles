@@ -6,7 +6,3 @@ if ! test -f ~/.dropbox_uploader && (( ${+DROPBOX_ACCESS_TOKEN} )); then
 elif ! (( ${+DROPBOX_ACCESS_TOKEN} )); then
   echo '~ Dropbox access token is not saved and $DROPBOX_ACCESS_TOKEN is not in the environment.'
 fi
-
-if ! test -v PROWL_API_KEY; then
-  echo '~ PROWL_API_KEY not defined.'
-fi
