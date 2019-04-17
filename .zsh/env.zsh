@@ -14,5 +14,3 @@ typeset -T -U -gx -a RUBYLIB rubylib ':'
 path-prepend ~/.scripts
 
 export EDITOR="nvim"
-
-#export GIT_EDITOR="nvim " # Or use git config --global core.editor "vim" instead?

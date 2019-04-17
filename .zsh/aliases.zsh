@@ -1,13 +1,9 @@
 # Dependencies: chruby to be loaded first (so we can test if pry is in the PATH).
 
-function launch() {
-  ~/.scripts/projects/$1
-}
-
 # Dotfiles-related.
 alias reload="source ~/.zshrc"
-alias zshrc="vim ~/.zshrc && reload && echo ZSH config reloaded."
-alias vimrc="vim ~/.vimrc"
+alias zshrc="e ~/.zshrc && reload && echo ZSH config reloaded."
+alias vimrc="e ~/.vimrc"
 
 # Core.
 alias df='df -h'
