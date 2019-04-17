@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'pushover'
+
+user_key = ENV.fetch('PUSHOVER_USER_KEY')
+app_token = ENV.fetch('PUSHOVER_APP_TOKEN')
+
+message = Pushover::Message.create(
+  token: app_token,
+  user: user_key,
+  title: ARGV[0],
+  message: ARGV[1],
+  url: ARGV[2]
+)
+
+p message
+
+response = message.push
+exit response.status == 1
