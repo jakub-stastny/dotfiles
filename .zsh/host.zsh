@@ -29,5 +29,5 @@ du() {
 
 # Update
 function update () {
-  wget https://raw.githubusercontent.com/botanicus/dotfiles/master/.zsh/host.zsh -O ~/.zshrc
+  wget --no-cache https://raw.githubusercontent.com/botanicus/dotfiles/master/.zsh/host.zsh -O ~/.zshrc
 }
