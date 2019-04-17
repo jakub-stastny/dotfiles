@@ -35,3 +35,6 @@ du() {
 function update () {
   wget --no-cache https://raw.githubusercontent.com/botanicus/dotfiles/master/.zsh/host.zsh -O ~/.zshrc
 }
+
+echo "~ Updating ~/.zshrc from ~/.zsh/host.zsh"
+update
