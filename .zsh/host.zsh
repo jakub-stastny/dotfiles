@@ -4,6 +4,18 @@
 export cdpath=(. ~/projects)
 export EDITOR=vim
 
+# History.
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTFILE=~/.history
+
+# Appends every command to the history file once it is executed
+setopt inc_append_history
+# Reloads the history whenever you use it.
+#setopt share_history
+
+setopt HIST_IGNORE_ALL_DUPS  # Remove old duplicates.
+
 # Prompt.
 PROMPT="%F{red}%n%f@%F{blue}%m%f %F{yellow}%1~%f %# "
 RPROMPT='[%F{yellow}%?%f]'
@@ -14,6 +26,7 @@ function e () {
 }
 
 # Core.
+alias ls="ls --color=auto"
 alias df='df -h'
 alias ls='ls -F'
 alias ll='ls -l'

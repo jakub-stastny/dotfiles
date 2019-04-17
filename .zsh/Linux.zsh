@@ -35,4 +35,4 @@ fi
 
 alias ls="ls --color=auto"
 
-source ~/.zsh/tmux-auto-connect.zsh
+load ~/.zsh/tmux-auto-connect.zsh

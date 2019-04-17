@@ -16,9 +16,6 @@ alias g='git'
 alias gp='git push'
 alias gst='git status'
 
-# Others.
-alias nettest='ping -c 3 www.google.com'
-
 function e () {
   test "$#" = 0 && $EDITOR . || $EDITOR $*
 }
@@ -37,15 +34,9 @@ alias POST="curl -X POST"
 alias HEAD="curl -X HEAD"
 alias OPTIONS="curl -X OPTIONS"
 
-alias gem_search="gem query --remote --name-matches"
-
 alias .='cd .' # reload (e.g.: you're in app/current)
 alias ..='cd ..'
 alias ...='cd ../..'
-
-stash () {
-  git stash && $* && git stash pop
-}
 
 du() {
   for item in $* ; do
@@ -54,19 +45,5 @@ du() {
 }
 
 function mkpasswd() {
-  ruby -e "puts Array.new(16) { rand(256) }.pack('C*').unpack('H*').first"
+  ruby -e "puts 3.times.map { 2.times.map { rand(256) }.pack('C*').unpack('H*') }.join('-')"
 }
-
-# https://github.com/jingweno/ccat
-#alias cat=ccat
-alias cc='highlight -O ansi'
-alias cl='highlight -l -O ansi | less -R'
-
-# do not use the one from apt, the pygmentize script is nowhere to be found.
-
-function fvim () {
-  nvim $(fzf)
-}
-
-# Cmd-k on Linux (not sure if works on OS X as well).
-alias clear='clear; echo -e "\033c\e[3J"'
