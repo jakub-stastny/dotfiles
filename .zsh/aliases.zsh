@@ -47,3 +47,7 @@ du() {
 function mkpasswd() {
   ruby -e "puts 3.times.map { 2.times.map { rand(256) }.pack('C*').unpack('H*') }.join('-')"
 }
+
+mksession() {
+  tmux new -s $(basename $PWD)
+}
