@@ -51,3 +51,5 @@ function mkpasswd() {
 mksession() {
   tmux new -s $(basename $PWD)
 }
+
+d='youtube-dl -f '\''bestaudio[ext=m4a]'\'
