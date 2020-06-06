@@ -21,3 +21,5 @@ load ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && load ~/.zsh/$(uname).zsh
 
 test -f ~/.zsh/ignored.zsh && load ~/.zsh/ignored.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
