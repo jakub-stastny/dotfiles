@@ -48,3 +48,8 @@ mksession() {
 }
 
 d='youtube-dl -f '\''bestaudio[ext=m4a]'\'
+
+# TODO: shell completion
+attach() {
+  cd ~/projects/$1 && ./runner start && ./runner attach
+}
