@@ -1,3 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'imap-filter', git: 'git@github.com:botanicus/imap-filter.git'
