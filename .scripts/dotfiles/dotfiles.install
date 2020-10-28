@@ -4,20 +4,28 @@
 
 cd
 
+echo "~ Creating dotfiles-specific aliases."
 dotfiles config --local status.showUntrackedFiles no
 dotfiles config --local alias.list '!git ls-files | sed "s/^/~\//"'
 dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn't work with the above, but it doesn't matter.
 
-dotfiles install-hooks
+echo "~ Installing auto-push hook."
+dotfiles install-hooks > /dev/null
 
-which ruby &> /dev/null && gem install bundler pry
+# Install Pry.
+if which ruby &> /dev/null; then
+  echo "~ Installing Ruby utilities."
+  gem install pry
+else
+  echo "~ Ruby not installed, cannot install pry."
+fi
 
 # Install Vim plugins.
-nvim +PlugInstall +qall
+if which nvim &> /dev/null; then
+  nvim +PlugInstall +qall
+else
+  echo "~ NeoVim not installed, cannot install its plugins."
+fi
 
-# Install Tmux plugins.
-
-ln -s ~/.scripts/dotfiles/dotfiles.update ~/.dotfiles.git/hooks/post-merge
-
-# sudo pacman -S --noconfirm python python-pip
-# sudo pip install neovim
+echo "~ Linking ~/.scripts/dotfiles/dotfiles.update to ~/.dotfiles.git/hooks/post-merge"
+ln -sf ~/.scripts/dotfiles/dotfiles.update ~/.dotfiles.git/hooks/post-merge
