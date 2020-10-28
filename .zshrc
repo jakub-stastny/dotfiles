@@ -1,7 +1,7 @@
 # This file is loaded after ~/.zshenv.
 
 function load () {
-  echo "~ Loading $1"; source $1
+  echo "$(tput setaf 2)~$(tput sgr0) Loading $(tput setaf 7)$1$(tput sgr0)" && source $1
 }
 
 load ~/.zsh/setup.zsh
@@ -20,6 +20,5 @@ load ~/.zsh/completion.zsh
 load ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && load ~/.zsh/$(uname).zsh
 
-test -f ~/.zsh/ignored.zsh && load ~/.zsh/ignored.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Add any local changes that shouldn't be committed into ~/.zsh/local.zsh.
+test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh

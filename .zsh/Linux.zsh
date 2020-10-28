@@ -2,11 +2,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-test -d /home/linuxbrew && source ~/.zsh/linuxbrew.zsh
-
-# Snappy package manager binaries.
-path-prepend /snap/bin
-
 dotfiles remote update &> /dev/null
 
 # This setup was necessary:

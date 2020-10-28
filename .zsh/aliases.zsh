@@ -11,10 +11,10 @@ alias gp='git push'
 alias gst='git status'
 alias dst='dotfiles status'
 
-function e () {
-  test "$#" = 0 && $EDITOR . || $EDITOR $*
-}
-#e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
+# function e () {
+#   test "$#" = 0 && $EDITOR . || $EDITOR $*
+# }
+e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
 
 # Ruby.
 which pry &> /dev/null && alias irb="pry"

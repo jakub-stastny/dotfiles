@@ -1,14 +1,15 @@
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv
 
-echo; capabilities; echo "ZSH aliases: ${(ok)aliases}"; #echo "ZSH functions: ${(ok)functions}"; echo
+echo; capabilities | sed 's/^/  /'; echo "  $(tput setaf 2)ZSH aliases: $(tput sgr0)${(ok)aliases}\e[0m"; echo; #echo "ZSH functions: ${(ok)functions}"; echo
+  # "\e[#{color_code}m#{text}\e[0m"
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Ignore files from .gitignore.
 export FZF_DEFAULT_COMMAND="ag -g ''"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # Emacs keybinding. C-a C-e C-k.
 bindkey -e
@@ -33,7 +34,7 @@ echo $DOCKER_PASSWORD | docker login --username botanicus --password-stdin &> /d
 
 if ! test -f ~/.dropbox_uploader && (( ${+DROPBOX_ACCESS_TOKEN} )); then
   echo "OAUTH_ACCESS_TOKEN=$DROPBOX_ACCESS_TOKEN" | tee ~/.dropbox_uploader
-  echo "~ Saving Dropbox access token from the environment to the ~/.dropbox_uploader config."
+  echo "  ~ Saving ropbox access token from the environment to the ~/.dropbox_uploader config."
 elif ! (( ${+DROPBOX_ACCESS_TOKEN} )); then
-  echo '~ Dropbox access token is not saved and $DROPBOX_ACCESS_TOKEN is not in the environment.'
+  echo "  $(tput setaf 1)!$(tput sgr0) Dropbox access token is not saved and $(tput setaf 7)\$DROPBOX_ACCESS_TOKEN$(tput sgr0) is not in the environment.\n"
 fi
