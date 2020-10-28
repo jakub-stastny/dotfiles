@@ -1,6 +1,6 @@
 [user]
-  name = James C Russell
-  email = james+git@botanicus.me
+  name = Jakub Šťastný
+  email = jakub.stastny.pt+git@gmail.com
 
 [core]
   excludesfile = ~/.gitignore
@@ -36,10 +36,3 @@
   dc = diff --cached
   cb = "!git checkout $(git branch | fzf-tmux -d 15)"
   rb = "!git branch -D $(git branch | fzf-tmux -d 15)"
-  bm = checkout master
-
-[github]
-  user = botanicus
-
-[ghi]
-  token = !security find-internet-password -a botanicus -s github.com -l 'ghi token' -w
