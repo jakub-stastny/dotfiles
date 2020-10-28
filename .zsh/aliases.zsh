@@ -1,10 +1,5 @@
 # Dependencies: chruby to be loaded first (so we can test if pry is in the PATH).
 
-# Dotfiles-related.
-alias reload="source ~/.zshrc"
-alias zshrc="e ~/.zshrc && reload && echo ZSH config reloaded."
-alias vimrc="e ~/.vimrc"
-
 # Core.
 alias df='df -h'
 alias ls='ls -F'
@@ -12,9 +7,9 @@ alias ll='ls -l'
 alias la='ls -a'
 
 # Git.
-alias g='git'
 alias gp='git push'
 alias gst='git status'
+alias dst='dotfiles status'
 
 function e () {
   test "$#" = 0 && $EDITOR . || $EDITOR $*
