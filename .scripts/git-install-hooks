@@ -15,7 +15,7 @@ tee $HOOK_PATH <<EOF
 
 # -u is so git pull -r will know which branch to track
 BRANCH_NAME=\$(git symbolic-ref --short HEAD)
-echo -e "\e[1m~\e[0m git push origin \$BRANCH_NAME"
+echo -e "\e[1m~\e[0m \e[37mgit push origin \$BRANCH_NAME\e[0m"
 git push -u origin \$BRANCH_NAME
 EOF
 
