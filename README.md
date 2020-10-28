@@ -2,6 +2,10 @@
 
 Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/).
 
+# Install new server
+
+`curl | sh`
+
 # TODO
 
 - Git add completion for git-custom scripts.
