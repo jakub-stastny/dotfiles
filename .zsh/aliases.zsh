@@ -9,6 +9,7 @@ alias la='ls -a'
 # Git.
 alias gp='git push'
 alias gst='git status'
+alias dt='dotfiles'
 alias dst='dotfiles status'
 
 # function e () {
@@ -49,7 +50,16 @@ mksession() {
 
 d='youtube-dl -f '\''bestaudio[ext=m4a]'\'
 
-# TODO: shell completion
-attach() {
-  cd ~/projects/$1 && ./runner start && ./runner attach
+# Projects
+p() {
+  # Allow ${1:$FZF CMD}, so p consultexam
+  cd ~/projects/$(ls ~/projects | fzf)
+}
+
+a() {
+  p && ./runner start && ./runner attach
+}
+
+stop() {
+  cd ~/projects/$(ls ~/projects | fzf) && ./runner stop && cd -
 }

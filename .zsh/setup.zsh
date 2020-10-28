@@ -7,6 +7,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # Ignore files from .gitignore.
+# FZF get installed by its Vim plugin.
 export FZF_DEFAULT_COMMAND="ag -g ''"
 
 test -f ~/.fzf.zsh && source ~/.fzf.zsh
