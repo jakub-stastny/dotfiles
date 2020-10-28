@@ -33,5 +33,20 @@ git --git-dir=$HOME/.dotfiles.git remote set-url origin git@github.com:jakub-sta
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
 cat /dev/zero | ssh-keygen -q -N ""
 
-/bin/echo "  Add your new key to https://github.com/settings/keys"
-# reboot
+# Install Docker
+apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+apt update && apt upgrade -y
+add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt update && apt upgrade -y
+apt install docker-ce docker-ce-cli containerd.io
+
+# DPM
+docker install jakubstastny/docker-project-manager
+mkdir projects
+docker run -it --rm -v ~/projects:/projects jakubstastny/docker-project-manager # Dry run only to download it.
+
+echo "  Add your new key to https://github.com/settings/keys and reboot\n\n"
+cat ~/.ssh/id_rsa.pub
