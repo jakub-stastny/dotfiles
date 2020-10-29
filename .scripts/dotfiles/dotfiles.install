@@ -12,6 +12,10 @@ dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn'
 echo "~ Installing auto-push hook."
 dotfiles install-hooks > /dev/null
 
+echo "~ Generating dotfiles SSH key"
+ssh-keygen -t rsa -f ~/.ssh/dotfiles_id_rsa -q -N ''
+dotfiles config core.sshCommand "ssh -F ~/.ssh/dotfiles.config"
+
 # Install Pry.
 if which ruby &> /dev/null; then
   echo "~ Installing Ruby utilities."
@@ -29,3 +33,6 @@ fi
 
 echo "~ Linking ~/.scripts/dotfiles/dotfiles.update to ~/.dotfiles.git/hooks/post-merge"
 ln -sf ~/.scripts/dotfiles/dotfiles.update ~/.dotfiles.git/hooks/post-merge
+
+echo "Add the following key into https://github.com/settings/keys"
+cat ~/.ssh/dotfiles_id_rsa
