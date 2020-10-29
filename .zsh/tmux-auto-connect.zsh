@@ -6,5 +6,5 @@
 if [[ -z "$TMUX" ]] && test -f /.dockerenv; then
   # Without -d (detach other clients), the screen wouldn't resize to fit
   # the current terminal resolution.
-  tmux attach-session -d -t $USER@$HOST || tmux new-session -s $USER@$HOST
+  tmux attach-session -d -t $HOST || tmux new-session -s $HOST
 fi
