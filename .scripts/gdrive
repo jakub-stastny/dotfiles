@@ -1,72 +1,51 @@
 #!/usr/bin/env ruby
 
-require "google/apis/drive_v3"
-require "googleauth"
-require "googleauth/stores/file_token_store"
-require "fileutils"
+require 'pry'
+require 'google_drive'
 
-OOB_URI = "urn:ietf:wg:oauth:2.0:oob".freeze
-APPLICATION_NAME = "GDrive CLI".freeze
-# The file token.yaml stores the user's access and refresh tokens, and is
-# created automatically when the authorization flow completes for the first
-# time.
-TOKEN_PATH = "token.yaml".freeze
-SCOPE = Google::Apis::DriveV3::AUTH_DRIVE_METADATA_READONLY
-
-def authorize
-  client_id = Google::Auth::ClientId.new(ENV.fetch('CLIENT_ID'), ENV.fetch('CLIENT_SECRET'))
-  token_store = Google::Auth::Stores::FileTokenStore.new file: TOKEN_PATH
-  authorizer = Google::Auth::UserAuthorizer.new client_id, SCOPE, token_store
-  user_id = "default"
-  credentials = authorizer.get_credentials user_id
-  if credentials.nil?
-    url = authorizer.get_authorization_url base_url: OOB_URI
-    puts "Open the following URL in the browser and enter the " \
-         "resulting code after authorization:\n" + url
-    code = gets
-    credentials = authorizer.get_and_store_credentials_from_code(
-      user_id: user_id, code: code, base_url: OOB_URI
-    )
-  end
-  credentials
-end
-
-# Initialize the API
-drive_service = Google::Apis::DriveV3::DriveService.new
-drive_service.client_options.application_name = APPLICATION_NAME
-drive_service.authorization = authorize
+# Creates a session. This will prompt the credential via command line for the
+# first time and save it to config.json file for later usages.
+# See this document to learn how to create config.json:
+# https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md
+session = GoogleDrive::Session.from_config(File.expand_path('~/.google-drive-config.json'))
 
 case ARGV.shift
 when 'list', 'ls'
-  #<Google::Apis::DriveV3::File:0x0000560ef77a9bb0
-  # @id="1-mpH6q-xwUjjuaGuPCqvRmKuAqSKwfc0ydDXOtFaQfY",
-  # @kind="drive#file",
-  # @mime_type="application/vnd.google-apps.spreadsheet",
-  # @name="Finance">
-  # => #<Google::Apis::DriveV3::File:0x0000560ef76a88b0
-  #
-  # @id="1Tji_e1qXse_WfDqxRwcD-PBK9Ycp9bPp",
-  # @kind="drive#file",
-  # @mime_type="application/vnd.google-apps.folder",
-  # @name="MANUAL">
-
-  # This is how we do list all (generic pattern).
-  items = drive_service.fetch_all(items: :files) { |token| drive_service.list_files(page_token: token) }
-  require 'pry'; binding.pry ###
-  items.each { |file| puts file.name }
-when 'search'
-  query = "title contains '#{ARGV.first}'"
-  puts "Query: #{query}"
-  files = drive_service.list_files(q: query)
-  require 'pry'; binding.pry ###
-  files.items.each do |file|
+  collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : session.file_by_title(ARGV.first)
+  collection.files.each do |file|
     puts file.title
   end
+# when 'search'
+#   drive_service = session.instance_variable_get(:@fetcher).drive
+#   query = "title contains '#{ARGV.first}'"
+#   puts "Query: #{query}"
+#   files = drive_service.list_files(q: query)
+#   files.items.each do |file|
+#     puts file.title
+#   end
 when 'download'
-  drive.get_file(metadata.id, download_dest: '/tmp/myfile.txt')
+  remote_path, local_path = ARGV
+  local_path ||= File.basename(remote_path)
+  puts "~ Downloading '#{remote_path}' to #{local_path}"
+  file = session.file_by_title(remote_path)
+  file || abort("File #{remote_path} not found")
+  begin
+    file.download_to_file(local_path)
+  rescue NotImplementedError
+    # This will want the format to be specified most likely.
+    #
+    # file.export_as_file(local_path)
+    binding.pry
+  end
 when 'upload'
-  metadata = Drive::File.new(title: 'My document')
-  metadata = drive.insert_file(metadata, upload_source: 'test.txt', content_type: 'text/plain')
+  local_path, remote_path = ARGV
+  remote_path ||= "/#{File.basename(local_path)}"
+  puts "~ Uploading '#{local_path}' to #{remote_path}"
+  session.upload_from_file(local_path, remote_path, convert: false)
+when 'remove', 'rm'
+  puts "~ Deleting '#{ARGV.first}'"
+  file = session.file_by_title(ARGV.first)
+  file.delete
 else
   puts eval("\"#{DATA.read}\"")
 end
@@ -75,7 +54,8 @@ __END__
 #{`tput setaf 9`}Usage:#{`tput sgr0`}
 
 #{`tput setaf 10`}#{File.basename($0)} ls [path]#{`tput sgr0`} List given path. If no path is given, root is assummed.
-#{`tput setaf 10`}#{File.basename($0)} search [query]#{`tput sgr0`} Search in file names.
 
 #{`tput setaf 11`}#{File.basename($0)} download [path]#{`tput sgr0`} Download file.
 #{`tput setaf 11`}#{File.basename($0)} upload [local path] [remote path]#{`tput sgr0`} Upload file into a remote path.
+
+#{`tput setaf 9`}#{File.basename($0)} remove [remote path]#{`tput sgr0`} Delete remote file.
