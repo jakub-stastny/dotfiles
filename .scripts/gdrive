@@ -9,11 +9,31 @@ require 'google_drive'
 # https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md
 session = GoogleDrive::Session.from_config(File.expand_path('~/.google-drive-config.json'))
 
+def download(session, remote_path, local_path)
+  file = session.file_by_title(remote_path)
+  file || abort("File #{remote_path} not found")
+  if file.is_a?(GoogleDrive::Collection)
+    Dir.mkdir(local_path)
+    file.files.each do |file|
+      require 'pry'; binding.pry ###
+      # download(session, )
+    end
+  else
+    file.download_to_file(local_path)
+  end
+rescue NotImplementedError
+  # This will want the format to be specified most likely.
+  #
+  # file.export_as_file(local_path)
+  binding.pry
+end
+
 case ARGV.shift
 when 'list', 'ls'
   collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : session.file_by_title(ARGV.first)
-  collection.files.each do |file|
-    puts file.title
+  collection.files.uniq(&:title).sort_by(&:title).each do |file|
+    # require 'pry'; binding.pry ###
+    puts file.is_a?(GoogleDrive::Collection) ? "#{`tput setaf 4`}#{file.title}#{`tput sgr0`}" : file.title
   end
 # when 'search'
 #   drive_service = session.instance_variable_get(:@fetcher).drive
@@ -27,16 +47,7 @@ when 'download'
   remote_path, local_path = ARGV
   local_path ||= File.basename(remote_path)
   puts "~ Downloading '#{remote_path}' to #{local_path}"
-  file = session.file_by_title(remote_path)
-  file || abort("File #{remote_path} not found")
-  begin
-    file.download_to_file(local_path)
-  rescue NotImplementedError
-    # This will want the format to be specified most likely.
-    #
-    # file.export_as_file(local_path)
-    binding.pry
-  end
+  download(session, remote_path, local_path)
 when 'upload'
   local_path, remote_path = ARGV
   remote_path ||= "/#{File.basename(local_path)}"
