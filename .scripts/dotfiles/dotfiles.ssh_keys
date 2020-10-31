@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+# This script should have ~/.zshenv loaded.
+
+if test -f ~/.ssh/dotfiles_id_rsa; then
+  echo "The dotfiles SSH key is already installed."
+else
+  echo "~ Generating dotfiles SSH key"
+  ssh-keygen -t rsa -f ~/.ssh/dotfiles_id_rsa -q -N ''
+fi
+
+dotfiles config core.sshCommand "ssh -F ~/.ssh/dotfiles.config"
+
+echo "Add the following key into https://github.com/settings/keys"
+cat ~/.ssh/dotfiles_id_rsa
