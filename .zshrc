@@ -12,6 +12,8 @@ load ~/.zsh/aliases.zsh
 
 if test -n "$TMUX" && test -f ~/.zsh/$(uname).tmux.prompt.zsh; then
   load ~/.zsh/$(uname).tmux.prompt.zsh
+elif test -f ~/.dockerenv && test -f ~/.zsh/$(uname).docker.prompt.zsh;
+  load ~/.zsh/$(uname).docker.prompt.zsh
 else
   load ~/.zsh/$(uname).prompt.zsh
 fi
