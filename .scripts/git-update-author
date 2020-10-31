@@ -1,3 +1,8 @@
 #!/bin/sh
 
-git filter-branch -f --env-filter "GIT_AUTHOR_EMAIL='$2' GIT_COMMITTER_EMAIL='$2' GIT_AUTHOR_NAME='$1' GIT_COMMITTER_NAME='$1';" HEAD
+NAME=$(git config user.name)
+EMAIL=$(git config user.email)
+
+echo "Updating user to $NAME <$EMAIL>"
+
+FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch -f --env-filter "GIT_AUTHOR_EMAIL='$EMAIL' GIT_COMMITTER_EMAIL='$EMAIL' GIT_AUTHOR_NAME='$NAME' GIT_COMMITTER_NAME='$NAME';" HEAD
