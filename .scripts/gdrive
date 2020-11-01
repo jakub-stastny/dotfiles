@@ -53,6 +53,7 @@ def find_file(session, full_path)
   end
 end
 
+# TODO: Make it show the whole path (and don't list folders).
 def find(session, collection, indent = 0)
   collection.files.uniq(&:title).sort_by(&:title).each do |file|
     if file.is_a?(GoogleDrive::Collection)
@@ -81,6 +82,16 @@ when 'find'
 #   files.items.each do |file|
 #     puts file.title
 #   end
+when 'cat'
+  remote_path, local_path = ARGV
+  local_path ||= File.basename(remote_path)
+  file = find_file(session, remote_path)
+  file || abort("File #{remote_path} not found")
+  if file.is_a?(GoogleDrive::Collection)
+    abort "File #{remote_path} is a directory"
+  else
+    puts file.download_to_string
+  end
 when 'download'
   remote_path, local_path = ARGV
   local_path ||= File.basename(remote_path)
@@ -91,13 +102,25 @@ when 'upload'
   remote_path ||= "/#{File.basename(local_path)}"
   puts "~ Uploading '#{local_path}' to #{remote_path}"
   session.upload_from_file(local_path, remote_path, convert: false)
+  # File is always uploaded to the root_collection by default.
+  # Do:
+  # file = @session.upload_from_file(ruta, file, convert: false)
+  # folder.add(file)
+  # @session.root_collection.remove(file)
+  # https://github.com/gimite/google-drive-ruby/issues/260
+when 'mkdir'
+  *dirnames, basename = ARGV.first.split('/')
+  collection = dirnames.empty? ? session.root_collection : find_file(dirnames.join('/'))
+  collection.create_subcollection(ARGV.first.split('/').last)
 when 'remove', 'rm'
   puts "~ Deleting '#{ARGV.first}'"
-  file = session.file_by_title(ARGV.first)
-  file.delete
+  file = find_file(session, ARGV.first)
+  file.delete(true)
 else
   puts eval("\"#{DATA.read}\"")
 end
+
+# TODO: Integrate FZF
 
 __END__
 #{`tput setaf 9`}Usage:#{`tput sgr0`}
@@ -105,7 +128,9 @@ __END__
 #{`tput setaf 10`}#{File.basename($0)} ls [path]#{`tput sgr0`} List given path. If no path is given, root is assummed.
 #{`tput setaf 10`}#{File.basename($0)} find [path]#{`tput sgr0`} List given path recursively. If no path is given, root is assummed.
 
+#{`tput setaf 11`}#{File.basename($0)} mkdir [path]#{`tput sgr0`} Create a directory.
 #{`tput setaf 11`}#{File.basename($0)} download [path]#{`tput sgr0`} Download file.
 #{`tput setaf 11`}#{File.basename($0)} upload [local path] [remote path]#{`tput sgr0`} Upload file into a remote path.
+#{`tput setaf 11`}#{File.basename($0)} cat [path]#{`tput sgr0`} Print out remote file.
 
 #{`tput setaf 9`}#{File.basename($0)} remove [remote path]#{`tput sgr0`} Delete remote file.
