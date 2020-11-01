@@ -32,9 +32,10 @@ def download(session, remote_path, local_path)
   file || abort("File #{remote_path} not found")
   if file.is_a?(GoogleDrive::Collection)
     Dir.mkdir(local_path)
-    file.files.each do |file|
-      require 'pry'; binding.pry ###
-      # download(session, )
+    Dir.chdir(local_path) do
+      file.files.each do |file|
+        download(session, file)
+      end
     end
   else
     file.download_to_file(local_path)
