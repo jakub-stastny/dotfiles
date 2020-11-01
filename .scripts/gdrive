@@ -2,134 +2,39 @@
 
 require 'pry'
 require 'json'
-
 begin
-  require 'google_drive'
+  require_relative '../rubylib/gdrive'
 rescue LoadError
   abort "You need to install the google_drive gem first."
 end
 
 CREDENTIALS_FILE_PATH = File.expand_path('~/.gdrive.json')
+CLI.ensure_credentials_file(CREDENTIALS_FILE_PATH)
 
-unless File.file?(CREDENTIALS_FILE_PATH)
-  # This has to be a file, so it can be updated with scope and refresh token (automatically).
-  File.open(CREDENTIALS_FILE_PATH, 'w') do |file|
-    file.puts({
-  client_id: ENV.fetch('GDRIVE_CLIENT_ID'),
-  client_secret: ENV.fetch('GDRIVE_CLIENT_SECRET')
-}.to_json)
-  end
-end
-
-# Creates a session. This will prompt the credential via command line for the
-# first time and save it to config.json file for later usages.
-# See this document to learn how to create config.json:
-# https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md
-session = GoogleDrive::Session.from_config(CREDENTIALS_FILE_PATH)
-
-def download(session, remote_path, local_path)
-  file = find_file(session, remote_path)
-  file || abort("File #{remote_path} not found")
-  if file.is_a?(GoogleDrive::Collection)
-    Dir.mkdir(local_path)
-    Dir.chdir(local_path) do
-      file.files.each do |file|
-        download(session, file)
-      end
-    end
-  else
-    file.download_to_file(local_path)
-  end
-rescue NotImplementedError
-  # This will want the format to be specified most likely.
-  #
-  # file.export_as_file(local_path)
-  binding.pry
-end
-
-def find_file(session, full_path)
-  full_path.split('/').reduce(session.root_collection) do |parent, file_name|
-    parent.file_by_title(file_name)
-  end
-end
-
-# TODO: Make it show the whole path (and don't list folders).
-def find(session, collection, indent = 0)
-  collection.files.uniq(&:title).sort_by(&:title).each do |file|
-    if file.is_a?(GoogleDrive::Collection)
-      puts "#{'  ' * indent}#{`tput setaf 4`}#{file.title}#{`tput sgr0`}"
-      find(session, file, indent + 1)
-    else
-      puts "#{'  ' * indent}#{file.title}"
-    end
-  end
-end
+cli = CLI.build(CREDENTIALS_FILE_PATH)
 
 case ARGV.shift
-when 'list', 'ls'
-  collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : find_file(session, ARGV.first)
-  collection.files.uniq(&:title).sort_by(&:title).each do |file|
-    puts file.is_a?(GoogleDrive::Collection) ? "#{`tput setaf 4`}#{file.title}#{`tput sgr0`}" : file.title
-  end
-when 'find'
-  collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : find_file(session, ARGV.first)
-  find(session, collection)
-# when 'search'
-#   drive_service = session.instance_variable_get(:@fetcher).drive
-#   query = "title contains '#{ARGV.first}'"
-#   puts "Query: #{query}"
-#   files = drive_service.list_files(q: query)
-#   files.items.each do |file|
-#     puts file.title
-#   end
-when 'cat'
-  remote_path, local_path = ARGV
-  local_path ||= File.basename(remote_path)
-  file = find_file(session, remote_path)
-  file || abort("File #{remote_path} not found")
-  if file.is_a?(GoogleDrive::Collection)
-    abort "File #{remote_path} is a directory"
-  else
-    puts file.download_to_string
-  end
-when 'download'
-  remote_path, local_path = ARGV
-  local_path ||= File.basename(remote_path)
-  puts "~ Downloading '#{remote_path}' to #{local_path}"
-  download(session, remote_path, local_path)
-when 'upload'
-  local_path, remote_path = ARGV
-  remote_path ||= "/#{File.basename(local_path)}"
-  puts "~ Uploading '#{local_path}' to #{remote_path}"
-  session.upload_from_file(local_path, remote_path, convert: false)
-  # File is always uploaded to the root_collection by default.
-  # Do:
-  # file = @session.upload_from_file(ruta, file, convert: false)
-  # folder.add(file)
-  # @session.root_collection.remove(file)
-  # https://github.com/gimite/google-drive-ruby/issues/260
-when 'mkdir'
-  *dirnames, basename = ARGV.first.split('/')
-  collection = dirnames.empty? ? session.root_collection : find_file(dirnames.join('/'))
-  collection.create_subcollection(ARGV.first.split('/').last)
-when 'remove', 'rm'
-  puts "~ Deleting '#{ARGV.first}'"
-  file = find_file(session, ARGV.first)
-  file.delete(true)
+when 'list', 'ls'   then cli.command_list(ARGV.first)
+when 'find'         then cli.command_find(ARGV.first)
+when 'search'       then cli.command_search(ARGV.first)
+when 'cat'          then cli.command_cat(ARGV.first)
+when 'download'     then cli.command_download(*ARGV[0..2])
+when 'upload'       then cli.command_upload(*ARGV[0..2])
+when 'mkdir'        then cli.command_mkdir(ARGV.first)
+when 'remove', 'rm' then cli.command_remove(ARGV.first)
 else
   puts eval("\"#{DATA.read}\"")
 end
-
-# TODO: Integrate FZF
 
 __END__
 #{`tput setaf 9`}Usage:#{`tput sgr0`}
 
 #{`tput setaf 10`}#{File.basename($0)} ls [path]#{`tput sgr0`} List given path. If no path is given, root is assummed.
 #{`tput setaf 10`}#{File.basename($0)} find [path]#{`tput sgr0`} List given path recursively. If no path is given, root is assummed.
+#{`tput setaf 10`}#{File.basename($0)} search [title]#{`tput sgr0`} Look for file title.
 
 #{`tput setaf 11`}#{File.basename($0)} mkdir [path]#{`tput sgr0`} Create a directory.
-#{`tput setaf 11`}#{File.basename($0)} download [path]#{`tput sgr0`} Download file.
+#{`tput setaf 11`}#{File.basename($0)} download [path]#{`tput sgr0`} Download a file.
 #{`tput setaf 11`}#{File.basename($0)} upload [local path] [remote path]#{`tput sgr0`} Upload file into a remote path.
 #{`tput setaf 11`}#{File.basename($0)} cat [path]#{`tput sgr0`} Print out remote file.
 
