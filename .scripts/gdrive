@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'pry'
+require 'json'
 
 begin
   require 'google_drive'
@@ -8,14 +9,26 @@ rescue LoadError
   abort "You need to install the google_drive gem first."
 end
 
+CREDENTIALS_FILE_PATH = File.expand_path('~/.gdrive.json')
+
+unless File.file?(CREDENTIALS_FILE_PATH)
+  # This has to be a file, so it can be updated with scope and refresh token (automatically).
+  File.open(CREDENTIALS_FILE_PATH, 'w') do |file|
+    file.puts({
+  client_id: ENV.fetch('GDRIVE_CLIENT_ID'),
+  client_secret: ENV.fetch('GDRIVE_CLIENT_SECRET')
+}.to_json)
+  end
+end
+
 # Creates a session. This will prompt the credential via command line for the
 # first time and save it to config.json file for later usages.
 # See this document to learn how to create config.json:
 # https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md
-session = GoogleDrive::Session.from_config(File.expand_path('~/.google-drive-config.json'))
+session = GoogleDrive::Session.from_config(CREDENTIALS_FILE_PATH)
 
 def download(session, remote_path, local_path)
-  file = session.file_by_title(remote_path)
+  file = find_file(session, remote_path)
   file || abort("File #{remote_path} not found")
   if file.is_a?(GoogleDrive::Collection)
     Dir.mkdir(local_path)
@@ -33,11 +46,16 @@ rescue NotImplementedError
   binding.pry
 end
 
+def find_file(session, full_path)
+  full_path.split('/').reduce(session.root_collection) do |parent, file_name|
+    parent.file_by_title(file_name)
+  end
+end
+
 case ARGV.shift
 when 'list', 'ls'
-  collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : session.file_by_title(ARGV.first)
+  collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : find_file(session, ARGV.first)
   collection.files.uniq(&:title).sort_by(&:title).each do |file|
-    # require 'pry'; binding.pry ###
     puts file.is_a?(GoogleDrive::Collection) ? "#{`tput setaf 4`}#{file.title}#{`tput sgr0`}" : file.title
   end
 # when 'search'
