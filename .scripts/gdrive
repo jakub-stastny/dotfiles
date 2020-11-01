@@ -3,7 +3,7 @@
 require 'pry'
 require 'json'
 begin
-  require_relative '../rubylib/gdrive'
+  require_relative '../.rubylib/gdrive'
 rescue LoadError
   abort "You need to install the google_drive gem first."
 end
