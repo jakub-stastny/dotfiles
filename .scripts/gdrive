@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'pry'
-require 'google_drive'
+
+begin
+  require 'google_drive'
+rescue LoadError
+  abort "You need to install the google_drive gem first."
+end
 
 # Creates a session. This will prompt the credential via command line for the
 # first time and save it to config.json file for later usages.
