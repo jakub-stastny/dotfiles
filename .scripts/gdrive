@@ -53,12 +53,26 @@ def find_file(session, full_path)
   end
 end
 
+def find(session, collection, indent = 0)
+  collection.files.uniq(&:title).sort_by(&:title).each do |file|
+    if file.is_a?(GoogleDrive::Collection)
+      puts "#{'  ' * indent}#{`tput setaf 4`}#{file.title}#{`tput sgr0`}"
+      find(session, file, indent + 1)
+    else
+      puts "#{'  ' * indent}#{file.title}"
+    end
+  end
+end
+
 case ARGV.shift
 when 'list', 'ls'
   collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : find_file(session, ARGV.first)
   collection.files.uniq(&:title).sort_by(&:title).each do |file|
     puts file.is_a?(GoogleDrive::Collection) ? "#{`tput setaf 4`}#{file.title}#{`tput sgr0`}" : file.title
   end
+when 'find'
+  collection = ARGV.first.nil? || ARGV.first == '/' ? session.root_collection : find_file(session, ARGV.first)
+  find(session, collection)
 # when 'search'
 #   drive_service = session.instance_variable_get(:@fetcher).drive
 #   query = "title contains '#{ARGV.first}'"
@@ -89,6 +103,7 @@ __END__
 #{`tput setaf 9`}Usage:#{`tput sgr0`}
 
 #{`tput setaf 10`}#{File.basename($0)} ls [path]#{`tput sgr0`} List given path. If no path is given, root is assummed.
+#{`tput setaf 10`}#{File.basename($0)} find [path]#{`tput sgr0`} List given path recursively. If no path is given, root is assummed.
 
 #{`tput setaf 11`}#{File.basename($0)} download [path]#{`tput sgr0`} Download file.
 #{`tput setaf 11`}#{File.basename($0)} upload [local path] [remote path]#{`tput sgr0`} Upload file into a remote path.
