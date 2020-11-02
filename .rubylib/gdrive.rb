@@ -73,8 +73,7 @@ class CLI
     end
   end
 
-  def command_download(remote_path, local_path)
-    local_path ||= File.basename(remote_path)
+  def command_download(remote_path, local_path = File.basename(remote_path))
     puts "~ Downloading '#{remote_path}' to #{local_path}"
     download(remote_path, local_path)
   end
