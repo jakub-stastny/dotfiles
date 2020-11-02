@@ -42,12 +42,16 @@ class CLI
     end
   rescue ErrorNotDirectory => error # If given path points to a file, show more details.
     p error.file
+  rescue Interrupt
+    puts
   end
 
   def command_find(destination)
     self.find(self.get_collection(destination))
   rescue ErrorNotDirectory => error # If given path points to a file, show more details.
     p error.file
+  rescue Interrupt
+    puts
   end
 
   # FIXME: Doesn't work.
@@ -59,6 +63,8 @@ class CLI
     files.items.each do |file|
       puts file.title
     end
+  rescue Interrupt
+    puts
   end
 
   def command_cat(remote_path)
@@ -71,11 +77,15 @@ class CLI
     else
       puts file.download_to_string
     end
+  rescue Interrupt
+    puts
   end
 
   def command_download(remote_path, local_path = File.basename(remote_path))
     puts "~ Downloading '#{remote_path}' to #{local_path}"
     download(remote_path, local_path)
+  rescue Interrupt
+    puts
   end
 
   def command_upload(local_path, remote_path)
@@ -88,18 +98,24 @@ class CLI
     # folder.add(file)
     # @session.root_collection.remove(file)
     # https://github.com/gimite/google-drive-ruby/issues/260
+  rescue Interrupt
+    puts
   end
 
   def command_mkdir(remote_path)
     *dirnames, basename = ARGV.first.split('/')
     collection = dirnames.empty? ? @session.root_collection : self.find_file(dirnames.join('/'))
     collection.create_subcollection(ARGV.first.split('/').last)
+  rescue Interrupt
+    puts
   end
 
   def command_remove(remote_path)
     puts "~ Deleting '#{ARGV.first}'"
     file = self.find_file(ARGV.first)
     file.delete(true)
+  rescue Interrupt
+    puts
   end
 
   protected
@@ -136,14 +152,12 @@ class CLI
     binding.pry
   end
 
-  # TODO: Make it show the whole path (and don't list folders).
-  def find(collection, indent = 0)
+  def find(collection, dirname = nil)
     collection.files.uniq(&:title).sort_by(&:title).each do |file|
       if file.is_a?(GoogleDrive::Collection)
-        puts "#{'  ' * indent}#{`tput setaf 4`}#{file.title}#{`tput sgr0`}"
-        find(file, indent + 1)
+        self.find(file, [dirname, file.title].compact.join('/'))
       else
-        puts "#{'  ' * indent}#{file.title}"
+        puts [dirname, file.title].compact.join('/')
       end
     end
   end
