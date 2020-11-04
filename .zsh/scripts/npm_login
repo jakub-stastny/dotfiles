@@ -1,0 +1,31 @@
+#!/usr/bin/expect -f
+
+# This script require the expect-dev package.
+
+# Usage:
+# $ expect -f npm_login username password email
+#
+# If it fails, it's probably because you're already
+# signed in and `gem signin` didn't return anything.
+
+# Set our args into variables.
+set i 0; foreach n $argv {set "p[incr i]" $n}
+
+set timeout 60
+
+spawn npm login
+match_max 100000
+
+expect "Username"
+send "$p1\r"
+
+expect "Password"
+send "$p2\r"
+
+expect "Email"
+send "$p3\r"
+
+expect {
+  # timeout exit 1
+  eof
+}
