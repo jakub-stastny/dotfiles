@@ -21,7 +21,7 @@ def line(header, list)
 end
 
 git_aliases = %x{git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
-dotfiles_aliases = %x{git --git-dir=#{ENV['HOME']}/dotfiles.git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
+dotfiles_aliases = %x{git --git-dir=#{ENV['HOME']}/.dotfiles.git config --get-regexp alias\.}.scan(/^alias\.([^\s]+)/).flatten
 dotfiles_specific_aliases = dotfiles_aliases - git_aliases
 
 custom_executables = ENV['PATH'].split(':').
