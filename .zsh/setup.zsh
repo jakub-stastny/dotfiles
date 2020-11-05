@@ -49,7 +49,7 @@ fi
 
 if which npm &> /dev/null; then
   if (( ${+NPM_USERNAME} )) && (( ${+NPM_PASSWORD} )) && (( ${+NPM_EMAIL} )); then
-    ~/.zsh/scripts/npm_login "$NPM_USERNAME" "$NPM_PASSWORD" "$NPM_EMAIL"
+    ~/.zsh/scripts/npm_login "$NPM_USERNAME" "$NPM_PASSWORD" "$NPM_EMAIL" &> /dev/null
     echo "  $(tput setaf 2)✓$(tput sgr0) Logged into the NPM registry as $(tput setaf 7)$NPM_USERNAME$(tput sgr0)"
   else
     echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into the NPM registry"
