@@ -4,28 +4,36 @@
 
 cd
 
-echo "~ Creating dotfiles-specific aliases."
+echo "$(tput setaf 2)~$(tput sgr0) Creating dotfiles-specific aliases."
 dotfiles config --local status.showUntrackedFiles no
 dotfiles config --local alias.list '!git ls-files | sed "s/^/~\//"'
 dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn't work with the above, but it doesn't matter.
 
-echo "~ Installing auto-push hook."
+echo "$(tput setaf 2)~$(tput sgr0) Installing auto-push hook."
 dotfiles install-hooks > /dev/null
 
 # Install Pry.
 if which ruby &> /dev/null; then
-  echo "~ Installing Ruby utilities."
+  echo "$(tput setaf 2)~$(tput sgr0) Installing Ruby utilities."
   gem install pry
 else
-  echo "~ Ruby not installed, cannot install pry."
+  echo "$(tput setaf 1)~$(tput sgr0) Ruby not installed, cannot install pry."
 fi
 
-# Install Vim plugins.
+# Install NeoVim plugins.
 if which nvim &> /dev/null; then
   nvim +PlugInstall +qall
 else
-  echo "~ NeoVim not installed, cannot install its plugins."
+  echo "$(tput setaf 1)~$(tput sgr0) NeoVim not installed, cannot install its plugins."
 fi
 
-echo "~ Linking ~/.scripts/dotfiles/dotfiles.update to ~/.dotfiles.git/hooks/post-merge"
+# Install expect in order to be able to auto-login.
+if test $UID -eq 0; then
+  echo "$(tput setaf 2)~$(tput sgr0) Installing expect for auto-login scripts."
+  apt-get install -y expect-dev
+else
+  echo "$(tput setaf 1)~$(tput sgr0) Cannot install expect."
+fi
+
+echo "$(tput setaf 2)~$(tput sgr0) Linking ~/.scripts/dotfiles/dotfiles.update to ~/.dotfiles.git/hooks/post-merge"
 ln -sf ~/.scripts/dotfiles/dotfiles.update ~/.dotfiles.git/hooks/post-merge
