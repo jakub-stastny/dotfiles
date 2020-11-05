@@ -2,10 +2,10 @@
 
 # This runs after dotfiles are updated on a different machine.
 
-echo "~ Running post-checkout hook $1 -> $2.\n"
-echo "~ Changed files: $(git diff-tree -r --name-only --no-commit-id $1 $2)\n"
+echo "$(tput setaf 2)~$(tput sgr0) Running post-checkout hook $(tput setaf 7)$1$(tput sgr0) -> $(tput setaf 7)$2$(tput sgr0).\n"
+echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(git diff-tree -r --name-only --no-commit-id $1 $2)\n"
 
 if git diff-tree -r --name-only --no-commit-id $1 $2 | grep vim; then
-  echo "~ Updating Vim plugins."
+  echo "$(tput setaf 2)~$(tput sgr0) Updating Vim plugins."
   nvim +PluginInstall +qall
 fi
