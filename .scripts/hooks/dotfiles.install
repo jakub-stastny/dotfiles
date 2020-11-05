@@ -15,9 +15,9 @@ dotfiles install-hooks > /dev/null
 # Install Pry.
 if which ruby &> /dev/null; then
   echo "$(tput setaf 2)~$(tput sgr0) Installing Ruby utilities."
-  gem install pry
+  gem install pry gdrive-cli
 else
-  echo "$(tput setaf 1)~$(tput sgr0) Ruby not installed, cannot install pry."
+  echo "$(tput setaf 1)~$(tput sgr0) Ruby not installed, cannot install utilities."
 fi
 
 # Install NeoVim plugins.
