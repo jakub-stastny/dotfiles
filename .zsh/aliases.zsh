@@ -9,26 +9,23 @@ alias la='ls -a'
 # Git.
 alias gp='git push'
 alias gst='git status'
-alias dt='dotfiles'
+
+alias d='dotfiles'
+alias dp='dotfiles push'
 alias dst='dotfiles status'
 
-# function e () {
-#   test "$#" = 0 && $EDITOR . || $EDITOR $*
-# }
 e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
 
 # Ruby.
 which pry &> /dev/null && alias irb="pry"
-alias bi="bundle install"
 alias bu="bundle update"
 alias be="bundle exec"
 
-alias ghist="cat ~/.history | egrep"
+alias ghist="cat $HISTFILE | egrep"
 
 alias GET="curl -X GET"
 alias POST="curl -X POST"
 alias HEAD="curl -X HEAD"
-alias OPTIONS="curl -X OPTIONS"
 
 alias .='cd .' # reload (e.g.: you're in app/current)
 alias ..='cd ..'
@@ -48,18 +45,17 @@ mksession() {
   tmux new -s $(basename $PWD)
 }
 
-d='youtube-dl -f '\''bestaudio[ext=m4a]'\'
+yt='youtube-dl -f '\''bestaudio[ext=m4a]'\'
 
 # Projects
 p() {
-  # Allow ${1:$FZF CMD}, so p consultexam
-  cd ~/projects/$(ls ~/projects | fzf)
+  cd ~/projects/$(test "$#" -eq 0 && ls ~/projects | fzf || $1)
 }
 
 a() {
-  p && ./runner start && ./runner attach
+  p $* && ./runner start && ./runner attach
 }
 
 stop() {
-  cd ~/projects/$(ls ~/projects | fzf) && ./runner stop && cd -
+  cd ~/projects/$(test "$#" -eq 0 && ls ~/projects | fzf || $1) && ./runner stop && cd -
 }

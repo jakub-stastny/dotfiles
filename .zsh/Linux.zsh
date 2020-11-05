@@ -1,7 +1,3 @@
-# Ubuntu has broken locale, verify by running adduser.
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 dotfiles remote update &> /dev/null
 
 # This setup was necessary:
