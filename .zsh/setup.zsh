@@ -39,9 +39,9 @@ else
 fi
 
 if which gem &> /dev/null; then
-  if (( ${+RUBYGEMS_USERNAME} )) && (( ${+RUBYGEMS_PASSWORD} )); then
-    test -f ~/.gem/credentials || ~/.zsh/scripts/rubygems_login "$RUBYGEMS_USERNAME" "$RUBYGEMS_PASSWORD" &> /dev/null
-    echo "  $(tput setaf 2)✓$(tput sgr0) Logged into the RubyGems registry as $(tput setaf 7)$RUBYGEMS_USERNAME$(tput sgr0)"
+  if (( ${+RUBYGEMS_EMAIL} )) && (( ${+RUBYGEMS_PASSWORD} )); then
+    test -f ~/.gem/credentials || ~/.zsh/scripts/rubygems_login "$RUBYGEMS_EMAIL" "$RUBYGEMS_PASSWORD" &> /dev/null
+    echo "  $(tput setaf 2)✓$(tput sgr0) Logged into the RubyGems registry as $(tput setaf 7)$RUBYGEMS_EMAIL$(tput sgr0)"
   else
     echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into the RubyGems registry"
   fi
