@@ -55,3 +55,5 @@ if which npm &> /dev/null; then
     echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into the NPM registry"
   fi
 fi
+
+echo
