@@ -22,20 +22,36 @@ export TERM=xterm-256color
 # https://nuclearsquid.com/writings/edit-long-commands/
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
-# Emacs style
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
-# Vi style:
-# zle -N edit-command-line
-# bindkey -M vicmd v edit-command-line
-# Update 2.5.2010: @citizen428 brought the builtin fc (fix command) to my attention. fc allows you to edit commands in your history, and reruns them when you’re finished.
 
-echo $DOCKER_PASSWORD | docker login --username botanicus --password-stdin &> /dev/null
+if (( ${+DOCKER_USERNAME} )) && (( ${+DOCKER_PASSWORD} )) && echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin; then
+  echo "  $(tput setaf 2)✓$(tput sgr0) Logged into Docker Hub as $(tput setaf 7)$DOCKER_USERNAME$(tput sgr0)"
+else
+  echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into Docker Hub"
+fi
 
-if ! test -f ~/.dropbox_uploader && (( ${+DROPBOX_ACCESS_TOKEN} )); then
-  echo "OAUTH_ACCESS_TOKEN=$DROPBOX_ACCESS_TOKEN" | tee ~/.dropbox_uploader
-  echo "  ~ Saving ropbox access token from the environment to the ~/.dropbox_uploader config."
-elif ! (( ${+DROPBOX_ACCESS_TOKEN} )); then
-  echo "  $(tput setaf 1)!$(tput sgr0) Dropbox access token is not saved and $(tput setaf 7)\$DROPBOX_ACCESS_TOKEN$(tput sgr0) is not in the environment.\n"
+if (( ${+GDRIVE_CLIENT_ID} )) && (( ${+GDRIVE_CLIENT_SECRET} )) && ! test -f ~/.gdrive.json; then
+  echo "  $(tput setaf 2)✓$(tput sgr0) Google Drive credentials present"
+else
+  echo "  $(tput setaf 1)✘$(tput sgr0) Google Drive credentials missing"
+fi
+
+if which gem &> /dev/null; then
+  if (( ${+RUBYGEMS_USERNAME} )) && (( ${+RUBYGEMS_PASSWORD} )); then
+    test -f ~/.gem/credentials || ~/.zsh/scripts/rubygems_login "$RUBYGEMS_USERNAME" "$RUBYGEMS_PASSWORD" &> /dev/null
+    echo "  $(tput setaf 2)✓$(tput sgr0) Logged into the RubyGems registry as $(tput setaf 7)$RUBYGEMS_USERNAME$(tput sgr0)"
+  else
+    echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into the RubyGems registry"
+  fi
+fi
+
+if which npm &> /dev/null; then
+  if (( ${+NPM_USERNAME} )) && (( ${+NPM_PASSWORD} )) && (( ${+NPM_EMAIL} )); then
+    ~/.zsh/scripts/npm_login "$NPM_USERNAME" "$NPM_PASSWORD" "$NPM_EMAIL"
+    echo "  $(tput setaf 2)✓$(tput sgr0) Logged into the NPM registry as $(tput setaf 7)$NPM_USERNAME$(tput sgr0)"
+  else
+    echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into the NPM registry"
+  fi
 fi
