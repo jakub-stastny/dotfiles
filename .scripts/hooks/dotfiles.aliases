@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+dotfiles config --local status.showUntrackedFiles no
+dotfiles config --local alias.list '!git ls-files | sed "s/^/~\//"'
+# ag expr $(dotfiles ls-files | sed "s|^|$HOME/|")
+# TODO: dotfiles ag expr to search
+dotfiles config --local alias.uninstall '!git ls-files | xargs rm' # This doesn't work with the above, but it doesn't matter.

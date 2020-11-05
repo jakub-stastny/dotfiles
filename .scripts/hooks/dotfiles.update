@@ -5,6 +5,13 @@
 echo "$(tput setaf 2)~$(tput sgr0) Running post-checkout hook $(tput setaf 7)$1$(tput sgr0) -> $(tput setaf 7)$2$(tput sgr0).\n"
 echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(git diff-tree -r --name-only --no-commit-id $1 $2)\n"
 
+# TODO: also update aliases and hooks if changed.
+# echo "$(tput setaf 2)~$(tput sgr0) Creating dotfiles-specific aliases."
+# ~/.scripts/hooks/dotfiles.aliases
+
+# echo "$(tput setaf 2)~$(tput sgr0) Installing auto-push hook."
+# dotfiles install-hooks > /dev/null
+
 if git diff-tree -r --name-only --no-commit-id $1 $2 | grep vim; then
   echo "$(tput setaf 2)~$(tput sgr0) Updating Vim plugins."
   nvim +PluginInstall +qall
