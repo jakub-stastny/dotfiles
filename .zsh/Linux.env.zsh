@@ -1,2 +1,2 @@
-# This is to set the environment (primarily paths) properly on the host machine.
+# Set the environment (primarily paths) on the host machine.
 path-prepend ~/.scripts

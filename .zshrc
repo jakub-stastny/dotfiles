@@ -6,7 +6,9 @@ function load () {
 
 # This is to set paths properly on the host machine.
 # DPM environments will have PATH set properly already.
-if ! test -f /.dockerenv; then
+if test -f /.dockerenv; then
+  load ~/.zsh/$(uname).docker.env.zsh
+else
   load ~/.zsh/$(uname).env.zsh
 fi
 
