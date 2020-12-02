@@ -1,6 +1,8 @@
 # This can be used by non-interactive scripts as well.
 alias dotfiles="git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"
 
+source /usr/local/share/chruby/chruby.sh
+
 # PATH
 # TODO: make uniq always.
 path-add()        { path+=("$@") } # TODO: Change to append.
