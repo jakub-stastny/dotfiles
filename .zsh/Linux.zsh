@@ -19,8 +19,9 @@ if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
   #
   # Note that post-rewrite works only when something is actually rewritten,
   # not in fast-forward rebasing scenarios.
+  clear
   if dotfiles pull -r; then
-    sleep 3; clear; echo "$(tput setaf 2)~$(tput sgr0)Reloading ZSH.\n" && exec zsh
+    echo "$(tput setaf 2)~$(tput sgr0)Reloading ZSH.\n" && exec zsh
   else
     echo "$(tput setaf 1)Cannot update dotfiles.$(tput sgr0)"
   fi
