@@ -4,6 +4,12 @@ function load () {
   echo "$(tput setaf 2)~$(tput sgr0) Loading $(tput setaf 7)$1$(tput sgr0)" && source $1
 }
 
+# This is to set paths properly on the host machine.
+# DPM environments will have PATH set properly already.
+if ! test -f /.dockerenv; then
+  load ~/.zsh/$(uname).env.zsh
+fi
+
 load ~/.zsh/setup.zsh
 
 # Sourced in an interactive session.

@@ -11,7 +11,4 @@ path-clear()      { path=() }
 # Make $RUBYLIB and $rubylib behave like $PATH/$path.
 typeset -T -U -gx -a RUBYLIB rubylib ':'
 
-# Do not do this anymore, move to dev.
-#path-prepend ~/.scripts
-
 export EDITOR="nvim"
