@@ -3,7 +3,7 @@
 # This hook is triggered either by manual dotfiles pull -r or by ~/.zsh/Linux.zsh.
 # It runs after dotfiles are updated on a different machine.
 
-echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook on files from commit $(tput setaf 7)$(git rev-parse HEAD@{1} | cut -c-9)$(tput sgr0)."
+echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook on files from commit $(tput setaf 7)$(git rev-parse HEAD@{1} | cut -c-9)$(tput sgr0)..$(tput setaf 7)$(git rev-parse HEAD | cut -c-9)$(tput sgr0)."
 echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(tput setaf 7)$(git diff-tree -r --name-only --no-commit-id HEAD HEAD@{1})$(tput sgr0)"
 
 if git diff-tree -r --name-only --no-commit-id HEAD HEAD@{1} | grep dotfiles.aliases; then
