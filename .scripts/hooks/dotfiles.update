@@ -12,7 +12,7 @@ echo '---------------'
 echo "$(dotfiles rev-parse HEAD@{1})"
 echo '---------------'
 
-echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook $(tput setaf 7)$(git show-ref HEAD@{1} | cut -c-9)$(tput sgr0).\n"
+echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook $(tput setaf 7)$(git rev-parse HEAD@{1} | cut -c-9)$(tput sgr0).\n"
 echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(tput setaf 7)$(git diff-tree -r --name-only --no-commit-id HEAD@{1})$(tput sgr0)\n"
 
 # TODO: also update aliases and hooks if changed.
