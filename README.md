@@ -25,6 +25,6 @@ Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-d
 ## Install new server
 
 `curl https://raw.githubusercontent.com/jakub-stastny/dotfiles/master/.scripts/dotfiles/server.install | sh`
-# TODO: change to js/dev
+# TODO: this is now in the dev repository, not in dotfiles. Fix the link.
 
 installation scripts describe
