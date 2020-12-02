@@ -4,6 +4,7 @@
 
 # NOTE: see zsh/Linux.zsh
 echo '---------------'
+echo "dotfiles update ARGS: $@"
 echo "$(dotfiles rev-parse @)"
 echo "$(dotfiles rev-parse @{u})"
 echo '---------------'
