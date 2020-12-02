@@ -4,20 +4,19 @@
 # It runs after dotfiles are updated on a different machine.
 
 echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook on files from commit $(tput setaf 7)$(git rev-parse HEAD@{1} | cut -c-9)$(tput sgr0)."
-echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(tput setaf 7)$(git diff-tree -r --name-only --no-commit-id HEAD@{1})$(tput sgr0)"
+echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(tput setaf 7)$(git diff-tree -r --name-only --no-commit-id HEAD HEAD@{1})$(tput sgr0)"
 
-# TODO: also update aliases and hooks if changed.
-if git diff-tree -r --name-only --no-commit-id HEAD@{1} | grep dotfiles.aliases; then
+if git diff-tree -r --name-only --no-commit-id HEAD HEAD@{1} | grep dotfiles.aliases; then
   echo "$(tput setaf 2)~$(tput sgr0) Updating dotfiles-specific aliases."
   ~/.scripts/hooks/dotfiles.aliases
 fi
 
-if git diff-tree -r --name-only --no-commit-id HEAD@{1} | grep git-install-hooks; then
+if git diff-tree -r --name-only --no-commit-id HEAD HEAD@{1} | grep git-install-hooks; then
   echo "$(tput setaf 2)~$(tput sgr0) Updating auto-push hook for the dotfiles repository."
   dotfiles install-hooks > /dev/null
 fi
 
-if git diff-tree -r --name-only --no-commit-id HEAD@{1} | grep vim; then
+if git diff-tree -r --name-only --no-commit-id HEAD HEAD@{1} | grep vim; then
   echo "$(tput setaf 2)~$(tput sgr0) Updating Vim plugins."
   nvim +PluginInstall +qall
 fi
