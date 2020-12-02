@@ -8,6 +8,7 @@
 
 # NOTE: see zsh/Linux.zsh
 echo '---------------'
+echo; git reflog; echo
 echo "dotfiles update ARGS: $@/$*"
 echo "$(dotfiles rev-parse @)"
 echo "$(dotfiles rev-parse @{u})"

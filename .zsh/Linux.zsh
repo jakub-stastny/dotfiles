@@ -1,5 +1,9 @@
 dotfiles remote update &> /dev/null
 
+# Hooks
+# post-merge makes sense, but how do I get the previous HEAD?
+# post-checkout is called on any checkout (i. e. git co .).
+
 # This setup was necessary:
 #   $ dotfiles config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 #   $ dotfiles fetch
