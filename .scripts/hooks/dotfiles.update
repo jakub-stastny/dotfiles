@@ -1,12 +1,13 @@
 #!/usr/bin/env zsh
 
+# This hook is triggered either by manual dotfiles pull -r or by ~/.zsh/Linux.zsh.
+
 # This needs to be post-checkout rather than post-merge hook.
 # The reason is that post-checkout gets the previous HEAD as
 # an argument to the hook script, whereas post-merge does not.
 
 # This runs after dotfiles are updated on a different machine.
 
-# NOTE: see zsh/Linux.zsh
 echo '---------------'
 echo; git reflog; echo
 echo "dotfiles update ARGS: $@/$*"
