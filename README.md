@@ -28,3 +28,4 @@ Based on [this](https://developer.atlassian.com/blog/2016/02/best-way-to-store-d
 # TODO: this is now in the dev repository, not in dotfiles. Fix the link.
 
 installation scripts describe
+yay
