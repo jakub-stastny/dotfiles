@@ -21,6 +21,7 @@ if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
   # not in fast-forward rebasing scenarios.
 
   clear
+
   # STDERR contains any output from the post-merge hook (dotfiles.update).
   # STDOUT contains the standard output of git pull (which we want to silence).
   if dotfiles pull -r > /dev/null; then
