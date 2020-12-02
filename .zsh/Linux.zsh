@@ -21,7 +21,7 @@ if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
   # not in fast-forward rebasing scenarios.
   clear
   if dotfiles pull -r; then
-    echo "$(tput setaf 2)~$(tput sgr0)Reloading ZSH.\n" && exec zsh
+    echo "$(tput setaf 2)~$(tput sgr0) Reloading the environment.\n" && exec zsh
   else
     echo "$(tput setaf 1)Cannot update dotfiles.$(tput sgr0)"
   fi
