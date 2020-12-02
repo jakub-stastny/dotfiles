@@ -1,16 +1,7 @@
 #!/usr/bin/env zsh
 
 # This hook is triggered either by manual dotfiles pull -r or by ~/.zsh/Linux.zsh.
-
-# This needs to be post-checkout rather than post-merge hook.
-# The reason is that post-checkout gets the previous HEAD as
-# an argument to the hook script, whereas post-merge does not.
-
-# This runs after dotfiles are updated on a different machine.
-
-echo '---------------'
-echo "$(dotfiles rev-parse HEAD@{1})"
-echo '---------------'
+# It runs after dotfiles are updated on a different machine.
 
 echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook on files from commit $(tput setaf 7)$(git rev-parse HEAD@{1} | cut -c-9)$(tput sgr0)."
 echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(tput setaf 7)$(git diff-tree -r --name-only --no-commit-id HEAD@{1})$(tput sgr0)"
