@@ -4,12 +4,12 @@
 
 # NOTE: see zsh/Linux.zsh
 echo '---------------'
-echo "dotfiles update ARGS: $@"
+echo "dotfiles update ARGS: $@/$*"
 echo "$(dotfiles rev-parse @)"
 echo "$(dotfiles rev-parse @{u})"
 echo '---------------'
 
-echo "$(tput setaf 2)~$(tput sgr0) Running post-checkout hook $(tput setaf 7)$1$(tput sgr0) -> $(tput setaf 7)$2$(tput sgr0).\n"
+echo "$(tput setaf 2)~$(tput sgr0) Running post-merge hook $(tput setaf 7)$1$(tput sgr0) -> $(tput setaf 7)$2$(tput sgr0).\n"
 echo "$(tput setaf 2)~$(tput sgr0) Changed files: $(git diff-tree -r --name-only --no-commit-id $1 $2)\n"
 
 # TODO: also update aliases and hooks if changed.
