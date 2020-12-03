@@ -2,20 +2,15 @@
 
 # For whatever reason $GIT_DIR is not available in here.
 GIT_DIR=$(git rev-parse --git-dir)
-
 HOOK_PATH=$GIT_DIR/hooks/post-commit
-echo "~ Installing $HOOK_PATH.\n\n"
+
+echo "$(tput setaf 2)~$(tput sgr0) Installing $(tput setaf 7)$HOOK_PATH$(tput sgr0).\n"
+
 tee $HOOK_PATH <<EOF
-#!/bin/zsh
+#!/bin/sh
 
-# Only with ZSH the colours work.
-# With bash, echo -e doesn't help, fiddling with export TERM=xterm neither.
-
-#git pull -r && git push # This requires stashing, but what if no changes, but there's anything else in stash?
-
-# -u is so git pull -r will know which branch to track
 BRANCH_NAME=\$(git symbolic-ref --short HEAD)
-echo -e "\e[1m~\e[0m \e[37mgit push origin \$BRANCH_NAME\e[0m"
+echo "\$(tput setaf 2)~ \$(tput setaf 7)git push origin \$BRANCH_NAME\$(tput sgr0)\n"
 git push -u origin \$BRANCH_NAME
 EOF
 
