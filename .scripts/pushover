@@ -1,11 +1,19 @@
 #!/usr/bin/env ruby
 
-require 'pushover'
+begin
+  require 'pushover'
+rescue LoadError
+  abort "Please install the pushover gem"
+end
 
 user_key = ENV.fetch('PUSHOVER_USER_KEY')
 app_token = ENV.fetch('PUSHOVER_APP_TOKEN')
 
-message = Pushover::Message.create(
+unless (2..3).include?(ARGV.length)
+  abort "Usage: #{$0} [title] [message] [URL]"
+end
+
+message = Pushover::Message.new(
   token: app_token,
   user: user_key,
   title: ARGV[0],
