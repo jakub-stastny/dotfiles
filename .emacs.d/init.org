@@ -1,0 +1,3 @@
+#+BEGIN_SRC emacs-lisp
+;(face-remap-add-relative 'default :family "Arial" :height 140)
+#+END_SRC
