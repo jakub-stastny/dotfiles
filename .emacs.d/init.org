@@ -1,9 +1,6 @@
 #+TITLE: Emacs configuration file
 #+AUTHOR: Jakub Šťastný
 #+BABEL: :cache yes
-#+LATEX_HEADER: \usepackage{parskip}
-#+LATEX_HEADER: \usepackage{inconsolata}
-#+LATEX_HEADER: \usepackage[utf8]{inputenc}
 #+PROPERTY: header-args :tangle yes
 
 * About
@@ -116,6 +113,11 @@
    (key-chord-define evil-visual-state-map "jj" 'evil-change-to-previous-state)
    (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
    (key-chord-define evil-replace-state-map "jj" 'evil-normal-state)
+   
+   ; Enable tab cycling in org mode in the evil normal mode.
+   ;(define-key evil-normal-state-map (kbd "tab") 'org-cycle)
+   (with-eval-after-load 'evil-maps
+     (define-key evil-motion-state-map (kbd "TAB") 'org-cycle))
 
    #+END_SRC
 
