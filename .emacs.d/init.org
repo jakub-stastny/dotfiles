@@ -118,3 +118,6 @@
    (key-chord-define evil-replace-state-map "jj" 'evil-normal-state)
 
    #+END_SRC
+
+** Themes
+https://linuxhint.com/emacs_themes/
