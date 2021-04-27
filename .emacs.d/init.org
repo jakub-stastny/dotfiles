@@ -118,6 +118,19 @@
    ;(define-key evil-normal-state-map (kbd "tab") 'org-cycle)
    (with-eval-after-load 'evil-maps
      (define-key evil-motion-state-map (kbd "TAB") 'org-cycle))
+     
+   ; Disable the tool bar.
+   (menu-bar-mode -1)
+   (tool-bar-mode -1)
+   
+   ;(setq org-startup-indented t)
+   ;(with-eval-after-load 'evil-maps
+    (visual-line-mode t);) ; soft wrap
+    (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+    
+  ; Interesting pkg https://www.emacswiki.org/emacs/FillColumnIndicator
+  ;(setq fci-rule-width 1)
+  ;(setq fci-rule-color "darkblue")
 
    #+END_SRC
 
