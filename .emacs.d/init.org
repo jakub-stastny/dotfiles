@@ -1,7 +1,120 @@
-Refer to https://raw.githubusercontent.com/larstvei/dot-emacs/master/init.org
+#+TITLE: Emacs configuration file
+#+AUTHOR: Jakub Šťastný
+#+BABEL: :cache yes
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{inconsolata}
+#+LATEX_HEADER: \usepackage[utf8]{inputenc}
+#+PROPERTY: header-args :tangle yes
 
-Just to see if this works.
+* About
 
-#+BEGIN_SRC emacs-lisp
-(face-remap-add-relative 'default :family "Arial" :height 140)
-#+END_SRC
+* Configurations
+
+   The =init.el= should (after the first run) mirror the source blocks in
+   the =init.org=. We can use =C-c C-v t= to run =org-babel-tangle=, which
+   extracts the code blocks from the current file into a source-specific
+   file (in this case a =.el=-file).
+
+   To avoid doing this each time a change is made we can add a function to
+   the =after-save-hook= ensuring to always tangle and byte-compile the
+   =org=-document after changes.
+
+   #+BEGIN_SRC emacs-lisp
+   (defun tangle-init ()
+     "If the current buffer is 'init.org' the code-blocks are
+   tangled, and the tangled file is compiled."
+     (when (equal (buffer-file-name)
+                  (expand-file-name (concat user-emacs-directory "init.org")))
+       ;; Avoid running hooks when tangling.
+       (let ((prog-mode-hook nil))
+         (org-babel-tangle)
+         (byte-compile-file (concat user-emacs-directory "init.el")))))
+
+   (add-hook 'after-save-hook 'tangle-init)
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+   (defun show-messages () (interactive) (switch-to-buffer "*Messages*"))
+   (face-remap-add-relative 'default :family "Arial" :height 140)
+   #+END_SRC
+
+* Packages
+
+   Managing extensions for Emacs is simplified using =package= which is
+   built in to Emacs 24 and newer. To load downloaded packages we need to
+   initialize =package=. =cl= is a library that contains many functions from
+   Common Lisp, and comes in handy quite often, so we want to make sure it's
+   loaded, along with =package=, which is obviously needed.
+
+   #+BEGIN_SRC emacs-lisp
+   (require 'package)
+   ;(package-initialize)
+   #+END_SRC
+
+   Packages can be fetched from different mirrors, [[http://melpa.milkbox.net/#/][melpa]] is the largest
+   archive and is well maintained.
+
+   #+BEGIN_SRC emacs-lisp
+   (setq package-archives
+         '(("gnu" . "https://elpa.gnu.org/packages/")
+           ("MELPA" . "https://melpa.org/packages/"))
+         package-archive-priorities
+         '(("MELPA" . 5)
+           ("gnu" . 0)))
+   #+END_SRC
+
+   The configuration assumes that the packages listed below are
+   installed. To ensure we install missing packages if they are missing.
+
+   #+BEGIN_SRC emacs-lisp
+    (let* ((package--builtins nil)
+          (packages
+           '(auto-compile         ; automatically compile Emacs Lisp libraries
+	   
+	     ; https://www.emacswiki.org/emacs/Evil
+	     evil
+	     evil-surround
+	     ;evil-number ; Vim-like increment/decrement. Doesn't seem to find the package.
+	     evil-commentary
+	     org-evil
+	     dash
+	     monitor
+             key-chord)))
+(let ((packages (seq-remove 'package-installed-p packages)))
+       (print packages)
+       (when packages
+         ;; Install uninstalled packages
+         (package-refresh-contents)
+         (mapc 'package-install packages))))
+
+(evil-mode 1)
+(evil-commentary-mode)
+(key-chord-mode 1)
+
+   ;;; C-c as general purpose escape key sequence.
+   ;;;
+   (defun my-esc (prompt)
+     "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
+     (cond
+      ;; If we're in one of the Evil states that defines [escape] key, return [escape] so as
+      ;; Key Lookup will use it.
+      ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p) (evil-visual-state-p)) [escape])
+      ;; This is the best way I could infer for now to have C-c work during evil-read-key.
+      ;; Note: As long as I return [escape] in normal-state, I don't need this.
+      ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
+      (t (kbd "C-g"))))
+   (define-key key-translation-map (kbd "C-c") 'my-esc)
+   ;; Works around the fact that Evil uses read-event directly when in operator state, which
+   ;; doesn't use the key-translation-map.
+   (define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
+   ;; Not sure what behavior this changes, but might as well set it, seeing the Elisp manual's
+   ;; documentation of it.
+   ;(set-quit-char "C-c")
+   
+
+   (key-chord-define evil-normal-state-map "jj" 'evil-force-normal-state)
+   (key-chord-define evil-visual-state-map "jj" 'evil-change-to-previous-state)
+   (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+   (key-chord-define evil-replace-state-map "jj" 'evil-normal-state)
+
+   #+END_SRC
