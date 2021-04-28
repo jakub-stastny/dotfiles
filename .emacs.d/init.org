@@ -148,6 +148,7 @@
 ; Line nums
 (global-display-line-numbers-mode)
 
+; https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensitivity.html
 (setq case-fold-search nil) ; make searches case sensitive %s
 
    #+END_SRC
