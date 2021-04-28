@@ -68,6 +68,8 @@
           (packages
            '(auto-compile         ; automatically compile Emacs Lisp libraries
 	   
+	     ox-twbs ; org mode bootstrap export
+	   
 	     ; https://www.emacswiki.org/emacs/Evil
 	     evil
 	     evil-surround
@@ -131,6 +133,22 @@
   ; Interesting pkg https://www.emacswiki.org/emacs/FillColumnIndicator
   ;(setq fci-rule-width 1)
   ;(setq fci-rule-color "darkblue")
+  
+  ; https://www.emacswiki.org/emacs/VisualLineMode
+  ; https://www.emacswiki.org/emacs/VisualFillColumn
+  (set-fill-column 120)
+  
+  ; Backup files
+  (setq backup-directory-alist `(("." . "~/.emacs-backups")))
+  
+  ; Indentation
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
+; Line nums
+(global-display-line-numbers-mode)
+
+(setq case-fold-search nil) ; make searches case sensitive %s
 
    #+END_SRC
 

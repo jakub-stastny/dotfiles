@@ -49,7 +49,7 @@
  '(custom-safe-themes
    '("990e24b406787568c592db2b853aa65ecc2dcd08146c0d22293259d400174e37" default))
  '(package-selected-packages
-   '(evil z3-mode which-key vterm use-package try smex slime racket-mode proof-general pdf-tools org-roam-server org-bullets olivetti minizinc-mode maude-mode magit lsp-java js2-mode jedi haskell-mode golden-ratio focus expand-region erlang doom-themes diff-hl define-word counsel-projectile company-coq clj-refactor auto-compile)))
+   '(## evil z3-mode which-key vterm use-package try smex slime racket-mode proof-general pdf-tools org-roam-server org-bullets olivetti minizinc-mode maude-mode magit lsp-java js2-mode jedi haskell-mode golden-ratio focus expand-region erlang doom-themes diff-hl define-word counsel-projectile company-coq clj-refactor auto-compile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
