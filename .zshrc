@@ -32,4 +32,7 @@ test -f ~/.zsh/$(uname).zsh && load ~/.zsh/$(uname).zsh
 # Add any local changes that shouldn't be committed into ~/.zsh/local.zsh.
 test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh
 
+# Per-project configuration.
+test -f .profile.zsh && load .profile.zsh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

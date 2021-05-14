@@ -14,7 +14,9 @@ alias d='dotfiles'
 alias dp='dotfiles push'
 alias dst='dotfiles status'
 
-e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
+# This defaults to NeoVim.
+# It's meant to be overwritten in per-project .profile.zsh files.
+e() { (test "$#" -eq 0) && nvim . || nvim $@ }
 
 # Ruby.
 which pry &> /dev/null && alias irb="pry"
@@ -64,3 +66,15 @@ a() {
 stop() {
   cd ~/projects/$(test "$#" -eq 0 && ls ~/projects | fzf || $1) && ./runner stop && cd -
 }
+
+# Emacs
+# start_emacs dotfiles
+start_emacs() {
+  emacs --daemon=$1
+}
+
+emacs-list-servers() {
+  ls /tmp/emacs$(id -u)
+}
+
+#emacsclient -s $1
