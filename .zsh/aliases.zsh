@@ -11,6 +11,7 @@ alias gst='git status'
 alias d='dotfiles'
 alias dp='dotfiles push'
 alias dst='dotfiles status'
+alias ddiff='dotfiles diff'
 
 # This defaults to NeoVim.
 # It's meant to be overwritten in per-project .profile.zsh files.
