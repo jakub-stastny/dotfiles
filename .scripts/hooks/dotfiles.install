@@ -20,5 +20,12 @@ else
   echo "$(tput setaf 1)~$(tput sgr0) NeoVim not installed, cannot install its plugins."
 fi
 
+# Install Emacs plugins.
+if which emacs &> /dev/null; then
+  ~/.scripts/hooks/dotfiles.install.emacs.el
+else
+  echo "$(tput setaf 1)~$(tput sgr0) Emacs not installed, cannot install its plugins."
+fi
+
 echo "$(tput setaf 2)~$(tput sgr0) Linking ~/.scripts/hooks/dotfiles.update to ~/.dotfiles.git/hooks/post-merge"
 ln -sf ~/.scripts/hooks/dotfiles.update ~/.dotfiles.git/hooks/post-merge
