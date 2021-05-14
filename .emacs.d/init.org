@@ -40,7 +40,10 @@ Use =M-x reload= to reload the configuration.
   (load-file "~/.emacs.d/init.elc"))
 #+END_SRC
 
-* Managing packages
+* Packages
+** Package repositories
+
+Set up Emacs package repositories.
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -53,18 +56,78 @@ Use =M-x reload= to reload the configuration.
           ("gnu" . 0)))
 #+END_SRC
 
-The configuration assumes that the packages listed below are
-installed. To ensure we install missing packages if they are missing.
-
-* EVIL
+** EVIL
 
 #+BEGIN_SRC emacs-lisp
+(evil-mode 1)
+(evil-commentary-mode)
+(key-chord-mode 1)
+
+(key-chord-define evil-normal-state-map "jj" 'evil-force-normal-state)
+(key-chord-define evil-visual-state-map "jj" 'evil-change-to-previous-state)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-define evil-replace-state-map "jj" 'evil-normal-state)
+#+END_SRC
+
+*** EVIL and Org mode
+
+Enable tab cycling in org mode in the evil normal mode.
+
+#+BEGIN_SRC emacs-lisp
+;(define-key evil-normal-state-map (kbd "tab") 'org-cycle)
+(with-eval-after-load 'evil-maps
+  (define-key evil-motion-state-map (kbd "TAB") 'org-cycle))
+#+END_SRC
+
+* Configuration
+** Disabling default behaviours
+
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+#+END_SRC
+
+** Line numbers & indentation
+
+#+BEGIN_SRC emacs-lisp
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
+(global-display-line-numbers-mode)
+
+(visual-line-mode t) ; soft wrap
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+#+END_SRC
+
+** Search & regular expressions
+
+https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensitivity.html
+
+#+BEGIN_SRC emacs-lisp
+(setq case-fold-search nil) ; make searches case sensitive %s
+#+END_SRC
+
+** Backup files
+
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist `(("." . "~/.emacs-backups")))
+#+END_SRC
+
+** The rest
+
+#+BEGIN_SRC emacs-lisp
+; Interesting pkg https://www.emacswiki.org/emacs/FillColumnIndicator
+;(setq fci-rule-width 1)
+;(setq fci-rule-color "darkblue")
+
+; https://www.emacswiki.org/emacs/VisualLineMode
+; https://www.emacswiki.org/emacs/VisualFillColumn
+(set-fill-column 120)
+#+END_SRC
 
 ** Custom variables
 
-If you edit through Emacs, it will write the set custom variables
-to ~/.emacs and it won't work right, there should be always only
-1 custom-set-variables block.
+If you edit through Emacs, it will write the set custom variables to ~/.emacs and it won't work right, there should be always only 1 custom-set-variables block.
 
 https://linuxhint.com/emacs_themes/
 
