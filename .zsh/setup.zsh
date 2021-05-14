@@ -3,8 +3,9 @@ autoload -U zmv
 
 echo; capabilities | sed 's/^/  /'; echo "  $(tput setaf 2)ZSH aliases: $(tput sgr0)${(ok)aliases}\e[0m"; echo; #echo "ZSH functions: ${(ok)functions}"; echo
   # "\e[#{color_code}m#{text}\e[0m"
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# Let's disable Up/down as it's broken and more importantly C-r is more at hand and can be navigated more easily.
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 
 # Ignore files from .gitignore.
 # FZF get installed by its Vim plugin.
