@@ -35,4 +35,4 @@ fi
 
 alias ls="ls --color=auto"
 
-load ~/.zsh/tmux-auto-connect.zsh
+[[ -z "$TMUX" ]] && test -f /.dockerenv && load ~/.zsh/tmux-auto-connect.zsh
