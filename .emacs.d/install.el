@@ -8,7 +8,7 @@
 
 (package-refresh-contents)
 
-(dolist (package '(org evil))
+(dolist (package '(org evil evil-commentary key-chord editorconfig))
   (unless (package-installed-p package)
     (message "~ Installing %s." package)
     (package-install package)))

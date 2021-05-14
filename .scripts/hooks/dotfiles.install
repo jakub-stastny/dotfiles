@@ -22,7 +22,7 @@ fi
 
 # Install Emacs plugins.
 if which emacs &> /dev/null; then
-  ~/.scripts/hooks/dotfiles.install.emacs.el
+  ~/.emacs.d/install.el
 else
   echo "$(tput setaf 1)~$(tput sgr0) Emacs not installed, cannot install its plugins."
 fi
