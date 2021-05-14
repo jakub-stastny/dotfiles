@@ -17,6 +17,10 @@ load ~/.zsh/setup.zsh
 # http://zsh.loadforge.net/Intro/intro_3.html
 load ~/.zsh/aliases.zsh
 
+if !test -f /.dockerenv; then
+  load ~/.zsh/host.aliases.zsh
+fi
+
 if test -n "$TMUX" && test -f ~/.zsh/$(uname).tmux.prompt.zsh; then
   load ~/.zsh/$(uname).tmux.prompt.zsh
 elif test -f /.dockerenv && test -f ~/.zsh/$(uname).docker.prompt.zsh; then

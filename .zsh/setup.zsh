@@ -26,6 +26,8 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
+# NOTE: This has to go to project-specific configuration,
+# leaving here for now as a reference.
 # if (( ${+DOCKER_USERNAME} )) && (( ${+DOCKER_PASSWORD} )) && echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin &> /dev/null; then
 #   echo "  $(tput setaf 2)✓$(tput sgr0) Logged into Docker Hub as $(tput setaf 7)$DOCKER_USERNAME$(tput sgr0)."
 # else

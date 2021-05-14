@@ -1,5 +1,3 @@
-# Dependencies: chruby to be loaded first (so we can test if pry is in the PATH).
-
 # Core.
 alias df='df -h'
 alias ls='ls -F'
@@ -16,12 +14,7 @@ alias dst='dotfiles status'
 
 # This defaults to NeoVim.
 # It's meant to be overwritten in per-project .profile.zsh files.
-e() { (test "$#" -eq 0) && nvim . || nvim $@ }
-
-# Ruby.
-which pry &> /dev/null && alias irb="pry"
-alias bu="bundle update"
-alias be="bundle exec"
+e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
 
 alias ghist="cat $HISTFILE | egrep"
 
@@ -48,33 +41,3 @@ mksession() {
 }
 
 yt='youtube-dl -f '\''bestaudio[ext=m4a]'\'
-
-# Projects
-dpm-init() {
-  test -d ~/projects || mkdir ~/projects
-  docker run -it --rm -v ~/projects:/projects jakubstastny/docker-project-manager init $1 ~/projects
-}
-
-p() {
-  cd ~/projects/$(test "$#" -eq 0 && ls ~/projects | fzf || $1)
-}
-
-a() {
-  p $* && ./runner start && ./runner attach
-}
-
-stop() {
-  cd ~/projects/$(test "$#" -eq 0 && ls ~/projects | fzf || $1) && ./runner stop && cd -
-}
-
-# Emacs
-# start_emacs dotfiles
-start_emacs() {
-  emacs --daemon=$1
-}
-
-emacs-list-servers() {
-  ls /tmp/emacs$(id -u)
-}
-
-#emacsclient -s $1
