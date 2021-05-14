@@ -17,7 +17,7 @@ load ~/.zsh/setup.zsh
 # http://zsh.loadforge.net/Intro/intro_3.html
 load ~/.zsh/aliases.zsh
 
-if !test -f /.dockerenv; then
+if ! test -f /.dockerenv; then
   load ~/.zsh/host.aliases.zsh
 fi
 
