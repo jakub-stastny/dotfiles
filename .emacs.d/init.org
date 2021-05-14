@@ -123,6 +123,10 @@ https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensit
 ; https://www.emacswiki.org/emacs/VisualLineMode
 ; https://www.emacswiki.org/emacs/VisualFillColumn
 (set-fill-column 120)
+
+(defun clear-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
 #+END_SRC
 
 ** Custom variables
