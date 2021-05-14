@@ -49,11 +49,13 @@ Set up Emacs package repositories.
 (require 'package)
 
 (setq package-archives
-        '(("gnu" . "https://elpa.gnu.org/packages/")
+        '(( "ELPA" . "https://elpa.gnu.org/packages/")
           ("MELPA" . "https://melpa.org/packages/"))
       package-archive-priorities
         '(("MELPA" . 5)
-          ("gnu" . 0)))
+          ( "ELPA" . 0)))
+          
+(package-refresh-contents)
 #+END_SRC
 
 ** EVIL
