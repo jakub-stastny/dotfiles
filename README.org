@@ -1,10 +1,10 @@
 * About
 
-Based on [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][this]].
+Inspired by [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/][this article]].
 
 * Ecosystem
 
-** The [[https://github.com/jakub-stastny/dev][dev]] Docker image
+** The Docker [[https://github.com/jakub-stastny/dev][dev image]]
 
 ** [[https://github.com/jakub-stastny/gdrive-cli][GDrive CLI]]
 
@@ -24,7 +24,8 @@ Based on [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfil
 
 ** Install new server
 
-`curl https://raw.githubusercontent.com/jakub-stastny/dotfiles/master/.scripts/dotfiles/server.install | sh`
-# TODO: this is now in the dev repository, not in dotfiles. Fix the link.
+=curl https://raw.githubusercontent.com/jakub-stastny/dotfiles/master/.scripts/dotfiles/server.install | sh=
 
-installation scripts describe
+*** TODO this is now in the dev repository, not in dotfiles. Fix the link.
+
+*** TODO installation scripts describe
