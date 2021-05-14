@@ -36,5 +36,6 @@
   dc = diff --cached
   cb = "!git checkout $(git branch | fzf-tmux -d 15)"
   rb = "!git branch -D $(git branch | fzf-tmux -d 15)"
+
 [init]
-	defaultBranch = master
+  defaultBranch = master

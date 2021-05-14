@@ -34,6 +34,8 @@ load ~/.zsh/history.zsh
 test -f ~/.zsh/$(uname).zsh && load ~/.zsh/$(uname).zsh
 
 # Add any local changes that shouldn't be committed into ~/.zsh/local.zsh.
+#
+# Would you change path of the ignored file, don't forget to update ~/.gitignore.
 test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh
 
 # Per-project configuration.
