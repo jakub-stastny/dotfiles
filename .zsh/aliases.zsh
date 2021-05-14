@@ -44,5 +44,10 @@ yt='youtube-dl -f '\''bestaudio[ext=m4a]'\'
 
 edit-dotfiles() {
   test -S /tmp/emacs$(id -u)/dotfiles || emacs --daemon=dotfiles
-  emacsclient -s dotfiles ~/.emacs.d/init.org ~/.zshrc ~/.zsh/*.zsh
+
+  if test "$#" -eq 0; then
+    emacsclient -s dotfiles ~/.emacs.d/init.org ~/.zshrc ~/.zsh/*.zsh
+  else
+    emacsclient -s dotfiles $@
+  fi
 }

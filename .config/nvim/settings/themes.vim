@@ -7,11 +7,5 @@ set ttimeoutlen=10
 "colorscheme desert
 colorscheme default
 
-" CI build status can be integrated, but changing the colours seems
-" a bit tricky, plus the Tmu status bar seems to be a better place
-" for it.
-"
-" Example: https://gist.github.com/aesnyder/7d692b85a51719896237
-
 " Highlight colour.
 highlight Search guibg='Purple' guifg='NONE'
