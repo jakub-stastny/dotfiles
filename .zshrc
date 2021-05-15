@@ -7,7 +7,7 @@ save-function-list() {
 save-function-list
 
 identifier() {
-  test -f /.dockerenv && ([[ -z "$TMUX" ]] && echo dpm || echo dpm.tmux) || echo host
+  test -f /.dockerenv && ([[ -z "$TMUX" ]] && echo dpm || echo project) || echo host
 }
 
 get-new-functions() {
