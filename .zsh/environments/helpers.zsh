@@ -10,9 +10,14 @@ verify-absence-of-emacs-session() {
   _verify-absence-of-emacs-session $(emacs-session-name)
 }
 
+functions[_start-emacs-session]=$functions[start-emacs-session]
+start-emacs-session() {
+  _start-emacs-session $(emacs-session-name)
+}
+
 functions[_stop-emacs-session]=$functions[stop-emacs-session]
 stop-emacs-session() {
-  verify-emacs-session && _stop-emacs-session $(emacs-session-name)
+  _stop-emacs-session $(emacs-session-name)
 }
 
 rename-first-tab() {

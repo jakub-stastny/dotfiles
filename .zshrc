@@ -32,6 +32,6 @@ test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
 test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh
 
 # Per-project configuration.
-test -f .profile.zsh && load .profile.zsh
+echo && test -f .profile.zsh && load .profile.zsh || load ~/.zsh/environments/no-project.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
