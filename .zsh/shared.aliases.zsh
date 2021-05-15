@@ -34,14 +34,14 @@ report-custom-functions "Aliases" && save-function-list
 
 # Emacs.
 verify-emacs-session() {
-  [[ -v 1 ]] || error "Usage: verify-emacs-session session-name" && return 1
-  ls-emacs-sessions | grep $1 && return 0
+  [[ -v 1 ]] || error "Usage: verify-emacs-session session-name" || return 1
+  ls-emacs-sessions | egrep "^$1$" > /dev/null && return 0
   error "No such session: $1" && return 1
 }
 
 verify-absence-of-emacs-session() {
-  [[ -v 1 ]] || error "Usage: verify-absence-of-emacs-session session-name" && return 1
-  ls-emacs-sessions | grep $1 && return 1
+  [[ -v 1 ]] || error "Usage: verify-absence-of-emacs-session session-name" || return 1
+  ls-emacs-sessions | egrep "^$1$" > /dev/null && return 1 || return 0
 }
 
 ls-emacs-sessions() {
@@ -55,14 +55,14 @@ stop-all-emacs-sessions() {
 }
 
 start-emacs-session() {
-  [[ -v 1 ]] || error "Usage: start-emacs-session session-name" && return 1
-  verify-absence-of-emacs-session && rm /tmp/emacs$(id -u)/$1 && emacs --daemon=$1
+  [[ -v 1 ]] || error "Usage: start-emacs-session session-name" || return 1
+  verify-absence-of-emacs-session $1 && rm -f /tmp/emacs$(id -u)/$1 && emacs --daemon=$1
 }
 
 stop-emacs-session() {
-  [[ -v 1 ]] || error "Usage: stop-emacs-session session-name" && return 1
+  [[ -v 1 ]] || error "Usage: stop-emacs-session session-name" || return 1
   verify-emacs-session $1 || return 1
-  kill $(ps aux | egrep "emacs --daemon=$1" | awk '{ print $2  }')
+  kill $(ps aux | grep -v grep | egrep "emacs --daemon=$1" | awk '{ print $2  }')
 }
 
 report-custom-functions "Emacs" && echo

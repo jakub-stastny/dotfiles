@@ -39,7 +39,7 @@ path-prepend ~/.scripts
 report-custom-functions "Paths" && save-function-list
 
 error() {
-  echo "$(tput setaf 1)Error:$(tput sgr0) $*"
+  echo "$(tput setaf 1)Error:$(tput sgr0) $*" && return 1
 }
 
 warn() {
