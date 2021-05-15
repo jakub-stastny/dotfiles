@@ -1,28 +1,18 @@
 emacs-session-name() { basename $PWD }
 
+functions[_verify-emacs-session]=$functions[verify-emacs-session]
 verify-emacs-session() {
-  if test -S /tmp/emacs$(id -u)/$(emacs-session-name); then
-    return 0
-  else
-    echo "No such session: $(emacs-session-name)"
-    return 1
-  fi
+  _verify-emacs-session $(emacs-session-name)
 }
 
+functions[_verify-absence-of-emacs-session]=$functions[verify-absence-of-emacs-session]
 verify-absence-of-emacs-session() {
-  if ! test -S /tmp/emacs$(id -u)/$(emacs-session-name); then
-    echo "$(tput setaf 2)~$(tput sgr0) Starting Emacs session $(tput setaf 7)$(emacs-session-name)$(tput sgr0)"
-  fi
+  _verify-absence-of-emacs-session $(emacs-session-name)
 }
 
-###
-
-start-emacs-session() {
-  verify-absence-of-emacs-session && emacs --daemon=$(emacs-session-name)
-}
-
+functions[_stop-emacs-session]=$functions[stop-emacs-session]
 stop-emacs-session() {
-  verify-emacs-session && kill $(ps aux | grep "emacs --daemon=$(emacs-session-name)" | grep -v grep | awk '{ print $2 }')
+  verify-emacs-session && _stop-emacs-session $(emacs-session-name)
 }
 
 rename-first-tab() {

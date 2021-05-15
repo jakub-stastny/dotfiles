@@ -27,3 +27,38 @@ du() {
     /usr/bin/du -h $item | tail -1
   done
 }
+
+# Emacs.
+verify-emacs-session() {
+  if test -S /tmp/emacs$(id -u)/$1; then
+    return 0
+  else
+    echo "No such session: $1"
+    return 1
+  fi
+}
+
+verify-absence-of-emacs-session() {
+  if ! test -S /tmp/emacs$(id -u)/$1; then
+    echo "$(tput setaf 2)~$(tput sgr0) Starting Emacs session $(tput setaf 7)$1$(tput sgr0)"
+  fi
+}
+
+running-emacs-sessions() {
+  ps aux | egrep "emacs --daemon=\w+" | grep -v grep | awk '{ print $12 }' | sed -E 's/.*--daemon=(\w+)/\1/'
+}
+
+stop-all-emacs-sessions() {
+  for session in $(running-emacs-sessions); do
+    stop-emacs-session $session
+  done
+}
+
+start-emacs-session() {
+  verify-absence-of-emacs-session && emacs --daemon=$1
+}
+
+stop-emacs-session() {
+  verify-emacs-session $1 || return 1
+  kill $(ps aux | egrep "emacs --daemon=$1" | awk '{ print $2  }')
+}
