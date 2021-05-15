@@ -4,7 +4,7 @@ export EDITOR="nvim"
 autoload -U zmv
 
 # NOTE: alias also gives an interesting list.
-echo; capabilities | sed 's/^/  /'
+# echo; capabilities | sed 's/^/  /'
 echo "  $(tput setaf 2)ZSH aliases: $(tput sgr0)${(ok)aliases}\e[0m"
 echo "  $(tput setaf 2)ZSH functions: $(tput sgr0)$(get-new-functions)"; echo
   # "\e[#{color_code}m#{text}\e[0m"
@@ -31,4 +31,3 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
-
