@@ -1,6 +1,7 @@
 # zmv -n '(*)unplug.it*' '$1botanicus.me$2'
 autoload -U zmv
 
+# NOTE: alias also gives an interesting list.
 echo; capabilities | sed 's/^/  /'; echo "  $(tput setaf 2)ZSH aliases: $(tput sgr0)${(ok)aliases}\e[0m"; echo; #echo "ZSH functions: ${(ok)functions}"; echo
   # "\e[#{color_code}m#{text}\e[0m"
 # Let's disable Up/down as it's broken and more importantly C-r is more at hand and can be navigated more easily.

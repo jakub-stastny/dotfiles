@@ -54,3 +54,11 @@ edit-dotfiles() {
     emacsclient -s dotfiles $@
   fi
 }
+
+save-function-list() {
+  flist=${(ok)functions}
+}
+
+get-new-functions() {
+  ruby -e 'puts (ARGV[1].split(" ") - ARGV[0].split(" ")).join(", ")' "$flist" "${(ok)functions}"
+}
