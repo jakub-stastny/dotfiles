@@ -1,22 +1,16 @@
 # This file is loaded after ~/.zshenv.
 
-save-function-list() {
-  flist=${(ok)functions}
-}
-
 save-function-list
+
+function load () {
+  display-loaded-file $1 && source $1
+}
 
 identifier() {
   test -f /.dockerenv && ([[ -z "$TMUX" ]] && echo dpm || echo project) || echo host
 }
 
-get-new-functions() {
-  /opt/rubies/ruby-3.0.1/bin/ruby -e 'puts (ARGV[1].split(" ") - ARGV[0].split(" ")).join(", ")' "$flist" "${(ok)functions}"
-}
-
-function load () {
-  echo "$(tput setaf 2)~$(tput sgr0) Loading $(tput setaf 7)$1$(tput sgr0)" && source $1
-}
+display-loaded-file ~/.zshrc && report-custom-functions && echo
 
 # Set basic environment.
 load ~/.zsh/shared.setup.zsh

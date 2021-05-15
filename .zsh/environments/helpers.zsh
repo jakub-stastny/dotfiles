@@ -20,7 +20,3 @@ rename-first-tab() {
     tmux rename-window "E:$(emacs-session-name)"
   fi
 }
-
-report-custom-functions() {
-  echo "\n  $(tput setaf 2)Functions: $(tput setaf 7)$(get-new-functions)$(tput sgr0)."
-}
