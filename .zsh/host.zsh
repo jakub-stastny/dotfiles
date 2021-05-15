@@ -33,6 +33,4 @@ if [ "$(dotfiles rev-parse @)" != "$(dotfiles rev-parse @{u})" ]; then
   # FIXME: If the current repo is AHEAD of origin, this will keep running in a loop.
 fi
 
-alias ls="ls --color=auto"
-
 [[ -z "$TMUX" ]] && test -f /.dockerenv && load ~/.zsh/tmux-auto-connect.zsh
