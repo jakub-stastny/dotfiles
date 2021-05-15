@@ -11,7 +11,7 @@ identifier() {
 }
 
 get-new-functions() {
-  ruby -e 'puts (ARGV[1].split(" ") - ARGV[0].split(" ")).join(", ")' "$flist" "${(ok)functions}"
+  /opt/rubies/ruby-3.0.1/bin/ruby -e 'puts (ARGV[1].split(" ") - ARGV[0].split(" ")).join(", ")' "$flist" "${(ok)functions}"
 }
 
 function load () {
