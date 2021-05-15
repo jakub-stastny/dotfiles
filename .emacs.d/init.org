@@ -81,6 +81,14 @@ Enable tab cycling in org mode in the evil normal mode.
   (define-key evil-motion-state-map (kbd "TAB") 'org-cycle))
 #+END_SRC
 
+** Helm
+
+#+BEGIN_SRC emacs-lisp
+(require 'helm-config)
+
+(helm-mode 1)
+#+END_SRC
+
 * Configuration
 ** Disabling default behaviours
 
