@@ -1,37 +1,36 @@
 # This file is loaded after ~/.zshenv.
 
+save-function-list() {
+  flist=${(ok)functions}
+}
+
+save-function-list
+
+identifier() {
+  test -f /.dockerenv && ([[ -z "$TMUX" ]] && echo dpm || echo dpm.tmux) || echo host
+}
+
+get-new-functions() {
+  ruby -e 'puts (ARGV[1].split(" ") - ARGV[0].split(" ")).join(", ")' "$flist" "${(ok)functions}"
+}
+
 function load () {
   echo "$(tput setaf 2)~$(tput sgr0) Loading $(tput setaf 7)$1$(tput sgr0)" && source $1
 }
 
 # Set basic environment.
-if test -f /.dockerenv; then
-  load ~/.zsh/$(uname).docker.env.zsh
-else
-  load ~/.zsh/$(uname).env.zsh
-fi
-
-load ~/.zsh/setup.zsh
+load ~/.zsh/shared.setup.zsh
 
 # Sourced in an interactive session.
 # http://zsh.loadforge.net/Intro/intro_3.html
-load ~/.zsh/aliases.zsh
+load ~/.zsh/shared.aliases.zsh
+test -f /.dockerenv || load ~/.zsh/host.aliases.zsh
 
-if ! test -f /.dockerenv; then
-  load ~/.zsh/host.aliases.zsh
-fi
+load ~/.zsh/$(identifier).prompt.zsh
 
-if test -n "$TMUX" && test -f ~/.zsh/$(uname).tmux.prompt.zsh; then
-  load ~/.zsh/$(uname).tmux.prompt.zsh
-elif test -f /.dockerenv && test -f ~/.zsh/$(uname).docker.prompt.zsh; then
-  load ~/.zsh/$(uname).docker.prompt.zsh
-else
-  load ~/.zsh/$(uname).prompt.zsh
-fi
-
-load ~/.zsh/completion.zsh
-load ~/.zsh/history.zsh
-test -f ~/.zsh/$(uname).zsh && load ~/.zsh/$(uname).zsh
+load ~/.zsh/shared.completion.zsh
+load ~/.zsh/shared.history.zsh
+test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
 
 # Add any local changes that shouldn't be committed into ~/.zsh/local.zsh.
 #

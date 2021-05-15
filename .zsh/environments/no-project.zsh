@@ -1,3 +1,7 @@
+# Dotfiles.
+alias gp='dotfiles push'
+alias gst='dotfiles status'
+
 mksession() {
   (cd $1 && tmux new -s $(basename $PWD))
 }
