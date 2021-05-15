@@ -6,6 +6,12 @@ alias GET="curl -X GET"
 alias POST="curl -X POST"
 alias HEAD="curl -X HEAD"
 
+e() { (test "$#" -eq 0) && emacsclient -s $(emacs-server-name) . || emacsclient -s $(emacs-server-name) $@ }
+
+# Send file to the running Emacs session, preventing "Waiting for Emacs".
+s() { emacsclient -s $(emacs-server-name) -n $@ }
+v() { nvim $@ }
+
 # NOTE: This has to go to project-specific configuration,
 # leaving here for now as a reference.
 # if (( ${+DOCKER_USERNAME} )) && (( ${+DOCKER_PASSWORD} )) && echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin &> /dev/null; then
