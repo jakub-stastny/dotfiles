@@ -89,6 +89,11 @@ Enable tab cycling in org mode in the evil normal mode.
 (helm-mode 1)
 #+END_SRC
 
+** SLIME
+
+#+BEGIN_SRC emacs-lisp
+(setq inferior-lisp-program "/usr/bin/sbcl")
+#+END_SRC
 * Configuration
 ** Disabling default behaviours
 
