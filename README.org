@@ -29,3 +29,6 @@ Inspired by [[https://developer.atlassian.com/blog/2016/02/best-way-to-store-dot
 *** TODO this is now in the dev repository, not in dotfiles. Fix the link.
 
 *** TODO installation scripts describe
+
+* Pending
+** TODO [[https://github.com/jakub-stastny/dotfiles/issues/1][Tmux: style active panel]]
