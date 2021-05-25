@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+# TODO: Maybe better in an Org file?
+git config user.name "James C Russell"
+git config user.email "jakub.stastny.pt+botanicus@gmail.com"
+git update-author
+
+git remote set-url origin "$(git remote get-url --push origin | sed 's/jakub-stastny/botanicus/')"
+GIT_SSH_COMMAND="ssh -F ../botanicus.config" git push origin master -f
