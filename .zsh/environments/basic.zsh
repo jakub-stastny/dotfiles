@@ -17,6 +17,8 @@ s() {
 
 v() { nvim $@ }
 
+alias u="git pull -r"
+
 # NOTE: This has to go to project-specific configuration,
 # leaving here for now as a reference.
 # if (( ${+DOCKER_USERNAME} )) && (( ${+DOCKER_PASSWORD} )) && echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin &> /dev/null; then
