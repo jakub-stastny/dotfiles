@@ -22,8 +22,6 @@ load ~/.zsh/shared.setup.zsh
 # Sourced in an interactive session.
 # http://zsh.loadforge.net/Intro/intro_3.html
 load ~/.zsh/shared.aliases.zsh
-test -f /.dockerenv || load ~/.zsh/host.aliases.zsh
-
 load ~/.zsh/$(identifier).prompt.zsh
 
 load ~/.zsh/shared.completion.zsh
