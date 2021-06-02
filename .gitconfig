@@ -26,7 +26,7 @@
 
 [alias]
   st = status
-  r = pull --rebase --autostash
+  p = pull --rebase --autostash
   a = add
   c = commit -a -m
   cav = commit -a -v
