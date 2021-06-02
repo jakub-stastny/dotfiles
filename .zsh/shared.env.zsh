@@ -15,7 +15,7 @@ compare-array() {
 
   # We cannot actually return an array, return in
   # a ZSH function is what exit is in a script.
-  echo $result
+  echo -n $result
 }
 
 get-new-functions() {
