@@ -21,6 +21,7 @@ compare-array() {
 get-new-functions() {
   fns=$(echo $(print -l ${(ok)functions} | egrep -v ^_))
   compare-array "$flist" "$fns"
+  echo -n " "
   compare-array "$alist" "${(ok)aliases}"
 }
 
