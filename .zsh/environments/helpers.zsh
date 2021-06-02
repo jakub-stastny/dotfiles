@@ -20,8 +20,12 @@ stop-emacs-session() {
   _stop-emacs-session $(emacs-session-name)
 }
 
+in-first-tab() {
+  test $(tmux display-message -p '#I') = "1"
+}
+
 rename-first-tab() {
-  if test $(tmux display-message -p '#I') = "1"; then
+  if $(in-first-tab); then
     tmux rename-window "E:$(emacs-session-name)"
   fi
 }
