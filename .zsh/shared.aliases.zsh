@@ -3,17 +3,18 @@
 
 save-function-list
 
-# Core.
+# Core
 alias df='df -h'
 alias ls='ls --color=auto'
-# alias ls='ls -F'
 alias ll='ls -l'
 alias la='ls -a'
 
-# Dotfiles.
-alias d='dotfiles'
-alias dp='dotfiles push'
-alias dst='dotfiles status'
+# Dotfiles
+# Make ZSH aliases for all the dotfiles aliases.
+# This way "dotfiles cav" becaves simply "dcav".
+for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ print $2 }'); do
+  alias dt$galias="dotfiles $galias"
+done
 
 # This defaults to NeoVim.
 # It's meant to be overwritten in per-project .profile.zsh files.
