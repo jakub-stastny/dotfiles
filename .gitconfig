@@ -25,17 +25,14 @@
   default = matching
 
 [alias]
+  st = status
+  u = pull -r
   cam = commit -a -m
   cav = commit -a -v
   cm = commit -m
   cv = commit -v
   co = checkout
-  amend = commit --amend
-  amend-no-edit = commit --amend --no-edit
-  amend-all-no-edit = commit --amend --no-edit -a
   dc = diff --cached
-  cb = "!git checkout $(git branch | fzf-tmux -d 15)"
-  rb = "!git branch -D $(git branch | fzf-tmux -d 15)"
 
 [init]
   defaultBranch = master

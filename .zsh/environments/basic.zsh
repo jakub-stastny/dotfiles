@@ -1,10 +1,8 @@
-# Git.
-alias gp='git push'
-alias gst='git status'
-
-alias GET="curl -X GET"
-alias POST="curl -X POST"
-alias HEAD="curl -X HEAD"
+# Proxy all Git aliases to ZSH.
+# This way "git cam" becames simply "cam".
+for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ print $2 }'); do
+  alias $galias="git $galias"
+done
 
 e() {
   verify-emacs-session && (test "$#" -eq 0) && emacsclient -s $(emacs-session-name) . || emacsclient -s $(emacs-session-name) $@
@@ -16,8 +14,6 @@ s() {
 }
 
 v() { nvim $@ }
-
-alias u="git pull -r"
 
 # NOTE: This has to go to project-specific configuration,
 # leaving here for now as a reference.
