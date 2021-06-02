@@ -32,8 +32,8 @@
   cm = commit -m
   cv = commit -v
   co = checkout
-  df = diff
-  dc = diff --cached
+  di = diff
+  dic = diff --cached
 
 [init]
   defaultBranch = master
