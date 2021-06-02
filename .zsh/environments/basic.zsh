@@ -1,7 +1,7 @@
 # Proxy all Git aliases to ZSH.
 # This way "git cam" becames simply "cam".
 for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ print $2 }'); do
-  alias $galias="git $galias"
+  alias g$galias="git $galias"
 done
 
 e() {

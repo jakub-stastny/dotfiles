@@ -13,7 +13,7 @@ alias la='ls -a'
 # Make ZSH aliases for all the dotfiles aliases.
 # This way "dotfiles cav" becaves simply "dcav".
 for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ print $2 }'); do
-  alias dt$galias="dotfiles $galias"
+  alias d$galias="dotfiles $galias"
 done
 
 # This defaults to NeoVim.
