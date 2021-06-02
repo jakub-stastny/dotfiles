@@ -4,15 +4,6 @@ for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ 
   alias g$galias="git $galias"
 done
 
-e() {
-  verify-emacs-session && (test "$#" -eq 0) && emacsclient -s $(emacs-session-name) . || emacsclient -s $(emacs-session-name) $@
-}
-
-# Send file to the running Emacs session, preventing "Waiting for Emacs".
-s() {
-  verify-emacs-session && emacsclient -s $(emacs-session-name) -n $@
-}
-
 v() { nvim $@ }
 
 # NOTE: This has to go to project-specific configuration,
