@@ -14,4 +14,8 @@ try-to-start-new-main-session() {
 
 # Without -d (detach other clients), the screen wouldn't resize
 # to fit the current terminal resolution.
-tmux attach-session -d -t $HOST || try-to-start-new-main-session
+try-to-attach-to-the-main-session() {
+  tmux attach-session -d -t $HOST 2> /dev/null
+}
+
+try-to-attach-to-the-main-session || try-to-start-new-main-session
