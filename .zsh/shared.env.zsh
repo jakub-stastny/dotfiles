@@ -1,16 +1,27 @@
-flist=${(ok)functions}
+flist=$(print -l ${(ok)functions} | egrep -v ^_)
 alist=${(ok)aliases}
 save-function-list() {
-  flist=${(ok)functions}
+  flist=$(print -l ${(ok)functions} | egrep -v ^_)
   alist=${(ok)aliases}
 }
 
-# TODO: Cache this, remove cache on new commit.
+compare-array() {
+  local another=${(s. .)1}
+  local result=()
+
+  for item in ${(s. .)2}; do
+    (( ${another[(I)$item]} )) || result+=($item)
+  done
+
+  # We cannot actually return an array, return in
+  # a ZSH function is what exit is in a script.
+  echo $result
+}
+
 get-new-functions() {
-  SCRIPT='nfs = ARGV[1].split(" ") - ARGV[0].split(" "); puts nfs.grep_v(/^_/).join(" ")'
-  fs=$(/opt/rubies/ruby-3.0.1/bin/ruby -e "$SCRIPT" "$flist" "${(ok)functions}")
-  as=$(/opt/rubies/ruby-3.0.1/bin/ruby -e "$SCRIPT" "$alist" "${(ok)aliases}")
-  echo $fs $as
+  fns=$(echo $(print -l ${(ok)functions} | egrep -v ^_))
+  compare-array "$flist" "$fns"
+  compare-array "$alist" "${(ok)aliases}"
 }
 
 report-custom-functions() {
