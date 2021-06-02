@@ -9,7 +9,7 @@
   '(custom-safe-themes
      '("990e24b406787568c592db2b853aa65ecc2dcd08146c0d22293259d400174e37" default))
   '(package-selected-packages
-     '(helm typescript-mode ## dockerfile-mode editorconfig z3-mode which-key vterm use-package try smex slime racket-mode proof-general pdf-tools ox-twbs org-roam-server org-evil org-bullets olivetti minizinc-mode maude-mode magit lsp-java key-chord js2-mode jedi haskell-mode golden-ratio focus expand-region evil-surround evil-commentary erlang elm-mode doom-themes diff-hl define-word counsel-projectile company-coq clj-refactor auto-compile)))
+     '(lispyville lispy sly-quicklisp helm-sly sly-repl-ansi-color sly-asdf sly helm typescript-mode ## dockerfile-mode editorconfig z3-mode which-key vterm use-package try smex racket-mode proof-general pdf-tools ox-twbs org-roam-server org-evil org-bullets olivetti minizinc-mode maude-mode magit lsp-java key-chord js2-mode jedi haskell-mode golden-ratio focus expand-region evil-surround evil-commentary erlang elm-mode doom-themes diff-hl define-word counsel-projectile company-coq clj-refactor auto-compile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
