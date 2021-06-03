@@ -29,9 +29,9 @@
   p = push
   pu = pull --rebase --autostash
   a = add
-  c = commit -a -m
+  c = commit -m
+  ca = commit -a -m
   cav = commit -a -v
-  cm = commit -m
   cv = commit -v
   co = checkout
   df = diff
