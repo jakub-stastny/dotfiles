@@ -35,16 +35,12 @@ test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh
 
 test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
 
+if test -f ~/.env; then
+  echo "$(tput setaf 2)~$(tput sgr0) Loading ENV vars from $(tput setaf 7)~/.env$(tput sgr0)"
+  source ~/.env
+fi
+
 # Per-project configuration.
 # The no-project environment is never inherited, since when we launch
 # a new session using mksession, a new ZSH instance is loaded.
 echo && test -f .profile.zsh && load .profile.zsh || load ~/.zsh/environments/no-project.zsh
-
-# Copied (and tweaked .env path in 2 places) from ~/.zsh/environments/basic.zsh.
-# Make it reusable.
-if test -f ~/.env; then
-  local definitions=$(egrep '^\w+=.*$' ~/.env)
-  for vardef in ${(s.\n.)definitions}; do
-    export $vardef
-  done
-fi
