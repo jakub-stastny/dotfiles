@@ -40,4 +40,11 @@ test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
 # a new session using mksession, a new ZSH instance is loaded.
 echo && test -f .profile.zsh && load .profile.zsh || load ~/.zsh/environments/no-project.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Copied (and tweaked .env path in 2 places) from ~/.zsh/environments/basic.zsh.
+# Make it reusable.
+if test -f ~/.env; then
+  local definitions=$(egrep '^\w+=.*$' ~/.env)
+  for vardef in ${(s.\n.)definitions}; do
+    export $vardef
+  done
+fi
