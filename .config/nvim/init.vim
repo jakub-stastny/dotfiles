@@ -4,8 +4,7 @@ call plug#begin('~/.local/share/nvim/plugins')
 Plug 'tpope/vim-commentary' | Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' | Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'jceb/vim-orgmode'
 nnoremap <silent> <C-p> :FZF<CR>
 
 " Switching buffers using Ctrl+s.
