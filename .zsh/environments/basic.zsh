@@ -11,6 +11,14 @@ if test -d bin; then
   done
 fi
 
+# Export variables from .env.
+if test -f .env; then
+  local definitions=$(egrep '^\w+=.*$' .env)
+  for vardef in ${(s.\n.)definitions}; do
+    export $vardef
+  done
+fi
+
 v() { nvim $@ }
 
 # NOTE: This has to go to project-specific configuration,
