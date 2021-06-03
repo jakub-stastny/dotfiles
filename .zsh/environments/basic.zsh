@@ -23,12 +23,6 @@ v() { nvim $@ }
 
 # NOTE: This has to go to project-specific configuration,
 # leaving here for now as a reference.
-# if (( ${+DOCKER_USERNAME} )) && (( ${+DOCKER_PASSWORD} )) && echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin &> /dev/null; then
-#   echo "  $(tput setaf 2)✓$(tput sgr0) Logged into Docker Hub as $(tput setaf 7)$DOCKER_USERNAME$(tput sgr0)."
-# else
-#   echo "  $(tput setaf 1)✘$(tput sgr0) Not logged into Docker Hub."
-# fi
-
 # if which gem &> /dev/null; then
 #   if (( ${+RUBYGEMS_EMAIL} )) && (( ${+RUBYGEMS_PASSWORD} )); then
 #     test -f ~/.gem/credentials || ~/.zsh/scripts/rubygems_login "$RUBYGEMS_EMAIL" "$RUBYGEMS_PASSWORD" &> /dev/null
