@@ -26,12 +26,9 @@ load ~/.zsh/$(identifier).prompt.zsh
 
 load ~/.zsh/shared.completion.zsh
 load ~/.zsh/shared.history.zsh
-test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
 
-# Add any local changes that shouldn't be committed into ~/.zsh/local.zsh.
-#
-# Would you change path of the ignored file, don't forget to update ~/.gitignore.
-test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh
+test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
+test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
 
 load ~/.zsh/tmux-auto-connect.zsh
 
