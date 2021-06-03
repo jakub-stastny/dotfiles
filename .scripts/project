@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+
+mkdir $1 && cd $1
+
+tee .editorconfig <<EOF
+# https://EditorConfig.org
+
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+EOF
+
+tee .profile.zsh <<EOF
+load ~/.zsh/environments/helpers.zsh && save-function-list
+load ~/.zsh/environments/emacs.zsh
+load ~/.zsh/environments/basic.zsh
+
+start-emacs-session
+rename-first-tab
+
+# Custom functions, aliases and hooks.
+in-first-tab && git pull --rebase --autostash &> /dev/null
+in-first-tab && git install-hooks &> /dev/null
+
+report-custom-functions
+EOF
+
+touch README.org
+
+git init
+git add .
+git commit -m "Initial import"
