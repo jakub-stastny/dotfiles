@@ -7,26 +7,20 @@ save-function-list() {
 
 compare-array() {
   local another=${(s. .)1}
-  local result=()
 
   for item in ${(s. .)2}; do
-    (( ${another[(I)$item]} )) || result+=($item)
+    (( ${another[(I)$item]} )) || echo -n " $item"
   done
-
-  # We cannot actually return an array, return in
-  # a ZSH function is what exit is in a script.
-  echo -n $result
 }
 
 get-new-functions() {
   fns=$(echo $(print -l ${(ok)functions} | egrep -v ^_))
   compare-array "$flist" "$fns"
-  echo -n " "
   compare-array "$alist" "${(ok)aliases}"
 }
 
 report-custom-functions() {
-  [[ -o interactive  ]] && echo "  $(tput setaf 2)$(test "$#" -gt 0 && echo $@ || echo Functions): $(tput setaf 7)$(get-new-functions)$(tput sgr0)."
+  [[ -o interactive  ]] && echo "  $(tput setaf 2)$(test "$#" -gt 0 && echo $@ || echo Functions):$(tput setaf 7)$(get-new-functions)$(tput sgr0)."
 }
 
 function display-loaded-file() {
