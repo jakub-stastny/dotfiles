@@ -1,15 +1,19 @@
 #!/usr/bin/env zsh
 
-# This script should have ~/.zshenv loaded.
+echo "$(tput setaf 1)$0 has been deprecated."
+exit 1
+# I don't think this is necessary.
 
-if test -f ~/.ssh/dotfiles_id_rsa; then
-  echo "$(tput setaf 1)~$(tput sgr0) The dotfiles SSH key already exist."
-else
-  echo "$(tput setaf 2)~$(tput sgr0) Generating dotfiles SSH key."
-  ssh-keygen -t rsa -f ~/.ssh/dotfiles_id_rsa -q -N ''
-fi
+# # This script should have ~/.zshenv loaded.
 
-dotfiles config core.sshCommand "ssh -F ~/.ssh/dotfiles.config"
+# if test -f ~/.ssh/dotfiles_id_rsa; then
+#   echo "$(tput setaf 1)~$(tput sgr0) The dotfiles SSH key already exist."
+# else
+#   echo "$(tput setaf 2)~$(tput sgr0) Generating dotfiles SSH key."
+#   ssh-keygen -t rsa -f ~/.ssh/dotfiles_id_rsa -q -N ''
+# fi
 
-echo "Add the following key into $(tput setaf 7)https://github.com/settings/keys$(tput sgr0)"
-cat ~/.ssh/dotfiles_id_rsa.pub
+# dotfiles config core.sshCommand "ssh -F ~/.ssh/dotfiles.config"
+
+# echo "Add the following key into $(tput setaf 7)https://github.com/settings/keys$(tput sgr0)"
+# cat ~/.ssh/dotfiles_id_rsa.pub

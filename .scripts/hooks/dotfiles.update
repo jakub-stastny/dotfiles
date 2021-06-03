@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# TODO: Also install Emacs plugins.
+
 # This hook is triggered either by manual dotfiles pull -r or by ~/.zsh/Linux.zsh.
 # It runs after dotfiles are updated on a different machine.
 
