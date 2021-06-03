@@ -4,6 +4,13 @@ for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ 
   alias g$galias="git $galias"
 done
 
+# Proxy all bin commands as aliases.
+if test -d bin; then
+  for bin in bin/*(*); do
+    alias $(basename $bin)=$bin
+  done
+fi
+
 v() { nvim $@ }
 
 # NOTE: This has to go to project-specific configuration,
