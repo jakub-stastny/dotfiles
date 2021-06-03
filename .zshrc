@@ -33,7 +33,7 @@ test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
 # Would you change path of the ignored file, don't forget to update ~/.gitignore.
 test -f ~/.zsh/local.zsh && load ~/.zsh/local.zsh
 
-test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
+load ~/.zsh/tmux-auto-connect.zsh
 
 if test -f ~/.env; then
   echo "$(tput setaf 2)~$(tput sgr0) Loading ENV vars from $(tput setaf 7)~/.env$(tput sgr0)"
