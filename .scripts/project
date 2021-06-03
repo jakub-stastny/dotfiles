@@ -37,3 +37,5 @@ touch README.org
 git init
 git add .
 git commit -m "Initial import"
+
+echo "If you want to create GH repo, run $(tput setaf 2)gh repo create $(basename $PWD)$(tput sgr0)"
