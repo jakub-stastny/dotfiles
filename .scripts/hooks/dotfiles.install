@@ -1,4 +1,6 @@
-#!/usr/bin/env zsh
+#!/bin/sh
+
+# When this script runs for the first time on a VPS, there's no ZSH yet, hence the shebang.
 
 # This script should have ~/.zshenv loaded.
 
