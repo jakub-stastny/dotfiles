@@ -30,7 +30,7 @@ load ~/.zsh/shared.history.zsh
 test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
 test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
 
-load ~/.zsh/tmux-auto-connect.zsh
+(( ${+TMUX} )) || load ~/.zsh/tmux-auto-connect.zsh
 
 if test -f ~/.env; then
   echo "$(tput setaf 2)~$(tput sgr0) Loading ENV vars from $(tput setaf 7)~/.env$(tput sgr0)"
