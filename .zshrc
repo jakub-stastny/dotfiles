@@ -40,4 +40,4 @@ fi
 # Per-project configuration.
 # The no-project environment is never inherited, since when we launch
 # a new session using mksession, a new ZSH instance is loaded.
-echo && test -f .profile.zsh && load .profile.zsh || load ~/.zsh/environments/no-project.zsh
+echo && test -f .env/zsh.zsh && load .env/zsh.zsh || load ~/.zsh/environments/no-project.zsh

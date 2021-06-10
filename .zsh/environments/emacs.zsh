@@ -12,12 +12,18 @@ verify-absence-of-emacs-session() {
 
 functions[_start-emacs-session]=$functions[start-emacs-session]
 start-emacs-session() {
-  _start-emacs-session $(emacs-session-name)
+  _start-emacs-session $(emacs-session-name) --load $PWD/.env/emacs.el
 }
 
 functions[_stop-emacs-session]=$functions[stop-emacs-session]
 stop-emacs-session() {
   _stop-emacs-session $(emacs-session-name)
+}
+
+# TODO: should also be in shared.aliases.zsh like the other fns.
+restart-emacs-session() {
+  stop-emacs-session
+  start-emacs-session
 }
 
 rename-first-tab() {

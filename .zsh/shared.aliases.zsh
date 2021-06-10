@@ -57,8 +57,9 @@ stop-all-emacs-sessions() {
 }
 
 start-emacs-session() {
-  [[ -v 1 ]] || error "Usage: start-emacs-session session-name" || return 1
-  verify-absence-of-emacs-session $1 && rm -f /tmp/emacs$(id -u)/$1 && emacs --daemon=$1
+  (( ${+1} )) || error "Usage: start-emacs-session session-name [emacs-args]" || return 1
+  name=$1; shift
+  verify-absence-of-emacs-session $name && rm -f /tmp/emacs$(id -u)/$name && emacs --daemon=$name $@
 }
 
 stop-emacs-session() {

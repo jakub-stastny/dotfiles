@@ -11,9 +11,9 @@ if test -d bin; then
   done
 fi
 
-# Export variables from .env.
-if test -f .env; then
-  local definitions=$(egrep '^\w+=.*$' .env)
+# Export variables from .env/variables.
+if test -f .env/variables; then
+  local definitions=$(egrep '^\w+=.*$' .env/variables)
   for vardef in ${(s.\n.)definitions}; do
     export $vardef
   done
