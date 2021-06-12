@@ -1,6 +1,6 @@
 [user]
   name = Jakub Šťastný
-  email = jakub.stastny.pt+git@gmail.com
+  email = jakub-stastny@users.noreply.github.com
 
 [core]
   excludesfile = ~/.gitignore
