@@ -21,6 +21,10 @@ fi
 
 v() { nvim $@ }
 
+try-load() {
+  test -f $1 && load $1 || echo "$(tput setaf 3)~$(tput sgr0) Not found $(tput setaf 7)$1$(tput sgr0)"
+}
+
 # NOTE: This has to go to project-specific configuration,
 # leaving here for now as a reference.
 # if which gem &> /dev/null; then
