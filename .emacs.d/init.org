@@ -3,6 +3,9 @@
 #+BABEL: :cache yes
 #+PROPERTY: header-args :tangle yes
 
+*** [[https://magit.vc][Magit]]
+
+Use =C-x g= to enter the mode.
 * About
 
 My Emacs configuration. It's trying to be as minimalist as possible, leaving environment-specific concerns to =dir-locals.el=.
@@ -54,7 +57,7 @@ Set up Emacs package repositories.
       package-archive-priorities
         '(("MELPA" . 5)
           ( "ELPA" . 0)))
-          
+
 (package-refresh-contents)
 #+END_SRC
 
@@ -149,3 +152,22 @@ https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensit
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 #+END_SRC
+
+
+
+; Support for Evil mode movement in 3rd party packages, such as Magit.
+
+#+BEGIN_SRC emacs-lisp
+(evil-collection-init)
+#+END_SRC
+
+
+** [[https://github.com/emacs-evil/evil-collection][Package evil-collection]]
+
+Magit buffers don't support Vim movement keys (=hjkl=) by default, which is what the =evil-collection= package is about.
+
+It supports other common packages, not only Magit.
+
+*** [[https://magit.vc][Magit]]
+
+Use =C-x g= to enter the mode.

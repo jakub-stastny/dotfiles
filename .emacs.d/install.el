@@ -8,7 +8,7 @@
 
 (package-refresh-contents)
 
-(dolist (package '(org evil evil-commentary key-chord editorconfig))
+(dolist (package '(evil evil-commentary evil-collection key-chord editorconfig magit lispy lispyville))
   (unless (package-installed-p package)
     (message "~ Installing %s." package)
     (package-install package)))
