@@ -17,14 +17,14 @@ dotfiles install-hooks > /dev/null
 
 # Install NeoVim plugins.
 if which nvim &> /dev/null; then
-  nvim +PlugInstall +qall
+  nvim +PlugInstall +qall &> /dev/null
 else
   echo "$(tput setaf 1)~$(tput sgr0) NeoVim not installed, cannot install its plugins."
 fi
 
 # Install Emacs plugins.
 if which emacs &> /dev/null; then
-  ~/.emacs.d/install.el
+  ~/.emacs.d/install.el &> /dev/null
 else
   echo "$(tput setaf 1)~$(tput sgr0) Emacs not installed, cannot install its plugins."
 fi
