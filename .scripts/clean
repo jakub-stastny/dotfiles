@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+# Delete all Git-ignored files.
+#
+# Useful for literate programming, where source code
+# is generated from Org mode files.
+
 lines = File.readlines(".gitignore").map(&:chomp)
 
 paths = lines.reduce(Array.new) do |paths, line|
