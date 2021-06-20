@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+lines = File.readlines(".gitignore").map(&:chomp)
+
+paths = lines.reduce(Array.new) do |paths, line|
+  # Remove comments, whether they are full-line comments not.
+  # Do not treat Emacs backup files *#* pattern as a comment.
+  line.gsub!(/(^|\s+)#/, '')
+
+  if line.start_with?('/')
+    paths << line[1..-1]
+  elsif not line.match('/')
+    paths << "**/#{line}"
+  else
+    paths
+  end
+end
+
+paths.each do |path|
+  case Dir.glob(path).length
+  when 0
+    puts "#{`tput setaf 7`}#{path}#{`tput sgr0`}"
+  when 1
+    puts "#{`tput setaf 2`}#{path}#{`tput sgr0`}"
+  else
+    puts "#{`tput setaf 2`}#{path}#{`tput sgr0`} -> #{`tput setaf 3`}#{Dir.glob(path).join(' ')}#{`tput sgr0`}"
+  end
+
+  system("rm -rf #{Dir.glob(path).join(' ')}")
+end
