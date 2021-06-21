@@ -51,6 +51,8 @@ Set up Emacs package repositories.
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 
+(package-initialize)
+
 (setq package-archives
         '(( "ELPA" . "https://elpa.gnu.org/packages/")
           ("MELPA" . "https://melpa.org/packages/"))
@@ -92,11 +94,22 @@ Enable tab cycling in org mode in the evil normal mode.
 (helm-mode 1)
 #+END_SRC
 
-** SLIME
+; Support for Evil mode movement in 3rd party packages, such as Magit.
 
 #+BEGIN_SRC emacs-lisp
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(evil-collection-init)
 #+END_SRC
+
+
+** [[https://github.com/emacs-evil/evil-collection][Package evil-collection]]
+
+Magit buffers don't support Vim movement keys (=hjkl=) by default, which is what the =evil-collection= package is about.
+
+It supports other common packages, not only Magit.
+
+*** [[https://magit.vc][Magit]]
+
+Use =C-x g= to enter the mode.
 * Configuration
 ** Disabling default behaviours
 
@@ -152,22 +165,3 @@ https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensit
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 #+END_SRC
-
-
-
-; Support for Evil mode movement in 3rd party packages, such as Magit.
-
-#+BEGIN_SRC emacs-lisp
-(evil-collection-init)
-#+END_SRC
-
-
-** [[https://github.com/emacs-evil/evil-collection][Package evil-collection]]
-
-Magit buffers don't support Vim movement keys (=hjkl=) by default, which is what the =evil-collection= package is about.
-
-It supports other common packages, not only Magit.
-
-*** [[https://magit.vc][Magit]]
-
-Use =C-x g= to enter the mode.
