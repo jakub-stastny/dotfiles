@@ -1,4 +1,4 @@
-emacs-session-name() { basename $PWD }
+emacs-session-name() { basename $PROJECT_ROOT }
 
 functions[_verify-emacs-session]=$functions[verify-emacs-session]
 verify-emacs-session() {

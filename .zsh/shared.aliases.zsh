@@ -19,6 +19,7 @@ done
 # This defaults to NeoVim.
 # It's meant to be overwritten in per-project .profile.zsh files.
 e() { (test "$#" -eq 0) && $EDITOR . || $EDITOR $@ }
+v() { nvim $@ }
 
 alias ghist="cat $HISTFILE | egrep"
 

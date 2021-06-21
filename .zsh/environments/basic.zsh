@@ -1,3 +1,5 @@
+export PROJECT_ROOT=$PWD
+
 # Proxy all Git aliases to ZSH.
 # This way "git cam" becames simply "cam".
 for galias in $(git config --get-regexp alias | awk '{ print $1 }' | awk -F. '{ print $2 }'); do
@@ -18,8 +20,6 @@ if test -f .env/variables; then
     export $vardef
   done
 fi
-
-v() { nvim $@ }
 
 try-load() {
   test -f $1 && load $1 || echo "$(tput setaf 3)~$(tput sgr0) Not found $(tput setaf 7)$1$(tput sgr0)"

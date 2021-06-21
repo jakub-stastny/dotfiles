@@ -3,5 +3,3 @@ mksession() {
 }
 
 yt='youtube-dl -f '\''bestaudio[ext=m4a]'\'
-
-alias v=e
