@@ -165,3 +165,26 @@ https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensit
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  ;; (setq
+  ;;   erc-nick "jakub-stastny"     ; Our IRC nick
+  ;;   erc-user-full-name "Jakub Stastny") ; Our /whois name
+
+  ;; ;; Define a function to connect to a server
+  ;; (defun libera ()
+  ;;   (interactive)
+  ;;   (lambda ()
+  ;;   (erc :server "irc.libera.chat"
+  ;;        :port   "6697")))
+#+END_SRC
+
+* Org mode
+
+** Do not indent after headings
+
+https://www.reddit.com/r/orgmode/comments/npxghq/how_to_change_automatic_indentation_and/
+
+#+BEGIN_SRC emacs-lisp
+(setq org-adapt-indentation nil)
+#+END_SRC
