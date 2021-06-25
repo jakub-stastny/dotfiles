@@ -204,5 +204,17 @@ https://www.reddit.com/r/emacs/comments/ad68zk/get_easytemplates_back_in_orgmode
 It's good that is so easy to keep things working as you're used to, but you might also want to give the new mechanism a shot. The command org-insert-structure-template bound to C-c C-, gives you a list of possible #begin_/#end_ pairs to insert, that narrows down interactively while you type. It's fast, convenient and you don't have to have the trigger memorized before hand as with <trigger TAB.
 
 #+begin_src emacs-lisp
-(require 'org-tempo)
+  (require 'org-tempo)
+#+end_src
+
+** Don't ask confirmation for C-c C-c.
+
+#+begin_src emacs-lisp
+  (setq org-confirm-babel-evaluate nil)
+#+end_src
+
+** C-c ' opens in a full-screen view
+
+#+begin_src emacs-lisp
+  (setq org-src-window-setup 'current-window)
 #+end_src
