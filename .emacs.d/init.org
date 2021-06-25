@@ -194,3 +194,13 @@ https://www.reddit.com/r/orgmode/comments/npxghq/how_to_change_automatic_indenta
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'eww-browse-url)
 #+END_SRC
+
+** Easy templates
+
+https://www.reddit.com/r/emacs/comments/ad68zk/get_easytemplates_back_in_orgmode_92/
+
+=<s tab= to expand to a code block.
+
+#+begin_src emacs-lisp
+(require 'org-tempo)
+#+end_src
