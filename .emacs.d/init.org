@@ -201,6 +201,8 @@ https://www.reddit.com/r/emacs/comments/ad68zk/get_easytemplates_back_in_orgmode
 
 =<s tab= to expand to a code block.
 
+It's good that is so easy to keep things working as you're used to, but you might also want to give the new mechanism a shot. The command org-insert-structure-template bound to C-c C-, gives you a list of possible #begin_/#end_ pairs to insert, that narrows down interactively while you type. It's fast, convenient and you don't have to have the trigger memorized before hand as with <trigger TAB.
+
 #+begin_src emacs-lisp
 (require 'org-tempo)
 #+end_src
