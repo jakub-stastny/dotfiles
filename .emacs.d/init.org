@@ -188,3 +188,9 @@ https://www.reddit.com/r/orgmode/comments/npxghq/how_to_change_automatic_indenta
 #+BEGIN_SRC emacs-lisp
 (setq org-adapt-indentation nil)
 #+END_SRC
+
+** Open HTTP links in EWW
+
+#+BEGIN_SRC emacs-lisp
+(setq browse-url-browser-function 'eww-browse-url)
+#+END_SRC
