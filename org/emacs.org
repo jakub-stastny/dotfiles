@@ -1,10 +1,20 @@
-#+TITLE: Emacs configuration file    
-#+AUTHOR: Jakub Šťastný    
+#+TITLE: Emacs configuration file
+#+AUTHOR: Jakub Šťastný
 #+PROPERTY: header-args :tangle ~/.emacs.d/init.el :mkdirp yes
 
 * About
 
 My minimalistic Emacs configuration. Concerns that are not part of the core are addressed in environments.
+
+* Native comp
+
+Set it early in your init file so all future packages benefit from async compilation.
+
+Unlike =elc= files, the =eln= files are stored in =~/.emacs.d/eln-cache=.
+
+#+begin_src emacs-lisp
+  (setq comp-deferred-compilation t)
+#+end_src
 
 * Managing this configuration
 
@@ -13,7 +23,11 @@ My minimalistic Emacs configuration. Concerns that are not part of the core are 
 #+begin_src emacs-lisp
   (setq my/emacs-config-path (expand-file-name "~/org/emacs.org"))
 #+end_src
-   
+
+#+begin_src emacs-lisp
+  (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+#+end_src
+
 ** Tangle on save
 
 The =init.el= should (after the first run) mirror the source blocks in the =init.org=. We can use =C-c C-v t= to run =org-babel-tangle=, which extracts the code blocks from the current file into a source-specific file (in this case a =.el=-file).
@@ -25,10 +39,10 @@ To avoid doing this each time a change is made we can add a function to the =aft
     "If the current buffer is 'init.org' the code-blocks are
     tangled, and the tangled file is compiled."
     (when (equal (buffer-file-name) my/emacs-config-path)
-       ;; Avoid running hooks when tangling.
-       (let ((prog-mode-hook nil))
-	    (org-babel-tangle)
-	    (byte-compile-file (concat user-emacs-directory "init.el")))))
+      ;; Avoid running hooks when tangling.
+      (let ((prog-mode-hook nil))
+        (org-babel-tangle)
+        (byte-compile-file (concat user-emacs-directory "init.el")))))
 
     (add-hook 'after-save-hook 'my/emacs/tangle-hook)
 #+end_src
@@ -44,7 +58,6 @@ To avoid doing this each time a change is made we can add a function to the =aft
     "If the current buffer is 'init.org' the code-blocks are
     reloaded, and the reloaded file is compiled."
     (when (equal (buffer-file-name) my/emacs-config-path)
-    (message "TEST")
       (load-file (concat user-emacs-directory "init.el"))))
 
     (add-hook 'after-save-hook 'my/emacs/reload-hook)
@@ -52,6 +65,8 @@ To avoid doing this each time a change is made we can add a function to the =aft
 
 * Configuration
 ** Leaf
+
+Alternative to =use-package= that actually works.
 
 =package-refresh-contents=
 
@@ -92,25 +107,27 @@ https://www.gnu.org/software/emacs/manual/html_node/elisp/Warning-Basics.html
 #+end_src
 
 ** EVIL and EVIL collection
-   [[https://github.com/emacs-evil/evil-collection][Package evil-collection]]
+
+[[https://github.com/emacs-evil/evil-collection][Package evil-collection]]
 
 Support for Evil mode movement in 3rd party packages, such as Magit.
 
 #+begin_src emacs-lisp
-	(leaf evil
-	  :ensure t
-	  :init
-	    (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-	    (setq evil-want-keybinding nil)
-	  :config
-	      (evil-mode 1)
-	      (evil-commentary-mode))
+  (leaf evil
+    :ensure t
+    :init
+      (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+      (setq evil-want-keybinding nil)
+    :config
+        (evil-mode 1)
+        (evil-ex-define-cmd "ls" 'ibuffer)
+        (evil-commentary-mode))
 
-	(leaf evil-collection
-	  :after evil
-	  :ensure t
-	  :config
-	    (evil-collection-init))
+  (leaf evil-collection
+    :after evil
+    :ensure t
+    :config
+      (evil-collection-init))
 #+end_src
 
 *** EVIL and Org mode
@@ -211,19 +228,19 @@ https://www.reddit.com/r/emacs/comments/ad68zk/get_easytemplates_back_in_orgmode
 =<s tab= to expand to a code block.
 
 It's good that is so easy to keep things working as you're used to, but you might also want to give the new mechanism a shot. The command org-insert-structure-template bound to C-c C-, gives you a list of possible #begin_/#end_ pairs to insert, that narrows down interactively while you type. It's fast, convenient and you don't have to have the trigger memorized before hand as with <trigger TAB.
-  
+
 #+begin_src emacs-lisp
   (require 'org-tempo)
 #+end_src
-  
+
 ** Don't ask confirmation for C-c C-c.
-  
+
 #+begin_src emacs-lisp
   (setq org-confirm-babel-evaluate nil)
 #+end_src
-  
+
 ** C-c ' opens in a full-screen view
-  
+
 #+begin_src emacs-lisp
   (setq org-src-window-setup 'current-window)
 #+end_src
@@ -258,11 +275,11 @@ It's good that is so easy to keep things working as you're used to, but you migh
 #+END_SRC
 
 ** Open HTTP links in EWW
- 
+
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'eww-browse-url)
 #+END_SRC
 
 *** [[https://magit.vc][Magit]]
- 
+
 Use =C-x g= to enter the mode.
