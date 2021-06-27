@@ -7,3 +7,6 @@
 (add-hook 'org-mode-hook
   (lambda ()
     (add-hook 'after-save-hook 'my/local/tangle-org-mode-files nil nil)))
+
+(defun my/literate/mkprologue (base buffer-name)
+  (str "# Generated from " base buffer-name))
