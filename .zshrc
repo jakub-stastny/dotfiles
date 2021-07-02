@@ -41,3 +41,6 @@ fi
 # The no-project environment is never inherited, since when we launch
 # a new session using mksession, a new ZSH instance is loaded.
 echo && test -f .env/zsh.zsh && load .env/zsh.zsh || load ~/.zsh/environments/no-project.zsh
+
+setopt rm_star_silent # Don't ask for confirmation on rm with glob.
+setopt nullglob # Don't fail if one of the globs is not present, such as with rm *.{html,css}
