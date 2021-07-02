@@ -10,3 +10,9 @@
 
 (defun my/literate/mkprologue (base buffer-name)
   (str "# Generated from " base buffer-name))
+
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '(
+     (shell . t)
+     (ditaa . t)))
