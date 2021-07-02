@@ -119,9 +119,19 @@ Support for Evil mode movement in 3rd party packages, such as Magit.
       (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
       (setq evil-want-keybinding nil)
     :config
-        (evil-mode 1)
-        (evil-ex-define-cmd "ls" 'ibuffer)
-        (evil-commentary-mode))
+      (evil-mode 1)
+      (evil-ex-define-cmd "ls" 'ibuffer))
+
+  (leaf evil-commentary
+    :ensure t
+    :config
+      (evil-commentary-mode))
+
+  (leaf evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode 1))
+
 
   (leaf evil-collection
     :after evil
