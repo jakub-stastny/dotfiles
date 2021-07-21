@@ -44,7 +44,7 @@ To avoid doing this each time a change is made we can add a function to the =aft
         (org-babel-tangle)
         (byte-compile-file (concat user-emacs-directory "init.el")))))
 
-    (add-hook 'after-save-hook 'my/emacs/tangle-hook)
+  (add-hook 'after-save-hook 'my/emacs/tangle-hook)
 #+end_src
 
 ** Tangle on save
@@ -60,7 +60,7 @@ To avoid doing this each time a change is made we can add a function to the =aft
     (when (equal (buffer-file-name) my/emacs-config-path)
       (load-file (concat user-emacs-directory "init.el"))))
 
-    (add-hook 'after-save-hook 'my/emacs/reload-hook)
+  (add-hook 'after-save-hook 'my/emacs/reload-hook)
 #+end_src
 
 * Configuration
@@ -76,22 +76,19 @@ Alternative to =use-package= that actually works.
     'package-archives '(("org" . "https://orgmode.org/elpa/")
                         ("melpa" . "https://melpa.org/packages/")
                         ("gnu" . "https://elpa.gnu.org/packages/")))
+
     (package-initialize)
+
     (unless (package-installed-p 'leaf)
       (package-refresh-contents)
       (package-install 'leaf))
 
-      (leaf leaf-keywords
-        :ensure t
-        :init
-	;; optional packages if you want to use :hydra, :el-get, :blackout,,,
-	;(leaf hydra :ensure t)
-	;(leaf el-get :ensure t)
-	;(leaf blackout :ensure t)
-
-	:config
-	;; initialize leaf-keywords.el
-	(leaf-keywords-init)))
+    (leaf leaf-keywords
+      :ensure t
+      ;; :init
+      :config
+        ;; initialize leaf-keywords.el
+        (leaf-keywords-init)))
 #+end_src
 
 ** Do not show warnings buffer on startup with warnings
@@ -132,7 +129,6 @@ Support for Evil mode movement in 3rd party packages, such as Magit.
     :config
     (global-evil-surround-mode 1))
 
-
   (leaf evil-collection
     :after evil
     :ensure t
@@ -152,21 +148,21 @@ Enable tab cycling in org mode in the evil normal mode.
 
 ** Key chord
 #+begin_src emacs-lisp
-      (leaf key-chord
-	:after evil
-	:ensure t
-	:config
-	      (key-chord-mode 1)
+  (leaf key-chord
+        :after evil
+        :ensure t
+        :config
+          (key-chord-mode 1)
 
-  ;https://www.emacswiki.org/emacs/KeyChord
-    ; Max time delay between two presses of the same key to be considered a key chord.
+  ; https://www.emacswiki.org/emacs/KeyChord
+  ; Max time delay between two presses of the same key to be considered a key chord.
 	;; Should normally be a little longer than `key-chord-two-keys-delay'.
 	(setq key-chord-one-key-delay 0.3) ; default 0.2
 
   ;(key-chord-define evil-normal-state-map "jj" 'evil-force-normal-state)
-	      (key-chord-define evil-visual-state-map "jj" 'evil-change-to-previous-state)
-	      (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-	      (key-chord-define evil-replace-state-map "jj" 'evil-normal-state))
+  (key-chord-define evil-visual-state-map "jj" 'evil-change-to-previous-state)
+  (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+  (key-chord-define evil-replace-state-map "jj" 'evil-normal-state))
 #+end_src
 
 ** Helm
@@ -175,20 +171,20 @@ Enable tab cycling in org mode in the evil normal mode.
 (leaf helm
 	:ensure t
 	:config
-  ;(require 'helm-config)
-  (helm-mode 1))
+    ;(require 'helm-config)
+    (helm-mode 1))
 #+end_src
 
 ** Disabling default behaviours
 
-#+BEGIN_SRC emacs-lisp
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-#+END_SRC
+#+begin_src emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+#+end_src
 
 ** Line numbers & indentation
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
 
@@ -196,7 +192,7 @@ Enable tab cycling in org mode in the evil normal mode.
 
   (visual-line-mode t) ; soft wrap
   (add-hook 'text-mode-hook 'turn-on-visual-line-mode)
-#+END_SRC
+#+end_src
 
 ** Editor config
 
@@ -204,22 +200,22 @@ Enable tab cycling in org mode in the evil normal mode.
   (leaf editorconfig
     :ensure t
     :config
-        (editorconfig-mode 1))
+      (editorconfig-mode 1))
 #+end_src
 
 ** Search & regular expressions
 
 https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensitivity.html
 
-#+BEGIN_SRC emacs-lisp
-(setq case-fold-search nil) ; make searches case sensitive %s
-#+END_SRC
+#+begin_src emacs-lisp
+  (setq case-fold-search nil) ; make searches case sensitive %s
+#+end_src
 
 ** Backup files
 
-#+BEGIN_SRC emacs-lisp
-(setq backup-directory-alist `(("." . "~/.emacs-backups")))
-#+END_SRC
+#+begin_src emacs-lisp
+  (setq backup-directory-alist `(("." . "~/.emacs-backups")))
+#+end_src
 
 * Org mode
 
@@ -227,9 +223,9 @@ https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensit
 
 https://www.reddit.com/r/orgmode/comments/npxghq/how_to_change_automatic_indentation_and/
 
-#+BEGIN_SRC emacs-lisp
-(setq org-adapt-indentation nil)
-#+END_SRC
+#+begin_src emacs-lisp
+  (setq org-adapt-indentation nil)
+#+end_src
 
 ** Easy templates
 
@@ -257,21 +253,20 @@ It's good that is so easy to keep things working as you're used to, but you migh
 
 ** The rest
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 ; Interesting pkg https://www.emacswiki.org/emacs/FillColumnIndicator
 ;(setq fci-rule-width 1)
 ;(setq fci-rule-color "darkblue")
 
 ; https://www.emacswiki.org/emacs/VisualLineMode
 ; https://www.emacswiki.org/emacs/VisualFillColumn
-(set-fill-column 120)
 
 (defun clear-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
-#+END_SRC
+#+end_src
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   ;; (setq
   ;;   erc-nick "jakub-stastny"     ; Our IRC nick
   ;;   erc-user-full-name "Jakub Stastny") ; Our /whois name
@@ -282,14 +277,53 @@ It's good that is so easy to keep things working as you're used to, but you migh
   ;;   (lambda ()
   ;;   (erc :server "irc.libera.chat"
   ;;        :port   "6697")))
-#+END_SRC
+#+end_src
 
 ** Open HTTP links in EWW
 
-#+BEGIN_SRC emacs-lisp
-(setq browse-url-browser-function 'eww-browse-url)
-#+END_SRC
+#+begin_src emacs-lisp
+  (setq browse-url-browser-function 'eww-browse-url)
+#+end_src
 
-*** [[https://magit.vc][Magit]]
+** [[https://magit.vc][Magit]]
 
 Use =C-x g= to enter the mode.
+
+** Lispy & Lispyville
+
+Enable Lispyville when Lispy is enabled.
+
+#+begin_src emacs-lisp
+  (add-hook 'lispy-mode-hook #'lispyville-mode)
+  (add-hook 'lispy-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'lispy-mode-hook #'highlight-parentheses-mode)
+#+end_src
+
+Enable Lispy when Lisp is being edited.
+
+#+begin_src emacs-lisp
+  ;; (add-hook 'emacs-lisp :tangle no-mode-hook #'lispy-mode)
+  ;; (add-hook 'lisp-mode-hook #'lispy-mode)
+  ;; (add-hook 'clojure-mode-hook #'lispy-mode)
+
+  ;; (add-hook 'emacs-lisp :tangle no-mode-hook #'rainbow-delimiters-mode)
+  ;; (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+  ;; (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+
+  ;; (add-hook 'emacs-lisp :tangle no-mode-hook #'highlight-parentheses-mode)
+  ;; (add-hook 'lisp-mode-hook #'highlight-parentheses-mode)
+  ;; (add-hook 'clojure-mode-hook #'highlight-parentheses-mode)
+#+end_src
+
+With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obsoletes the fill-column-indicator package. You can add:
+
+#+begin_src emacs-lisp
+  (require 'display-fill-column-indicator)
+  (add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
+  (setq display-fill-column-indicator-column 85) ; 85 characters per line
+
+  ; Use [[/]] to navigate between previous/next sexp. TODO: Do in a hook.
+  ; Might not be necessary, lispyville does that in normal mode with only one paren.
+  (key-chord-define evil-insert-state-map "]]" 'lispy-forward)
+  (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
+#+end_src
