@@ -112,9 +112,9 @@ Support for Evil mode movement in 3rd party packages, such as Magit.
 #+begin_src emacs-lisp
   (leaf evil
     :ensure t
-    :init
-      (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-      (setq evil-want-keybinding nil)
+    ;; :init
+    ;;   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+    ;;   (setq evil-want-keybinding nil)
     :config
       (evil-mode 1)
       (evil-ex-define-cmd "ls" 'ibuffer))
@@ -129,11 +129,13 @@ Support for Evil mode movement in 3rd party packages, such as Magit.
     :config
     (global-evil-surround-mode 1))
 
-  (leaf evil-collection
-    :after evil
-    :ensure t
-    :config
-      (evil-collection-init))
+  ;; THIS BREAKS LISPY (d command deletes rather than lispy-different).
+  ;; https://github.com/emacs-evil/evil-collection/issues/116
+  ;; (leaf evil-collection
+  ;;   :after evil
+  ;;   :ensure t
+  ;;   :config
+  ;;     (evil-collection-init))
 #+end_src
 
 *** EVIL and Org mode
@@ -291,28 +293,16 @@ Use =C-x g= to enter the mode.
 
 ** Lispy & Lispyville
 
-Enable Lispyville when Lispy is enabled.
+Enable Lispy when Lisp is being edited.
 
 #+begin_src emacs-lisp
   (add-hook 'lispy-mode-hook #'lispyville-mode)
   (add-hook 'lispy-mode-hook #'rainbow-delimiters-mode)
   (add-hook 'lispy-mode-hook #'highlight-parentheses-mode)
-#+end_src
 
-Enable Lispy when Lisp is being edited.
-
-#+begin_src emacs-lisp
-  ;; (add-hook 'emacs-lisp :tangle no-mode-hook #'lispy-mode)
-  ;; (add-hook 'lisp-mode-hook #'lispy-mode)
-  ;; (add-hook 'clojure-mode-hook #'lispy-mode)
-
-  ;; (add-hook 'emacs-lisp :tangle no-mode-hook #'rainbow-delimiters-mode)
-  ;; (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
-  ;; (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-
-  ;; (add-hook 'emacs-lisp :tangle no-mode-hook #'highlight-parentheses-mode)
-  ;; (add-hook 'lisp-mode-hook #'highlight-parentheses-mode)
-  ;; (add-hook 'clojure-mode-hook #'highlight-parentheses-mode)
+  (add-hook 'clojure-mode-hook #'lispy-mode)
+  (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+  (add-hook 'lisp-mode-hook #'lispy-mode)
 #+end_src
 
 With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obsoletes the fill-column-indicator package. You can add:
@@ -326,4 +316,6 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
   ; Might not be necessary, lispyville does that in normal mode with only one paren.
   (key-chord-define evil-insert-state-map "]]" 'lispy-forward)
   (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
+
+  (load-theme 'modus-vivendi)
 #+end_src
