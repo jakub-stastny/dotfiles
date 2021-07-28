@@ -318,4 +318,6 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
   (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
 
   (load-theme 'modus-vivendi)
+
+  (defun start-bb-repl () (interactive) (start-process "Babashka REPL" "Babashka REPL" "bb" "--nrepl-server" "1667"))
 #+end_src
