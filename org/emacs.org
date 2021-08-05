@@ -253,7 +253,50 @@ It's good that is so easy to keep things working as you're used to, but you migh
   (setq org-src-window-setup 'current-window)
 #+end_src
 
-** The rest
+* Lisp
+** Lispy & Lispyville
+
+Enable Lispy when Lisp is being edited.
+
+#+begin_src emacs-lisp
+  (leaf lispy :ensure t)
+  (leaf lispyville :ensure t)
+  (leaf clojure-mode :ensure t)
+  (leaf cider :ensure t)
+  (leaf rainbow-delimiters :ensure t)
+  (leaf highlight-parentheses :ensure t)
+#+end_src
+
+
+#+begin_src emacs-lisp
+  (add-hook 'lispy-mode-hook #'lispyville-mode)
+  (add-hook 'lispy-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'lispy-mode-hook #'highlight-parentheses-mode)
+
+  (add-hook 'clojure-mode-hook #'lispy-mode)
+  (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
+  (add-hook 'lisp-mode-hook #'lispy-mode)
+#+end_src
+
+With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obsoletes the fill-column-indicator package. You can add:
+
+#+begin_src emacs-lisp
+  (require 'display-fill-column-indicator)
+  (add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
+  (setq display-fill-column-indicator-column 85) ; 85 characters per line
+
+  ; Use [[/]] to navigate between previous/next sexp. TODO: Do in a hook.
+  ; Might not be necessary, lispyville does that in normal mode with only one paren.
+  (key-chord-define evil-insert-state-map "]]" 'lispy-forward)
+  (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
+
+  (if (string-match "28" (emacs-version))
+      (load-theme 'modus-vivendi)
+      (load-theme 'leuven))
+
+  (defun start-bb-repl () (interactive) (start-process "Babashka REPL" "Babashka REPL" "bb" "--nrepl-server" "1667"))
+#+end_src
+* The rest
 
 #+begin_src emacs-lisp
 ; Interesting pkg https://www.emacswiki.org/emacs/FillColumnIndicator
@@ -290,34 +333,3 @@ It's good that is so easy to keep things working as you're used to, but you migh
 ** [[https://magit.vc][Magit]]
 
 Use =C-x g= to enter the mode.
-
-** Lispy & Lispyville
-
-Enable Lispy when Lisp is being edited.
-
-#+begin_src emacs-lisp
-  (add-hook 'lispy-mode-hook #'lispyville-mode)
-  (add-hook 'lispy-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'lispy-mode-hook #'highlight-parentheses-mode)
-
-  (add-hook 'clojure-mode-hook #'lispy-mode)
-  (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
-  (add-hook 'lisp-mode-hook #'lispy-mode)
-#+end_src
-
-With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obsoletes the fill-column-indicator package. You can add:
-
-#+begin_src emacs-lisp
-  (require 'display-fill-column-indicator)
-  (add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
-  (setq display-fill-column-indicator-column 85) ; 85 characters per line
-
-  ; Use [[/]] to navigate between previous/next sexp. TODO: Do in a hook.
-  ; Might not be necessary, lispyville does that in normal mode with only one paren.
-  (key-chord-define evil-insert-state-map "]]" 'lispy-forward)
-  (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
-
-  (load-theme 'modus-vivendi)
-
-  (defun start-bb-repl () (interactive) (start-process "Babashka REPL" "Babashka REPL" "bb" "--nrepl-server" "1667"))
-#+end_src
