@@ -16,7 +16,7 @@ alias emacs="emacs -nw"
 export XDG_CONFIG_HOME=~/.config
 
 export DROPBOX_DIR=~/Library/CloudStorage/Dropbox
-export GDRIVE_DIR=~/Library/CloudStorage/GoogleDrive-jakub.stastny.pt@gmail.com
+export GDRIVE_DIR=~/Library/CloudStorage/GoogleDrive-jakub.stastny.pt@gmail.com/My\ Drive
 
 # For compilers to find node@18 you may need to set:
 # export LDFLAGS="-L/opt/homebrew/opt/node@18/lib"
