@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- https://robertodip.com/blog/scheduling-jobs-with-launchd-and-friends/ -->
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>js.clean-desktop</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/jakub/.scripts/clean-desktop</string>
+    </array>
+
+    <!-- Run every hour -->
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/jakub/Desktop/clean-desktop.err.log</string>
+  </dict>
+</plist>
