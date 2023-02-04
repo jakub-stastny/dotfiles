@@ -4,29 +4,30 @@ call plug#begin('~/.local/share/nvim/plugins')
 Plug 'tpope/vim-commentary' | Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' | Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jceb/vim-orgmode'
+Plug 'jceb/vim-orgmode' " For syntax highlighting only.
+Plug 'junegunn/fzf'
 
 set path=.,**
 " nnoremap <silent> <C-p> :FZF<CR>
 
-" " Switching buffers using Ctrl+s.
-" function! s:buflist()
-"   redir => ls
-"   silent ls
-"   redir END
-"   return split(ls, '\n')
-" endfunction
+" Switching buffers using Ctrl+s.
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
 
-" function! s:bufopen(e)
-"   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-" endfunction
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
 
-" nnoremap <silent> <C-s> :call fzf#run({
-" \   'source':  reverse(<sid>buflist()),
-" \   'sink':    function('<sid>bufopen'),
-" \   'options': '+m',
-" \   'down':    len(<sid>buflist()) + 2
-" \ })<CR>
+nnoremap <silent> <C-s> :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
 
 " Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
