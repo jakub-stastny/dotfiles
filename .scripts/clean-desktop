@@ -1,13 +1,13 @@
 #!/bin/zsh
 
-if ls -l ~/Desktop | grep "total 0" &> /dev/null; then
-  echo "Nothing there."
-  exit
-fi
+# ls: /Users/jakub/Desktop: Operation not permitted
+#
+# Consider Babashka.
+ls -l ~/Desktop | grep "total 0" &> /dev/null || exit
 
 # target=${1:test}
 if test "$1" = ""; then
-  target_basename=$(date "%Y-+%m-%d:%H-%M")
+  target_basename=$(date +"%Y-%m-%d:%H-%M")
 else
   target_basename=$1
 fi
@@ -16,5 +16,5 @@ target_dir=~/Documents/WIP/$target_basename
 
 mkdir "$target_dir"
 
-mv ~/Desktop/* $target_dir
+#mv ~/Desktop/* $target_dir
 echo "Files from Desktop moved to $target_dir."
