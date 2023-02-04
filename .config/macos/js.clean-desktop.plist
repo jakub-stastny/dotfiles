@@ -13,13 +13,17 @@
     </array>
 
     <!-- Run every hour -->
+    <!-- Also see StartCalendarInterval -->
     <key>StartInterval</key>
     <integer>3600</integer>
 
     <key>RunAtLoad</key>
     <true/>
 
+    <key>StandardOutPath</key>
+    <string>/Users/jakub/clean-desktop.log</string>
+
     <key>StandardErrorPath</key>
-    <string>/Users/jakub/Desktop/clean-desktop.err.log</string>
+    <string>/Users/jakub/clean-desktop.err.log</string>
   </dict>
 </plist>

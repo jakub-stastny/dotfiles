@@ -9,3 +9,7 @@ colorscheme default
 
 " Highlight colour.
 highlight Search guibg='Purple' guifg='NONE'
+
+" Font in the GUI.
+" Use set guifont=* to get the font selector.
+set guifont=Monaco:h14
