@@ -7,6 +7,14 @@
     <key>Label</key>
     <string>js.clean-desktop</string>
 
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>
+        /Users/jakub/Library/Python/3.9/bin:/opt/homebrew/opt/node@18/bin:/opt/homebrew/Cellar/ruby/3.2.0/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/jakub/.scripts:/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin
+      </string>
+    </dict>
+
     <key>ProgramArguments</key>
     <array>
       <string>/Users/jakub/.scripts/clean-desktop</string>
@@ -20,10 +28,10 @@
     <key>RunAtLoad</key>
     <true/>
 
-    <key>StandardOutPath</key>
-    <string>/Users/jakub/clean-desktop.log</string>
+    <!-- <key>StandardOutPath</key> -->
+    <!-- <string>/Users/jakub/clean-desktop.log</string> -->
 
-    <key>StandardErrorPath</key>
-    <string>/Users/jakub/clean-desktop.err.log</string>
+    <!-- <key>StandardErrorPath</key> -->
+    <!-- <string>/Users/jakub/clean-desktop.err.log</string> -->
   </dict>
 </plist>

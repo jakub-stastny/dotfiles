@@ -1,20 +1,22 @@
-#!/bin/zsh
+#!/usr/bin/env bb
 
-# ls: /Users/jakub/Desktop: Operation not permitted
-#
-# Consider Babashka.
-ls -l ~/Desktop | grep "total 0" &> /dev/null || exit
+(def home (System/getenv "HOME"))
+(def desktop (str/join "/" [home "Desktop"]))
+(def wip-directory (str/join "/" [home "Documents" "WIP"]))
 
-# target=${1:test}
-if test "$1" = ""; then
-  target_basename=$(date +"%Y-%m-%d:%H-%M")
-else
-  target_basename=$1
-fi
+(def date-format (new java.text.SimpleDateFormat "yyyy-MM-dd.hh-mm"))
+(def today (.format date-format (java.util.Date.)))
 
-target_dir=~/Documents/WIP/$target_basename
+(defn create-temp-directory []
+  (let [temp-directory today]
+    (fs/create-dir (str/join "/" [wip-directory temp-directory]))))
 
-mkdir "$target_dir"
+(defn move-to-dir [files path]
+  (println (str "~ Moving " (count files) " files to " path "."))
+  (doseq [file files] (fs/move file path)))
 
-#mv ~/Desktop/* $target_dir
-echo "Files from Desktop moved to $target_dir."
+(let [files (fs/glob desktop "*")]
+  (cond
+    (= 0 (count files)) (println "No files found, exiting.")
+    (< 4 (count files)) (move-to-dir files wip-directory)
+    :else               (move-to-dir files (create-temp-directory))))
