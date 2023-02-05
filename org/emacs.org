@@ -259,7 +259,13 @@ It's good that is so easy to keep things working as you're used to, but you migh
 Enable Lispy when Lisp is being edited.
 
 #+begin_src emacs-lisp
-  (leaf lispy :ensure t)
+  (leaf lispy
+      :ensure t
+      :config
+        ; https://github.com/noctuid/lispyville/issues/36
+        (define-key lispy-mode-map-lispy "[" nil)
+        (define-key lispy-mode-map-lispy "]" nil))
+
   (leaf lispyville :ensure t)
   (leaf clojure-mode :ensure t)
   (leaf cider :ensure t)
