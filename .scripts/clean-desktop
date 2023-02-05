@@ -18,5 +18,5 @@
 (let [files (fs/glob desktop "*")]
   (cond
     (= 0 (count files)) (println "No files found, exiting.")
-    (< 4 (count files)) (move-to-dir files wip-directory)
+    (> 3 (count files)) (move-to-dir files wip-directory)
     :else               (move-to-dir files (create-temp-directory))))
