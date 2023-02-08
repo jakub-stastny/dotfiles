@@ -1,7 +1,8 @@
 #!/usr/bin/env bb
 
 (def home (System/getenv "HOME"))
-(def desktop (str/join "/" [home "Desktop"]))
+(def desktop-path (str/join "/" [home "Desktop"]))
+(def downloads-path (str/join "/" [home "Downloads"]))
 (def wip-directory (str/join "/" [home "Documents" "WIP"]))
 
 (def date-format (new java.text.SimpleDateFormat "yyyy-MM-dd.hh-mm"))
@@ -15,8 +16,11 @@
   (println (str "~ Moving " (count files) " files to " path "."))
   (doseq [file files] (fs/move file path)))
 
-(let [files (fs/glob desktop "*")]
-  (cond
-    (= 0 (count files)) (println "No files found, exiting.")
-    (> 3 (count files)) (move-to-dir files wip-directory)
-    :else               (move-to-dir files (create-temp-directory))))
+(defn move-files-from [path]
+  (let [files (fs/glob path "*")]
+    (cond
+      (= 0 (count files)) (println (str "~ No files found in" path "."))
+      (> 3 (count files)) (move-to-dir files wip-directory) ; TODO: Fix renaming if such file already exists (babashka/fs has some opts I think)
+      :else (move-to-dir files (create-temp-directory)))))
+
+(doseq [path [desktop-path downloads-path]] (move-files-from path))
