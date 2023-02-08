@@ -12,6 +12,7 @@
   (let [temp-directory today]
     (fs/create-dir (str/join "/" [wip-directory temp-directory]))))
 
+; TODO: Fix renaming if such file already exists (try/catch).
 (defn move-to-dir [files path]
   (println (str "~ Moving " (count files) " files to " path "."))
   (doseq [file files] (fs/move file path)))
@@ -20,7 +21,7 @@
   (let [files (fs/glob path "*")]
     (cond
       (= 0 (count files)) (println (str "~ No files found in" path "."))
-      (> 3 (count files)) (move-to-dir files wip-directory) ; TODO: Fix renaming if such file already exists (babashka/fs has some opts I think)
+      (> 3 (count files)) (move-to-dir files wip-directory)
       :else (move-to-dir files (create-temp-directory)))))
 
 (doseq [path [desktop-path downloads-path]] (move-files-from path))
