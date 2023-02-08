@@ -17,7 +17,6 @@
        (catch java.nio.file.FileAlreadyExistsException e
          (println "! Skipping file " file))))
 
-; TODO: Fix renaming if such file already exists (try/catch).
 (defn move-to-dir [files path]
   (println (str "~ Moving " (count files) " files to " path "."))
   (doseq [file files] (move file path)))
