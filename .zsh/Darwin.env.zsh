@@ -6,10 +6,9 @@ path-prepend /opt/homebrew/opt/node@18/bin
 path-prepend ~/Library/Python/3.9/bin
 path-add /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin
 
-test $PWD = $HOME && cd ~/Documents
+test $PWD = $HOME && cd ~/Desktop
 
 alias zshrc="e ~/.zsh/Darwin.env.zsh; source ~/.zsh/Darwin.env.zsh"
-alias emacs="emacs -nw"
 
 # Required by https://github.com/practicalli/clojure-deps-edn
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
