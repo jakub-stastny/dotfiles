@@ -22,7 +22,7 @@
   (doseq [file files] (move file path)))
 
 (defn move-files-from [path]
-  (let [files (fs/glob path "*")]
+  (let [files (filter #(not (fs/hidden? %)) (fs/list-dir path))]
     (cond
       (= 0 (count files)) (println (str "~ No files found in" path "."))
       (> 3 (count files)) (move-to-dir files wip-directory)
