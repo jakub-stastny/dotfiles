@@ -260,11 +260,12 @@ Enable Lispy when Lisp is being edited.
 
 #+begin_src emacs-lisp
   (leaf lispy
-      :ensure t
-      :config
+      :ensure t)
+      ; NO NEED FOR THIS, see below.
+      ;; :config
         ; https://github.com/noctuid/lispyville/issues/36
-        (define-key lispy-mode-map-lispy "[" nil)
-        (define-key lispy-mode-map-lispy "]" nil))
+        ;; (define-key lispy-mode-map-lispy "[" nil)
+        ;; (define-key lispy-mode-map-lispy "]" nil))
 
   (leaf lispyville :ensure t)
   (leaf clojure-mode :ensure t)
@@ -293,14 +294,21 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
 
   ; Use [[/]] to navigate between previous/next sexp. TODO: Do in a hook.
   ; Might not be necessary, lispyville does that in normal mode with only one paren.
-  (key-chord-define evil-insert-state-map "]]" 'lispy-forward)
-  (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
+  ;; (key-chord-define evil-insert-state-map "]]" 'lispy-forward)
+  ;; (key-chord-define evil-insert-state-map "[[" 'lispy-backward)
 
   (if (string-match "28" (emacs-version))
       (load-theme 'modus-vivendi)
       (load-theme 'leuven))
 
-  (defun start-bb-repl () (interactive) (start-process "Babashka REPL" "Babashka REPL" "bb" "--nrepl-server" "1667"))
+  (defun start-bb-repl ()
+    (interactive)
+    (start-process "Babashka REPL" "Babashka REPL" "bb" "--nrepl-server" "1667"))
+
+  ;; NO NEED FOR THIS: use } to write []
+  ;; https://github.com/abo-abo/lispy/issues/83
+  ;; (define-key lispy-mode-map-lispy "[" nil)
+  ;; (define-key lispy-mode-map-lispy "]" nil)
 #+end_src
 * The rest
 
