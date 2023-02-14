@@ -4,8 +4,6 @@ call plug#begin('~/.local/share/nvim/plugins')
 Plug 'tpope/vim-commentary' | Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' | Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jceb/vim-orgmode' " For syntax highlighting only.
-Plug 'junegunn/fzf'
 
 set path=.,**
 " nnoremap <silent> <C-p> :FZF<CR>
