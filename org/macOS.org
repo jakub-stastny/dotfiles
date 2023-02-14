@@ -1,0 +1,74 @@
+* macOS
+
+Editor to take notes in the browser and then save them.
+
+#+begin_src html :tangle ~/Public/editor.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html {
+        font-family: Helvetica;
+        background: aliceblue;
+      }
+
+      body {
+        margin: 5%;
+      }
+
+      #name {
+        width: 50%;
+        margin: 10px;
+        font-size: 18pt;
+      }
+
+      #notes {
+        width: 75%;
+        height: 75%;
+        min-height: 250px;
+        display: block;
+      }
+
+      button {
+        font-size: 18pt;
+        padding: 20px;
+      }
+    </style>
+
+    <script type="module">
+      const $ = document.querySelector.bind(document)
+
+      const date = new Date().toLocaleDateString().split("/").reverse().join("-")
+      $("#name").value = `${date}.md`
+
+      $("#save-btn").addEventListener("click", (e) => {
+        const text = $("#notes").value
+        const url = URL.createObjectURL(new Blob([text], {type: "text/plain"}))
+
+        const a = document.createElement("a")
+        a.href = url
+        a.download = $("#name").value
+
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+
+        URL.revokeObjectURL(url)
+      })
+    </script>
+  </head>
+
+  <body>
+    <h1>Notes</h1>
+    <input id="name" />
+    <textarea id="notes"></textarea>
+    <button id="save-btn">Save</button>
+
+    <h3>TODO</h3>
+    <ul>
+      <li>Can I show markdown?</li>
+      <li>Fix styles.</li>
+    </ul>
+  </body>
+</html>
+#+end_src
