@@ -1,4 +1,4 @@
-export cdpath=(. ~/Documents/Projects)
+export cdpath=(. ~/Documents ~/Documents/Projects)
 
 path-prepend /opt/homebrew/bin
 path-prepend /opt/homebrew/Cellar/ruby/3.2.0/bin
