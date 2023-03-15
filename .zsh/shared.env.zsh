@@ -40,6 +40,7 @@ path-prepend()    { path=("$@" $path) }
 path-del()        { for i ("$@") { path[(r)$i]=() } }
 path-clear()      { path=() }
 
+path-prepend ~/.babashka/bbin/bin
 path-prepend ~/.scripts
 
 report-custom-functions "Paths" && save-function-list
