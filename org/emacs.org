@@ -6,6 +6,19 @@
 
 My minimalistic Emacs configuration. Concerns that are not part of the core are addressed in environments.
 
+* Default font size
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil :height 200)
+
+  ; For the love of God, don't start in split view when opening multiple files via emacs a b.
+  (add-hook 'emacs-startup-hook
+            (lambda () (delete-other-windows)) t)
+#+end_src
+
+* Notes
+** Copy from Emacs to OS X clipboard:
+~select region then M-| pbcopy~
+
 * Native comp
 
 Set it early in your init file so all future packages benefit from async compilation.
@@ -167,6 +180,14 @@ Enable tab cycling in org mode in the evil normal mode.
   (key-chord-define evil-replace-state-map "jj" 'evil-normal-state))
 #+end_src
 
+*** EVIL redo
+
+Enable redo, otherwise we get an error on redo.
+
+#+begin_src emacs-lisp
+  (evil-set-undo-system 'undo-redo)
+#+end_src
+
 ** Helm
 
 #+begin_src emacs-lisp
@@ -224,21 +245,82 @@ https://www.gnu.org/software/emacs/manual/html_node/efaq/Controlling-case-sensit
 ** Do not indent after headings
 
 https://www.reddit.com/r/orgmode/comments/npxghq/how_to_change_automatic_indentation_and/
+C-j instead of enter!
+Still not perfect as I use normal mode "o" often, but whatevs.
 
 #+begin_src emacs-lisp
   (setq org-adapt-indentation nil)
 #+end_src
 
+
+*** Don't do the silly indentation in source blocks when I do enter
+#+begin_src emacs-lisp
+  (setq org-src-fontify-natively t)
+#+end_src
+
+** Support shift select for multiline select
+#+begin_src emacs-lisp
+  (setq org-support-shift-select t)
+#+end_src
+
 ** Easy templates
 
-https://www.reddit.com/r/emacs/comments/ad68zk/get_easytemplates_back_in_orgmode_92/
-
-=<s tab= to expand to a code block.
+Useful built-ins
+h: ~#+BEGIN_EXPORT html/#+END_EXPORT~
+e: begin_example
+C: begin_comment
+More at https://orgmode.org/manual/Structure-Templates.html
 
 It's good that is so easy to keep things working as you're used to, but you might also want to give the new mechanism a shot. The command org-insert-structure-template bound to C-c C-, gives you a list of possible #begin_/#end_ pairs to insert, that narrows down interactively while you type. It's fast, convenient and you don't have to have the trigger memorized before hand as with <trigger TAB.
 
 #+begin_src emacs-lisp
   (require 'org-tempo)
+
+  (eval-after-load "org"
+    '(progn
+       (tempo-define-template "inline-js"
+                              '("#+begin_export html" n
+                                "<script type=\"text/javascript\">" n p n
+                                "</script>" n
+                                "#+end_export")
+                              "<js"
+                              "Insert a script tag"
+                              'org-tempo-tags)
+
+       (tempo-define-template "ET task"
+                              '("#+name:" n
+                                "#+begin_src sh :task yes :doc \"...\"" n
+                                "#+end_src")
+                              "<et"
+                              "Insert an ET task"
+                              'org-tempo-tags)
+
+       (tempo-define-template "Clojure source block"
+                              '("#+begin_src clojure" n p n
+                                "#+end_src")
+                              "<clj"
+                              "Insert a Clojure source block"
+                              'org-tempo-tags)
+
+       (tempo-define-template "ClojureScript source block"
+                              '("#+begin_src clojurescript" n p n
+                                "#+end_src")
+                              "<cljs"
+                              "Insert a ClojureScript source block"
+                              'org-tempo-tags)
+       (tempo-define-template "ZSH source block"
+                              '("#+begin_src sh :shebang \"#!/usr/bin/env zsh\"" n p n
+                                "#+end_src")
+                              "<sh"
+                              "Insert a ZSH source block"
+                              'org-tempo-tags)
+
+       (tempo-define-template "Emacs Lisp source block"
+                              '("#+begin_src emacs-lisp" n p n
+                                "#+end_src")
+                              "<el"
+                              "Insert a Emacs Lisp source block"
+                              'org-tempo-tags)))
 #+end_src
 
 ** Don't ask confirmation for C-c C-c.
@@ -253,6 +335,16 @@ It's good that is so easy to keep things working as you're used to, but you migh
   (setq org-src-window-setup 'current-window)
 #+end_src
 
+* Yasnippet
+#+begin_src emacs-lisp
+(leaf yasnippet
+  :ensure t
+  ;:blackout t
+  :commands yas-global-mode
+  :hook ((after-init-hook . yas-global-mode)))
+  ;:custom ((yas-snippet-dirs . '("~/.emacs.d/snippets"))))
+#+end_src
+
 * Lisp
 ** Lispy & Lispyville
 
@@ -260,12 +352,28 @@ Enable Lispy when Lisp is being edited.
 
 #+begin_src emacs-lisp
   (leaf lispy
-      :ensure t)
-      ; NO NEED FOR THIS, see below.
-      ;; :config
-        ; https://github.com/noctuid/lispyville/issues/36
-        ;; (define-key lispy-mode-map-lispy "[" nil)
-        ;; (define-key lispy-mode-map-lispy "]" nil))
+    :ensure t
+    :config
+    (defvar lispy-mode-map-base
+      (let ((map (make-sparse-keymap)))
+        ;; navigation
+        (define-key map (kbd "C-a") 'lispy-move-beginning-of-line)
+        (define-key map (kbd "C-e") 'lispy-move-end-of-line)
+        (define-key map (kbd "M-o") 'lispy-left-maybe)
+        ;; killing
+        (define-key map (kbd "C-k") 'lispy-kill)
+        (define-key map (kbd "M-d") 'lispy-kill-word)
+        (define-key map (kbd "M-DEL") 'lispy-backward-kill-word)
+        ;; misc
+        (define-key map (kbd "(") 'lispy-parens)
+        ;; (define-key map (kbd ";") 'lispy-comment) <--- Disable that ugly fucker.
+        (define-key map (kbd "M-q") 'lispy-fill)
+        (define-key map (kbd "C-j") 'lispy-newline-and-indent)
+        (define-key map (kbd "RET") 'lispy-newline-and-indent-plain)
+        ;; tags
+        (define-key map (kbd "M-.") 'lispy-goto-symbol)
+        (define-key map (kbd "M-,") 'pop-tag-mark)
+        map)))
 
   (leaf lispyville :ensure t)
   (leaf clojure-mode :ensure t)
@@ -283,6 +391,10 @@ Enable Lispy when Lisp is being edited.
   (add-hook 'clojure-mode-hook #'lispy-mode)
   (add-hook 'emacs-lisp-mode-hook #'lispy-mode)
   (add-hook 'lisp-mode-hook #'lispy-mode)
+
+  ;; Not working :/
+  (custom-set-variables '(lispy-comment-use-single-semicolon t))
+  ;; (setq lispy-comment-use-single-semicolon t)
 #+end_src
 
 With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obsoletes the fill-column-indicator package. You can add:
@@ -304,14 +416,9 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
   (defun start-bb-repl ()
     (interactive)
     (start-process "Babashka REPL" "Babashka REPL" "bb" "--nrepl-server" "1667"))
-
-  ;; NO NEED FOR THIS: use } to write []
-  ;; https://github.com/abo-abo/lispy/issues/83
-  ;; (define-key lispy-mode-map-lispy "[" nil)
-  ;; (define-key lispy-mode-map-lispy "]" nil)
 #+end_src
-* The rest
 
+* The rest
 #+begin_src emacs-lisp
 ; Interesting pkg https://www.emacswiki.org/emacs/FillColumnIndicator
 ;(setq fci-rule-width 1)
@@ -338,10 +445,14 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
   ;;        :port   "6697")))
 #+end_src
 
-** Open HTTP links in EWW
+** Open HTTP links in Chrome
 
 #+begin_src emacs-lisp
-  (setq browse-url-browser-function 'eww-browse-url)
+  ;(setq browse-url-browser-function 'eww-browse-url)
+
+  ; TODO: This should be in project emacs .dirs.el, because it might differ. Chrome for dev, Safari otherwise.
+  (setq browse-url-browser-function (quote browse-url-generic))
+  (setq browse-url-generic-program "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 #+end_src
 
 ** [[https://magit.vc][Magit]]

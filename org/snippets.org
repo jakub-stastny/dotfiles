@@ -1,0 +1,31 @@
+* Clojure
+
+See [[https://github.com/AndreaCrotti/yasnippet-snippets/tree/master/snippets/clojure-mode]].
+
+C-u M-x yas-describe-tables
+
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/d :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: def
+  # key: d
+  # --
+  (def $1)$0
+#+end_src
+
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/df :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: defn
+  # key: df
+  # --
+  (defn $1
+    "$2"
+    []$3)$0
+#+end_src
+
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojurescript-mode/console.log :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: console.log
+  # key: l
+  # --
+  (js/console.log $1)$0
+#+end_src
