@@ -2,30 +2,73 @@
 
 See [[https://github.com/AndreaCrotti/yasnippet-snippets/tree/master/snippets/clojure-mode]].
 
+http://joaotavora.github.io/yasnippet/snippet-organization.html
+
 C-u M-x yas-describe-tables
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/d :mkdirp yes
+** TODO Is there a "less magical" engine?
+We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe it can be overriden? Maybe check out an engine that uses JUST DATA?
+
+* Clojure
+** Definitions
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/def :mkdirp yes
   # -*- mode: snippet -*-
   # name: def
-  # key: d
+  # key: df
   # --
   (def $1)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/df :mkdirp yes
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defonce :mkdirp yes
   # -*- mode: snippet -*-
-  # name: defn
-  # key: df
+  # name: defonce
+  # key: do
+  # --
+  (defonce $1)$0
+#+end_src
+
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defn-simple :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: Simple defn
+  # key: d
+  # --
+  (defn $1 []$2)$0
+#+end_src
+
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defn-docstring :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: Defn with a docstring
+  # key: d
   # --
   (defn $1
     "$2"
     []$3)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojurescript-mode/console.log :mkdirp yes
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defn-multiple :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: Defn with multiple arities
+  # key: d
+  # --
+  (defn $1
+    "$2"
+    ([$3] $4)
+    $5)$0
+#+end_src
+
+* ClojureScript
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojurescript-mode/console-log :mkdirp yes
   # -*- mode: snippet -*-
   # name: console.log
-  # key: l
+  # key: i
   # --
   (js/console.log $1)$0
+#+end_src
+
+#+begin_src snippet :tangle ~/.emacs.d/snippets/clojurescript-mode/atom :mkdirp yes
+  # -*- mode: snippet -*-
+  # name: Define an atom
+  # key: a
+  # --
+  (defonce $1 (r/atom$2))$0
 #+end_src
