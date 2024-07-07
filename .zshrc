@@ -22,13 +22,22 @@ load ~/.zsh/shared.setup.zsh
 # Sourced in an interactive session.
 # http://zsh.loadforge.net/Intro/intro_3.html
 load ~/.zsh/shared.aliases.zsh
-load ~/.zsh/$(identifier).prompt.zsh
+#which docker && load ~/.zsh/$(identifier).prompt.zsh # FIXME
 
 load ~/.zsh/shared.completion.zsh
 load ~/.zsh/shared.history.zsh
 
-test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
-test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
+test -f ~/.zsh/$(uname).env.zsh && source ~/.zsh/$(uname).env.zsh
+test -f ~/.zsh/$(uname).prompt.zsh && source ~/.zsh/$(uname).prompt.zsh
+
+# if test -n "$TMUX" && test -f ~/.zsh/$(uname).tmux.prompt.zsh; then
+#   source ~/.zsh/$(uname).tmux.prompt.zsh
+# else
+#   source ~/.zsh/$(uname).prompt.zsh
+# fi
+
+#test -f ~/.zsh/shared.host.zsh && load ~/.zsh/shared.host.zsh
+#test -f ~/.zsh/$(identifier).zsh && load ~/.zsh/$(identifier).zsh
 
 (( ${+TMUX} )) || load ~/.zsh/tmux-auto-connect.zsh
 
