@@ -39,7 +39,7 @@ Unlike =elc= files, the =eln= files are stored in =~/.emacs.d/eln-cache=.
 ** Variables
 
 #+begin_src emacs-lisp
-  (setq my/emacs-config-path (expand-file-name "~/org/emacs.org"))
+  (setq js-config-path (expand-file-name "~/org/emacs.org"))
 #+end_src
 
 #+begin_src emacs-lisp
@@ -53,32 +53,75 @@ The =init.el= should (after the first run) mirror the source blocks in the =init
 To avoid doing this each time a change is made we can add a function to the =after-save-hook= ensuring to always tangle and byte-compile the =org=-document after changes.
 
 #+begin_src emacs-lisp
-  (defun my/emacs/tangle-hook ()
+  (defun js/tangle-hook ()
     "If the current buffer is 'init.org' the code-blocks are
     tangled, and the tangled file is compiled."
-    (when (equal (buffer-file-name) my/emacs-config-path)
+    (when (equal (buffer-file-name) js-config-path)
       ;; Avoid running hooks when tangling.
       (let ((prog-mode-hook nil))
+        (message "[js/tangle-hook] running in %s" (buffer-file-name))
         (org-babel-tangle)
         (byte-compile-file (concat user-emacs-directory "init.el")))))
 
-  (add-hook 'after-save-hook 'my/emacs/tangle-hook)
+  (add-hook 'after-save-hook 'js/tangle-hook)
 #+end_src
 
-** Tangle on save
-
-The =init.el= should (after the first run) mirror the source blocks in the =init.org=. We can use =C-c C-v t= to run =org-babel-tangle=, which extracts the code blocks from the current file into a source-specific file (in this case a =.el=-file).
-
-To avoid doing this each time a change is made we can add a function to the =after-save-hook= ensuring to always tangle and byte-compile the =org=-document after changes.
+** Reload =init.el= on save
+*** TODO Fix all the wording and explain
+It was copied from the above, obviously. Or maybe merge. Whatevs.
 
 #+begin_src emacs-lisp
-  (defun my/emacs/reload-hook ()
-    "If the current buffer is 'init.org' the code-blocks are
+  (defun js/reload-hook ()
+    "If the current buffer is 'init.org' the code blocks are
     reloaded, and the reloaded file is compiled."
-    (when (equal (buffer-file-name) my/emacs-config-path)
+    (when (equal (buffer-file-name) js-config-path)
+      (message "[js/reload-hook] running in %s" (buffer-file-name))
       (load-file (concat user-emacs-directory "init.el"))))
 
-  (add-hook 'after-save-hook 'my/emacs/reload-hook)
+  (add-hook 'after-save-hook 'js/reload-hook)
+#+end_src
+
+** Add tangle headers
+*** TODO Make this more data-driven
+Like saving extension to fn blocks etc.
+
+From https://emacs.stackexchange.com/questions/50488/adding-header-to-a-org-mode-tangled-file
+
+*** TODO Read [[https://emacs.stackexchange.com/questions/50488/adding-header-to-a-org-mode-tangled-file][the StackExchange link]] and implement the NoWeb version
+It's so much cooler and cleaner!
+
+Or maybe not???? Read this:
+
+*** TODO Insert when was compiled
+Possibly SHA.
+
+#+begin_src emacs-lisp
+  (defun js/get-buffer-file-extension ()
+    "Get the file extension of the current buffer."
+    (when buffer-file-name
+      (file-name-extension buffer-file-name)))
+
+  (defun js/clojure-file-p ()
+    "Check if the current buffer's file name has an extension of 'clj', 'cljc', or 'cljs'."
+    (let ((extension (js/get-buffer-file-extension)))
+      (member extension '("clj" "cljc" "cljs"))))
+
+  (defun js/add-tangle-headers-hook ()
+    "Add headers warning not to fucking edit the generated file."
+    (message "[js/add-tangle-headers-hook] running in %s" (buffer-file-name))
+    (cond
+     ((js/clojure-file-p)
+      (goto-char (point-min))
+      (insert ";; This is a generated file do not edit\n"))
+     ((string= (js/get-buffer-file-extension) "el")
+      (goto-char (point-min))
+      (insert ";; -*- lexical-binding: t -*-\n")
+      (insert ";; This is a generated file do not edit\n"))
+     (t
+      nil))
+    (save-buffer))
+
+  (add-hook 'org-babel-post-tangle-hook 'js/add-tangle-headers-hook)
 #+end_src
 
 * Configuration
