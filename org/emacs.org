@@ -94,6 +94,8 @@ Or maybe not???? Read this:
 
 *** TODO Insert when was compiled
 Possibly SHA.
+TODO: The text should be able to be overriden in .env/emacs.el.
+FIXME: The problem is that there are SHEBANGS!
 
 #+begin_src emacs-lisp
   (defun js/get-buffer-file-extension ()
@@ -501,3 +503,18 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
 ** [[https://magit.vc][Magit]]
 
 Use =C-x g= to enter the mode.
+
+* Emoji
+#+begin_src emacs-lisp
+  (leaf unicode-fonts
+    :ensure t
+    :config
+    (unicode-fonts-setup))
+
+  (leaf emojify
+    :ensure t
+    :config
+    (global-emojify-mode 1))
+
+  (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
+#+end_src

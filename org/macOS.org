@@ -9,6 +9,15 @@ USE THE RIGHT OPTION KEY, it works by default!
   ;(setq mac-right-option-modifier nil)
 #+end_src
 
+#+begin_src emacs-lisp :tangle ~/.emacs.d/macinit.el :mkdirp yes
+  (defun copy-to-macos-pasteboard (start end)
+    "Copy the region to the macOS pasteboard."
+    (interactive "r")
+    (shell-command-on-region start end "pbcopy"))
+
+  (global-set-key (kbd "C-c C-c") 'copy-to-macos-pasteboard)
+#+end_src
+
 ** Open HTTP links in Chrome
 
 #+begin_src emacs-lisp :tangle ~/.emacs.d/macinit.el :mkdirp yes
