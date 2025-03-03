@@ -53,3 +53,5 @@ echo && test -f .env/zsh.zsh && load .env/zsh.zsh || load ~/.zsh/environments/no
 
 setopt rm_star_silent # Don't ask for confirmation on rm with glob.
 setopt nullglob # Don't fail if one of the globs is not present, such as with rm *.{html,css}
+
+export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"

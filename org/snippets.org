@@ -11,7 +11,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
 
 * Clojure
 ** Definitions
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/def :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojure-mode/def :mkdirp yes
   # -*- mode: snippet -*-
   # name: def
   # key: df
@@ -19,7 +19,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
   (def $1)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defonce :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojure-mode/defonce :mkdirp yes
   # -*- mode: snippet -*-
   # name: defonce
   # key: do
@@ -27,7 +27,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
   (defonce $1)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defn-simple :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojure-mode/defn-simple :mkdirp yes
   # -*- mode: snippet -*-
   # name: Simple defn
   # key: d
@@ -35,7 +35,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
   (defn $1 []$2)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defn-docstring :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojure-mode/defn-docstring :mkdirp yes
   # -*- mode: snippet -*-
   # name: Defn with a docstring
   # key: d
@@ -45,7 +45,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
     []$3)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojure-mode/defn-multiple :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojure-mode/defn-multiple :mkdirp yes
   # -*- mode: snippet -*-
   # name: Defn with multiple arities
   # key: d
@@ -57,7 +57,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
 #+end_src
 
 * ClojureScript
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojurescript-mode/console-log :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojurescript-mode/console-log :mkdirp yes
   # -*- mode: snippet -*-
   # name: console.log
   # key: i
@@ -65,7 +65,7 @@ We can't shadow CLJ defn in CLJS, it'll give us the select box by default. Maybe
   (js/console.log $1)$0
 #+end_src
 
-#+begin_src snippet :tangle ~/.emacs.d/snippets/clojurescript-mode/atom :mkdirp yes
+#+begin_src snippet :tangle ~/.config/emacs/snippets/clojurescript-mode/atom :mkdirp yes
   # -*- mode: snippet -*-
   # name: Define an atom
   # key: a

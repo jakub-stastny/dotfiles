@@ -1,7 +1,7 @@
 * Diacritics input using the Opt key
 USE THE RIGHT OPTION KEY, it works by default!
 
-#+begin_src emacs-lisp :tangle ~/.emacs.d/macinit.el :mkdirp yes
+#+begin_src emacs-lisp :tangle ~/.config/emacs/macinit.el :mkdirp yes
   (warn "HERE")
   ;; Use the Command key as Meta
   ;(setq mac-command-key-is-meta t)
@@ -9,7 +9,7 @@ USE THE RIGHT OPTION KEY, it works by default!
   ;(setq mac-right-option-modifier nil)
 #+end_src
 
-#+begin_src emacs-lisp :tangle ~/.emacs.d/macinit.el :mkdirp yes
+#+begin_src emacs-lisp :tangle ~/.config/emacs/macinit.el :mkdirp yes
   (defun copy-to-macos-pasteboard (start end)
     "Copy the region to the macOS pasteboard."
     (interactive "r")
@@ -20,7 +20,7 @@ USE THE RIGHT OPTION KEY, it works by default!
 
 ** Open HTTP links in Chrome
 
-#+begin_src emacs-lisp :tangle ~/.emacs.d/macinit.el :mkdirp yes
+#+begin_src emacs-lisp :tangle ~/.config/emacs/macinit.el :mkdirp yes
   ;(setq browse-url-browser-function 'eww-browse-url)
 
   ; TODO: This should be in project emacs .dirs.el, because it might differ. Chrome for dev, Safari otherwise.

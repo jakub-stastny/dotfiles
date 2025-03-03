@@ -1,6 +1,6 @@
 #+TITLE: Emacs configuration file
 #+AUTHOR: Jakub Šťastný
-#+PROPERTY: header-args :tangle ~/.emacs.d/init.el :mkdirp yes
+#+PROPERTY: header-args :tangle ~/.config/emacs/init.el :mkdirp yes
 
 * About
 
@@ -28,7 +28,7 @@ My minimalistic Emacs configuration. Concerns that are not part of the core are 
 
 Set it early in your init file so all future packages benefit from async compilation.
 
-Unlike =elc= files, the =eln= files are stored in =~/.emacs.d/eln-cache=.
+Unlike =elc= files, the =eln= files are stored in =~/.config/emacs/eln-cache=.
 
 #+begin_src emacs-lisp
   (setq comp-deferred-compilation t)
@@ -43,7 +43,7 @@ Unlike =elc= files, the =eln= files are stored in =~/.emacs.d/eln-cache=.
 #+end_src
 
 #+begin_src emacs-lisp
-  (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
+  (setq custom-file (expand-file-name "~/.config/emacs/custom.el"))
 #+end_src
 
 ** Tangle on save
@@ -392,7 +392,7 @@ It's good that is so easy to keep things working as you're used to, but you migh
   ;:blackout t
   :commands yas-global-mode
   :hook ((after-init-hook . yas-global-mode)))
-  ;:custom ((yas-snippet-dirs . '("~/.emacs.d/snippets"))))
+  ;:custom ((yas-snippet-dirs . '("~/.config/emacs/snippets"))))
 #+end_src
 
 * Lisp
@@ -497,7 +497,7 @@ With Emacs 27 comes the display-fill-column-indicator-mode minor mode, which obs
 
 ** Load macOS configuration
 #+begin_src emacs-lisp
-  (load (expand-file-name "~/.emacs.d/macinit.el"))
+  (load (expand-file-name "~/.config/emacs/macinit.el"))
 #+end_src
 
 ** [[https://magit.vc][Magit]]
