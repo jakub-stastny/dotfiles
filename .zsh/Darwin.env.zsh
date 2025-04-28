@@ -4,6 +4,7 @@ path-prepend /opt/homebrew/bin
 path-prepend /opt/homebrew/Cellar/ruby/3.2.0/bin
 path-prepend /opt/homebrew/opt/node@18/bin
 path-prepend ~/Library/Python/3.9/bin
+path-prepend ~/.local/share/context/tex/texmf-osx-arm64/bin
 path-add /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin
 
 test $PWD = $HOME && cd ~/Desktop
